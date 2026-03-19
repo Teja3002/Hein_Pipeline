@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import re
 from urllib.parse import urljoin, urlparse
 
 import requests
@@ -217,11 +218,40 @@ def article_sort_key(item):
     return (1, float("inf"), title, doi, url)
 
 
-def format_articles_as_sections(articles):
+def extract_page_id_from_url(url):
+    match = re.search(r"/(\d+)/?$", urlparse(url).path)
+    if match:
+        return int(match.group(1))
+    return ""
+
+
+def build_page_entry(url, metadata, page_id):
+    volume = metadata.get("volume")
+    issue = metadata.get("issue")
+
+    return {
+        "id": page_id,
+        "native": metadata.get("first_page") or "",
+        "section": [
+            int(volume) if str(volume).isdigit() else volume or "",
+            int(issue) if str(issue).isdigit() else issue or "",
+        ],
+    }
+
+
+def format_articles_as_sections(articles, page_id_mode="sequential"):
+    pages = []
     sections = {}
 
     for index, (url, metadata) in enumerate(sorted(articles.items(), key=article_sort_key), 1):
         authors = metadata.get("authors") or []
+
+        if page_id_mode == "url_tail":
+            page_id = extract_page_id_from_url(url)
+        else:
+            page_id = index
+
+        pages.append(build_page_entry(url, metadata, page_id))
         section = {
             "title": metadata.get("title") or "",
             "citation": "",
@@ -233,7 +263,15 @@ def format_articles_as_sections(articles):
 
         sections[str(index)] = section
 
-    return {"sections": sections}
+    if page_id_mode == "url_tail":
+        pages.sort(
+            key=lambda page: (
+                0 if isinstance(page["id"], int) else 1,
+                page["id"] if isinstance(page["id"], int) else str(page["id"]),
+            )
+        )
+
+    return {"pages": pages, "sections": sections}
 
 
 def write_raw_output(folder_name, articles, output_dir=None):
@@ -250,13 +288,13 @@ def write_raw_output(folder_name, articles, output_dir=None):
     return output_file
 
 
-def write_results_output(folder_name, articles, results_dir=None):
+def write_results_output(folder_name, articles, results_dir=None, page_id_mode="sequential"):
     if results_dir is None:
         results_dir = DEFAULT_RESULTS_DIR
 
     os.makedirs(results_dir, exist_ok=True)
     result_file = os.path.join(results_dir, f"{folder_name}.json")
-    formatted_output = format_articles_as_sections(articles)
+    formatted_output = format_articles_as_sections(articles, page_id_mode=page_id_mode)
 
     with open(result_file, "w", encoding="utf-8") as f:
         json.dump(formatted_output, f, indent=2, ensure_ascii=False)
@@ -330,7 +368,12 @@ def scrape_from_crossref_result(folder_name, result_file, output_dir=None, resul
         return None
 
     raw_output_file = write_raw_output(folder_name, articles, output_dir=output_dir)
-    results_output_file = write_results_output(folder_name, articles, results_dir=results_dir)
+    results_output_file = write_results_output(
+        folder_name,
+        articles,
+        results_dir=results_dir,
+        page_id_mode="sequential",
+    )
     return {"raw_output_file": raw_output_file, "results_output_file": results_output_file}
 
 

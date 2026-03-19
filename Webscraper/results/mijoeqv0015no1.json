@@ -1,4 +1,30 @@
 {
+  "pages": [
+    {
+      "id": 1,
+      "native": "i",
+      "section": [
+        15,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "native": "1",
+      "section": [
+        15,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "native": "34",
+      "section": [
+        15,
+        1
+      ]
+    }
+  ],
   "sections": {
     "1": {
       "title": "The Non-Binding Bind: Reframing Precatory Stockholder Proposals Under Delaware Law",
