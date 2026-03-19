@@ -8,7 +8,6 @@
 *.jpeg
 *.log
 
-
 # Python
 __pycache__/
 *.pyc
@@ -16,7 +15,7 @@ __pycache__/
 .env
 
 # Virtual environment
-poetry.lock
+env/
 
 # Jornal Folder 
 Input/
