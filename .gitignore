@@ -16,7 +16,7 @@ __pycache__/
 .env
 
 # Virtual environment
-env/ 
+poetry.lock
 
 # Jornal Folder 
 Input/
