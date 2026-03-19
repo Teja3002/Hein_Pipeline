@@ -23,9 +23,9 @@ def create_metadata_json(base_folder):
         "articles": [] 
     }
 
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     json_filename = f"metadata_{model_name}_{journal_name}.json" 
-    json_filepath = os.path.join(project_root, "temp", json_filename) 
+    results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 
+    json_filepath = os.path.join(results_path, json_filename) 
 
     with open(json_filepath, "w", encoding="utf-8") as f: 
         json.dump(metadata, f, indent=4, ensure_ascii=False)
@@ -86,13 +86,13 @@ def create_ocr_json(base_folder):
 
     # Create output JSON file 
     json_filename = f"ocrData_{model_name}_{journal_name}.json"
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
-    json_filepath = os.path.join(project_root, "temp", json_filename) 
+    results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 
+    json_filepath = os.path.join(results_path, json_filename) 
 
     with open(json_filepath, "w", encoding="utf-8") as f:
         json.dump(ocr_data, f, indent=4, ensure_ascii=False)
 
-    print(f"Created: {json_filepath}")
+    print(f"Created: {json_filepath}") 
     print(f"Total pages found: {total_pages}")
 
     return json_filepath
@@ -104,20 +104,19 @@ def save_metadata_to_output(metadata_filepath, base_folder):
     journal_name = os.path.basename(base_folder)
     datetime_str = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    output_dir = os.path.join(project_root, "output")
-    os.makedirs(output_dir, exist_ok=True) 
+    output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")  
+    os.makedirs(output_dir, exist_ok=True)  
 
     output_filename = f"metadata_{journal_name}_{datetime_str}.json" 
     output_filepath = os.path.join(output_dir, output_filename) 
 
     shutil.copy2(metadata_filepath, output_filepath)
 
-    print(f"Metadata saved to: {output_filepath}")
-    return output_filepath
+    print(f"Metadata saved to: {output_filepath}") 
+    return output_filepath 
 
 if __name__ == "__main__":
 
     # Testing code for initializing OCR JSON file: 
-    json_filepath = create_ocr_json("Data/ajil0120no1")   
+    json_filepath = create_ocr_json("Input/ajil0120no1")   
     print(f"JSON file created at: {json_filepath}")
