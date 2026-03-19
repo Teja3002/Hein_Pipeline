@@ -176,17 +176,16 @@ def extract_creators(item):
 
 def build_section_data(item):
     doi = normalize_text(item.get("DOI", ""))
+    authors = extract_creators(item)[:50]
 
     data = {
         "title": normalize_text(item.get("title", [""])[0]),
         "citation": "",
         "description": normalize_text(item.get("abstract", "")),
         "doi": doi,
-        "external_url": get_final_url(doi)
+        "external_url": get_final_url(doi),
+        "authors": authors,
     }
-
-    for i, author in enumerate(extract_creators(item)[:50], 1):
-        data[f"author_{i}"] = author
 
     return data
 

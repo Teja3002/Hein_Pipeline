@@ -221,17 +221,15 @@ def format_articles_as_sections(articles):
     sections = {}
 
     for index, (url, metadata) in enumerate(sorted(articles.items(), key=article_sort_key), 1):
+        authors = metadata.get("authors") or []
         section = {
             "title": metadata.get("title") or "",
             "citation": "",
             "description": metadata.get("abstract") or "",
             "doi": metadata.get("doi") or "",
             "external_url": metadata.get("article_url") or url,
+            "authors": authors,
         }
-
-        authors = metadata.get("authors") or []
-        for author_index, author in enumerate(authors, 1):
-            section[f"author_{author_index}"] = author
 
         sections[str(index)] = section
 
