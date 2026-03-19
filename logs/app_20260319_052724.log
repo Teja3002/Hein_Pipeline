@@ -1,4 +1,0 @@
-2026-03-19 05:27:24,639 | INFO | pid=13656 | __main__ | databaseScrape process started pid=13656 log_file=C:\Users\Panda\Documents\Hein_Automation\logs\app_20260319_052724.log
-2026-03-19 05:27:24,640 | INFO | pid=13656 | __main__ | databaseScrape started for input=notfound0012no3
-2026-03-19 05:27:24,640 | INFO | pid=13656 | __main__ | Parsed input journal=notfound volume_raw=0012 issue=3
-2026-03-19 05:27:24,640 | WARNING | pid=13656 | __main__ | No journal config found for journal=notfound; fallback_search_url=https://www.google.com/search?q=notfound+journal+volume+12

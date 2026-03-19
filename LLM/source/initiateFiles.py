@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 import shutil
 
-from source.llm import model_name
+from source.llm import safe_model_name
 
 def create_metadata_json(base_folder):
     """
@@ -25,7 +25,7 @@ def create_metadata_json(base_folder):
     }
     
 
-    json_filename = f"metadata_{model_name}_{journal_name}.json" 
+    json_filename = f"metadata_{safe_model_name}_{journal_name}.json" 
     results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 
     json_filepath = os.path.join(results_path, json_filename) 
 
@@ -87,7 +87,7 @@ def create_ocr_json(base_folder):
     }
 
     # Create output JSON file 
-    json_filename = f"ocrData_{model_name}_{journal_name}.json"
+    json_filename = f"ocrData_{safe_model_name}_{journal_name}.json"
     results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 
     json_filepath = os.path.join(results_path, json_filename) 
 

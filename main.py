@@ -1,5 +1,7 @@
 import logging
 import os
+import subprocess
+import sys
 from pathlib import Path
 
 from CrossRef.extract import process_folder
@@ -9,6 +11,55 @@ from Webscraper.recursiveScrape import scrape_from_database_url
 from Webscraper.scraper import scrape_from_crossref_result, scrape_without_crossref
 
 
+def start_ocr_pipeline(folder_name, folder_path, llm_dir):
+    ocr_script = llm_dir / "ocr_pipeline.py"
+    command = [sys.executable, str(ocr_script), str(folder_path)]
+    process = subprocess.Popen(
+        command,
+        cwd=str(llm_dir),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    logging.info(
+        "Started OCR pipeline asynchronously for folder=%s pid=%s command=%s cwd=%s",
+        folder_name,
+        process.pid,
+        command,
+        llm_dir,
+    )
+    return process
+
+
+def wait_for_ocr_pipeline(folder_name, ocr_process):
+    logging.info(
+        "Waiting for OCR pipeline process to finish for folder=%s child_pid=%s",
+        folder_name,
+        ocr_process.pid,
+    )
+    stdout, stderr = ocr_process.communicate()
+
+    if ocr_process.returncode == 0:
+        logging.info(
+            "OCR pipeline completed for folder=%s pid=%s",
+            folder_name,
+            ocr_process.pid,
+        )
+    else:
+        logging.error(
+            "OCR pipeline failed for folder=%s pid=%s returncode=%s stderr=%s",
+            folder_name,
+            ocr_process.pid,
+            ocr_process.returncode,
+            stderr.strip(),
+        )
+
+    if stdout.strip():
+        logging.info("OCR pipeline stdout for folder=%s:\n%s", folder_name, stdout.strip())
+    if stderr.strip() and ocr_process.returncode == 0:
+        logging.warning("OCR pipeline stderr for folder=%s:\n%s", folder_name, stderr.strip())
+
+
 def main() -> None:
     log_file = setup_logging()
     project_root = Path(__file__).resolve().parent
@@ -16,6 +67,7 @@ def main() -> None:
     crossref_results_dir = project_root / "CrossRef" / "results"
     webscraper_output_dir = project_root / "Webscraper" / "output"
     webscraper_results_dir = project_root / "Webscraper" / "results"
+    llm_dir = project_root / "LLM"
     process_id = os.getpid()
 
     logging.info("Application started in main.py with pid=%s", process_id)
@@ -29,7 +81,19 @@ def main() -> None:
     processed_count = 0
 
     for folder in sorted(input_dir.iterdir()):
-        logging.info("Dispatching folder=%s from main.py", folder.name)
+        logging.info(
+            "Dispatching folder=%s from main.py main_pid=%s",
+            folder.name,
+            process_id,
+        )
+        ocr_process = start_ocr_pipeline(folder.name, folder, llm_dir)
+        logging.info(
+            "Current process state for folder=%s main_pid=%s ocr_pid=%s ocr_input_path=%s",
+            folder.name,
+            process_id,
+            ocr_process.pid,
+            folder,
+        )
         process_folder(folder.name, str(folder))
         crossref_result_file = crossref_results_dir / f"{folder.name}.json"
 
@@ -73,6 +137,8 @@ def main() -> None:
                 processed_count += 1
             else:
                 scrape_without_crossref(folder.name)
+
+        wait_for_ocr_pipeline(folder.name, ocr_process)
 
     logging.info("Finished processing %s folder(s)", processed_count)
     print(f"Finished processing {processed_count} folder(s)")

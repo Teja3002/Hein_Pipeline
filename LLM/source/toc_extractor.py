@@ -172,15 +172,15 @@ def extract_toc_articles(ocr_filepath, toc_page_numbers, folder_path, useLLM = T
     for page_num in toc_page_numbers:
         idx = page_num - 1
         if idx < 0 or idx >= len(entries):
-            print(f"  ✗ Page {page_num} out of range. Skipping.")
+            print(f"  NO Page {page_num} out of range. Skipping.")
             continue
 
         ocr_text = entries[idx].get("ocrText", "")
         if ocr_text.strip():
             combined_ocr += ocr_text + "\n"
-            print(f"  ✓ Loaded OCR for page {page_num} ({entries[idx].get('fileName', '')})")
+            print(f"  OK Loaded OCR for page {page_num} ({entries[idx].get('fileName', '')})")
         else:
-            print(f"  ✗ No OCR text stored for page {page_num}")
+            print(f"  NO No OCR text stored for page {page_num}")
 
     if not combined_ocr.strip():
         print("No OCR text found for TOC pages.")
@@ -208,7 +208,7 @@ def extract_toc_articles(ocr_filepath, toc_page_numbers, folder_path, useLLM = T
 
     print(f"\n  Found {len(articles)} articles:")
     for e in articles:
-        print(f"    {e['id'][:60]}... → page {e['page']}")
+        print(f"    {e['id'][:60]}... -> page {e['page']}")
 
     # Saving the article files before returning it 
 
