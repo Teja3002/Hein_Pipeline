@@ -1,1 +1,31 @@
-Input
+
+# Journal files
+*.pdf
+*.png
+*.tiff
+*.tif
+*.jpg
+*.jpeg
+*.log
+
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Virtual environment
+env/ 
+
+# Jornal Folder 
+Input/
+
+# Temp files (generated at runtime)
+results/
+
+# Processed output
+output/
+
+# OS
+.DS_Store
