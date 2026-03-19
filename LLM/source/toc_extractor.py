@@ -2,7 +2,7 @@ import os
 import re
 import json
 
-from source.llm import model_name, get_article_page_numbers 
+from source.llm import safe_model_name, get_article_page_numbers 
 from source.metadata_extractor import load_json, save_json  
 
 # def load_json(filepath):
@@ -215,7 +215,7 @@ def extract_toc_articles(ocr_filepath, toc_page_numbers, folder_path, useLLM = T
     folder_name = os.path.basename(folder_path)  
 
     if(useLLM): 
-        json_filename = f"articles_{model_name}_{folder_name}.json"
+        json_filename = f"articles_{safe_model_name}_{folder_name}.json"
     else:
         json_filename = f"articles_{folder_name}.json"  
 

@@ -1,7 +1,9 @@
 import json
+import re
 from ollama import chat  
 
 model_name = "qwen3.5:9b" 
+safe_model_name = re.sub(r"[^A-Za-z0-9._-]+", "_", model_name)
 
 from openai import OpenAI 
 import os 

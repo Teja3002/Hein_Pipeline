@@ -6,7 +6,7 @@ import time
 
 from source.metadata_extractor import load_json, save_json 
 from source.ocr import extract_text
-from source.llm import extract_toc_page, model_name 
+from source.llm import extract_toc_page, safe_model_name 
 
 # model_name = 'gemma3' 
 # model_name = 'qwen3-vl:8b'        
@@ -38,7 +38,7 @@ def ReturnResults(total_start, count, pages, folder_name="unknown"):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     os.makedirs(os.path.join(base_dir, "EVAL"), exist_ok=True)
 
-    json_filename = f"toc_{model_name}_{folder_name}.json"  
+    json_filename = f"toc_{safe_model_name}_{folder_name}.json"  
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
     output_path = os.path.join(project_root, "temp", json_filename) 
     # output_path = os.path.join(base_dir, "EVAL", f"toc_results_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json") 
