@@ -66,14 +66,14 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
 
         if result: 
             article_boundaries.append(i)
-            print(f"  ✓ New article detected at page {i + 1} ({file_name})")
+            print(f"  OK New article detected at page {i + 1} ({file_name})")
         else:
             print(f"  - Page {i + 1} ({file_name}) — continuation")
 
     save_json(ocr_filepath, ocr_data)
 
     if not article_boundaries:
-        print("\n  ⚠ No articles detected.")
+        print("\n  WARN No articles detected.")
         return metadata
 
     print(f"\n  Detected {len(article_boundaries)} article(s)")
@@ -89,9 +89,9 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
 
         if title_valid:
             verified_boundaries.append(boundary)
-            print(f"  ✓ Page {boundary + 1} verified as article start")
+            print(f"  OK Page {boundary + 1} verified as article start")
         else:
-            print(f"  ✗ Page {boundary + 1} filtered out (no valid title)")
+            print(f"  NO Page {boundary + 1} filtered out (no valid title)")
 
     article_boundaries = verified_boundaries 
     print(f"\n  Verified {len(article_boundaries)} article(s)")

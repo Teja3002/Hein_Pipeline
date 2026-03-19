@@ -6,7 +6,9 @@
       "description": "https://repository.law.umich.edu/mbelr/vol15/iss1/2",
       "doi": "https://doi.org/10.36639/mbelr.15.1.non-binding",
       "external_url": "https://repository.law.umich.edu/mbelr/vol15/iss1/2",
-      "author_1": "Pinder, Kyle A."
+      "authors": [
+        "Pinder, Kyle A."
+      ]
     },
     "2": {
       "title": "Navigating the EU’s Corporate Sustainability Due Diligence Directive: Strategic Implications for US Companies",
@@ -14,9 +16,11 @@
       "description": "https://repository.law.umich.edu/mbelr/vol15/iss1/3",
       "doi": "https://doi.org/10.36639/mbelr.15.1.navigating",
       "external_url": "https://repository.law.umich.edu/mbelr/vol15/iss1/3",
-      "author_1": "Ciacchi, Silvia",
-      "author_2": "Faure, Michael",
-      "author_3": "Oded, Sharon"
+      "authors": [
+        "Ciacchi, Silvia",
+        "Faure, Michael",
+        "Oded, Sharon"
+      ]
     },
     "3": {
       "title": "Front Matter",
@@ -24,7 +28,9 @@
       "description": "https://repository.law.umich.edu/mbelr/vol15/iss1/1",
       "doi": "",
       "external_url": "https://repository.law.umich.edu/mbelr/vol15/iss1/1",
-      "author_1": "Michigan Business & Entrepreneurial Law Review"
+      "authors": [
+        "Michigan Business & Entrepreneurial Law Review"
+      ]
     }
   }
 }

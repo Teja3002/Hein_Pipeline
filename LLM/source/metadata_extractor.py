@@ -132,9 +132,9 @@ def extract_metadata(ocr_filepath, metadata_filepath, MAX_PAGES=10):
             if is_valid:
                 verified_fields[field_name] = value
                 fields_to_remove.append(field_name) 
-                print(f"    ✓ {field_name} = \"{value}\" ({reason})")
+                print(f"    OK {field_name} = \"{value}\" ({reason})")
             else:
-                print(f"    ✗ {field_name}: {reason}")
+                print(f"    NO {field_name}: {reason}")
 
         # Remove verified fields from pending set
         for field_name in fields_to_remove:
@@ -157,12 +157,12 @@ def extract_metadata(ocr_filepath, metadata_filepath, MAX_PAGES=10):
 
     for field_name in FIELD_DESCRIPTIONS:
         if field_name in verified_fields:
-            print(f"    ✓ {field_name}: \"{verified_fields[field_name]}\"")
+            print(f"    OK {field_name}: \"{verified_fields[field_name]}\"")
         else:
-            print(f"    ✗ {field_name}: NOT FOUND")
+            print(f"    NO {field_name}: NOT FOUND")
 
     if pending_fields:
-        print(f"\n  ⚠ Missing after {total_pages} pages: {', '.join(pending_fields)}")
+        print(f"\n  WARN Missing after {total_pages} pages: {', '.join(pending_fields)}")
 
     print(f"\n  Metadata saved to: {metadata_filepath}")
     print(f"{'='*60}\n")

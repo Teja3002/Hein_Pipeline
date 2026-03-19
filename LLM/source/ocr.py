@@ -1,10 +1,41 @@
-import pytesseract
-import os 
-import cv2 
-from PIL import Image 
+import os
+from pathlib import Path
+
+import cv2
 import numpy as np
+import pytesseract
+from PIL import Image
+
+
+def configure_tesseract():
+    env_tesseract = os.getenv("TESSERACT_CMD", "").strip()
+    candidate_paths = []
+
+    if env_tesseract:
+        candidate_paths.append(Path(env_tesseract))
+
+    candidate_paths.extend(
+        [
+            Path(r"C:\Program Files\Tesseract-OCR\tesseract.exe"),
+            Path(r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe"),
+        ]
+    )
+
+    for candidate in candidate_paths:
+        if candidate.exists():
+            pytesseract.pytesseract.tesseract_cmd = str(candidate)
+            print(f"Using Tesseract executable: {candidate}")
+            return str(candidate)
+
+    current_cmd = getattr(pytesseract.pytesseract, "tesseract_cmd", "tesseract")
+    print(f"Using Tesseract executable from PATH: {current_cmd}")
+    return current_cmd
+
+
+configure_tesseract()
 
 def extract_text(image_input, preprocess=False):
+    image_obj = None
 
     if isinstance(image_input, str):
         if not os.path.exists(image_input):
@@ -27,13 +58,13 @@ def extract_text(image_input, preprocess=False):
             image_obj = image_input
 
     if image_obj:
-        custom_config = r'--oem 3 --psm 6' 
-        return pytesseract.image_to_string(image_obj, config=custom_config) 
+        custom_config = r'--oem 3 --psm 6'
+        return pytesseract.image_to_string(image_obj, config=custom_config)
     return ""
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
 
-    # Testing code for OCR extraction:  
-    directory_sample = "Data/ajil0120no1/png/0001.png"   
-    ocr_output = extract_text(directory_sample, preprocess=True) 
-    print(ocr_output)   
+    # Testing code for OCR extraction:
+    directory_sample = "Data/ajil0120no1/png/0001.png"
+    ocr_output = extract_text(directory_sample, preprocess=True)
+    print(ocr_output)

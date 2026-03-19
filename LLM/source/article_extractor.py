@@ -42,13 +42,13 @@ def get_external_link(doi_link):
     try:
         response = requests.head(doi_link, allow_redirects=True, timeout=10)
         if response.status_code == 200:
-            print(f"      ✓ External link: {response.url}")
+            print(f"      OK External link: {response.url}")
             return response.url 
         else:
-            print(f"      ✗ External link failed (status {response.status_code})")
+            print(f"      NO External link failed (status {response.status_code})")
             return None
     except requests.RequestException as e: 
-        print(f"      ✗ External link error: {e}")
+        print(f"      NO External link error: {e}")
         return None
 
 
@@ -89,12 +89,12 @@ def extract_article_doi(start_page, end_page, ocr_filepath):
 
         if doi:
             link = create_doi_link(doi)
-            print(f"      ✓ DOI found on {file_name}: {doi}")
+            print(f"      OK DOI found on {file_name}: {doi}")
             save_json(ocr_filepath, ocr_data)
             return {"doi": doi, "link": link}
 
     save_json(ocr_filepath, ocr_data)
-    print(f"      ✗ No DOI found in pages {start_page}-{end_page}")
+    print(f"      NO DOI found in pages {start_page}-{end_page}")
     return None
 
 
@@ -157,9 +157,9 @@ def extract_article_info(start_page, end_page, ocr_filepath):
             is_valid, reason = verify_article_title(title_value)
             if is_valid:
                 result["title"] = title_value
-                print(f"      ✓ title = \"{title_value}\"")
+                print(f"      OK title = \"{title_value}\"")
             else:
-                print(f"      ✗ title: {reason}")
+                print(f"      NO title: {reason}")
 
         # Verify authors
         if result["authors"] is None:
@@ -167,9 +167,9 @@ def extract_article_info(start_page, end_page, ocr_filepath):
             is_valid, reason = verify_article_authors(authors_value)
             if is_valid:
                 result["authors"] = authors_value
-                print(f"      ✓ authors = {authors_value}")
+                print(f"      OK authors = {authors_value}")
             else:
-                print(f"      ✗ authors: {reason}")
+                print(f"      NO authors: {reason}")
 
         # Stop if both fields are verified
         if result["title"] and result["authors"]:
