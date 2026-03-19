@@ -25,11 +25,11 @@ def initiate_temp_files(base_folder):
 
     # -- TEMP -- 
     # Create temp folder if not present:
-    temp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp") 
-    os.makedirs(temp_path, exist_ok=True) 
+    results_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp") 
+    os.makedirs(results_path, exist_ok=True)  
 
     # Create OCR JSON file from the given base folder: 
-    ocr_fp = create_ocr_json(base_folder) 
+    ocr_fp = create_ocr_json(base_folder)  
 
     # Create metadata JSON file from the given base folder: 
     metadata_fp = create_metadata_json(base_folder)
@@ -84,12 +84,12 @@ def run_ocr_pipeline(base_folder):
     return metadata, output_filepath 
 
 
-def run_all_journals(data_folder="Data"):
+def run_all_journals(data_folder="Input"):
     """
-    Scans the Data folder and runs the OCR pipeline for each journal folder.
+    Scans the Input folder and runs the OCR pipeline for each journal folder.
     """
     if not os.path.exists(data_folder):
-        print(f"Data folder not found: {data_folder}")
+        print(f"Input folder not found: {data_folder}")
         return
 
     folders = sorted([
@@ -164,26 +164,27 @@ def run_all_journals(data_folder="Data"):
 if __name__ == "__main__": 
 
     # # # Testing code for running the OCR pipeline: 
-    # # run_ocr_pipeline("Data/ajil0120no1") 
+    # # run_ocr_pipeline("Input/ajil0120no1") 
 
     # # All journals: 
-    # run_all_journals("Data") 
+    # run_all_journals("Input") 
 
     parser = argparse.ArgumentParser(description="JournalIndexing OCR Pipeline")
     parser.add_argument(
         "journal",
         nargs="?",
         default="all",
-        help='Journal folder name or path (e.g. "ajil0120no1" or "Data/ajil0120no1") or "all" to run all'
+        help='Journal folder name or path (e.g. "ajil0120no1" or "Input/ajil0120no1") or "all" to run all'
     )
 
     args = parser.parse_args()
 
-    if args.journal == "all":
-        run_all_journals("Data")
+    if args.journal == "all": 
+        run_all_journals("../Input")
     else:
-        # Support both "ajil0120no1" and "Data/ajil0120no1"
         journal_path = args.journal.rstrip("/")
-        if not journal_path.startswith("Data"):
-            journal_path = os.path.join("Data", journal_path)
-        run_ocr_pipeline(journal_path) 
+        # Support: "ajil0120no1", "Input/ajil0120no1", "../Input/ajil0120no1"
+        if not os.path.exists(os.path.join(journal_path, "png")):
+            # Try prepending ../Input/ if path doesn't work directly
+            journal_path = os.path.join("../Input", os.path.basename(journal_path))
+        run_ocr_pipeline(journal_path)

@@ -220,7 +220,7 @@ def extract_toc_articles(ocr_filepath, toc_page_numbers, folder_path, useLLM = T
         json_filename = f"articles_{folder_name}.json"  
 
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
-    output_path = os.path.join(project_root, "temp", json_filename) 
+    output_path = os.path.join(project_root, "temp", json_filename)  
 
     save_json(ocr_filepath, ocr_data) 
 
