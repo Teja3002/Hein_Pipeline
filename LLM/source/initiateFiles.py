@@ -21,6 +21,7 @@ def create_metadata_json(base_folder):
         # "issn": "",
         # "eissn": "", 
         # "articles": [] 
+        "pages": [], 
         "sections": {}
     }
     

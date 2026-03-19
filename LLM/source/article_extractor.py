@@ -198,10 +198,11 @@ def process_articles(articles, page_offset, ocr_filepath, metadata_filepath):
     total_pages = ocr_data.get("totalPages") 
 
     metadata = load_json(metadata_filepath) 
-    metadata["articles"] = []
+    metadata["pages"] = []
 
     for i, article in enumerate(articles):
         start_page = int(article["page"]) + page_offset
+        native_page = str(article["page"])
 
         if i < len(articles) - 1:
             end_page = int(articles[i + 1]["page"]) + page_offset - 1 
@@ -228,6 +229,11 @@ def process_articles(articles, page_offset, ocr_filepath, metadata_filepath):
         #     "link": doi_result.get("link") if doi_result else None, 
         #     "external_link": external_link 
         # })
+
+        metadata["pages"].append({
+            "id": i + 1,
+            "native": native_page 
+        })
 
         section = {
             "page": article["page"],
