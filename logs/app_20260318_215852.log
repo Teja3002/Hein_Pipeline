@@ -1,0 +1,14 @@
+2026-03-18 21:58:52,283 | INFO | pid=30692 | root | Application started in main.py with pid=30692
+2026-03-18 21:58:52,284 | INFO | pid=30692 | root | Dispatching folder=ajil0120no1 from main.py
+2026-03-18 21:58:52,284 | INFO | pid=30692 | CrossRef.extract | Running folder=ajil0120no1 path=C:\Users\Panda\Documents\Hein_Automation\Input\ajil0120no1 volume=120 issue=1 output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-18 21:59:50,470 | INFO | pid=30692 | CrossRef.extract | Fetched folder=ajil0120no1 total_items=24364 filtered_items=18
+2026-03-18 22:00:40,247 | INFO | pid=30692 | CrossRef.extract | Saved result for folder=ajil0120no1 to C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-18 22:00:40,263 | INFO | pid=30692 | root | Dispatching folder=blj0143no1 from main.py
+2026-03-18 22:00:40,263 | INFO | pid=30692 | CrossRef.extract | Running folder=blj0143no1 path=C:\Users\Panda\Documents\Hein_Automation\Input\blj0143no1 volume=143 issue=1 output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\blj0143no1.json
+2026-03-18 22:00:41,122 | INFO | pid=30692 | CrossRef.extract | Fetched folder=blj0143no1 total_items=0 filtered_items=0
+2026-03-18 22:00:41,129 | INFO | pid=30692 | CrossRef.extract | Saved result for folder=blj0143no1 to C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\blj0143no1.json
+2026-03-18 22:00:41,129 | INFO | pid=30692 | root | Dispatching folder=direlaw0021 from main.py
+2026-03-18 22:00:41,130 | INFO | pid=30692 | CrossRef.extract | Running folder=direlaw0021 path=C:\Users\Panda\Documents\Hein_Automation\Input\direlaw0021 volume=21 issue=N/A output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-18 22:00:43,289 | INFO | pid=30692 | CrossRef.extract | Fetched folder=direlaw0021 total_items=344 filtered_items=45
+2026-03-18 22:07:00,351 | INFO | pid=30692 | CrossRef.extract | Saved result for folder=direlaw0021 to C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-18 22:07:00,352 | INFO | pid=30692 | root | Finished processing 3 folder(s)

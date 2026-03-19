@@ -1,0 +1,13 @@
+2026-03-19 04:36:19,284 | INFO | pid=10568 | root | Application started in main.py with pid=10568
+2026-03-19 04:36:19,285 | INFO | pid=10568 | root | Dispatching folder=ajil0120no1 from main.py
+2026-03-19 04:36:19,285 | INFO | pid=10568 | CrossRef.extract | Running folder=ajil0120no1 path=C:\Users\Panda\Documents\Hein_Automation\Input\ajil0120no1 volume=120 issue=1 output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:37:06,072 | INFO | pid=10568 | CrossRef.extract | Fetched folder=ajil0120no1 total_items=24364 filtered_items=18
+2026-03-19 04:37:40,453 | INFO | pid=10568 | CrossRef.extract | Saved result for folder=ajil0120no1 to C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:37:40,471 | INFO | pid=10568 | root | Starting Webscraper for folder=ajil0120no1 using CrossRef result=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:37:40,471 | INFO | pid=10568 | Webscraper.scraper | Webscraper started for folder=ajil0120no1 using CrossRef file=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:37:40,471 | INFO | pid=10568 | Webscraper.scraper | Loaded 18 unique DOI(s) from C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:37:40,471 | INFO | pid=10568 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10146
+2026-03-19 04:37:43,538 | INFO | pid=10568 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10146 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F
+2026-03-19 04:37:43,541 | INFO | pid=10568 | Webscraper.scraper | Webscraper using path-scoped crawl journal=ajil0120no1 domain=www.cambridge.org base_path=/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F
+2026-03-19 04:37:43,541 | INFO | pid=10568 | Webscraper.scraper | Webscraper visiting journal=ajil0120no1 depth=0 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F
+2026-03-19 04:37:44,756 | INFO | pid=10568 | Webscraper.scraper | Webscraper article found journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F score=24

@@ -1,0 +1,278 @@
+2026-03-19 04:55:20,469 | INFO | pid=39732 | root | Application started in main.py with pid=39732
+2026-03-19 04:55:20,469 | INFO | pid=39732 | root | Dispatching folder=ajil0120no1 from main.py
+2026-03-19 04:55:20,469 | INFO | pid=39732 | CrossRef.extract | Running folder=ajil0120no1 path=C:\Users\Panda\Documents\Hein_Automation\Input\ajil0120no1 volume=120 issue=1 output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:56:20,234 | INFO | pid=39732 | CrossRef.extract | Fetched folder=ajil0120no1 total_items=24364 filtered_items=18
+2026-03-19 04:57:02,419 | INFO | pid=39732 | CrossRef.extract | Saved result for folder=ajil0120no1 to C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:57:02,436 | INFO | pid=39732 | root | Starting Webscraper for folder=ajil0120no1 using CrossRef result=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:57:02,436 | INFO | pid=39732 | Webscraper.scraper | Webscraper started for folder=ajil0120no1 using CrossRef file=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:57:02,437 | INFO | pid=39732 | Webscraper.scraper | Loaded 18 unique DOI(s) from C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\ajil0120no1.json
+2026-03-19 04:57:02,437 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10146
+2026-03-19 04:57:04,729 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10146 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F
+2026-03-19 04:57:04,731 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F
+2026-03-19 04:57:05,894 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F score=24
+2026-03-19 04:57:05,896 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10129
+2026-03-19 04:57:10,128 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10129 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/scourge-of-war/45D62B699B1E63ADE032712F88712592
+2026-03-19 04:57:10,130 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/scourge-of-war/45D62B699B1E63ADE032712F88712592
+2026-03-19 04:57:11,209 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/scourge-of-war/45D62B699B1E63ADE032712F88712592 score=24
+2026-03-19 04:57:11,212 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10133
+2026-03-19 04:57:13,409 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10133 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/rise-and-fall-of-lauterpachts-function-of-law/63213D44E73E3685ED940A20BED65CBE
+2026-03-19 04:57:13,410 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/rise-and-fall-of-lauterpachts-function-of-law/63213D44E73E3685ED940A20BED65CBE
+2026-03-19 04:57:15,292 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/rise-and-fall-of-lauterpachts-function-of-law/63213D44E73E3685ED940A20BED65CBE score=24
+2026-03-19 04:57:15,294 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10125
+2026-03-19 04:57:17,580 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10125 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/silicon-sovereigns-artificial-intelligence-international-law-and-the-techindustrial-complex/91E9751E1A9F586F4E4D7FD2FA36556B
+2026-03-19 04:57:17,583 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/silicon-sovereigns-artificial-intelligence-international-law-and-the-techindustrial-complex/91E9751E1A9F586F4E4D7FD2FA36556B
+2026-03-19 04:57:18,693 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/silicon-sovereigns-artificial-intelligence-international-law-and-the-techindustrial-complex/91E9751E1A9F586F4E4D7FD2FA36556B score=24
+2026-03-19 04:57:18,695 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10139
+2026-03-19 04:57:20,542 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10139 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/pax-economica-and-its-discontents/6C595BDF5D51820E64061720F45BDECE
+2026-03-19 04:57:20,544 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/pax-economica-and-its-discontents/6C595BDF5D51820E64061720F45BDECE
+2026-03-19 04:57:21,852 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/pax-economica-and-its-discontents/6C595BDF5D51820E64061720F45BDECE score=24
+2026-03-19 04:57:21,854 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10134
+2026-03-19 04:57:25,078 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10134 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/from-necropolitics-to-piety-twail-and-the-other-subject-of-human-rights/2BA16A011078B3C3E41848CCB0DAE671
+2026-03-19 04:57:25,080 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/from-necropolitics-to-piety-twail-and-the-other-subject-of-human-rights/2BA16A011078B3C3E41848CCB0DAE671
+2026-03-19 04:57:26,378 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/from-necropolitics-to-piety-twail-and-the-other-subject-of-human-rights/2BA16A011078B3C3E41848CCB0DAE671 score=24
+2026-03-19 04:57:26,381 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10126
+2026-03-19 04:57:28,377 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10126 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/dystopian-international-law/F9BDE4936BAF581B2106402286FB4DA6
+2026-03-19 04:57:28,379 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/dystopian-international-law/F9BDE4936BAF581B2106402286FB4DA6
+2026-03-19 04:57:29,681 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/dystopian-international-law/F9BDE4936BAF581B2106402286FB4DA6 score=24
+2026-03-19 04:57:29,683 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10141
+2026-03-19 04:57:32,017 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10141 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/on-the-stories-we-tell/4980A9C867ACAE09503055DDDD2FD7C8
+2026-03-19 04:57:32,019 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/on-the-stories-we-tell/4980A9C867ACAE09503055DDDD2FD7C8
+2026-03-19 04:57:33,304 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/on-the-stories-we-tell/4980A9C867ACAE09503055DDDD2FD7C8 score=24
+2026-03-19 04:57:33,306 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10130
+2026-03-19 04:57:35,582 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10130 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/colonialism-and-decolonization-on-a-world-scalethree-perspectives/F2401CB2226C336C82B50BBB49863624
+2026-03-19 04:57:35,584 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/colonialism-and-decolonization-on-a-world-scalethree-perspectives/F2401CB2226C336C82B50BBB49863624
+2026-03-19 04:57:37,033 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/colonialism-and-decolonization-on-a-world-scalethree-perspectives/F2401CB2226C336C82B50BBB49863624 score=24
+2026-03-19 04:57:37,036 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10127
+2026-03-19 04:57:44,781 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10127 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/whoever-rules-the-waves-rules-the-world-sea-power-and-the-law-of-the-sea/50C2D2684DC510405589DDC29BECD007
+2026-03-19 04:57:44,783 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/whoever-rules-the-waves-rules-the-world-sea-power-and-the-law-of-the-sea/50C2D2684DC510405589DDC29BECD007
+2026-03-19 04:57:46,470 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/whoever-rules-the-waves-rules-the-world-sea-power-and-the-law-of-the-sea/50C2D2684DC510405589DDC29BECD007 score=24
+2026-03-19 04:57:46,473 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10142
+2026-03-19 04:57:49,676 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10142 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/china-antihegemonism-and-the-scope-for-international-law-to-facilitate-peaceful-power-transitions/223196BDE702E8ACB1EAAD565A776BE7
+2026-03-19 04:57:49,680 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/china-antihegemonism-and-the-scope-for-international-law-to-facilitate-peaceful-power-transitions/223196BDE702E8ACB1EAAD565A776BE7
+2026-03-19 04:57:51,294 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/china-antihegemonism-and-the-scope-for-international-law-to-facilitate-peaceful-power-transitions/223196BDE702E8ACB1EAAD565A776BE7 score=24
+2026-03-19 04:57:51,297 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10132
+2026-03-19 04:57:53,448 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10132 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/is-another-world-possible/9E6D9C62A6376BFC57813AE7C667033F
+2026-03-19 04:57:53,450 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/is-another-world-possible/9E6D9C62A6376BFC57813AE7C667033F
+2026-03-19 04:57:54,467 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/is-another-world-possible/9E6D9C62A6376BFC57813AE7C667033F score=24
+2026-03-19 04:57:54,470 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10137
+2026-03-19 04:57:56,303 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10137 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/international-law-commissions-seventysixth-2025-session-the-negative-impact-of-the-united-nations-fiscal-crisis-on-the-codification-and-progressive-development-of-international-law/99C559EF8D886D22F0BDC638D5DF9E70
+2026-03-19 04:57:56,305 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/international-law-commissions-seventysixth-2025-session-the-negative-impact-of-the-united-nations-fiscal-crisis-on-the-codification-and-progressive-development-of-international-law/99C559EF8D886D22F0BDC638D5DF9E70
+2026-03-19 04:57:57,426 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/international-law-commissions-seventysixth-2025-session-the-negative-impact-of-the-united-nations-fiscal-crisis-on-the-codification-and-progressive-development-of-international-law/99C559EF8D886D22F0BDC638D5DF9E70 score=24
+2026-03-19 04:57:57,428 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10138
+2026-03-19 04:57:59,209 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10138 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/modern-slavery-in-furukawa-case-no-107221jp24/CD4EA7BF4C6753629A024D1B2E10A61A
+2026-03-19 04:57:59,212 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/modern-slavery-in-furukawa-case-no-107221jp24/CD4EA7BF4C6753629A024D1B2E10A61A
+2026-03-19 04:58:00,275 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/modern-slavery-in-furukawa-case-no-107221jp24/CD4EA7BF4C6753629A024D1B2E10A61A score=24
+2026-03-19 04:58:00,277 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10140
+2026-03-19 04:58:02,045 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10140 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/junefield-gold-investments-limited-v-the-republic-of-ecuador-pca-case-no-202335/64E8B0DE75165168A8420D94D63B54A4
+2026-03-19 04:58:02,047 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/junefield-gold-investments-limited-v-the-republic-of-ecuador-pca-case-no-202335/64E8B0DE75165168A8420D94D63B54A4
+2026-03-19 04:58:03,087 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/junefield-gold-investments-limited-v-the-republic-of-ecuador-pca-case-no-202335/64E8B0DE75165168A8420D94D63B54A4 score=24
+2026-03-19 04:58:03,090 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10144
+2026-03-19 04:58:05,030 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10144 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/semenya-v-switzerland-application-no-1093421/8CB46420AAAA053296DD80F3FA3F07EF
+2026-03-19 04:58:05,033 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/semenya-v-switzerland-application-no-1093421/8CB46420AAAA053296DD80F3FA3F07EF
+2026-03-19 04:58:06,052 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/semenya-v-switzerland-application-no-1093421/8CB46420AAAA053296DD80F3FA3F07EF score=24
+2026-03-19 04:58:06,054 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10143
+2026-03-19 04:58:07,884 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10143 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/secretary-of-state-rubio-denies-and-revokes-visas-for-palestinian-delegation-invited-to-attend-un-general-assembly-meetings/533FF46132BDC86E05431B2D17068786
+2026-03-19 04:58:07,887 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/secretary-of-state-rubio-denies-and-revokes-visas-for-palestinian-delegation-invited-to-attend-un-general-assembly-meetings/533FF46132BDC86E05431B2D17068786
+2026-03-19 04:58:09,188 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/secretary-of-state-rubio-denies-and-revokes-visas-for-palestinian-delegation-invited-to-attend-un-general-assembly-meetings/533FF46132BDC86E05431B2D17068786 score=20
+2026-03-19 04:58:09,190 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=ajil0120no1 doi=10.1017/ajil.2025.10145
+2026-03-19 04:58:11,037 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1017/ajil.2025.10145 to https://www.cambridge.org/core/journals/american-journal-of-international-law/article/us-military-targets-and-destroys-alleged-narcotics-trafficking-vessels-in-the-southern-caribbean-sea-and-eastern-pacific-ocean-killing-nearly-all-of-their-crew/DE7B5051CBDD60A350A7FCD5A34BE34C
+2026-03-19 04:58:11,039 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/us-military-targets-and-destroys-alleged-narcotics-trafficking-vessels-in-the-southern-caribbean-sea-and-eastern-pacific-ocean-killing-nearly-all-of-their-crew/DE7B5051CBDD60A350A7FCD5A34BE34C
+2026-03-19 04:58:12,508 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=ajil0120no1 url=https://www.cambridge.org/core/journals/american-journal-of-international-law/article/us-military-targets-and-destroys-alleged-narcotics-trafficking-vessels-in-the-southern-caribbean-sea-and-eastern-pacific-ocean-killing-nearly-all-of-their-crew/DE7B5051CBDD60A350A7FCD5A34BE34C score=20
+2026-03-19 04:58:12,514 | INFO | pid=39732 | Webscraper.scraper | Webscraper saved raw output folder=ajil0120no1 output=C:\Users\Panda\Documents\Hein_Automation\Webscraper\output\ajil0120no1.json article_count=18
+2026-03-19 04:58:12,516 | INFO | pid=39732 | Webscraper.scraper | Webscraper saved formatted results folder=ajil0120no1 output=C:\Users\Panda\Documents\Hein_Automation\Webscraper\results\ajil0120no1.json section_count=18
+2026-03-19 04:58:12,516 | INFO | pid=39732 | root | Dispatching folder=blj0143no1 from main.py
+2026-03-19 04:58:12,517 | INFO | pid=39732 | CrossRef.extract | Running folder=blj0143no1 path=C:\Users\Panda\Documents\Hein_Automation\Input\blj0143no1 volume=143 issue=1 output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\blj0143no1.json
+2026-03-19 04:58:14,520 | INFO | pid=39732 | CrossRef.extract | Fetched folder=blj0143no1 total_items=0 filtered_items=0
+2026-03-19 04:58:14,521 | WARNING | pid=39732 | CrossRef.extract | No valid articles found for folder=blj0143no1; skipping output file creation
+2026-03-19 04:58:14,521 | INFO | pid=39732 | root | No CrossRef result found for folder=blj0143no1; leaving placeholder for future Webscraper flow
+2026-03-19 04:58:14,521 | INFO | pid=39732 | Webscraper.scraper | Webscraper placeholder reached for folder=blj0143no1 because no CrossRef result is available yet
+2026-03-19 04:58:14,521 | INFO | pid=39732 | root | Dispatching folder=direlaw0021 from main.py
+2026-03-19 04:58:14,521 | INFO | pid=39732 | CrossRef.extract | Running folder=direlaw0021 path=C:\Users\Panda\Documents\Hein_Automation\Input\direlaw0021 volume=21 issue=N/A output=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-19 04:58:17,379 | INFO | pid=39732 | CrossRef.extract | Fetched folder=direlaw0021 total_items=344 filtered_items=45
+2026-03-19 04:59:35,420 | INFO | pid=39732 | CrossRef.extract | Saved result for folder=direlaw0021 to C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-19 04:59:35,421 | INFO | pid=39732 | root | Starting Webscraper for folder=direlaw0021 using CrossRef result=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-19 04:59:35,421 | INFO | pid=39732 | Webscraper.scraper | Webscraper started for folder=direlaw0021 using CrossRef file=C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-19 04:59:35,423 | INFO | pid=39732 | Webscraper.scraper | Loaded 45 unique DOI(s) from C:\Users\Panda\Documents\Hein_Automation\CrossRef\results\direlaw0021.json
+2026-03-19 04:59:35,424 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202538
+2026-03-19 04:59:37,346 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202538 to http://www.scielo.br/j/rdgv/a/95ys8VHTvRwhBxbZnwtmTTs/?lang=en
+2026-03-19 04:59:37,348 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/95ys8VHTvRwhBxbZnwtmTTs/?lang=en
+2026-03-19 04:59:37,766 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/95ys8VHTvRwhBxbZnwtmTTs/?lang=en score=26
+2026-03-19 04:59:37,767 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202521
+2026-03-19 04:59:39,620 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202521 to http://www.scielo.br/j/rdgv/a/nzF8BhtxNY8RBrVkZ3tgkGD/?lang=pt
+2026-03-19 04:59:39,622 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/nzF8BhtxNY8RBrVkZ3tgkGD/?lang=pt
+2026-03-19 04:59:39,984 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/nzF8BhtxNY8RBrVkZ3tgkGD/?lang=pt score=26
+2026-03-19 04:59:39,985 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202518
+2026-03-19 04:59:41,786 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202518 to http://www.scielo.br/j/rdgv/a/DdkKfkkDS9MctcS5kCrPXJC/?lang=pt
+2026-03-19 04:59:41,789 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/DdkKfkkDS9MctcS5kCrPXJC/?lang=pt
+2026-03-19 04:59:42,183 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/DdkKfkkDS9MctcS5kCrPXJC/?lang=pt score=26
+2026-03-19 04:59:42,183 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202529
+2026-03-19 04:59:44,795 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202529 to http://www.scielo.br/j/rdgv/a/CtfpkyLpYZ6hPxCnqQyXmYn/?lang=en
+2026-03-19 04:59:44,798 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/CtfpkyLpYZ6hPxCnqQyXmYn/?lang=en
+2026-03-19 04:59:45,497 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/CtfpkyLpYZ6hPxCnqQyXmYn/?lang=en score=26
+2026-03-19 04:59:45,498 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202503
+2026-03-19 04:59:47,296 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202503 to http://www.scielo.br/j/rdgv/a/Gjcm4pH4TDt88tDMkFTMvtm/?lang=es
+2026-03-19 04:59:47,298 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/Gjcm4pH4TDt88tDMkFTMvtm/?lang=es
+2026-03-19 04:59:47,682 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/Gjcm4pH4TDt88tDMkFTMvtm/?lang=es score=26
+2026-03-19 04:59:47,682 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202502
+2026-03-19 04:59:51,810 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202502 to http://www.scielo.br/j/rdgv/a/CqTSH3RQkLfndXQKb7hYgJM/?lang=pt
+2026-03-19 04:59:51,813 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/CqTSH3RQkLfndXQKb7hYgJM/?lang=pt
+2026-03-19 04:59:52,466 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/CqTSH3RQkLfndXQKb7hYgJM/?lang=pt score=26
+2026-03-19 04:59:52,467 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202533
+2026-03-19 04:59:54,312 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202533 to http://www.scielo.br/j/rdgv/a/xWvkGswbXkwnGFRWcfGtcvJ/?lang=en
+2026-03-19 04:59:54,314 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/xWvkGswbXkwnGFRWcfGtcvJ/?lang=en
+2026-03-19 04:59:54,685 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/xWvkGswbXkwnGFRWcfGtcvJ/?lang=en score=26
+2026-03-19 04:59:54,686 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202515
+2026-03-19 04:59:56,690 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202515 to http://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?lang=pt
+2026-03-19 04:59:56,692 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?lang=pt
+2026-03-19 04:59:58,122 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?lang=pt score=26
+2026-03-19 04:59:58,123 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202541
+2026-03-19 05:00:00,609 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202541 to http://www.scielo.br/j/rdgv/a/my7mtpJSdd5CfCfT3k5jhPL/?lang=en
+2026-03-19 05:00:00,611 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/my7mtpJSdd5CfCfT3k5jhPL/?lang=en
+2026-03-19 05:00:01,895 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/my7mtpJSdd5CfCfT3k5jhPL/?lang=en score=26
+2026-03-19 05:00:01,896 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202509
+2026-03-19 05:00:03,846 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202509 to http://www.scielo.br/j/rdgv/a/NyXVDMnY3kMZPsycBKV5gnk/?lang=pt
+2026-03-19 05:00:03,849 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/NyXVDMnY3kMZPsycBKV5gnk/?lang=pt
+2026-03-19 05:00:04,261 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/NyXVDMnY3kMZPsycBKV5gnk/?lang=pt score=26
+2026-03-19 05:00:04,262 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202511
+2026-03-19 05:00:06,283 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202511 to http://www.scielo.br/j/rdgv/a/ZdQG6Cyh34KBFkG8Q9tDcFs/?lang=en
+2026-03-19 05:00:06,286 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/ZdQG6Cyh34KBFkG8Q9tDcFs/?lang=en
+2026-03-19 05:00:07,955 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/ZdQG6Cyh34KBFkG8Q9tDcFs/?lang=en score=26
+2026-03-19 05:00:07,955 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202543
+2026-03-19 05:00:09,746 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202543 to http://www.scielo.br/j/rdgv/a/xwNxmvn9GxLZdL47TwD48mN/?lang=pt
+2026-03-19 05:00:09,749 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/xwNxmvn9GxLZdL47TwD48mN/?lang=pt
+2026-03-19 05:00:10,241 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/xwNxmvn9GxLZdL47TwD48mN/?lang=pt score=26
+2026-03-19 05:00:10,242 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202545
+2026-03-19 05:00:11,799 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202545 to http://www.scielo.br/j/rdgv/a/LRpL8WJxxgqGdy9B3gHfVSc/?lang=pt
+2026-03-19 05:00:11,801 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/LRpL8WJxxgqGdy9B3gHfVSc/?lang=pt
+2026-03-19 05:00:12,289 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/LRpL8WJxxgqGdy9B3gHfVSc/?lang=pt score=26
+2026-03-19 05:00:12,289 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202510
+2026-03-19 05:00:14,161 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202510 to http://www.scielo.br/j/rdgv/a/rWW6hPJmPDsLtYJVG3FGvsk/?lang=pt
+2026-03-19 05:00:14,163 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/rWW6hPJmPDsLtYJVG3FGvsk/?lang=pt
+2026-03-19 05:00:14,541 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/rWW6hPJmPDsLtYJVG3FGvsk/?lang=pt score=26
+2026-03-19 05:00:14,542 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202523
+2026-03-19 05:00:16,298 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202523 to http://www.scielo.br/j/rdgv/a/3LJskNCK3QZDJ56gSDK5YLj/?lang=en
+2026-03-19 05:00:16,300 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/3LJskNCK3QZDJ56gSDK5YLj/?lang=en
+2026-03-19 05:00:16,712 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/3LJskNCK3QZDJ56gSDK5YLj/?lang=en score=26
+2026-03-19 05:00:16,713 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202540
+2026-03-19 05:00:18,875 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202540 to http://www.scielo.br/j/rdgv/a/TJQPJH3xvjpfYb8fSkhK4qs/?lang=es
+2026-03-19 05:00:18,878 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/TJQPJH3xvjpfYb8fSkhK4qs/?lang=es
+2026-03-19 05:00:19,745 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/TJQPJH3xvjpfYb8fSkhK4qs/?lang=es score=26
+2026-03-19 05:00:19,747 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202520
+2026-03-19 05:00:21,609 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202520 to http://www.scielo.br/j/rdgv/a/6bkbCKpLNTNn56Cgh7W9DsN/?lang=pt
+2026-03-19 05:00:21,612 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/6bkbCKpLNTNn56Cgh7W9DsN/?lang=pt
+2026-03-19 05:00:22,459 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/6bkbCKpLNTNn56Cgh7W9DsN/?lang=pt score=26
+2026-03-19 05:00:22,460 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202506
+2026-03-19 05:00:24,958 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202506 to http://www.scielo.br/j/rdgv/a/Y7KLRwghCsw6G5xr4xDryKB/?lang=pt
+2026-03-19 05:00:24,960 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/Y7KLRwghCsw6G5xr4xDryKB/?lang=pt
+2026-03-19 05:00:25,510 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/Y7KLRwghCsw6G5xr4xDryKB/?lang=pt score=26
+2026-03-19 05:00:25,510 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202513
+2026-03-19 05:00:27,424 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202513 to http://www.scielo.br/j/rdgv/a/fLJmtXZhsv6CNfKnrv8kNsP/?lang=pt
+2026-03-19 05:00:27,427 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/fLJmtXZhsv6CNfKnrv8kNsP/?lang=pt
+2026-03-19 05:00:27,856 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/fLJmtXZhsv6CNfKnrv8kNsP/?lang=pt score=26
+2026-03-19 05:00:27,857 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202544
+2026-03-19 05:00:29,542 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202544 to http://www.scielo.br/j/rdgv/a/LRpL8WJxxgqGdy9B3gHfVSc/?lang=en
+2026-03-19 05:00:29,544 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/LRpL8WJxxgqGdy9B3gHfVSc/?lang=en
+2026-03-19 05:00:29,872 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/LRpL8WJxxgqGdy9B3gHfVSc/?lang=en score=26
+2026-03-19 05:00:29,873 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202546
+2026-03-19 05:00:31,849 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202546 to http://www.scielo.br/j/rdgv/a/tms3L7XWJpq9xDt76WdGdLJ/?lang=pt
+2026-03-19 05:00:31,851 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tms3L7XWJpq9xDt76WdGdLJ/?lang=pt
+2026-03-19 05:00:32,413 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tms3L7XWJpq9xDt76WdGdLJ/?lang=pt score=26
+2026-03-19 05:00:32,414 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202539
+2026-03-19 05:00:34,401 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202539 to http://www.scielo.br/j/rdgv/a/H9mFv8zHHgWbnHy76TdTByJ/?lang=pt
+2026-03-19 05:00:34,404 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/H9mFv8zHHgWbnHy76TdTByJ/?lang=pt
+2026-03-19 05:00:34,747 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/H9mFv8zHHgWbnHy76TdTByJ/?lang=pt score=26
+2026-03-19 05:00:34,747 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202504
+2026-03-19 05:00:36,542 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202504 to http://www.scielo.br/j/rdgv/a/jndrPQxrQJXSqNfbCkbzqHF/?lang=es
+2026-03-19 05:00:36,545 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/jndrPQxrQJXSqNfbCkbzqHF/?lang=es
+2026-03-19 05:00:36,936 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/jndrPQxrQJXSqNfbCkbzqHF/?lang=es score=26
+2026-03-19 05:00:36,936 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202536
+2026-03-19 05:00:38,672 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202536 to http://www.scielo.br/j/rdgv/a/tms3L7XWJpq9xDt76WdGdLJ/?lang=en
+2026-03-19 05:00:38,674 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tms3L7XWJpq9xDt76WdGdLJ/?lang=en
+2026-03-19 05:00:39,055 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tms3L7XWJpq9xDt76WdGdLJ/?lang=en score=26
+2026-03-19 05:00:39,056 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202507
+2026-03-19 05:00:41,146 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202507 to http://www.scielo.br/j/rdgv/a/6TwnvJjgm6vWWyGcDstZsvJ/?lang=pt
+2026-03-19 05:00:41,147 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/6TwnvJjgm6vWWyGcDstZsvJ/?lang=pt
+2026-03-19 05:00:41,591 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/6TwnvJjgm6vWWyGcDstZsvJ/?lang=pt score=26
+2026-03-19 05:00:41,592 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202505
+2026-03-19 05:00:43,282 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202505 to http://www.scielo.br/j/rdgv/a/Pr9jr4YSqLdZKdHNqBSWBXv/?lang=pt
+2026-03-19 05:00:43,285 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/Pr9jr4YSqLdZKdHNqBSWBXv/?lang=pt
+2026-03-19 05:00:43,685 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/Pr9jr4YSqLdZKdHNqBSWBXv/?lang=pt score=26
+2026-03-19 05:00:43,685 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202516
+2026-03-19 05:00:45,451 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202516 to http://www.scielo.br/j/rdgv/a/cVGYyMydkd455D85355yVGS/?lang=pt
+2026-03-19 05:00:45,454 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/cVGYyMydkd455D85355yVGS/?lang=pt
+2026-03-19 05:00:48,802 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/cVGYyMydkd455D85355yVGS/?lang=pt score=26
+2026-03-19 05:00:48,803 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202530
+2026-03-19 05:00:50,622 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202530 to http://www.scielo.br/j/rdgv/a/mjDWM85TPWZYqzsTMvhP5gx/?lang=pt
+2026-03-19 05:00:50,625 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/mjDWM85TPWZYqzsTMvhP5gx/?lang=pt
+2026-03-19 05:00:50,994 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/mjDWM85TPWZYqzsTMvhP5gx/?lang=pt score=26
+2026-03-19 05:00:50,995 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202542
+2026-03-19 05:00:52,592 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202542 to http://www.scielo.br/j/rdgv/a/hQpRxKX8QTTd9HNp5YT5pFH/?lang=en
+2026-03-19 05:00:52,594 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/hQpRxKX8QTTd9HNp5YT5pFH/?lang=en
+2026-03-19 05:00:52,994 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/hQpRxKX8QTTd9HNp5YT5pFH/?lang=en score=26
+2026-03-19 05:00:52,995 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202519
+2026-03-19 05:00:54,678 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202519 to http://www.scielo.br/j/rdgv/a/dyftXg3HC4Dyy7mwNGNdzYc/?lang=pt
+2026-03-19 05:00:54,681 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/dyftXg3HC4Dyy7mwNGNdzYc/?lang=pt
+2026-03-19 05:00:55,898 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/dyftXg3HC4Dyy7mwNGNdzYc/?lang=pt score=26
+2026-03-19 05:00:55,899 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202522
+2026-03-19 05:00:57,392 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202522 to http://www.scielo.br/j/rdgv/a/tdV7S69kHRJ7y3dnNBYVNCD/?lang=pt
+2026-03-19 05:00:57,395 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tdV7S69kHRJ7y3dnNBYVNCD/?lang=pt
+2026-03-19 05:00:59,484 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tdV7S69kHRJ7y3dnNBYVNCD/?lang=pt score=26
+2026-03-19 05:00:59,485 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202528
+2026-03-19 05:01:00,927 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202528 to http://www.scielo.br/j/rdgv/a/KFPsSsd3z3wtpHtWbVggjJQ/?lang=pt
+2026-03-19 05:01:00,929 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/KFPsSsd3z3wtpHtWbVggjJQ/?lang=pt
+2026-03-19 05:01:02,038 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/KFPsSsd3z3wtpHtWbVggjJQ/?lang=pt score=22
+2026-03-19 05:01:02,039 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202525
+2026-03-19 05:01:03,500 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202525 to http://www.scielo.br/j/rdgv/a/tV74FhvWQYWjLN9wcPppyFB/?lang=pt
+2026-03-19 05:01:03,502 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tV74FhvWQYWjLN9wcPppyFB/?lang=pt
+2026-03-19 05:01:04,143 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/tV74FhvWQYWjLN9wcPppyFB/?lang=pt score=22
+2026-03-19 05:01:04,144 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202526
+2026-03-19 05:01:06,433 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202526 to http://www.scielo.br/j/rdgv/a/MKgGt7FyhshTNfKJtpVXVVJ/?lang=pt
+2026-03-19 05:01:06,435 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/MKgGt7FyhshTNfKJtpVXVVJ/?lang=pt
+2026-03-19 05:01:07,156 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/MKgGt7FyhshTNfKJtpVXVVJ/?lang=pt score=22
+2026-03-19 05:01:07,156 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202527
+2026-03-19 05:01:08,852 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202527 to http://www.scielo.br/j/rdgv/a/ZGz36GwKxCG7bDsZXcVmZYr/?lang=pt
+2026-03-19 05:01:08,855 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/ZGz36GwKxCG7bDsZXcVmZYr/?lang=pt
+2026-03-19 05:01:09,471 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/ZGz36GwKxCG7bDsZXcVmZYr/?lang=pt score=22
+2026-03-19 05:01:09,471 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202531
+2026-03-19 05:01:11,667 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202531 to http://www.scielo.br/j/rdgv/a/TSMdP4PhJNGmbvDPxk8B73h/?lang=en
+2026-03-19 05:01:11,669 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/TSMdP4PhJNGmbvDPxk8B73h/?lang=en
+2026-03-19 05:01:12,742 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/TSMdP4PhJNGmbvDPxk8B73h/?lang=en score=26
+2026-03-19 05:01:12,743 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202534
+2026-03-19 05:01:14,197 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202534 to http://www.scielo.br/j/rdgv/a/hhBrLQG43MjcTWGGwg8YpPJ/?lang=en
+2026-03-19 05:01:14,198 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/hhBrLQG43MjcTWGGwg8YpPJ/?lang=en
+2026-03-19 05:01:15,295 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/hhBrLQG43MjcTWGGwg8YpPJ/?lang=en score=26
+2026-03-19 05:01:15,296 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202535
+2026-03-19 05:01:17,126 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202535 to http://www.scielo.br/j/rdgv/a/nd5YZ8xFKpmngwcSJhKrCXL/?lang=pt
+2026-03-19 05:01:17,128 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/nd5YZ8xFKpmngwcSJhKrCXL/?lang=pt
+2026-03-19 05:01:17,852 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/nd5YZ8xFKpmngwcSJhKrCXL/?lang=pt score=26
+2026-03-19 05:01:17,853 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202532
+2026-03-19 05:01:19,264 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202532 to http://www.scielo.br/j/rdgv/a/kWhVBHmTTX9mVs9gTRQt8sK/?lang=pt
+2026-03-19 05:01:19,266 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/kWhVBHmTTX9mVs9gTRQt8sK/?lang=pt
+2026-03-19 05:01:20,246 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/kWhVBHmTTX9mVs9gTRQt8sK/?lang=pt score=26
+2026-03-19 05:01:20,247 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202500
+2026-03-19 05:01:21,567 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202500 to http://www.scielo.br/j/rdgv/a/SwC5yp98NmJGm7sFPzVdXxP/?lang=pt
+2026-03-19 05:01:21,568 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/SwC5yp98NmJGm7sFPzVdXxP/?lang=pt
+2026-03-19 05:01:22,102 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/SwC5yp98NmJGm7sFPzVdXxP/?lang=pt score=26
+2026-03-19 05:01:22,103 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202501
+2026-03-19 05:01:23,306 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202501 to http://www.scielo.br/j/rdgv/a/SwC5yp98NmJGm7sFPzVdXxP/?lang=en
+2026-03-19 05:01:23,308 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/SwC5yp98NmJGm7sFPzVdXxP/?lang=en
+2026-03-19 05:01:23,979 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/SwC5yp98NmJGm7sFPzVdXxP/?lang=en score=26
+2026-03-19 05:01:23,979 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202508
+2026-03-19 05:01:25,912 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202508 to http://www.scielo.br/j/rdgv/a/TpnQbBTNVVKVT6pdQY8gJ5p/?lang=en
+2026-03-19 05:01:25,914 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/TpnQbBTNVVKVT6pdQY8gJ5p/?lang=en
+2026-03-19 05:01:27,349 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/TpnQbBTNVVKVT6pdQY8gJ5p/?lang=en score=26
+2026-03-19 05:01:27,349 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202514
+2026-03-19 05:01:29,019 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202514 to http://www.scielo.br/j/rdgv/a/bfq6KZBGSYYy3vQyKZ7k8yg/?lang=en
+2026-03-19 05:01:29,021 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/bfq6KZBGSYYy3vQyKZ7k8yg/?lang=en
+2026-03-19 05:01:31,672 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/bfq6KZBGSYYy3vQyKZ7k8yg/?lang=en score=26
+2026-03-19 05:01:31,673 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202517
+2026-03-19 05:01:33,132 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202517 to http://www.scielo.br/j/rdgv/a/98q7FNDq5FKNCSQsjpX5b7v/?lang=en
+2026-03-19 05:01:33,134 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/98q7FNDq5FKNCSQsjpX5b7v/?lang=en
+2026-03-19 05:01:33,731 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/98q7FNDq5FKNCSQsjpX5b7v/?lang=en score=26
+2026-03-19 05:01:33,732 | INFO | pid=39732 | Webscraper.scraper | Webscraper resolving DOI for folder=direlaw0021 doi=10.1590/2317-6172202524
+2026-03-19 05:01:35,018 | INFO | pid=39732 | Webscraper.scraper | Resolved DOI 10.1590/2317-6172202524 to http://www.scielo.br/j/rdgv/a/VmT46WWBXSzfcsfvgZ97SDH/?lang=pt
+2026-03-19 05:01:35,019 | INFO | pid=39732 | Webscraper.scraper | Webscraper fetching article-check journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/VmT46WWBXSzfcsfvgZ97SDH/?lang=pt
+2026-03-19 05:01:35,559 | INFO | pid=39732 | Webscraper.scraper | Webscraper inspected DOI landing page journal=direlaw0021 url=http://www.scielo.br/j/rdgv/a/VmT46WWBXSzfcsfvgZ97SDH/?lang=pt score=26
+2026-03-19 05:01:35,563 | INFO | pid=39732 | Webscraper.scraper | Webscraper saved raw output folder=direlaw0021 output=C:\Users\Panda\Documents\Hein_Automation\Webscraper\output\direlaw0021.json article_count=45
+2026-03-19 05:01:35,585 | INFO | pid=39732 | Webscraper.scraper | Webscraper saved formatted results folder=direlaw0021 output=C:\Users\Panda\Documents\Hein_Automation\Webscraper\results\direlaw0021.json section_count=45
+2026-03-19 05:01:35,586 | INFO | pid=39732 | root | Finished processing 2 folder(s)

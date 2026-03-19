@@ -1,0 +1,5 @@
+2026-03-19 05:27:26,378 | INFO | pid=12348 | __main__ | databaseScrape process started pid=12348 log_file=C:\Users\Panda\Documents\Hein_Automation\logs\app_20260319_052726.log
+2026-03-19 05:27:26,378 | INFO | pid=12348 | __main__ | databaseScrape started for input=aulr0075no2
+2026-03-19 05:27:26,378 | INFO | pid=12348 | __main__ | Parsed input journal=aulr volume_raw=0075 issue=2
+2026-03-19 05:27:26,379 | INFO | pid=12348 | __main__ | Matched journal config for journal=aulr base_url=https://digitalcommons.wcl.american.edu/aulr/
+2026-03-19 05:27:26,383 | INFO | pid=12348 | __main__ | Built final URL for journal=aulr url=https://digitalcommons.wcl.american.edu/aulr/vol75/iss2/
