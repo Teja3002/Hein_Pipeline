@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 import shutil
 
-from source.llm import safe_model_name
+from source.llm import model_name
 
 def create_metadata_json(base_folder):
     """
@@ -20,10 +20,12 @@ def create_metadata_json(base_folder):
         # "issue_number": "",
         # "issn": "",
         # "eissn": "", 
-        "articles": [] 
+        # "articles": [] 
+        "sections": {}
     }
+    
 
-    json_filename = f"metadata_{safe_model_name}_{journal_name}.json" 
+    json_filename = f"metadata_{model_name}_{journal_name}.json" 
     results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 
     json_filepath = os.path.join(results_path, json_filename) 
 
@@ -85,7 +87,7 @@ def create_ocr_json(base_folder):
     }
 
     # Create output JSON file 
-    json_filename = f"ocrData_{safe_model_name}_{journal_name}.json"
+    json_filename = f"ocrData_{model_name}_{journal_name}.json"
     results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 
     json_filepath = os.path.join(results_path, json_filename) 
 
@@ -107,7 +109,7 @@ def save_metadata_to_output(metadata_filepath, base_folder):
     output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")  
     os.makedirs(output_dir, exist_ok=True)  
 
-    output_filename = f"metadata_{journal_name}_{datetime_str}.json" 
+    output_filename = f"{journal_name}.json"  
     output_filepath = os.path.join(output_dir, output_filename) 
 
     shutil.copy2(metadata_filepath, output_filepath)
@@ -115,8 +117,8 @@ def save_metadata_to_output(metadata_filepath, base_folder):
     print(f"Metadata saved to: {output_filepath}") 
     return output_filepath 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    # Testing code for initializing OCR JSON file: 
-    json_filepath = create_ocr_json("Input/ajil0120no1")   
-    print(f"JSON file created at: {json_filepath}")
+    # # Testing code for initializing OCR JSON file: 
+    # json_filepath = create_ocr_json("Input/ajil0120no1")   
+    # print(f"JSON file created at: {json_filepath}")
