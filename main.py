@@ -81,6 +81,14 @@ def main() -> None:
 
     processed_count = 0
 
+
+    print(f"Found {len(list(input_dir.iterdir()))} folder(s) in Input directory '{input_dir}':") 
+
+    for folder in sorted(input_dir.iterdir()):
+        print(f"Dispatching folder '{folder.name}' for processing...") 
+
+        break
+
     for folder in sorted(input_dir.iterdir()):
         logging.info(
             "Dispatching folder=%s from main.py main_pid=%s",
