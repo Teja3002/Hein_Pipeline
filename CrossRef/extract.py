@@ -21,7 +21,16 @@ journal_issn_dict = {
     "mijoeqv": "2375-7523",
     "modlr": "1468-2230",
     "polic": "1363-951X",
-    "rvadctoao": "2238-3840"
+    "rvadctoao": "2238-3840",
+
+    "annrbfl": "1933-3927",
+    "aulr": "2161-1897",
+    "cllpj": "2819-2567",
+    "ecomflr": "1613-2548",
+    "gslr": "1934-1652",
+    "ilr": "0021-0552",
+    "jlbsc": "2053-9711",
+    "umblr": "1939-859X"
 }
 
 SPECIAL_CHAR_MAP = str.maketrans({
@@ -111,6 +120,32 @@ def normalize_text(value):
     value = re.sub(r"\s+", " ", value).strip()
 
     return value
+
+
+def parse_folder_name(folder_name):
+    match = pattern.match(folder_name)
+    if not match:
+        return None
+
+    journal_key, volume_part, issue_start, issue_end = match.groups()
+    volume = str(int(volume_part))
+
+    issues = None
+    if issue_start:
+        if issue_end:
+            start_num = int(issue_start)
+            end_num = int(issue_end)
+            if end_num < start_num:
+                start_num, end_num = end_num, start_num
+            issues = [str(i) for i in range(start_num, end_num + 1)]
+        else:
+            issues = [str(int(issue_start))]
+
+    return {
+        "journal_key": journal_key,
+        "volume": volume,
+        "issues": issues
+    }
 
 
 def request_with_retry(url, params=None, allow_redirects=True, method="get", timeout=REQUEST_TIMEOUT):
@@ -228,7 +263,7 @@ def fetch_journal_title_from_crossref(issn):
 
 def is_container_doi(doi):
     doi = normalize_text(doi)
-    return bool(re.search(r'\.v\d+\.\d+$', doi, flags=re.IGNORECASE))
+    return bool(re.search(r"\.v\d+\.\d+$", doi, flags=re.IGNORECASE))
 
 
 def contains_non_article_keyword(text):
@@ -247,21 +282,20 @@ def is_non_article_title(title):
     title = normalize_text(title).lower()
 
     blocked_patterns = [
-        r'^cover$',
-        r'^front matter$',
-        r'^back matter$',
-        r'^front cover$',
-        r'^back cover$',
-        r'^masthead$',
-        r'^table of contents$',
-        r'^contents$',
-        r'^index$',
-        r'^editorial board$',
-        r'^issue information$',
-        r'^cover and front matter$',
-        r'^.*cover and front matter$',
-        r'^.*front matter$',
-        r'^.*back matter$',
+        r"^cover$",
+        r"^front matter$",
+        r"^back matter$",
+        r"^front cover$",
+        r"^back cover$",
+        r"^masthead$",
+        r"^table of contents$",
+        r"^index$",
+        r"^editorial board$",
+        r"^cover and front matter$",
+        r"^.*cover and front matter$",
+        r"^.*front matter$",
+        r"^.*back matter$",
+
     ]
 
     return any(re.search(p, title) for p in blocked_patterns)
@@ -300,6 +334,7 @@ def extract_creators(item):
 
         if name:
             creators.append(name)
+
     return creators
 
 
@@ -354,8 +389,12 @@ def is_valid_article_record(item):
     return True
 
 
-def filter_items(items, volume, issue=None):
+def filter_items(items, volume, issues=None):
     filtered = []
+
+    allowed_issues = None
+    if issues:
+        allowed_issues = {str(int(issue)) for issue in issues}
 
     for item in items:
         if not is_valid_article_record(item):
@@ -367,12 +406,22 @@ def filter_items(items, volume, issue=None):
         if item_volume != str(volume):
             continue
 
-        if issue is not None and item_issue != str(issue):
-            continue
+        if allowed_issues is not None:
+            normalized_item_issue = None
+            if item_issue.isdigit():
+                normalized_item_issue = str(int(item_issue))
+            elif item_issue:
+                issue_match = re.search(r"\d+", item_issue)
+                if issue_match:
+                    normalized_item_issue = str(int(issue_match.group()))
+
+            if normalized_item_issue not in allowed_issues:
+                continue
 
         filtered.append(item)
 
     return filtered
+
 
 def extract_date_parts(item):
     for field_name in ("published-online", "issued"):
@@ -450,7 +499,8 @@ def build_section_data(item):
         "authors": extract_creators(item)
     }
 
-def build_json_structure(filtered_items, volume, issn, issue=None):
+
+def build_json_structure(filtered_items, volume, issn, issues=None):
     pages = []
     sections = {}
 
@@ -466,13 +516,18 @@ def build_json_structure(filtered_items, volume, issn, issue=None):
 
     journal_title = derive_journal_title(filtered_items, issn)
 
-    return {
+    output = {
         "title": journal_title,
         "volume": str(volume),
         "date": derive_output_date(filtered_items),
         "pages": pages,
         "sections": sections
     }
+
+    if issues:
+        output["issue"] = issues[0] if len(issues) == 1 else issues
+
+    return output
 
 
 def write_json_safely(data, filename):
@@ -481,20 +536,19 @@ def write_json_safely(data, filename):
         temp_name = tmp.name
     os.replace(temp_name, filename)
 
-
 def process_folder(folder_name, folder_path):
     if not os.path.isdir(folder_path):
         logger.error("Folder does not exist or is not a directory: %s", folder_path)
         return False
 
-    match = pattern.match(folder_name)
-    if not match:
+    parsed = parse_folder_name(folder_name)
+    if not parsed:
         logger.warning("Skipping folder with unsupported name format: %s", folder_name)
         return False
 
-    journal_key, volume_part, issue_part = match.groups()
-    volume = str(int(volume_part))
-    issue = issue_part
+    journal_key = parsed["journal_key"]
+    volume = parsed["volume"]
+    issues = parsed["issues"]
 
     if journal_key not in journal_issn_dict:
         logger.warning("Skipping folder with unknown journal key: %s", folder_name)
@@ -503,19 +557,21 @@ def process_folder(folder_name, folder_path):
     issn = journal_issn_dict[journal_key]
     output_file = os.path.join(results_folder, f"{folder_name}.json")
 
+    issue_display = ", ".join(issues) if issues else "N/A"
+
     logger.info(
         "Running folder=%s path=%s volume=%s issue=%s output=%s",
         folder_name,
         folder_path,
         volume,
-        issue or "N/A",
+        issue_display,
         output_file,
     )
-    print(f"\nProcessing {folder_name}, Volume={volume}, Issue={issue or 'N/A'}")
+    print(f"\nProcessing {folder_name}, Volume={volume}, Issue={issue_display}")
 
     try:
         all_items = fetch_all_results_cursor(issn)
-        filtered_items = filter_items(all_items, volume, issue)
+        filtered_items = filter_items(all_items, volume, issues)
 
         logger.info(
             "Fetched folder=%s total_items=%s filtered_items=%s",
@@ -533,7 +589,7 @@ def process_folder(folder_name, folder_path):
             print(f"No valid articles found for {folder_name}. Skipping output.")
             return False
 
-        output = build_json_structure(filtered_items, volume, issue)
+        output = build_json_structure(filtered_items, volume, issn, issues)
         write_json_safely(output, output_file)
 
         logger.info("Saved result for folder=%s to %s", folder_name, output_file)

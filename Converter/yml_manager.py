@@ -15,6 +15,9 @@ OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Output")
 ERROR_FILE = os.path.join(BASE_DIR, "error.txt")
 
 
+VOLUME_SECTION_ID = 1
+ISSUE_SECTION_ID = 2
+
 
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -62,22 +65,6 @@ def normalize_text_list(values):
         if text:
             cleaned.append(text)
     return cleaned
-
-
-def parse_token(token):
-    token = normalize_text(token)
-
-    if re.fullmatch(r"\d+", token):
-        return ("num", int(token))
-
-    m = re.fullmatch(r"([A-Za-z]+)(\d+)", token)
-    if m:
-        return (m.group(1).lower(), int(m.group(2)))
-
-    if re.fullmatch(r"\[?[ivxlcdmIVXLCDM]+\]?", token):
-        return ("roman", token.lower())
-
-    return ("raw", token)
 
 
 def build_empty_section(template=None):
@@ -146,11 +133,11 @@ def build_issue_section(input_json):
         "country_code": " ",
         "creator": [],
         "date": normalize_text(input_json.get("date", "")),
-        "description": issue_value,
+        "description": f"Issue {issue_value}" if issue_value else "",
         "docket_num": "",
         "doi": "",
         "external_url": "",
-        "insection": 1,
+        "insection": VOLUME_SECTION_ID,
         "judge": 0,
         "orcid": [],
         "release_date": "",
@@ -176,11 +163,6 @@ def is_probably_noncontent(title):
     return any(p in t for p in patterns)
 
 
-def is_non_numeric_page_token(token):
-    parsed = parse_token(token)
-    return parsed[0] not in ("num", "f", "b")
-
-
 def build_creator_list(sec):
     creators = normalize_text_list(sec.get("creator", []))
     if creators:
@@ -199,13 +181,6 @@ def build_creator_list(sec):
 
     author_items.sort(key=lambda x: x[0])
     return [value for _, value in author_items if value]
-
-
-def infer_section_type(sec):
-    section_type = normalize_text(sec.get("type", ""))
-    if section_type:
-        return section_type
-    return "article"
 
 
 def build_article_records_from_json(input_json, skip_probable_matter=True):
@@ -232,9 +207,13 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
         creators = build_creator_list(sec)
         doi = normalize_text(sec.get("doi", ""))
         external_url = normalize_text(sec.get("external_url", sec.get("url", "")))
+        citation = normalize_text(sec.get("citation", ""))
         description = normalize_text(sec.get("description", ""))
+        sec_type = normalize_text(sec.get("type", ""))
+        sec_date = normalize_text(sec.get("date", ""))
+        release_date = normalize_text(sec.get("release_date", ""))
         subject = normalize_text_list(sec.get("subject", []))
-        section_type = infer_section_type(sec)
+        orcid = normalize_text_list(sec.get("orcid", []))
 
         records.append({
             "old_sid": int(old_sid_str),
@@ -243,12 +222,13 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             "creator": creators,
             "doi": doi,
             "external_url": external_url,
-            "citation": "",
-            "description": "",
-            "subject": [],
-            "type": "",
-            "date": normalize_text(sec.get("date", "")),
-            "release_date": "",
+            "citation": citation,
+            "description": description,
+            "subject": subject,
+            "type": sec_type,
+            "date": sec_date,
+            "release_date": release_date,
+            "orcid": orcid,
         })
 
     return records
@@ -267,31 +247,48 @@ def get_page_chain(page_obj):
     return []
 
 
-def build_output(input_json, structure_yml, skip_probable_matter=True):
-    output = deepcopy(structure_yml)
+def build_native_to_first_page_id_map(structure_pages):
+    native_to_page_id = {}
+    for p in structure_pages:
+        native = normalize_text(p.get("native", ""))
+        if native and native not in native_to_page_id:
+            native_to_page_id[native] = p["id"]
+    return native_to_page_id
 
 
-    structure_pages = output.get("pages", [])
-    if not structure_pages:
-        raise ValueError("structure.yml does not contain pages.")
+def assign_article_start_pages(article_records, structure_pages):
+    native_to_page_id = build_native_to_first_page_id_map(structure_pages)
+
+    usable_articles = []
+    for rec in article_records:
+        start_native = rec["start_native"]
+        start_page_id = native_to_page_id.get(start_native)
+
+        if start_page_id is None:
+            log_error(
+                f"[WARN] Could not map article start native '{start_native}' "
+                f"for title '{rec['title']}'"
+            )
+            continue
+
+        new_rec = deepcopy(rec)
+        new_rec["start_structure_id"] = start_page_id
+        usable_articles.append(new_rec)
+
+    usable_articles.sort(key=lambda x: x["start_structure_id"])
+    return usable_articles
 
 
-    article_records = build_article_records_from_json(
-        input_json=input_json,
-        skip_probable_matter=skip_probable_matter
-    )
-
+def build_sections(article_records, input_json):
     new_sections = {
-        1: build_volume_section(),
-        2: build_issue_section(input_json),
+        VOLUME_SECTION_ID: build_volume_section(),
+        ISSUE_SECTION_ID: build_issue_section(input_json),
     }
 
-    next_sid = 3
+    next_sid = ISSUE_SECTION_ID + 1
     for rec in article_records:
         rec["new_sid"] = next_sid
-        next_sid += 1
 
-    for rec in article_records:
         new_sec = build_empty_section()
         new_sec["type"] = rec["type"]
         new_sec["title"] = rec["title"]
@@ -300,40 +297,26 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         new_sec["external_url"] = rec["external_url"]
         new_sec["subject"] = rec["subject"]
         new_sec["description"] = rec["description"]
-        new_sec["orcid"] = []
-        new_sec["citation"] = rec["citation"] or ""
+        new_sec["orcid"] = rec["orcid"]
+        new_sec["citation"] = rec["citation"]
 
         if rec["date"]:
             new_sec["date"] = rec["date"]
         if rec["release_date"]:
             new_sec["release_date"] = rec["release_date"]
 
-        new_sections[rec["new_sid"]] = new_sec
+        new_sections[next_sid] = new_sec
+        next_sid += 1
 
-    native_to_page_ids = {}
-    for p in structure_pages:
-        native = normalize_text(p.get("native", ""))
-        native_to_page_ids.setdefault(native, []).append(p["id"])
+    return new_sections
 
-    usable_articles = []
-    for rec in article_records:
-        candidates = native_to_page_ids.get(rec["start_native"], [])
-        if candidates:
-            rec["start_structure_id"] = candidates[0]
-            usable_articles.append(rec)
-        else:
-            log_error(
-                f"[WARN] Could not map article start native '{rec['start_native']}' "
-                f"for title '{rec['title']}'"
-            )
 
-    usable_articles.sort(key=lambda x: x["start_structure_id"])
-
-    page_id_to_obj = {p["id"]: p for p in structure_pages}
+def build_page_to_article_sid_map(usable_articles, structure_pages):
     page_to_article_sid = {}
 
     for idx, rec in enumerate(usable_articles):
         start_id = rec["start_structure_id"]
+
         if idx < len(usable_articles) - 1:
             end_id = usable_articles[idx + 1]["start_structure_id"] - 1
         else:
@@ -342,11 +325,24 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         for pid in range(start_id, end_id + 1):
             page_to_article_sid[pid] = rec["new_sid"]
 
-    issue_value = normalize_text(input_json.get("issue", ""))
-    try:
-        issue_number = int(issue_value)
-    except Exception:
-        issue_number = issue_value if issue_value else ""
+    return page_to_article_sid
+
+
+def build_output(input_json, structure_yml, skip_probable_matter=True):
+    output = deepcopy(structure_yml)
+
+    structure_pages = output.get("pages", [])
+    if not structure_pages:
+        raise ValueError("structure.yml does not contain pages.")
+
+    article_records = build_article_records_from_json(
+        input_json=input_json,
+        skip_probable_matter=skip_probable_matter
+    )
+
+    usable_articles = assign_article_start_pages(article_records, structure_pages)
+    new_sections = build_sections(usable_articles, input_json)
+    page_to_article_sid = build_page_to_article_sid_map(usable_articles, structure_pages)
 
     new_pages = []
     for p in structure_pages:
@@ -355,14 +351,10 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         original_chain = get_page_chain(p)
 
         if pid in page_to_article_sid:
-            section_chain = [page_to_article_sid[pid]]
-            if issue_number != "":
-                section_chain.append(issue_number)
+            article_sid = page_to_article_sid[pid]
+            section_chain = [article_sid, ISSUE_SECTION_ID, VOLUME_SECTION_ID]
         else:
-            if original_chain:
-                section_chain = original_chain
-            else:
-                section_chain = [issue_number] if issue_number != "" else []
+            section_chain = original_chain if original_chain else [VOLUME_SECTION_ID]
 
         new_pages.append({
             "id": pid,
@@ -372,7 +364,7 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
 
     output["sections"] = dict(sorted(new_sections.items(), key=lambda kv: int(kv[0])))
     output["pages"] = new_pages
-    output["title"] = normalize_text(input_json.get("title", ""))
+    output["title"] = normalize_text(input_json.get("title", output.get("title", "")))
     output["type"] = "default"
 
     return output
