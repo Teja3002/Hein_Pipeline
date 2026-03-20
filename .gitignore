@@ -23,6 +23,7 @@ Input/
 
 # Temp files (generated at runtime)
 results/
+results_old/ 
 LLM/temp/ 
 
 # Processed output

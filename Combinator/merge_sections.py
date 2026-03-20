@@ -212,6 +212,19 @@ def match_unmatched_by_title(merged, unmatched_sections, source_name, threshold=
     return still_unmatched
 
 
+def _find_original_key(sections, target_section):
+    """Finds the original key of a section in its source."""
+    target_title = (target_section.get("title") or "").lower()
+    target_doi = (target_section.get("doi") or "").lower()
+
+    for key, section in sections.items():
+        if target_doi and (section.get("doi") or "").lower() == target_doi:
+            return key
+        if target_title and (section.get("title") or "").lower() == target_title:
+            return key
+    return None
+
+
 def merge_sections(sources):
     crossref_sections = sources.get("crossref", {}).get("sections", {})
     webscraper_sections = sources.get("webscraper", {}).get("sections", {})
@@ -259,4 +272,30 @@ def merge_sections(sources):
 
     print(f"\n    Final merged sections: {len(merged)}")
 
-    return merged
+    # return merged
+
+    # Track which source/key unmatched sections came from
+    unmatched_map = {}
+
+    next_key = len(merged) + 1
+    for section in unmatched_webscraper:
+        title = (section.get("title") or "").strip()
+        if title:
+            # Find original key from webscraper
+            original_key = _find_original_key(webscraper_sections, section)
+            merged[str(next_key)] = section
+            unmatched_map[str(next_key)] = ("webscraper", original_key)
+            print(f"      + New section: \"{title[:50]}...\"")
+            next_key += 1
+    for section in unmatched_llm:
+        title = (section.get("title") or "").strip()
+        if title:
+            original_key = _find_original_key(llm_sections, section)
+            merged[str(next_key)] = section
+            unmatched_map[str(next_key)] = ("llm", original_key)
+            print(f"      + New section: \"{title[:50]}...\"")
+            next_key += 1
+
+    print(f"\n    Final merged sections: {len(merged)}")
+
+    return merged, unmatched_map

@@ -117,6 +117,75 @@ def merge_metadata(sources):
 
     return result
 
+# Merge pages 
+def merge_pages(sources, merged_sections, unmatched_map):
+    """
+    Creates page entries matching the final merged sections.
+    
+    Each section gets one page entry. Uses priority order for native page number.
+    Tracks which original source/key each merged section came from.
+
+    Args:
+        sources: dict of {source_name: data}
+        merged_sections: final merged sections dict
+        unmatched_map: dict mapping new section key → (source_name, original_key)
+                       for sections that were added from non-crossref sources
+
+    Returns:
+        list of page dicts
+    """
+
+    # Build page lookup: source → key → page data
+    page_lookup = {}
+    for source_name in SOURCE_PRIORITY:
+        if source_name not in sources:
+            continue
+        pages = sources[source_name].get("pages", [])
+        page_lookup[source_name] = {}
+        for page in pages:
+            page_lookup[source_name][str(page.get("id", ""))] = page
+
+    merged_pages = []
+
+    for section_key in sorted(merged_sections.keys(), key=lambda x: int(x)):
+
+        page_entry = {"id": int(section_key), "native": ""}
+
+        # Check if this section was an unmatched addition
+        if section_key in unmatched_map:
+            source_name, original_key = unmatched_map[section_key]
+            if source_name in page_lookup and original_key in page_lookup[source_name]:
+                source_page = page_lookup[source_name][original_key]
+                page_entry["native"] = str(source_page.get("native", ""))
+                # Preserve extra fields like webscraper's section array
+                for field, value in source_page.items():
+                    if field not in page_entry and value:
+                        page_entry[field] = value
+                print(f"      Page {section_key}: native={page_entry['native']} (from {source_name})")
+        else:
+            # This was a crossref-based section — get page by priority
+            for source_name in SOURCE_PRIORITY:
+                if source_name not in page_lookup:
+                    continue
+                if section_key in page_lookup[source_name]:
+                    source_page = page_lookup[source_name][section_key]
+                    if not page_entry["native"]:
+                        page_entry["native"] = str(source_page.get("native", ""))
+                    # Add extra fields from this source
+                    for field, value in source_page.items():
+                        if field not in page_entry and value:
+                            page_entry[field] = value
+
+            if page_entry["native"]:
+                print(f"      Page {section_key}: native={page_entry['native']}")
+            else:
+                print(f"      Page {section_key}: no native page found")
+
+        merged_pages.append(page_entry)
+
+    return merged_pages
+
+
 
 def combine_folder(folder_name):
     print(f"\n{'='*60}")
@@ -145,15 +214,26 @@ def combine_folder(folder_name):
     combined_data["volume"] = metadata["volume"]
     combined_data["date"] = metadata["date"]
 
+    # # Merge sections
+    # print("\n  Merging sections...")
+    # combined_data["sections"] = merge_sections(sources) 
+
     # Merge sections
     print("\n  Merging sections...")
-    combined_data["sections"] = merge_sections(sources) 
+    merged_sections, unmatched_map = merge_sections(sources)
+    combined_data["sections"] = merged_sections
+
+    # Merge pages
+    print("\n  Merging pages...")
+    combined_data["pages"] = merge_pages(sources, merged_sections, unmatched_map)
+
+    # Merge Pages 
 
 
     # Combine logic ENDS
 
     # Save combined results
-    # save_combined(folder_name, combined_data) 
+    save_combined(folder_name, combined_data) 
 
     print(json.dumps(combined_data, indent=2, ensure_ascii=False))  # For demonstration
 
@@ -165,15 +245,10 @@ if __name__ == "__main__":
 
     journals = [
         "ajil0120no1",
-        "blj0143no1",
         "direlaw0021",
-        "geojlap0023no1",
         "gvnanlj0039no1",
-        "intsocwk0069no1",
-        "mijoeqv0015no1",
-        "modlr0089no1",
-        "polic0049no1",
-        "rvadctoao0030",
+        "ecomflr0022no5-6",
+        "cllpj0045no4"
     ]
 
     for journal in journals:
