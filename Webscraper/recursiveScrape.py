@@ -164,7 +164,12 @@ def scrape_from_database_url(folder_name, start_url, output_dir=None, results_di
         return None
 
     raw_output_file = write_raw_output(folder_name, articles, output_dir=output_dir)
-    results_output_file = write_results_output(folder_name, articles, results_dir=results_dir)
+    results_output_file = write_results_output(
+        folder_name,
+        articles,
+        results_dir=results_dir,
+        page_id_mode="url_tail",
+    )
     logger.info(
         "recursiveScrape completed for folder=%s raw_output=%s results_output=%s article_count=%s",
         folder_name,
