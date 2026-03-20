@@ -9,6 +9,7 @@ from PIL import Image
 
 def configure_tesseract():
     env_tesseract = os.getenv("TESSERACT_CMD", "").strip()
+    env_tessdata = os.getenv("TESSDATA_PREFIX", "").strip()
     candidate_paths = []
 
     if env_tesseract:
@@ -24,10 +25,24 @@ def configure_tesseract():
     for candidate in candidate_paths:
         if candidate.exists():
             pytesseract.pytesseract.tesseract_cmd = str(candidate)
+            tessdata_dir = candidate.parent / "tessdata"
+            expected_traineddata = tessdata_dir / "eng.traineddata"
+            env_tessdata_path = Path(env_tessdata) if env_tessdata else None
+            env_traineddata = env_tessdata_path / "eng.traineddata" if env_tessdata_path else None
+
+            if tessdata_dir.exists() and expected_traineddata.exists():
+                if not env_tessdata_path or not env_traineddata.exists():
+                    os.environ["TESSDATA_PREFIX"] = str(tessdata_dir) + os.sep
+                    print(f"Using TESSDATA_PREFIX: {os.environ['TESSDATA_PREFIX']}")
+                else:
+                    os.environ["TESSDATA_PREFIX"] = str(env_tessdata_path) + os.sep
+                    print(f"Using TESSDATA_PREFIX from environment: {os.environ['TESSDATA_PREFIX']}")
             print(f"Using Tesseract executable: {candidate}")
             return str(candidate)
 
     current_cmd = getattr(pytesseract.pytesseract, "tesseract_cmd", "tesseract")
+    if env_tessdata:
+        print(f"Using TESSDATA_PREFIX from environment: {env_tessdata}")
     print(f"Using Tesseract executable from PATH: {current_cmd}")
     return current_cmd
 

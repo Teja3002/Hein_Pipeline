@@ -4,6 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+from Combinator.combine_results import combine_folder as combine_folder_results
 from CrossRef.extract import process_folder
 from Utilities.app_logging import setup_logging
 from Webscraper.databaseScrape import process as process_database_fallback
@@ -139,6 +140,9 @@ def main() -> None:
                 scrape_without_crossref(folder.name)
 
         wait_for_ocr_pipeline(folder.name, ocr_process)
+        logging.info("Starting combinator for folder=%s after OCR wait", folder.name)
+        combine_folder_results(folder.name)
+        logging.info("Finished combinator for folder=%s", folder.name)
 
     logging.info("Finished processing %s folder(s)", processed_count)
     print(f"Finished processing {processed_count} folder(s)")

@@ -25,6 +25,7 @@ SOURCE_FILES = {
 
 SOURCE_PRIORITY = ["crossref", "webscraper", "llm"]
 TOP_LEVEL_FIELDS = ["journalName", "title", "volume", "date"]
+PAGE_FIELDS = ["id", "native", "section"]
 SECTION_FIELDS = [
     "page",
     "startFile",
@@ -170,6 +171,14 @@ def source_sections(payload):
     return ordered
 
 
+def source_pages(payload):
+    pages = payload.get("pages", []) if isinstance(payload, dict) else []
+    ordered = []
+    for page_data in pages:
+        ordered.append(deepcopy(page_data or {}))
+    return ordered
+
+
 def empty_section():
     return {field: [] if field == "authors" else None for field in SECTION_FIELDS}
 
@@ -180,6 +189,54 @@ def empty_group():
         "webscraper": None,
         "llm": None,
     }
+
+
+def empty_page_group():
+    return {
+        "crossref": None,
+        "webscraper": None,
+        "llm": None,
+    }
+
+
+def compare_page_records(left, right):
+    left_id = canonical_value("id", left.get("id"))
+    right_id = canonical_value("id", right.get("id"))
+    if left_id and right_id and left_id == right_id:
+        return True
+
+    left_native = canonical_value("native", left.get("native"))
+    right_native = canonical_value("native", right.get("native"))
+    if left_native and right_native and left_native == right_native:
+        left_section = canonical_value("section", left.get("section"))
+        right_section = canonical_value("section", right.get("section"))
+        if left_section == right_section:
+            return True
+
+    return False
+
+
+def match_page_group(groups, record):
+    for group in groups:
+        for source_name in SOURCE_PRIORITY:
+            candidate = group.get(source_name)
+            if candidate and compare_page_records(candidate, record):
+                return group
+    return None
+
+
+def merge_page_groups(payloads):
+    groups = []
+
+    for source_name in SOURCE_PRIORITY:
+        for page_record in source_pages(payloads[source_name]):
+            group = match_page_group(groups, page_record)
+            if group is None:
+                group = empty_page_group()
+                groups.append(group)
+            group[source_name] = deepcopy(page_record)
+
+    return groups
 
 
 def match_group(groups, record):
@@ -256,6 +313,57 @@ def build_top_level(payloads):
     return top_level, audit
 
 
+def page_sort_key(page_item):
+    page_id = page_item.get("id")
+    native = page_item.get("native") or ""
+
+    if isinstance(page_id, int):
+        return (0, page_id, normalize_text(native))
+
+    if isinstance(page_id, str) and page_id.isdigit():
+        return (0, int(page_id), normalize_text(native))
+
+    return (1, normalize_text(str(page_id)), normalize_text(native))
+
+
+def build_pages(page_groups):
+    merged_pages = []
+    page_output = {}
+
+    for index, group in enumerate(page_groups, start=1):
+        merged_page = {}
+        field_audit = {}
+
+        for field_name in PAGE_FIELDS:
+            values_by_source = {
+                source_name: (group[source_name] or {}).get(field_name)
+                for source_name in SOURCE_PRIORITY
+            }
+            field_details, chosen_value = build_field_audit(field_name, values_by_source)
+            merged_page[field_name] = chosen_value
+            field_audit[field_name] = field_details
+
+        if not any(has_value(merged_page.get(field_name)) for field_name in PAGE_FIELDS):
+            continue
+
+        merged_pages.append(merged_page)
+        page_output[str(index)] = {
+            "sources": deepcopy(group),
+            "field_audit": field_audit,
+            "flags": {
+                "has_conflict": any(details["conflict"] for details in field_audit.values()),
+                "all_three_different_fields": [
+                    field_name
+                    for field_name, details in field_audit.items()
+                    if details["all_three_different"]
+                ],
+            },
+        }
+
+    merged_pages.sort(key=page_sort_key)
+    return merged_pages, page_output
+
+
 def build_sections(groups):
     merged_sections = {}
     section_output = {}
@@ -304,6 +412,8 @@ def combine_folder(folder_name):
     }
 
     top_level, top_level_audit = build_top_level(payloads)
+    page_groups = merge_page_groups(payloads)
+    merged_pages, page_output = build_pages(page_groups)
     groups = merge_groups(payloads)
     merged_sections, section_output = build_sections(groups)
 
@@ -312,6 +422,8 @@ def combine_folder(folder_name):
         for key, value in top_level.items()
         if has_value(value)
     }
+    if merged_pages:
+        combined_payload["pages"] = merged_pages
     combined_payload["sections"] = merged_sections
 
     output_payload = {
@@ -321,10 +433,14 @@ def combine_folder(folder_name):
             for source_name in SOURCE_PRIORITY
         },
         "top_level_audit": top_level_audit,
+        "pages": page_output,
         "sections": section_output,
         "flags": {
             "has_any_conflict": any(
                 details["conflict"] for details in top_level_audit.values()
+            ) or any(
+                page_data["flags"]["has_conflict"]
+                for page_data in page_output.values()
             ) or any(
                 section_data["flags"]["has_conflict"]
                 for section_data in section_output.values()
@@ -335,6 +451,11 @@ def combine_folder(folder_name):
                     for field_name, details in top_level_audit.items()
                     if details["all_three_different"]
                 ],
+                "pages": {
+                    page_key: page_data["flags"]["all_three_different_fields"]
+                    for page_key, page_data in page_output.items()
+                    if page_data["flags"]["all_three_different_fields"]
+                },
                 "sections": {
                     section_key: section_data["flags"]["all_three_different_fields"]
                     for section_key, section_data in section_output.items()
