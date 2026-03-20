@@ -36,6 +36,8 @@ def initiate_temp_files(base_folder):
 
     return ocr_fp, metadata_fp 
 
+def has_toc(toc_pages) -> bool:
+    return bool(toc_pages)
 
 def run_ocr_pipeline(base_folder):  
 
@@ -60,6 +62,11 @@ def run_ocr_pipeline(base_folder):
 
     # Get Page who has ToC: If not then return None 
     toc_pages = get_toc_pages(toc_results) 
+
+    # Return in metadata if we have table of content
+    metadata["TOC"] = has_toc(toc_pages) 
+    with open(metadata_filepath, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=4, ensure_ascii=False)
 
     isCalculated = False
 

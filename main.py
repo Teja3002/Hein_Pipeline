@@ -5,7 +5,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from Combinator.combine_results import combine_folder as combine_folder_results
+from Combinator.combine_results_v2 import combine_folder as combine_folder_results
 from Converter.yml_manager import process_journal as convert_journal_result
 from CrossRef.extract import process_folder
 from Utilities.app_logging import setup_logging

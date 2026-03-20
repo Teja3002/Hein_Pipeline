@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from difflib import SequenceMatcher
 
-from merge_sections import merge_sections
+from Combinator.merge_sections import merge_sections
 
 PROJECT_ROOT = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
 
@@ -74,6 +74,7 @@ def create_output_template(folder_name):
         "title": "",
         "volume": "",
         "date": "",
+        "TOC": False,
         "pages": [],
         "sections": {}
     }
@@ -102,15 +103,16 @@ def merge_metadata(sources):
         "journalName": "", 
         "title": "",
         "volume": "",
-        "date": ""
+        "date": "",
+        "TOC": False
     }
 
     for field in result:
         for source in SOURCE_PRIORITY:
             if source not in sources:
                 continue
-            value = sources[source].get(field, "")
-            if value:
+            value = sources[source].get(field, None)
+            if value is not None and value != "":
                 result[field] = value
                 print(f"    {field}: \"{value}\" (from {source})")
                 break
@@ -213,6 +215,7 @@ def combine_folder(folder_name):
     combined_data["title"] = metadata["title"]
     combined_data["volume"] = metadata["volume"]
     combined_data["date"] = metadata["date"]
+    combined_data["TOC"] = metadata["TOC"] 
 
     # # Merge sections
     # print("\n  Merging sections...")
