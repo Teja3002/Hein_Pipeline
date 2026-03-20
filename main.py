@@ -1,3 +1,4 @@
+import argparse
 import logging
 import os
 import subprocess
@@ -62,6 +63,13 @@ def wait_for_ocr_pipeline(folder_name, ocr_process):
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Run the Hein automation pipeline")
+    parser.add_argument(
+        "--folder",
+        help="Run only one folder from Input, for example: ajil0120no1",
+    )
+    args = parser.parse_args()
+
     log_file = setup_logging()
     project_root = Path(__file__).resolve().parent
     input_dir = project_root / "Input"
@@ -80,8 +88,17 @@ def main() -> None:
         return
 
     processed_count = 0
+    folders = sorted(path for path in input_dir.iterdir() if path.is_dir())
 
-    for folder in sorted(input_dir.iterdir()):
+    if args.folder:
+        target_folder = input_dir / args.folder
+        if not target_folder.exists() or not target_folder.is_dir():
+            logging.error("Requested folder not found in Input: %s", target_folder)
+            print(f"Requested folder not found in Input: {target_folder}")
+            return
+        folders = [target_folder]
+
+    for folder in folders:
         logging.info(
             "Dispatching folder=%s from main.py main_pid=%s",
             folder.name,
