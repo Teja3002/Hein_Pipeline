@@ -1,0 +1,2 @@
+[SKIP] structure.yml not found for mijoeqv0015no1: C:\Users\Panda\Documents\Hein_Automation\Converter\HeinOnline\Before\Before\mijoeqv0015no1\structure.yml
+[WARN] Could not map article start native 'i' for title 'The Non-Binding Bind: Reframing Precatory Stockholder Proposals Under Delaware Law'

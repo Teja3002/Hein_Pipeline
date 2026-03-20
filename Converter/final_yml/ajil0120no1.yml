@@ -1,0 +1,1903 @@
+identifier: Am. J. Int'l L.
+log:
+- Edited by jk at Mon Jan 19 2026 10:06:40 GMT-0500 (Eastern Standard Time)
+- Edited by se at Wed Jan 28 2026 13:34:39 GMT-0500 (Eastern Standard Time)
+- Edited by cc at Fri Jan 30 2026 07:47:58 GMT-0500 (Eastern Standard Time)
+max: 296
+pages:
+- id: 1
+  native: '[i]'
+  section:
+  - 1
+- id: 2
+  native: '[ii]'
+  section:
+  - 1
+- id: 3
+  native: '[iii]'
+  section:
+  - 1
+- id: 4
+  native: '[iv]'
+  section:
+  - 1
+- id: 5
+  native: '[v]'
+  section:
+  - 1
+- id: 6
+  native: '[vi]'
+  section:
+  - 1
+- id: 7
+  native: '[vii]'
+  section:
+  - 1
+- id: 8
+  native: 1
+  section:
+  - 2
+  - 1
+- id: 9
+  native: '[viii]'
+  section:
+  - 2
+  - 1
+- id: 10
+  native: '[ix]'
+  section:
+  - 2
+  - 1
+- id: 11
+  native: '[x]'
+  section:
+  - 2
+  - 1
+- id: 12
+  native: 2
+  section:
+  - 3
+  - 1
+- id: 13
+  native: 3
+  section:
+  - 3
+  - 1
+- id: 14
+  native: 4
+  section:
+  - 3
+  - 1
+- id: 15
+  native: 5
+  section:
+  - 3
+  - 1
+- id: 16
+  native: 6
+  section:
+  - 3
+  - 1
+- id: 17
+  native: 7
+  section:
+  - 3
+  - 1
+- id: 18
+  native: 8
+  section:
+  - 3
+  - 1
+- id: 19
+  native: 9
+  section:
+  - 3
+  - 1
+- id: 20
+  native: 10
+  section:
+  - 3
+  - 1
+- id: 21
+  native: 11
+  section:
+  - 3
+  - 1
+- id: 22
+  native: 12
+  section:
+  - 3
+  - 1
+- id: 23
+  native: 13
+  section:
+  - 3
+  - 1
+- id: 24
+  native: 14
+  section:
+  - 3
+  - 1
+- id: 25
+  native: 15
+  section:
+  - 3
+  - 1
+- id: 26
+  native: 16
+  section:
+  - 3
+  - 1
+- id: 27
+  native: 17
+  section:
+  - 3
+  - 1
+- id: 28
+  native: 18
+  section:
+  - 3
+  - 1
+- id: 29
+  native: 19
+  section:
+  - 3
+  - 1
+- id: 30
+  native: 20
+  section:
+  - 3
+  - 1
+- id: 31
+  native: 21
+  section:
+  - 3
+  - 1
+- id: 32
+  native: 22
+  section:
+  - 4
+  - 1
+- id: 33
+  native: 23
+  section:
+  - 4
+  - 1
+- id: 34
+  native: 24
+  section:
+  - 4
+  - 1
+- id: 35
+  native: 25
+  section:
+  - 4
+  - 1
+- id: 36
+  native: 26
+  section:
+  - 4
+  - 1
+- id: 37
+  native: 27
+  section:
+  - 4
+  - 1
+- id: 38
+  native: 28
+  section:
+  - 4
+  - 1
+- id: 39
+  native: 29
+  section:
+  - 4
+  - 1
+- id: 40
+  native: 30
+  section:
+  - 4
+  - 1
+- id: 41
+  native: 31
+  section:
+  - 4
+  - 1
+- id: 42
+  native: 32
+  section:
+  - 4
+  - 1
+- id: 43
+  native: 33
+  section:
+  - 4
+  - 1
+- id: 44
+  native: 34
+  section:
+  - 4
+  - 1
+- id: 45
+  native: 35
+  section:
+  - 4
+  - 1
+- id: 46
+  native: 36
+  section:
+  - 4
+  - 1
+- id: 47
+  native: 37
+  section:
+  - 4
+  - 1
+- id: 48
+  native: 38
+  section:
+  - 4
+  - 1
+- id: 49
+  native: 39
+  section:
+  - 4
+  - 1
+- id: 50
+  native: 40
+  section:
+  - 4
+  - 1
+- id: 51
+  native: 41
+  section:
+  - 4
+  - 1
+- id: 52
+  native: 42
+  section:
+  - 4
+  - 1
+- id: 53
+  native: 43
+  section:
+  - 4
+  - 1
+- id: 54
+  native: 44
+  section:
+  - 5
+  - 1
+- id: 55
+  native: 45
+  section:
+  - 5
+  - 1
+- id: 56
+  native: 46
+  section:
+  - 5
+  - 1
+- id: 57
+  native: 47
+  section:
+  - 5
+  - 1
+- id: 58
+  native: 48
+  section:
+  - 5
+  - 1
+- id: 59
+  native: 49
+  section:
+  - 5
+  - 1
+- id: 60
+  native: 50
+  section:
+  - 5
+  - 1
+- id: 61
+  native: 51
+  section:
+  - 5
+  - 1
+- id: 62
+  native: 52
+  section:
+  - 5
+  - 1
+- id: 63
+  native: 53
+  section:
+  - 5
+  - 1
+- id: 64
+  native: 54
+  section:
+  - 5
+  - 1
+- id: 65
+  native: 55
+  section:
+  - 5
+  - 1
+- id: 66
+  native: 56
+  section:
+  - 5
+  - 1
+- id: 67
+  native: 57
+  section:
+  - 5
+  - 1
+- id: 68
+  native: 58
+  section:
+  - 5
+  - 1
+- id: 69
+  native: 59
+  section:
+  - 5
+  - 1
+- id: 70
+  native: 60
+  section:
+  - 5
+  - 1
+- id: 71
+  native: 61
+  section:
+  - 5
+  - 1
+- id: 72
+  native: 62
+  section:
+  - 5
+  - 1
+- id: 73
+  native: 63
+  section:
+  - 6
+  - 1
+- id: 74
+  native: 64
+  section:
+  - 6
+  - 1
+- id: 75
+  native: 65
+  section:
+  - 6
+  - 1
+- id: 76
+  native: 66
+  section:
+  - 6
+  - 1
+- id: 77
+  native: 67
+  section:
+  - 6
+  - 1
+- id: 78
+  native: 68
+  section:
+  - 6
+  - 1
+- id: 79
+  native: 69
+  section:
+  - 6
+  - 1
+- id: 80
+  native: 70
+  section:
+  - 6
+  - 1
+- id: 81
+  native: 71
+  section:
+  - 6
+  - 1
+- id: 82
+  native: 72
+  section:
+  - 6
+  - 1
+- id: 83
+  native: 73
+  section:
+  - 6
+  - 1
+- id: 84
+  native: 74
+  section:
+  - 6
+  - 1
+- id: 85
+  native: 75
+  section:
+  - 6
+  - 1
+- id: 86
+  native: 76
+  section:
+  - 6
+  - 1
+- id: 87
+  native: 77
+  section:
+  - 6
+  - 1
+- id: 88
+  native: 78
+  section:
+  - 6
+  - 1
+- id: 89
+  native: 79
+  section:
+  - 6
+  - 1
+- id: 90
+  native: 80
+  section:
+  - 6
+  - 1
+- id: 91
+  native: 81
+  section:
+  - 6
+  - 1
+- id: 92
+  native: 82
+  section:
+  - 7
+  - 1
+- id: 93
+  native: 83
+  section:
+  - 7
+  - 1
+- id: 94
+  native: 84
+  section:
+  - 7
+  - 1
+- id: 95
+  native: 85
+  section:
+  - 7
+  - 1
+- id: 96
+  native: 86
+  section:
+  - 7
+  - 1
+- id: 97
+  native: 87
+  section:
+  - 7
+  - 1
+- id: 98
+  native: 88
+  section:
+  - 7
+  - 1
+- id: 99
+  native: 89
+  section:
+  - 7
+  - 1
+- id: 100
+  native: 90
+  section:
+  - 7
+  - 1
+- id: 101
+  native: 91
+  section:
+  - 7
+  - 1
+- id: 102
+  native: 92
+  section:
+  - 7
+  - 1
+- id: 103
+  native: 93
+  section:
+  - 7
+  - 1
+- id: 104
+  native: 94
+  section:
+  - 7
+  - 1
+- id: 105
+  native: 95
+  section:
+  - 7
+  - 1
+- id: 106
+  native: 96
+  section:
+  - 7
+  - 1
+- id: 107
+  native: 97
+  section:
+  - 7
+  - 1
+- id: 108
+  native: 98
+  section:
+  - 7
+  - 1
+- id: 109
+  native: 99
+  section:
+  - 7
+  - 1
+- id: 110
+  native: 100
+  section:
+  - 7
+  - 1
+- id: 111
+  native: 101
+  section:
+  - 7
+  - 1
+- id: 112
+  native: 102
+  section:
+  - 7
+  - 1
+- id: 113
+  native: 103
+  section:
+  - 7
+  - 1
+- id: 114
+  native: 104
+  section:
+  - 7
+  - 1
+- id: 115
+  native: 105
+  section:
+  - 7
+  - 1
+- id: 116
+  native: 106
+  section:
+  - 7
+  - 1
+- id: 117
+  native: 107
+  section:
+  - 8
+  - 1
+- id: 118
+  native: 108
+  section:
+  - 8
+  - 1
+- id: 119
+  native: 109
+  section:
+  - 8
+  - 1
+- id: 120
+  native: 110
+  section:
+  - 8
+  - 1
+- id: 121
+  native: 111
+  section:
+  - 8
+  - 1
+- id: 122
+  native: 112
+  section:
+  - 8
+  - 1
+- id: 123
+  native: 113
+  section:
+  - 8
+  - 1
+- id: 124
+  native: 114
+  section:
+  - 8
+  - 1
+- id: 125
+  native: 115
+  section:
+  - 8
+  - 1
+- id: 126
+  native: 116
+  section:
+  - 8
+  - 1
+- id: 127
+  native: 117
+  section:
+  - 8
+  - 1
+- id: 128
+  native: 118
+  section:
+  - 8
+  - 1
+- id: 129
+  native: 119
+  section:
+  - 8
+  - 1
+- id: 130
+  native: 120
+  section:
+  - 8
+  - 1
+- id: 131
+  native: 121
+  section:
+  - 8
+  - 1
+- id: 132
+  native: 122
+  section:
+  - 8
+  - 1
+- id: 133
+  native: 123
+  section:
+  - 8
+  - 1
+- id: 134
+  native: 124
+  section:
+  - 8
+  - 1
+- id: 135
+  native: 125
+  section:
+  - 8
+  - 1
+- id: 136
+  native: 126
+  section:
+  - 8
+  - 1
+- id: 137
+  native: 127
+  section:
+  - 8
+  - 1
+- id: 138
+  native: 128
+  section:
+  - 8
+  - 1
+- id: 139
+  native: 129
+  section:
+  - 8
+  - 1
+- id: 140
+  native: 130
+  section:
+  - 8
+  - 1
+- id: 141
+  native: 131
+  section:
+  - 9
+  - 1
+- id: 142
+  native: 132
+  section:
+  - 9
+  - 1
+- id: 143
+  native: 133
+  section:
+  - 9
+  - 1
+- id: 144
+  native: 134
+  section:
+  - 9
+  - 1
+- id: 145
+  native: 135
+  section:
+  - 9
+  - 1
+- id: 146
+  native: 136
+  section:
+  - 9
+  - 1
+- id: 147
+  native: 137
+  section:
+  - 9
+  - 1
+- id: 148
+  native: 138
+  section:
+  - 9
+  - 1
+- id: 149
+  native: 139
+  section:
+  - 9
+  - 1
+- id: 150
+  native: 140
+  section:
+  - 9
+  - 1
+- id: 151
+  native: 141
+  section:
+  - 9
+  - 1
+- id: 152
+  native: 142
+  section:
+  - 9
+  - 1
+- id: 153
+  native: 143
+  section:
+  - 9
+  - 1
+- id: 154
+  native: 144
+  section:
+  - 9
+  - 1
+- id: 155
+  native: 145
+  section:
+  - 9
+  - 1
+- id: 156
+  native: 146
+  section:
+  - 9
+  - 1
+- id: 157
+  native: 147
+  section:
+  - 10
+  - 1
+- id: 158
+  native: 148
+  section:
+  - 10
+  - 1
+- id: 159
+  native: 149
+  section:
+  - 10
+  - 1
+- id: 160
+  native: 150
+  section:
+  - 10
+  - 1
+- id: 161
+  native: 151
+  section:
+  - 10
+  - 1
+- id: 162
+  native: 152
+  section:
+  - 10
+  - 1
+- id: 163
+  native: 153
+  section:
+  - 10
+  - 1
+- id: 164
+  native: 154
+  section:
+  - 10
+  - 1
+- id: 165
+  native: 155
+  section:
+  - 10
+  - 1
+- id: 166
+  native: 156
+  section:
+  - 10
+  - 1
+- id: 167
+  native: 157
+  section:
+  - 10
+  - 1
+- id: 168
+  native: 158
+  section:
+  - 10
+  - 1
+- id: 169
+  native: 159
+  section:
+  - 10
+  - 1
+- id: 170
+  native: 160
+  section:
+  - 10
+  - 1
+- id: 171
+  native: 161
+  section:
+  - 10
+  - 1
+- id: 172
+  native: 162
+  section:
+  - 10
+  - 1
+- id: 173
+  native: 163
+  section:
+  - 10
+  - 1
+- id: 174
+  native: 164
+  section:
+  - 11
+  - 1
+- id: 175
+  native: 165
+  section:
+  - 11
+  - 1
+- id: 176
+  native: 166
+  section:
+  - 11
+  - 1
+- id: 177
+  native: 167
+  section:
+  - 11
+  - 1
+- id: 178
+  native: 168
+  section:
+  - 11
+  - 1
+- id: 179
+  native: 169
+  section:
+  - 11
+  - 1
+- id: 180
+  native: 170
+  section:
+  - 11
+  - 1
+- id: 181
+  native: 171
+  section:
+  - 11
+  - 1
+- id: 182
+  native: 172
+  section:
+  - 11
+  - 1
+- id: 183
+  native: 173
+  section:
+  - 11
+  - 1
+- id: 184
+  native: 174
+  section:
+  - 11
+  - 1
+- id: 185
+  native: 175
+  section:
+  - 11
+  - 1
+- id: 186
+  native: 176
+  section:
+  - 11
+  - 1
+- id: 187
+  native: 177
+  section:
+  - 11
+  - 1
+- id: 188
+  native: 178
+  section:
+  - 11
+  - 1
+- id: 189
+  native: 179
+  section:
+  - 11
+  - 1
+- id: 190
+  native: 180
+  section:
+  - 11
+  - 1
+- id: 191
+  native: 181
+  section:
+  - 11
+  - 1
+- id: 192
+  native: 182
+  section:
+  - 11
+  - 1
+- id: 193
+  native: 183
+  section:
+  - 11
+  - 1
+- id: 194
+  native: 184
+  section:
+  - 12
+  - 1
+- id: 195
+  native: 185
+  section:
+  - 12
+  - 1
+- id: 196
+  native: 186
+  section:
+  - 12
+  - 1
+- id: 197
+  native: 187
+  section:
+  - 12
+  - 1
+- id: 198
+  native: 188
+  section:
+  - 12
+  - 1
+- id: 199
+  native: 189
+  section:
+  - 12
+  - 1
+- id: 200
+  native: 190
+  section:
+  - 12
+  - 1
+- id: 201
+  native: 191
+  section:
+  - 12
+  - 1
+- id: 202
+  native: 192
+  section:
+  - 12
+  - 1
+- id: 203
+  native: 193
+  section:
+  - 12
+  - 1
+- id: 204
+  native: 194
+  section:
+  - 12
+  - 1
+- id: 205
+  native: 195
+  section:
+  - 12
+  - 1
+- id: 206
+  native: 196
+  section:
+  - 12
+  - 1
+- id: 207
+  native: 197
+  section:
+  - 12
+  - 1
+- id: 208
+  native: 198
+  section:
+  - 12
+  - 1
+- id: 209
+  native: 199
+  section:
+  - 12
+  - 1
+- id: 210
+  native: 200
+  section:
+  - 12
+  - 1
+- id: 211
+  native: 201
+  section:
+  - 12
+  - 1
+- id: 212
+  native: 202
+  section:
+  - 13
+  - 1
+- id: 213
+  native: 203
+  section:
+  - 13
+  - 1
+- id: 214
+  native: 204
+  section:
+  - 13
+  - 1
+- id: 215
+  native: 205
+  section:
+  - 13
+  - 1
+- id: 216
+  native: 206
+  section:
+  - 13
+  - 1
+- id: 217
+  native: 207
+  section:
+  - 13
+  - 1
+- id: 218
+  native: 208
+  section:
+  - 13
+  - 1
+- id: 219
+  native: 209
+  section:
+  - 13
+  - 1
+- id: 220
+  native: 210
+  section:
+  - 13
+  - 1
+- id: 221
+  native: 211
+  section:
+  - 13
+  - 1
+- id: 222
+  native: 212
+  section:
+  - 13
+  - 1
+- id: 223
+  native: 213
+  section:
+  - 13
+  - 1
+- id: 224
+  native: 214
+  section:
+  - 13
+  - 1
+- id: 225
+  native: 215
+  section:
+  - 13
+  - 1
+- id: 226
+  native: 216
+  section:
+  - 13
+  - 1
+- id: 227
+  native: 217
+  section:
+  - 13
+  - 1
+- id: 228
+  native: 218
+  section:
+  - 14
+  - 1
+- id: 229
+  native: 219
+  section:
+  - 14
+  - 1
+- id: 230
+  native: 220
+  section:
+  - 14
+  - 1
+- id: 231
+  native: 221
+  section:
+  - 14
+  - 1
+- id: 232
+  native: 222
+  section:
+  - 14
+  - 1
+- id: 233
+  native: 223
+  section:
+  - 14
+  - 1
+- id: 234
+  native: 224
+  section:
+  - 14
+  - 1
+- id: 235
+  native: 225
+  section:
+  - 14
+  - 1
+- id: 236
+  native: 226
+  section:
+  - 14
+  - 1
+- id: 237
+  native: 227
+  section:
+  - 14
+  - 1
+- id: 238
+  native: 228
+  section:
+  - 14
+  - 1
+- id: 239
+  native: 229
+  section:
+  - 14
+  - 1
+- id: 240
+  native: 230
+  section:
+  - 14
+  - 1
+- id: 241
+  native: 231
+  section:
+  - 14
+  - 1
+- id: 242
+  native: 232
+  section:
+  - 14
+  - 1
+- id: 243
+  native: 233
+  section:
+  - 14
+  - 1
+- id: 244
+  native: 234
+  section:
+  - 14
+  - 1
+- id: 245
+  native: 235
+  section:
+  - 14
+  - 1
+- id: 246
+  native: 236
+  section:
+  - 14
+  - 1
+- id: 247
+  native: 237
+  section:
+  - 14
+  - 1
+- id: 248
+  native: 238
+  section:
+  - 14
+  - 1
+- id: 249
+  native: 239
+  section:
+  - 14
+  - 1
+- id: 250
+  native: 240
+  section:
+  - 14
+  - 1
+- id: 251
+  native: 241
+  section:
+  - 14
+  - 1
+- id: 252
+  native: 242
+  section:
+  - 14
+  - 1
+- id: 253
+  native: 243
+  section:
+  - 14
+  - 1
+- id: 254
+  native: 244
+  section:
+  - 15
+  - 1
+- id: 255
+  native: 245
+  section:
+  - 15
+  - 1
+- id: 256
+  native: 246
+  section:
+  - 15
+  - 1
+- id: 257
+  native: 247
+  section:
+  - 15
+  - 1
+- id: 258
+  native: 248
+  section:
+  - 15
+  - 1
+- id: 259
+  native: 249
+  section:
+  - 15
+  - 1
+- id: 260
+  native: 250
+  section:
+  - 16
+  - 1
+- id: 261
+  native: 251
+  section:
+  - 16
+  - 1
+- id: 262
+  native: 252
+  section:
+  - 16
+  - 1
+- id: 263
+  native: 253
+  section:
+  - 16
+  - 1
+- id: 264
+  native: 254
+  section:
+  - 16
+  - 1
+- id: 265
+  native: 255
+  section:
+  - 16
+  - 1
+- id: 266
+  native: 256
+  section:
+  - 16
+  - 1
+- id: 267
+  native: 257
+  section:
+  - 17
+  - 1
+- id: 268
+  native: 258
+  section:
+  - 17
+  - 1
+- id: 269
+  native: 259
+  section:
+  - 17
+  - 1
+- id: 270
+  native: 260
+  section:
+  - 17
+  - 1
+- id: 271
+  native: 261
+  section:
+  - 17
+  - 1
+- id: 272
+  native: 262
+  section:
+  - 17
+  - 1
+- id: 273
+  native: 263
+  section:
+  - 17
+  - 1
+- id: 274
+  native: 264
+  section:
+  - 17
+  - 1
+- id: 275
+  native: 265
+  section:
+  - 17
+  - 1
+- id: 276
+  native: 266
+  section:
+  - 17
+  - 1
+- id: 277
+  native: 267
+  section:
+  - 17
+  - 1
+- id: 278
+  native: 268
+  section:
+  - 18
+  - 1
+- id: 279
+  native: 269
+  section:
+  - 18
+  - 1
+- id: 280
+  native: 270
+  section:
+  - 18
+  - 1
+- id: 281
+  native: 271
+  section:
+  - 18
+  - 1
+- id: 282
+  native: 272
+  section:
+  - 19
+  - 1
+- id: 283
+  native: 273
+  section:
+  - 19
+  - 1
+- id: 284
+  native: 274
+  section:
+  - 19
+  - 1
+- id: 285
+  native: 275
+  section:
+  - 19
+  - 1
+- id: 286
+  native: 276
+  section:
+  - 19
+  - 1
+- id: 287
+  native: 277
+  section:
+  - 19
+  - 1
+- id: 288
+  native: 278
+  section:
+  - 19
+  - 1
+- id: 289
+  native: 279
+  section:
+  - 19
+  - 1
+- id: 290
+  native: 280
+  section:
+  - 19
+  - 1
+- id: 291
+  native: 281
+  section:
+  - 19
+  - 1
+- id: 292
+  native: 282
+  section:
+  - 19
+  - 1
+- id: 293
+  native: 283
+  section:
+  - 19
+  - 1
+- id: 294
+  native: 284
+  section:
+  - 19
+  - 1
+- id: 295
+  native: 285
+  section:
+  - 19
+  - 1
+- id: 296
+  native: 286
+  section:
+  - 19
+  - 1
+sections:
+  1:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: volume
+    type_num: ''
+  2:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Brunk, Ingrid
+    - Dunoff, Jeffrey
+    - Hakimi, Monica
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10146
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/introduction-to-special-issue/E0EAD625CE088115FD42A5F6AD2FD62F
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Introduction to Special Issue
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  3:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Bass, Gary J.
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10129
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/scourge-of-war/45D62B699B1E63ADE032712F88712592
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: The Scourge of War
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  4:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Becker Lorca, Arnulf
+    - Nouwen, Sarah
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10133
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/rise-and-fall-of-lauterpachts-function-of-law/63213D44E73E3685ED940A20BED65CBE
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: The Rise and Fall of Lauterpacht's Function of Law
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  5:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Chesterman, Simon
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10125
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/silicon-sovereigns-artificial-intelligence-international-law-and-the-techindustrial-complex/91E9751E1A9F586F4E4D7FD2FA36556B
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Silicon Sovereigns: Artificial Intelligence, International Law, and the Tech-Industrial Complex'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  6:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Grewal, David Singh
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10139
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/pax-economica-and-its-discontents/6C595BDF5D51820E64061720F45BDECE
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Pax Economica and Its Discontents
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  7:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Kapur, Ratna
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10134
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/from-necropolitics-to-piety-twail-and-the-other-subject-of-human-rights/2BA16A011078B3C3E41848CCB0DAE671
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'From Necropolitics to Piety: TWAIL and the "Other" Subject of Human Rights'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  8:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Milanovic, Marko
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10126
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/dystopian-international-law/F9BDE4936BAF581B2106402286FB4DA6
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Dystopian International Law
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  9:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Miles, Kate
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10141
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/on-the-stories-we-tell/4980A9C867ACAE09503055DDDD2FD7C8
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: On the Stories We Tell
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  10:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Özsu, Umut
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10130
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/colonialism-and-decolonization-on-a-world-scalethree-perspectives/F2401CB2226C336C82B50BBB49863624
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Colonialism and Decolonization on a World Scale—Three Perspectives
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  11:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Raustiala, Kal
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10127
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/abs/whoever-rules-the-waves-rules-the-world-sea-power-and-the-law-of-the-sea/50C2D2684DC510405589DDC29BECD007
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Whoever Rules the Waves Rules the World: Sea Power and the Law of the Sea'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  12:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Scott, Shirley V.
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10142
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/china-antihegemonism-and-the-scope-for-international-law-to-facilitate-peaceful-power-transitions/223196BDE702E8ACB1EAAD565A776BE7
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: China, Anti-hegemonism, and the Scope for International Law to Facilitate Peaceful Power Transitions
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  13:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Sinclair, Guy Fiti
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10132
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/is-another-world-possible/9E6D9C62A6376BFC57813AE7C667033F
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Is Another World Possible?
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  14:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Jalloh, Charles Chernor
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10137
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/international-law-commissions-seventysixth-2025-session-the-negative-impact-of-the-united-nations-fiscal-crisis-on-the-codification-and-progressive-development-of-international-law/99C559EF8D886D22F0BDC638D5DF9E70
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'The International Law Commission''s Seventy-Sixth (2025) Session: The Negative Impact of the United Nations'' Fiscal Crisis on The Codification and Progressive Development of International Law'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  15:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Guapizaca Jiménez, Erick Fabián
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10138
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/modern-slavery-in-furukawa-case-no-107221jp24/CD4EA7BF4C6753629A024D1B2E10A61A
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Modern Slavery in Furukawa. Case No. 1072-21-JP/24
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  16:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Du, Juan
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10140
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/junefield-gold-investments-limited-v-the-republic-of-ecuador-pca-case-no-202335/64E8B0DE75165168A8420D94D63B54A4
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Junefield Gold Investments Limited v. The Republic of Ecuador. PCA Case No. 2023-35
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  17:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Haynes, Jason
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10144
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/semenya-v-switzerland-application-no-1093421/8CB46420AAAA053296DD80F3FA3F07EF
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Semenya v. Switzerland. Application No. 10934/21
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  18:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10143
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/secretary-of-state-rubio-denies-and-revokes-visas-for-palestinian-delegation-invited-to-attend-un-general-assembly-meetings/533FF46132BDC86E05431B2D17068786
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Secretary of State Rubio Denies and Revokes Visas for Palestinian Delegation Invited to Attend UN General Assembly Meetings
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  19:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator:
+    - Julie Turkewitz
+    - Isayen Herrera
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1017/ajil.2025.10145
+    external_url: https://www.cambridge.org/core/journals/american-journal-of-international-law/article/us-military-targets-and-destroys-alleged-narcotics-trafficking-vessels-in-the-southern-caribbean-sea-and-eastern-pacific-ocean-killing-nearly-all-of-their-crew/DE7B5051CBDD60A350A7FCD5A34BE34C
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: The U.S. Military Targets and Destroys Alleged Narcotics Trafficking Vessels in the Southern Caribbean Sea and Eastern Pacific Ocean, Killing Nearly All of Their Crew
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+title: American Journal of International Law
+type: default

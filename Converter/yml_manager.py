@@ -7,8 +7,9 @@ from copy import deepcopy
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-RESULTS_DIR = os.path.join(BASE_DIR, "results")
-STRUCTURE_BASE_DIR = os.path.join(BASE_DIR, "HeinOnline", "Before", "Before")
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+RESULTS_DIR = os.path.join(PROJECT_ROOT, "Combinator", "results")
+INPUT_BASE_DIR = os.path.join(PROJECT_ROOT, "Input")
 OUTPUT_DIR = os.path.join(BASE_DIR, "final_yml")
 ERROR_FILE = os.path.join(BASE_DIR, "error.txt")
 
@@ -135,6 +136,10 @@ def build_creator_list(sec):
     creators = normalize_text_list(sec.get("creator", []))
     if creators:
         return creators
+
+    authors = normalize_text_list(sec.get("authors", []))
+    if authors:
+        return authors
 
     author_items = []
     for key, value in sec.items():
@@ -346,7 +351,7 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
 
 
 def get_matching_structure_path(journal_name):
-    return os.path.join(STRUCTURE_BASE_DIR, journal_name, "structure.yml")
+    return os.path.join(INPUT_BASE_DIR, journal_name, "structure.yml")
 
 
 def get_json_files(journal_name=None):
@@ -400,7 +405,7 @@ def process_one_json(json_filename, keep_probable_matter=False):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Auto-convert JSON files in results/ using matching HeinOnline structure.yml files"
+        description="Auto-convert JSON files from Combinator/results using matching HeinOnline structure.yml files"
     )
     parser.add_argument(
         "--journal",
@@ -422,7 +427,7 @@ def main():
         return
 
     if not json_files:
-        print("[INFO] No JSON files found in results/")
+        print(f"[INFO] No JSON files found in {RESULTS_DIR}")
         return
 
     for json_filename in json_files:
