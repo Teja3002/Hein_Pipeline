@@ -14,6 +14,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "final_yml")
 ERROR_FILE = os.path.join(BASE_DIR, "error.txt")
 
 
+
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -110,10 +111,57 @@ def build_empty_section(template=None):
     return deepcopy(base)
 
 
-def infer_year(structure_yml):
-    if isinstance(structure_yml, dict):
-        return normalize_text(structure_yml.get("date", ""))
-    return ""
+def build_volume_section():
+    return {
+        "citation": "",
+        "countries": [],
+        "country_code": " ",
+        "creator": [],
+        "date": "",
+        "description": "",
+        "docket_num": "",
+        "doi": "",
+        "external_url": "",
+        "judge": 0,
+        "orcid": [],
+        "release_date": "",
+        "release_date_weekly": "",
+        "section_num": "",
+        "subject": [],
+        "title": "",
+        "title_num": "",
+        "treaty_noc": "",
+        "type": "volume",
+        "type_num": ""
+    }
+
+
+def build_issue_section(input_json):
+    issue_value = normalize_text(input_json.get("issue", ""))
+
+    return {
+        "citation": "",
+        "countries": ["", "", ""],
+        "country_code": " ",
+        "creator": [],
+        "date": normalize_text(input_json.get("date", "")),
+        "description": issue_value,
+        "docket_num": "",
+        "doi": "",
+        "external_url": "",
+        "insection": 1,
+        "judge": 0,
+        "orcid": [],
+        "release_date": "",
+        "release_date_weekly": "",
+        "section_num": "",
+        "subject": ["", ""],
+        "title": "",
+        "title_num": "",
+        "treaty_noc": "",
+        "type": "issue",
+        "type_num": ""
+    }
 
 
 def is_probably_noncontent(title):
@@ -195,73 +243,49 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             "doi": doi,
             "external_url": external_url,
             "citation": "",
-            "description": description,
-            "subject": subject,
-            "type": section_type,
-            "date": "",
+            "description": "",
+            "subject": [],
+            "type": "",
+            "date": normalize_text(sec.get("date", "")),
             "release_date": "",
         })
 
     return records
 
 
-def get_section_dict(yml_data):
-    sections = yml_data.get("sections", {})
-    normalized = {}
-    for k, v in sections.items():
-        try:
-            normalized[int(k)] = v
-        except Exception:
-            continue
-    return normalized
-
-
-def get_max_section_id(sections_dict):
-    return max(sections_dict.keys(), default=0)
-
-
 def get_page_chain(page_obj):
     chain = page_obj.get("section", [])
     if isinstance(chain, list):
-        return [int(x) for x in chain]
+        cleaned = []
+        for x in chain:
+            try:
+                cleaned.append(int(x))
+            except Exception:
+                continue
+        return cleaned
     return []
-
-
-def get_parent_chain_for_article_start(page_obj):
-    """
-    For a structure page whose current chain may be like [3,1] or [1],
-    use its existing ancestry as the parent chain for the new article node.
-
-    If the page has no chain, return [].
-    """
-    chain = get_page_chain(page_obj)
-    if not chain:
-        return []
-
-    return chain[:]
 
 
 def build_output(input_json, structure_yml, skip_probable_matter=True):
     output = deepcopy(structure_yml)
 
-    year = infer_year(structure_yml)
-    if year:
-        output["date"] = year
 
     structure_pages = output.get("pages", [])
     if not structure_pages:
         raise ValueError("structure.yml does not contain pages.")
 
-    old_sections = get_section_dict(structure_yml)
-    new_sections = deepcopy(old_sections)
 
     article_records = build_article_records_from_json(
         input_json=input_json,
         skip_probable_matter=skip_probable_matter
     )
 
-    next_sid = get_max_section_id(new_sections) + 1
+    new_sections = {
+        1: build_volume_section(),
+        2: build_issue_section(input_json),
+    }
 
+    next_sid = 3
     for rec in article_records:
         rec["new_sid"] = next_sid
         next_sid += 1
@@ -276,13 +300,12 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         new_sec["subject"] = rec["subject"]
         new_sec["description"] = rec["description"]
         new_sec["orcid"] = []
+        new_sec["citation"] = rec["citation"] or ""
 
         if rec["date"]:
             new_sec["date"] = rec["date"]
         if rec["release_date"]:
             new_sec["release_date"] = rec["release_date"]
-
-        new_sec["citation"] = rec["citation"] or ""
 
         new_sections[rec["new_sid"]] = new_sec
 
@@ -315,13 +338,14 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         else:
             end_id = structure_pages[-1]["id"]
 
-        start_page_obj = page_id_to_obj[start_id]
-        rec["parent_chain"] = get_parent_chain_for_article_start(start_page_obj)
-
         for pid in range(start_id, end_id + 1):
             page_to_article_sid[pid] = rec["new_sid"]
 
-    start_id_by_sid = {rec["new_sid"]: rec["start_structure_id"] for rec in usable_articles}
+    issue_value = normalize_text(input_json.get("issue", ""))
+    try:
+        issue_number = int(issue_value)
+    except Exception:
+        issue_number = issue_value if issue_value else ""
 
     new_pages = []
     for p in structure_pages:
@@ -330,14 +354,14 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         original_chain = get_page_chain(p)
 
         if pid in page_to_article_sid:
-            article_sid = page_to_article_sid[pid]
-
-            article_rec = next((r for r in usable_articles if r["new_sid"] == article_sid), None)
-            parent_chain = article_rec["parent_chain"] if article_rec else original_chain
-
-            section_chain = [article_sid] + parent_chain
+            section_chain = [page_to_article_sid[pid]]
+            if issue_number != "":
+                section_chain.append(issue_number)
         else:
-            section_chain = original_chain
+            if original_chain:
+                section_chain = original_chain
+            else:
+                section_chain = [issue_number] if issue_number != "" else []
 
         new_pages.append({
             "id": pid,
@@ -347,6 +371,9 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
 
     output["sections"] = dict(sorted(new_sections.items(), key=lambda kv: int(kv[0])))
     output["pages"] = new_pages
+    output["title"] = normalize_text(input_json.get("title", ""))
+    output["type"] = "default"
+
     return output
 
 
@@ -439,3 +466,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

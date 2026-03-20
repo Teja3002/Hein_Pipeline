@@ -39,14 +39,15 @@ SPECIAL_CHAR_MAP = str.maketrans({
 })
 
 BASE_URL = "https://api.crossref.org/works"
+JOURNAL_BASE_URL = "https://api.crossref.org/journals"
+
 ROWS = 1000
 THROTTLE_SECONDS = 0.25
 REQUEST_TIMEOUT = 30
+MAX_RETRIES = 6
+BACKOFF_BASE_SECONDS = 2
 
 pattern = re.compile(r'^([a-zA-Z]+)(\d+)(?:no(\d+))?$')
-
-DOI_URL_CACHE = {}
-PAGE_TYPE_CACHE = {}
 
 NON_ARTICLE_TYPE_KEYWORDS = [
     "cover",
@@ -68,6 +69,31 @@ NON_ARTICLE_TYPE_KEYWORDS = [
     "ibc",
 ]
 
+MONTH_NAMES = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+}
+
+CROSSREF_MAILTO = os.getenv("CROSSREF_MAILTO", "").strip()
+
+SESSION = requests.Session()
+SESSION.headers.update({
+    "User-Agent": (
+        f"JournalIndexing/1.0"
+        f"{' (mailto:' + CROSSREF_MAILTO + ')' if CROSSREF_MAILTO else ''}"
+    )
+})
+
 os.makedirs(results_folder, exist_ok=True)
 
 
@@ -87,6 +113,52 @@ def normalize_text(value):
     return value
 
 
+def request_with_retry(url, params=None, allow_redirects=True, method="get", timeout=REQUEST_TIMEOUT):
+    for attempt in range(MAX_RETRIES):
+        try:
+            if method.lower() == "head":
+                response = SESSION.head(
+                    url,
+                    params=params,
+                    allow_redirects=allow_redirects,
+                    timeout=timeout
+                )
+            else:
+                response = SESSION.get(
+                    url,
+                    params=params,
+                    allow_redirects=allow_redirects,
+                    timeout=timeout
+                )
+
+            if response.status_code == 429:
+                retry_after = response.headers.get("Retry-After")
+                if retry_after:
+                    try:
+                        sleep_time = max(float(retry_after), THROTTLE_SECONDS)
+                    except ValueError:
+                        sleep_time = BACKOFF_BASE_SECONDS * (2 ** attempt)
+                else:
+                    sleep_time = BACKOFF_BASE_SECONDS * (2 ** attempt)
+
+                print(f"429 Too Many Requests. Sleeping for {sleep_time:.2f} seconds...")
+                time.sleep(sleep_time)
+                continue
+
+            response.raise_for_status()
+            return response
+
+        except requests.exceptions.RequestException as e:
+            if attempt == MAX_RETRIES - 1:
+                raise e
+
+            sleep_time = BACKOFF_BASE_SECONDS * (2 ** attempt)
+            print(f"Request failed ({e}). Retrying in {sleep_time:.2f} seconds...")
+            time.sleep(sleep_time)
+
+    raise RuntimeError("Request failed after maximum retries")
+
+
 def fetch_all_results_cursor(issn):
     all_items = []
     cursor = "*"
@@ -97,12 +169,22 @@ def fetch_all_results_cursor(issn):
             "rows": ROWS,
             "cursor": cursor,
             "select": ",".join([
-                "DOI", "title", "page", "volume", "issue", "author"
+                "DOI",
+                "title",
+                "page",
+                "volume",
+                "issue",
+                "author",
+                "container-title",
+                "published-online",
+                "issued"
             ])
         }
 
-        response = requests.get(BASE_URL, params=params, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
+        if CROSSREF_MAILTO:
+            params["mailto"] = CROSSREF_MAILTO
+
+        response = request_with_retry(BASE_URL, params=params, method="get", timeout=REQUEST_TIMEOUT)
         data = response.json()
 
         message = data.get("message", {})
@@ -120,6 +202,28 @@ def fetch_all_results_cursor(issn):
         time.sleep(THROTTLE_SECONDS)
 
     return all_items
+
+
+def fetch_journal_title_from_crossref(issn):
+    issn = normalize_text(issn)
+    if not issn:
+        return ""
+
+    params = {}
+    if CROSSREF_MAILTO:
+        params["mailto"] = CROSSREF_MAILTO
+
+    try:
+        response = request_with_retry(
+            f"{JOURNAL_BASE_URL}/{issn}",
+            params=params,
+            method="get",
+            timeout=REQUEST_TIMEOUT
+        )
+        data = response.json()
+        return normalize_text(data.get("message", {}).get("title", ""))
+    except Exception:
+        return ""
 
 
 def is_container_doi(doi):
@@ -163,22 +267,6 @@ def is_non_article_title(title):
     return any(re.search(p, title) for p in blocked_patterns)
 
 
-def is_suspicious_title(title):
-    title = normalize_text(title).lower()
-
-    suspicious_keywords = [
-        "cover",
-        "front matter",
-        "back matter",
-        "contents",
-        "masthead",
-        "editorial board",
-        "issue information",
-    ]
-
-    return any(keyword in title for keyword in suspicious_keywords)
-
-
 def get_start_page(page_range):
     page_range = normalize_text(page_range)
     return page_range.split("-")[0].strip() if page_range else ""
@@ -186,7 +274,8 @@ def get_start_page(page_range):
 
 def page_sort_key(item):
     page_range = normalize_text(item.get("page", ""))
-    title = normalize_text(item.get("title", [""])[0])
+    title_list = item.get("title", [])
+    title = normalize_text(title_list[0]) if title_list else ""
     doi = normalize_text(item.get("DOI", ""))
 
     if page_range:
@@ -198,114 +287,54 @@ def page_sort_key(item):
 
 def extract_creators(item):
     creators = []
+
     for author in item.get("author", []):
         family = normalize_text(author.get("family", ""))
         given = normalize_text(author.get("given", ""))
-        name = ", ".join(filter(None, [family, given]))
+        literal = normalize_text(author.get("literal", ""))
+
+        if literal:
+            name = literal
+        else:
+            name = ", ".join(filter(None, [family, given]))
+
         if name:
             creators.append(name)
     return creators
 
 
-def get_final_url(doi):
+def build_external_url(doi):
     doi = normalize_text(doi)
     if not doi:
         return ""
 
-    if doi in DOI_URL_CACHE:
-        return DOI_URL_CACHE[doi]
-
     doi_url = f"https://doi.org/{doi}"
 
     try:
-        response = requests.head(
+        response = SESSION.head(
             doi_url,
             allow_redirects=True,
             timeout=REQUEST_TIMEOUT
         )
         final_url = normalize_text(response.url)
         if final_url:
-            final_url = final_url.rstrip("/")
-            DOI_URL_CACHE[doi] = final_url
-            return final_url
+            return final_url.rstrip("/")
     except Exception:
         pass
 
     try:
-        response = requests.get(
+        response = SESSION.get(
             doi_url,
             allow_redirects=True,
             timeout=REQUEST_TIMEOUT
         )
         final_url = normalize_text(response.url)
         if final_url:
-            final_url = final_url.rstrip("/")
-            DOI_URL_CACHE[doi] = final_url
-            return final_url
+            return final_url.rstrip("/")
     except Exception:
         pass
 
-    DOI_URL_CACHE[doi] = doi_url
     return doi_url
-
-
-def extract_page_type_from_html(html_text):
-    text = html_text
-
-    patterns = [
-        r'>\s*Type\s*<.*?>\s*<.*?>\s*([^<]+?)\s*<',
-        r'"Type"\s*:\s*"([^"]+)"',
-        r'"type"\s*:\s*"([^"]+)"',
-        r'>\s*Type\s*</[^>]+>\s*<[^>]+>\s*([^<]+)',
-    ]
-
-    for pattern in patterns:
-        match = re.search(pattern, text, flags=re.IGNORECASE | re.DOTALL)
-        if match:
-            value = normalize_text(match.group(1))
-            if value:
-                return value
-
-    return ""
-
-
-def get_page_type(external_url):
-    external_url = normalize_text(external_url)
-    if not external_url:
-        return ""
-
-    if external_url in PAGE_TYPE_CACHE:
-        return PAGE_TYPE_CACHE[external_url]
-
-    try:
-        response = requests.get(external_url, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
-
-        page_type = extract_page_type_from_html(response.text)
-        PAGE_TYPE_CACHE[external_url] = page_type
-        return page_type
-    except Exception:
-        PAGE_TYPE_CACHE[external_url] = ""
-        return ""
-
-
-def should_exclude_by_real_page_type(doi, title):
-    """
-    Deep-check suspicious records by reading the actual landing page Type field.
-    This avoids trusting Crossref's generic 'article' type.
-    """
-    title = normalize_text(title)
-
-    if not is_suspicious_title(title):
-        return False
-
-    external_url = get_final_url(doi)
-    page_type = get_page_type(external_url)
-
-    if contains_non_article_keyword(page_type):
-        return True
-
-    return False
 
 
 def is_valid_article_record(item):
@@ -320,9 +349,6 @@ def is_valid_article_record(item):
         return False
 
     if is_non_article_title(title):
-        return False
-
-    if should_exclude_by_real_page_type(doi, title):
         return False
 
     return True
@@ -348,27 +374,83 @@ def filter_items(items, volume, issue=None):
 
     return filtered
 
+def extract_date_parts(item):
+    for field_name in ("published-online", "issued"):
+        date_part = item.get(field_name, {})
+        date_parts = date_part.get("date-parts", [])
+
+        if (
+            isinstance(date_parts, list)
+            and date_parts
+            and isinstance(date_parts[0], list)
+            and date_parts[0]
+        ):
+            parts = date_parts[0]
+            year = parts[0] if len(parts) >= 1 else None
+            month = parts[1] if len(parts) >= 2 else None
+            day = parts[2] if len(parts) >= 3 else None
+            return year, month, day
+
+    return None, None, None
+
+
+def format_date_parts(year, month):
+    if year and month in MONTH_NAMES:
+        return f"{MONTH_NAMES[month]} {year}"
+    if year:
+        return str(year)
+    return ""
+
+
+def derive_output_date(filtered_items):
+    if not filtered_items:
+        return ""
+
+    dated_items = []
+    for item in filtered_items:
+        year, month, _ = extract_date_parts(item)
+        if year:
+            dated_items.append((year, month))
+
+    if not dated_items:
+        return ""
+
+    dated_items.sort(key=lambda x: (x[0], x[1] or 0), reverse=True)
+    year, month = dated_items[0]
+    return format_date_parts(year, month)
+
+
+def derive_journal_title(filtered_items, issn):
+    title = fetch_journal_title_from_crossref(issn)
+    if title:
+        return title
+
+    for item in filtered_items:
+        container_titles = item.get("container-title", [])
+        if container_titles:
+            container_title = normalize_text(container_titles[0])
+            if container_title:
+                return container_title
+
+    return ""
+
 
 def build_section_data(item):
     doi = normalize_text(item.get("DOI", ""))
-    external_url = get_final_url(doi)
+    title_list = item.get("title", [])
+    article_title = normalize_text(title_list[0]) if title_list else ""
 
-    data = {
-        "title": normalize_text(item.get("title", [""])[0]),
+    return {
+        "title": article_title,
         "type": "",
         "citation": "",
         "description": "",
         "doi": doi,
-        "external_url": external_url
+        "external_url": build_external_url(doi),
+        "authors": extract_creators(item)
     }
 
-    for i, author in enumerate(extract_creators(item)[:50], 1):
-        data[f"author_{i}"] = author
-
-    return data
-
-
-def build_json_structure(filtered_items):
+def build_json_structure(filtered_items, volume, issn, issue=None):
     pages = []
     sections = {}
 
@@ -382,7 +464,15 @@ def build_json_structure(filtered_items):
 
         sections[str(i)] = build_section_data(item)
 
-    return {"pages": pages, "sections": sections}
+    journal_title = derive_journal_title(filtered_items, issn)
+
+    return {
+        "title": journal_title,
+        "volume": str(volume),
+        "date": derive_output_date(filtered_items),
+        "pages": pages,
+        "sections": sections
+    }
 
 
 def write_json_safely(data, filename):
