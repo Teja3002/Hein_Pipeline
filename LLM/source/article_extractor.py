@@ -236,9 +236,9 @@ def process_articles(articles, page_offset, ocr_filepath, metadata_filepath):
         })
 
         section = {
-            "page": article["page"],
-            "startFile": start_page, 
-            "endFile": end_page, 
+            # "page": article["page"],
+            # "startFile": start_page, 
+            # "endFile": end_page, 
             "title": result.get("title", ""), 
             "citation": "",
             "description": "",
