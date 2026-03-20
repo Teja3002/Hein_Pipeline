@@ -108,6 +108,7 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
 
         start_page = start_idx + 1  # 1-based
         end_page = end_idx + 1      # 1-based
+        native_page = str(start_page - page_offset) 
 
         print(f"\n  [{i + 1}/{len(article_boundaries)}] Pages: {start_page} - {end_page}")
 
@@ -124,16 +125,24 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
         if doi_result:
             external_link = get_external_link(doi_result["link"])
 
-        metadata["articles"].append({
-            "page": start_page - page_offset,
-            "startFile": start_page,
-            "endFile": end_page,
-            "title": extracted.get("title"),
-            "authors": extracted.get("authors"),
-            "doi": doi_result.get("doi") if doi_result else None,
-            "link": doi_result.get("link") if doi_result else None,
-            "external_link": external_link
+        metadata["pages"].append({
+            "id": i + 1,
+            "native": native_page 
         })
+
+        section = {
+            "page": native_page,
+            "startFile": start_page, 
+            "endFile": end_page, 
+            "title": result.get("title", ""), 
+            "citation": "",
+            "description": "",
+            "doi": doi_result.get("doi", "") if doi_result else "",
+            "external_url": external_link or "",
+            "authors": result.get("authors", []) or [] 
+        }
+
+        metadata["sections"][str(i + 1)] = section
 
     save_json(metadata_filepath, metadata)
     print(f"\n  {len(article_boundaries)} articles saved to: {metadata_filepath}")
