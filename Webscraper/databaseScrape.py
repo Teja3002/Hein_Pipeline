@@ -127,7 +127,22 @@ def process(input_str: str) -> dict:
     logger.info("databaseScrape started for input=%s", input_str)
 
     # Step 1 – parse
-    parsed = parse_input(input_str)
+    try:
+        parsed = parse_input(input_str)
+    except ValueError as error:
+        logger.warning(
+            "Skipping databaseScrape for input=%s because name format is invalid: %s",
+            input_str,
+            error,
+        )
+        print(f"\n[!] Skipping '{input_str}': {error}")
+        return {
+            "status": "invalid_input",
+            "journal": "",
+            "url": "",
+            "error": str(error),
+        }
+
     logger.info(
         "Parsed input journal=%s volume_raw=%s issue=%s",
         parsed["journal"],
