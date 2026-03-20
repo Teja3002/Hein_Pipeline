@@ -56,7 +56,8 @@ REQUEST_TIMEOUT = 30
 MAX_RETRIES = 6
 BACKOFF_BASE_SECONDS = 2
 
-pattern = re.compile(r'^([a-zA-Z]+)(\d+)(?:no(\d+))?$')
+# pattern = re.compile(r'^([a-zA-Z]+)(\d+)(?:no(\d+))?$')
+pattern = re.compile(r'^([a-zA-Z]+)(\d+)(?:no(\d+)(?:-(\d+))?)?$')
 
 NON_ARTICLE_TYPE_KEYWORDS = [
     "cover",
