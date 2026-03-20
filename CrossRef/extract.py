@@ -1,6 +1,8 @@
 import os
 import re
 import json
+import html
+import time
 import logging
 import requests
 from tempfile import NamedTemporaryFile
@@ -22,9 +24,49 @@ journal_issn_dict = {
     "rvadctoao": "2238-3840"
 }
 
+SPECIAL_CHAR_MAP = str.maketrans({
+    "à": "a", "á": "a", "â": "a", "ä": "a", "æ": "a", "ã": "a", "å": "a", "ā": "a",
+    "ç": "c", "ć": "c",
+    "è": "e", "é": "e", "ê": "e", "ë": "e", "ē": "e", "ę": "e",
+    "ì": "i", "í": "i", "î": "i", "ï": "i", "ī": "i", "į": "i",
+    "ñ": "n", "ń": "n",
+    "ò": "o", "ó": "o", "ô": "o", "ö": "o", "œ": "o", "ø": "o", "ō": "o",
+    "ß": "ss",
+    "ù": "u", "ú": "u", "û": "u", "ü": "u", "ū": "u",
+    "ÿ": "y",
+    "ž": "z", "ź": "z", "ż": "z",
+    "§": "sec."
+})
+
 BASE_URL = "https://api.crossref.org/works"
 ROWS = 1000
+THROTTLE_SECONDS = 0.25
+REQUEST_TIMEOUT = 30
+
 pattern = re.compile(r'^([a-zA-Z]+)(\d+)(?:no(\d+))?$')
+
+DOI_URL_CACHE = {}
+PAGE_TYPE_CACHE = {}
+
+NON_ARTICLE_TYPE_KEYWORDS = [
+    "cover",
+    "front matter",
+    "back matter",
+    "front cover",
+    "back cover",
+    "masthead",
+    "table of contents",
+    "contents",
+    "index",
+    "editorial board",
+    "issue information",
+    "issue cover",
+    "cover and front matter",
+    "ofc",
+    "ifc",
+    "obc",
+    "ibc",
+]
 
 os.makedirs(results_folder, exist_ok=True)
 
@@ -32,10 +74,16 @@ os.makedirs(results_folder, exist_ok=True)
 def normalize_text(value):
     if value is None:
         return ""
+
     value = str(value)
+    value = html.unescape(value)
+    value = value.replace('\\"', '"')
+    value = value.replace("\\/", "/")
     value = re.sub(r"<[^>]+>", "", value)
-    value = re.sub(r"\s+", " ", value).strip()
     value = value.replace("’", "'").replace("“", '"').replace("”", '"')
+    value = value.translate(SPECIAL_CHAR_MAP)
+    value = re.sub(r"\s+", " ", value).strip()
+
     return value
 
 
@@ -49,11 +97,11 @@ def fetch_all_results_cursor(issn):
             "rows": ROWS,
             "cursor": cursor,
             "select": ",".join([
-                "DOI", "title", "page", "volume", "issue", "author", "abstract"
+                "DOI", "title", "page", "volume", "issue", "author"
             ])
         }
 
-        response = requests.get(BASE_URL, params=params, timeout=30)
+        response = requests.get(BASE_URL, params=params, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
         data = response.json()
 
@@ -69,6 +117,8 @@ def fetch_all_results_cursor(issn):
         if not cursor:
             break
 
+        time.sleep(THROTTLE_SECONDS)
+
     return all_items
 
 
@@ -77,23 +127,185 @@ def is_container_doi(doi):
     return bool(re.search(r'\.v\d+\.\d+$', doi, flags=re.IGNORECASE))
 
 
+def contains_non_article_keyword(text):
+    text = normalize_text(text).lower()
+    if not text:
+        return False
+
+    for keyword in NON_ARTICLE_TYPE_KEYWORDS:
+        if keyword in text:
+            return True
+
+    return False
+
+
 def is_non_article_title(title):
     title = normalize_text(title).lower()
 
     blocked_patterns = [
-        r'\bcover\b',
-        r'\bfront matter\b',
-        r'\bback matter\b',
-        r'\bfront cover\b',
-        r'\bback cover\b',
-        r'\bmasthead\b',
-        r'\btable of contents\b',
-        r'\bcontents\b',
-        r'\bindex\b',
-        r'\beditorial board\b',
+        r'^cover$',
+        r'^front matter$',
+        r'^back matter$',
+        r'^front cover$',
+        r'^back cover$',
+        r'^masthead$',
+        r'^table of contents$',
+        r'^contents$',
+        r'^index$',
+        r'^editorial board$',
+        r'^issue information$',
+        r'^cover and front matter$',
+        r'^.*cover and front matter$',
+        r'^.*front matter$',
+        r'^.*back matter$',
     ]
 
     return any(re.search(p, title) for p in blocked_patterns)
+
+
+def is_suspicious_title(title):
+    title = normalize_text(title).lower()
+
+    suspicious_keywords = [
+        "cover",
+        "front matter",
+        "back matter",
+        "contents",
+        "masthead",
+        "editorial board",
+        "issue information",
+    ]
+
+    return any(keyword in title for keyword in suspicious_keywords)
+
+
+def get_start_page(page_range):
+    page_range = normalize_text(page_range)
+    return page_range.split("-")[0].strip() if page_range else ""
+
+
+def page_sort_key(item):
+    page_range = normalize_text(item.get("page", ""))
+    title = normalize_text(item.get("title", [""])[0])
+    doi = normalize_text(item.get("DOI", ""))
+
+    if page_range:
+        num = re.search(r"\d+", page_range)
+        return (0, int(num.group()) if num else 0, title.lower(), doi.lower())
+
+    return (1, float("inf"), title.lower(), doi.lower())
+
+
+def extract_creators(item):
+    creators = []
+    for author in item.get("author", []):
+        family = normalize_text(author.get("family", ""))
+        given = normalize_text(author.get("given", ""))
+        name = ", ".join(filter(None, [family, given]))
+        if name:
+            creators.append(name)
+    return creators
+
+
+def get_final_url(doi):
+    doi = normalize_text(doi)
+    if not doi:
+        return ""
+
+    if doi in DOI_URL_CACHE:
+        return DOI_URL_CACHE[doi]
+
+    doi_url = f"https://doi.org/{doi}"
+
+    try:
+        response = requests.head(
+            doi_url,
+            allow_redirects=True,
+            timeout=REQUEST_TIMEOUT
+        )
+        final_url = normalize_text(response.url)
+        if final_url:
+            final_url = final_url.rstrip("/")
+            DOI_URL_CACHE[doi] = final_url
+            return final_url
+    except Exception:
+        pass
+
+    try:
+        response = requests.get(
+            doi_url,
+            allow_redirects=True,
+            timeout=REQUEST_TIMEOUT
+        )
+        final_url = normalize_text(response.url)
+        if final_url:
+            final_url = final_url.rstrip("/")
+            DOI_URL_CACHE[doi] = final_url
+            return final_url
+    except Exception:
+        pass
+
+    DOI_URL_CACHE[doi] = doi_url
+    return doi_url
+
+
+def extract_page_type_from_html(html_text):
+    text = html_text
+
+    patterns = [
+        r'>\s*Type\s*<.*?>\s*<.*?>\s*([^<]+?)\s*<',
+        r'"Type"\s*:\s*"([^"]+)"',
+        r'"type"\s*:\s*"([^"]+)"',
+        r'>\s*Type\s*</[^>]+>\s*<[^>]+>\s*([^<]+)',
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE | re.DOTALL)
+        if match:
+            value = normalize_text(match.group(1))
+            if value:
+                return value
+
+    return ""
+
+
+def get_page_type(external_url):
+    external_url = normalize_text(external_url)
+    if not external_url:
+        return ""
+
+    if external_url in PAGE_TYPE_CACHE:
+        return PAGE_TYPE_CACHE[external_url]
+
+    try:
+        response = requests.get(external_url, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+
+        page_type = extract_page_type_from_html(response.text)
+        PAGE_TYPE_CACHE[external_url] = page_type
+        return page_type
+    except Exception:
+        PAGE_TYPE_CACHE[external_url] = ""
+        return ""
+
+
+def should_exclude_by_real_page_type(doi, title):
+    """
+    Deep-check suspicious records by reading the actual landing page Type field.
+    This avoids trusting Crossref's generic 'article' type.
+    """
+    title = normalize_text(title)
+
+    if not is_suspicious_title(title):
+        return False
+
+    external_url = get_final_url(doi)
+    page_type = get_page_type(external_url)
+
+    if contains_non_article_keyword(page_type):
+        return True
+
+    return False
 
 
 def is_valid_article_record(item):
@@ -108,6 +320,9 @@ def is_valid_article_record(item):
         return False
 
     if is_non_article_title(title):
+        return False
+
+    if should_exclude_by_real_page_type(doi, title):
         return False
 
     return True
@@ -134,77 +349,35 @@ def filter_items(items, volume, issue=None):
     return filtered
 
 
-def get_start_page(page_range):
-    page_range = normalize_text(page_range)
-    return page_range.split("-")[0].strip() if page_range else ""
-
-
-def page_sort_key(item):
-    page_range = normalize_text(item.get("page", ""))
-    title = normalize_text(item.get("title", [""])[0])
-    doi = normalize_text(item.get("DOI", ""))
-
-    if page_range:
-        num = re.search(r"\d+", page_range)
-        return (0, int(num.group()) if num else 0, title.lower(), doi.lower())
-
-    return (1, float("inf"), title.lower(), doi.lower())
-
-
-def get_final_url(doi):
-    doi = normalize_text(doi)
-    if not doi:
-        return ""
-
-    try:
-        return requests.head(f"https://doi.org/{doi}", allow_redirects=True, timeout=30).url
-    except Exception:
-        return f"https://doi.org/{doi}"
-
-
-def extract_creators(item):
-    creators = []
-    for author in item.get("author", []):
-        name = ", ".join(filter(None, [
-            normalize_text(author.get("family", "")),
-            normalize_text(author.get("given", ""))
-        ]))
-        if name:
-            creators.append(name)
-    return creators
-
-
 def build_section_data(item):
     doi = normalize_text(item.get("DOI", ""))
-    authors = extract_creators(item)[:50]
+    external_url = get_final_url(doi)
 
     data = {
         "title": normalize_text(item.get("title", [""])[0]),
+        "type": "",
         "citation": "",
-        "description": normalize_text(item.get("abstract", "")),
+        "description": "",
         "doi": doi,
-        "external_url": get_final_url(doi),
-        "authors": authors,
+        "external_url": external_url
     }
+
+    for i, author in enumerate(extract_creators(item)[:50], 1):
+        data[f"author_{i}"] = author
 
     return data
 
 
-def build_json_structure(filtered_items, volume, issue):
+def build_json_structure(filtered_items):
     pages = []
     sections = {}
 
     for i, item in enumerate(sorted(filtered_items, key=page_sort_key), 1):
         start_page = get_start_page(item.get("page", "")) or "0"
 
-        section_id = [int(volume)]
-        if issue:
-            section_id.append(int(issue))
-
         pages.append({
             "id": i,
             "native": start_page,
-            "section": section_id
         })
 
         sections[str(i)] = build_section_data(item)
@@ -217,6 +390,7 @@ def write_json_safely(data, filename):
         json.dump(data, tmp, ensure_ascii=False, indent=2)
         temp_name = tmp.name
     os.replace(temp_name, filename)
+
 
 def process_folder(folder_name, folder_path):
     if not os.path.isdir(folder_path):
