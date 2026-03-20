@@ -33,7 +33,7 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
     total_pages = ocr_data.get("totalPages", len(entries))
 
     metadata = load_json(metadata_filepath)
-    metadata["articles"] = []
+    # metadata["articles"] = []
 
     start_index = page_offset  # 0-based index for first article page
     article_boundaries = []    # List of page indices where new articles start
@@ -112,11 +112,10 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
 
         print(f"\n  [{i + 1}/{len(article_boundaries)}] Pages: {start_page} - {end_page}")
 
-        # Extract title and authors from first page of article
+        # Extract title and authors from first page of article 
         ocr_text = entries[start_idx].get("ocrText", "")
         extracted, raw = extract_article_fields(ocr_text)
         print(f"    Title: {extracted.get('title', 'N/A')}")
-        print(f"    Authors: {extracted.get('authors', 'N/A')}")
 
         # Extract DOI
         doi_result = extract_article_doi(start_page, end_page, ocr_filepath) 
@@ -131,15 +130,15 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
         })
 
         section = {
-            "page": native_page,
-            "startFile": start_page, 
-            "endFile": end_page, 
-            "title": result.get("title", ""), 
+            # "page": native_page,
+            # "startFile": start_page, 
+            # "endFile": end_page, 
+            "title": extracted.get("title", ""), 
             "citation": "",
             "description": "",
             "doi": doi_result.get("doi", "") if doi_result else "",
             "external_url": external_link or "",
-            "authors": result.get("authors", []) or [] 
+            "authors": extracted.get("authors", []) or [] 
         }
 
         metadata["sections"][str(i + 1)] = section
