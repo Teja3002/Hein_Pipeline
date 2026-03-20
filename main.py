@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 from Combinator.combine_results import combine_folder as combine_folder_results
+from Converter.yml_manager import process_journal as convert_journal_result
 from CrossRef.extract import process_folder
 from Utilities.app_logging import setup_logging
 from Webscraper.databaseScrape import process as process_database_fallback
@@ -160,6 +161,12 @@ def main() -> None:
         logging.info("Starting combinator for folder=%s after OCR wait", folder.name)
         combine_folder_results(folder.name)
         logging.info("Finished combinator for folder=%s", folder.name)
+        logging.info("Starting converter for folder=%s after combinator", folder.name)
+        convert_output_path = convert_journal_result(folder.name)
+        if convert_output_path:
+            logging.info("Finished converter for folder=%s output=%s", folder.name, convert_output_path)
+        else:
+            logging.warning("Converter did not generate output for folder=%s", folder.name)
 
     logging.info("Finished processing %s folder(s)", processed_count)
     print(f"Finished processing {processed_count} folder(s)")

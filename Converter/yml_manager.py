@@ -3,6 +3,7 @@ import json
 import re
 import yaml
 import argparse
+import logging
 from copy import deepcopy
 
 
@@ -10,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "Combinator", "results")
 INPUT_BASE_DIR = os.path.join(PROJECT_ROOT, "Input")
-OUTPUT_DIR = os.path.join(BASE_DIR, "final_yml")
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Output")
 ERROR_FILE = os.path.join(BASE_DIR, "error.txt")
 
 
@@ -409,7 +410,8 @@ def process_one_json(json_filename, keep_probable_matter=False):
         msg = f"[SKIP] structure.yml not found for {journal_name}: {structure_path}"
         print(msg)
         log_error(msg)
-        return
+        logging.warning(msg)
+        return None
 
     try:
         input_json = load_json(json_path)
@@ -423,11 +425,22 @@ def process_one_json(json_filename, keep_probable_matter=False):
 
         save_yaml(output, output_path)
         print(f"[OK] {journal_name} -> {output_path}")
+        logging.info("Converter generated yml for journal=%s output=%s", journal_name, output_path)
+        return output_path
 
     except Exception as e:
         msg = f"[ERROR] {journal_name}: {e}"
         print(msg)
         log_error(msg)
+        logging.exception("Converter failed for journal=%s", journal_name)
+        return None
+
+
+def process_journal(journal_name, keep_probable_matter=False):
+    return process_one_json(
+        json_filename=f"{journal_name}.json",
+        keep_probable_matter=keep_probable_matter,
+    )
 
 
 def main():

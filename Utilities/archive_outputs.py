@@ -19,6 +19,8 @@ TARGET_DIRECTORIES = [
     PROJECT_ROOT / "LLM" / "results",
     PROJECT_ROOT / "Combinator" / "output",
     PROJECT_ROOT / "Combinator" / "results",
+    PROJECT_ROOT / "Converter" / "final_yml",
+    PROJECT_ROOT / "Output",
 ]
 
 
