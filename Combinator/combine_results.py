@@ -216,10 +216,12 @@ def compare_page_records(left, right):
     return False
 
 
-def match_page_group(groups, record):
+def match_page_group(groups, source_name, record):
     for group in groups:
-        for source_name in SOURCE_PRIORITY:
-            candidate = group.get(source_name)
+        if group.get(source_name) is not None:
+            continue
+        for candidate_source in SOURCE_PRIORITY:
+            candidate = group.get(candidate_source)
             if candidate and compare_page_records(candidate, record):
                 return group
     return None
@@ -230,7 +232,7 @@ def merge_page_groups(payloads):
 
     for source_name in SOURCE_PRIORITY:
         for page_record in source_pages(payloads[source_name]):
-            group = match_page_group(groups, page_record)
+            group = match_page_group(groups, source_name, page_record)
             if group is None:
                 group = empty_page_group()
                 groups.append(group)
@@ -239,10 +241,12 @@ def merge_page_groups(payloads):
     return groups
 
 
-def match_group(groups, record):
+def match_group(groups, source_name, record):
     for group in groups:
-        for source_name in SOURCE_PRIORITY:
-            candidate = group.get(source_name)
+        if group.get(source_name) is not None:
+            continue
+        for candidate_source in SOURCE_PRIORITY:
+            candidate = group.get(candidate_source)
             if candidate and compare_section_records(candidate, record):
                 return group
     return None
@@ -254,7 +258,7 @@ def merge_groups(payloads):
     for source_name in SOURCE_PRIORITY:
         for section_record in source_sections(payloads[source_name]):
             record = section_record["data"]
-            group = match_group(groups, record)
+            group = match_group(groups, source_name, record)
             if group is None:
                 group = empty_group()
                 groups.append(group)
