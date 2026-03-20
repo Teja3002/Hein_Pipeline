@@ -61,20 +61,26 @@ def run_ocr_pipeline(base_folder):
     # Get Page who has ToC: If not then return None 
     toc_pages = get_toc_pages(toc_results) 
 
+    isCalculated = False
+
     # Extracting Articles List from TOC pages: If toc_pages is None or empty, it will skip this step and return None
     if toc_pages: 
         print(f"\nTOC found on page(s): {toc_pages}") 
 
         # Parse True if you want to use LLM for article extraction, False for regex-based extraction
         articles = extract_toc_articles(ocr_filepath, toc_pages, base_folder, useLLM = True)   
-        print(json.dumps(articles, indent=4))    
+        print(json.dumps(articles, indent=4))  
 
         # Use Page offset to extract article data from the correct pages. 
-        process_articles(articles, page_offset, ocr_filepath, metadata_filepath)   
-    else:
-        print(f"\n⚠ No TOC page found.")  
+        if articles:
+            process_articles(articles, page_offset, ocr_filepath, metadata_filepath)   
+            isCalculated = True
+    
+    if not isCalculated:
+        print(f"\n⚠ No articles extracted from TOC. Falling back to sequential scan...")
         scan_articles(page_offset, ocr_filepath, metadata_filepath) 
 
+    
     elapsed = round(time.time() - start, 2)
     print(f"\nTotal OCR Pipeline Time: {elapsed}s --- Model Name: {model_name}") 
 
