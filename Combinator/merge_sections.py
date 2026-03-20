@@ -224,6 +224,31 @@ def _find_original_key(sections, target_section):
             return key
     return None
 
+def deduplicate_unmatched(sections, threshold=0.85):
+    """Removes duplicates within unmatched sections."""
+    unique = []
+
+    for section in sections:
+        title = (section.get("title") or "").strip()
+        if not title:
+            continue
+
+        is_duplicate = False
+        for existing in unique:
+            existing_title = (existing.get("title") or "").strip()
+            score = similarity(title, existing_title)
+            contains = (title.lower() in existing_title.lower()) or (existing_title.lower() in title.lower())
+
+            if score >= threshold or contains:
+                is_duplicate = True
+                print(f"      ✗ Duplicate removed: \"{title[:50]}...\"")
+                break
+
+        if not is_duplicate:
+            unique.append(section)
+
+    return unique
+
 
 def merge_sections(sources):
     crossref_sections = sources.get("crossref", {}).get("sections", {})
@@ -261,39 +286,24 @@ def merge_sections(sources):
         unmatched_llm = match_unmatched_by_title(merged, unmatched_llm, "llm")
         print(f"    Unmatched llm after title: {len(unmatched_llm)}")
 
-    # Step 6: Add truly unmatched (with valid titles only)
-    next_key = len(merged) + 1
-    for section in unmatched_webscraper + unmatched_llm:
-        title = section.get("title") or ""
-        if title:
-            merged[str(next_key)] = section
-            print(f"      + New section: \"{title[:50]}...\"")
-            next_key += 1
+    # Step 6: Deduplicate, add unmatched, and track their origin
+    unmatched_all = deduplicate_unmatched(unmatched_webscraper + unmatched_llm)
 
-    print(f"\n    Final merged sections: {len(merged)}")
-
-    # return merged
-
-    # Track which source/key unmatched sections came from
     unmatched_map = {}
-
     next_key = len(merged) + 1
-    for section in unmatched_webscraper:
+
+    for section in unmatched_all:
         title = (section.get("title") or "").strip()
         if title:
-            # Find original key from webscraper
             original_key = _find_original_key(webscraper_sections, section)
+            source = "webscraper"
+            if not original_key:
+                original_key = _find_original_key(llm_sections, section)
+                source = "llm"
+
             merged[str(next_key)] = section
-            unmatched_map[str(next_key)] = ("webscraper", original_key)
-            print(f"      + New section: \"{title[:50]}...\"")
-            next_key += 1
-    for section in unmatched_llm:
-        title = (section.get("title") or "").strip()
-        if title:
-            original_key = _find_original_key(llm_sections, section)
-            merged[str(next_key)] = section
-            unmatched_map[str(next_key)] = ("llm", original_key)
-            print(f"      + New section: \"{title[:50]}...\"")
+            unmatched_map[str(next_key)] = (source, original_key)
+            print(f"      + New section: \"{title[:50]}...\" ({source})")
             next_key += 1
 
     print(f"\n    Final merged sections: {len(merged)}")

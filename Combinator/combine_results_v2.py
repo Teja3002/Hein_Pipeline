@@ -227,8 +227,6 @@ def combine_folder(folder_name):
     print("\n  Merging pages...")
     combined_data["pages"] = merge_pages(sources, merged_sections, unmatched_map)
 
-    # Merge Pages 
-
 
     # Combine logic ENDS
 
