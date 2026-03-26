@@ -126,16 +126,18 @@ def compare_structural(run1: dict, run2: dict) -> dict:
         sc2 = s2.get("summary", {}).get(f"{sec_type}_score", 0.0)
         result[f"{sec_type}_score"] = {"run1": sc1, "run2": sc2, "delta": round(sc2 - sc1, 2)}
 
-    # Issue field detail
-    issue_fields = ["type", "date", "citation", "description", "insection", "subject", "countries"]
+    # Issue field detail — only active fields
+    issue_fields = ["type", "date", "description"]
+    # removed: "citation", "insection", "subject", "countries"
     result["issue_fields"] = {}
     for f in issue_fields:
         v1 = s1.get("issue", {}).get(f, {}).get("score", 0.0) if isinstance(s1.get("issue", {}).get(f), dict) else 0.0
         v2 = s2.get("issue", {}).get(f, {}).get("score", 0.0) if isinstance(s2.get("issue", {}).get(f), dict) else 0.0
         result["issue_fields"][f] = {"run1": v1, "run2": v2, "delta": round(v2 - v1, 2)}
 
-    # Contents field detail
-    contents_fields = ["type", "title", "citation", "description", "insection"]
+    # Contents field detail — only active fields
+    contents_fields = ["type", "description"]
+    # removed: "title", "citation", "insection"
     result["contents_fields"] = {}
     for f in contents_fields:
         v1 = s1.get("contents", {}).get(f, {}).get("score", 0.0) if isinstance(s1.get("contents", {}).get(f), dict) else 0.0
@@ -307,20 +309,8 @@ def print_compare_report(run1: dict, run2: dict,
     ▼ REGRESSED  — score decreased by 5+ points
 """)
 
-    # ── Overall ──
-    print("── Overall Scores ────────────────────────────────────\n")
-    labels = {
-        "overall_score": "Overall",
-        "section_score": "Section",
-        "page_score":    "Page",
-        "general_score": "General",
-    }
-    for key, label in labels.items():
-        o = overall[key]
-        print(f"  {label:<10}  {o['run1']:>6.2f} → {o['run2']:>6.2f}   {delta_tag(o['delta'])}")
-
     # ── General ──
-    print("\n── General Score Detail ──────────────────────────────\n")
+    print("── General Score Detail ──────────────────────────────\n")
     for field, data in general.items():
         tag = section_tag(data["delta"])
         changed = "" if abs(data["delta"]) < THRESHOLD_NOISE else f"  (candidate: '{data['run1_value']}' → '{data['run2_value']}')"
@@ -332,12 +322,12 @@ def print_compare_report(run1: dict, run2: dict,
         d = structural[f"{sec}_score"]
         print(f"  {sec:<10}  {d['run1']:>6.2f} → {d['run2']:>6.2f}   {delta_tag(d['delta'])}")
 
-    print("\n  Issue fields:")
+    print("\n  Issue fields:  (type, date, description)")
     for field, d in structural["issue_fields"].items():
         tag = section_tag(d["delta"])
         print(f"    {field:<14} {d['run1']:>6.1f} → {d['run2']:>6.1f}  {tag}")
 
-    print("\n  Contents fields:")
+    print("\n  Contents fields:  (type, description)")
     for field, d in structural["contents_fields"].items():
         tag = section_tag(d["delta"])
         print(f"    {field:<14} {d['run1']:>6.1f} → {d['run2']:>6.1f}  {tag}")
@@ -458,6 +448,18 @@ def print_compare_report(run1: dict, run2: dict,
         print("  Verdict: ▽ Minor regression")
     else:
         print("  Verdict: → No meaningful change")
+
+    # ── Overall Scores — at the bottom so it's seen last ──
+    print("\n── Overall Scores ────────────────────────────────────\n")
+    labels = {
+        "overall_score": "Overall",
+        "section_score": "Section",
+        "page_score":    "Page",
+        "general_score": "General",
+    }
+    for key, label in labels.items():
+        o = overall[key]
+        print(f"  {label:<10}  {o['run1']:>6.2f} → {o['run2']:>6.2f}   {delta_tag(o['delta'])}")
 
     print("\n══════════════════════════════════════════════════════\n")
 

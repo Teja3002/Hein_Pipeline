@@ -1,7 +1,12 @@
 import os
+import sys
 import json
 from pathlib import Path
 from difflib import SequenceMatcher
+
+# Allow running this file directly during testing
+if __name__ == "__main__":
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from Combinator.merge_sections import merge_sections
 
@@ -103,6 +108,7 @@ def merge_metadata(sources):
         "journalName": "", 
         "title": "",
         "volume": "",
+        "issue": "",
         "date": "",
         "TOC": False
     }
@@ -214,6 +220,7 @@ def combine_folder(folder_name):
     combined_data["journalName"] = metadata["journalName"]
     combined_data["title"] = metadata["title"]
     combined_data["volume"] = metadata["volume"]
+    combined_data["issue"] = metadata["issue"] 
     combined_data["date"] = metadata["date"]
     combined_data["TOC"] = metadata["TOC"] 
 
@@ -242,15 +249,15 @@ def combine_folder(folder_name):
 
 
 if __name__ == "__main__":
-    # combine_folder("ajil0120no1") 
+    combine_folder("ajil0120no1") 
 
-    journals = [
-        "ajil0120no1",
-        "direlaw0021",
-        "gvnanlj0039no1",
-        "ecomflr0022no5-6",
-        "cllpj0045no4"
-    ]
+    # journals = [
+    #     "ajil0120no1",
+    #     "direlaw0021",
+    #     "gvnanlj0039no1",
+    #     "ecomflr0022no5-6",
+    #     "cllpj0045no4"
+    # ]
 
-    for journal in journals:
-        combine_folder(journal)
+    # for journal in journals:
+    #     combine_folder(journal)
