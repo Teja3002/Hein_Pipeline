@@ -1,0 +1,931 @@
+{
+    "meta": {
+        "folder": "ajil0120no1",
+        "run1_ts": "20260326_041601",
+        "run2_ts": "20260326_044030",
+        "generated": "20260326_044740"
+    },
+    "overall": {
+        "overall_score": {
+            "run1": 84.13,
+            "run2": 84.13,
+            "delta": 0.0
+        },
+        "section_score": {
+            "run1": 79.94,
+            "run2": 79.94,
+            "delta": 0.0
+        },
+        "page_score": {
+            "run1": 98.38,
+            "run2": 98.38,
+            "delta": 0.0
+        },
+        "general_score": {
+            "run1": 85.0,
+            "run2": 85.0,
+            "delta": 0.0
+        }
+    },
+    "general": {
+        "title": {
+            "run1": 100.0,
+            "run2": 100.0,
+            "delta": 0.0,
+            "run1_value": "American Journal of International Law",
+            "run2_value": "American Journal of International Law",
+            "gt_value": "American Journal of International Law"
+        },
+        "identifier": {
+            "run1": 100.0,
+            "run2": 100.0,
+            "delta": 0.0,
+            "run1_value": "Am. J. Int'l L.",
+            "run2_value": "Am. J. Int'l L.",
+            "gt_value": "Am. J. Int'l L."
+        },
+        "max": {
+            "run1": 100.0,
+            "run2": 100.0,
+            "delta": 0.0,
+            "run1_value": 296,
+            "run2_value": 296,
+            "gt_value": 296
+        },
+        "type": {
+            "run1": 100.0,
+            "run2": 100.0,
+            "delta": 0.0,
+            "run1_value": "default",
+            "run2_value": "default",
+            "gt_value": "default"
+        },
+        "series": {
+            "run1": 0.0,
+            "run2": 0.0,
+            "delta": 0.0,
+            "run1_value": null,
+            "run2_value": null,
+            "gt_value": 120
+        }
+    },
+    "structural": {
+        "volume_score": {
+            "run1": 100.0,
+            "run2": 100.0,
+            "delta": 0.0
+        },
+        "issue_score": {
+            "run1": 70.0,
+            "run2": 70.0,
+            "delta": 0.0
+        },
+        "contents_score": {
+            "run1": 40.0,
+            "run2": 40.0,
+            "delta": 0.0
+        },
+        "issue_fields": {
+            "type": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            },
+            "date": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            },
+            "citation": {
+                "run1": 0.0,
+                "run2": 0.0,
+                "delta": 0.0
+            },
+            "description": {
+                "run1": 0.0,
+                "run2": 0.0,
+                "delta": 0.0
+            },
+            "insection": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            },
+            "subject": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            },
+            "countries": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            }
+        },
+        "contents_fields": {
+            "type": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            },
+            "title": {
+                "run1": 0.0,
+                "run2": 0.0,
+                "delta": 0.0
+            },
+            "citation": {
+                "run1": 0.0,
+                "run2": 0.0,
+                "delta": 0.0
+            },
+            "description": {
+                "run1": 0.0,
+                "run2": 0.0,
+                "delta": 0.0
+            },
+            "insection": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            }
+        }
+    },
+    "articles": {
+        "summary": {
+            "section_score": {
+                "run1": 81.04,
+                "run2": 81.04,
+                "delta": 0.0
+            },
+            "matched_score": {
+                "run1": 81.04,
+                "run2": 81.04,
+                "delta": 0.0
+            },
+            "matched_count": {
+                "run1": 18,
+                "run2": 18,
+                "delta": 0
+            },
+            "unmatched_count": {
+                "run1": 0,
+                "run2": 0,
+                "delta": 0
+            },
+            "phantom_count": {
+                "run1": 0,
+                "run2": 0,
+                "delta": 0
+            }
+        },
+        "per_article": [
+            {
+                "key": "10.1017/ajil.2025.10134",
+                "title": "From Necropolitics to Piety: TWAIL and the \"Other\" Subject of Human Rights",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10142",
+                "title": "China, Anti-Hegemonism, and the Scope for International Law to Facilitate Peaceful Power Transitions",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10130",
+                "title": "Colonialism and Decolonization on a World Scale - Three Perspectives",
+                "match_type": "doi",
+                "run1_score": 58.96,
+                "run2_score": 58.96,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 97.0,
+                        "run2": 97.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10132",
+                "title": "Is Another World Possible?",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10125",
+                "title": "Silicon Sovereigns: Artificial Intelligence, International Law, and the Tech-Industrial Complex",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10137",
+                "title": "The International Law Commission's Seventy-Sixth (2025) Session: The Negative Impact of the United Nations' Fiscal Crisis on the Codification and Progressive Development of International Law",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10127",
+                "title": "Whoever Rules the Waves Rules the World: Sea Power and the Law of the Sea",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10143",
+                "title": "Secretary of State Rubio Denies and Revokes Visas for Palestinian Delegation Invited to Attend UN General Assembly Meetings",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10140",
+                "title": "Junefield Gold Investments Limited v. the Republic of Ecuador. PCA Case No. 2023-35",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10133",
+                "title": "The Rise and Fall of Lauterpacht's Function of Law",
+                "match_type": "doi",
+                "run1_score": 68.33,
+                "run2_score": 68.33,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 33.3,
+                        "run2": 33.3,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10146",
+                "title": "Introduction to Special Issue",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10139",
+                "title": "Pax Economica and Its Discontents",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10138",
+                "title": "Modern Slavery in Furukwa. Case No. 1072-21-JP/24",
+                "match_type": "doi",
+                "run1_score": 84.65,
+                "run2_score": 84.65,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 99.0,
+                        "run2": 99.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10129",
+                "title": "The Scourge of War",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10126",
+                "title": "Dystopian International Law",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10144",
+                "title": "Semenya v. Switzerland. Application No. 10934/21. Judgment",
+                "match_type": "doi",
+                "run1_score": 81.7,
+                "run2_score": 81.7,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 90.6,
+                        "run2": 90.6,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10145",
+                "title": "The U.s. Military Targets and Destroys Alleged Narcotics Trafficking Vessels in the Southern Caribbean Sea and Eastern Pacific Ocean, Killing Nearly All of Their Crew",
+                "match_type": "doi",
+                "run1_score": 60.0,
+                "run2_score": 60.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            },
+            {
+                "key": "10.1017/ajil.2025.10141",
+                "title": "On the Stories We Tell",
+                "match_type": "doi",
+                "run1_score": 85.0,
+                "run2_score": 85.0,
+                "delta": 0.0,
+                "fields": {
+                    "title": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "creator": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "doi": {
+                        "run1": 100.0,
+                        "run2": 100.0,
+                        "delta": 0.0
+                    },
+                    "external_url": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    },
+                    "type": {
+                        "run1": 0.0,
+                        "run2": 0.0,
+                        "delta": 0.0
+                    }
+                },
+                "order_match": {
+                    "run1": true,
+                    "run2": true
+                }
+            }
+        ],
+        "new_matches": [],
+        "lost_matches": [],
+        "new_phantoms": [],
+        "resolved_phantoms": []
+    },
+    "pages": {
+        "summary": {
+            "page_score": {
+                "run1": 98.38,
+                "run2": 98.38,
+                "delta": 0.0
+            },
+            "avg_matched_score": {
+                "run1": 98.38,
+                "run2": 98.38,
+                "delta": 0.0
+            },
+            "native_match_rate": {
+                "run1": 100.0,
+                "run2": 100.0,
+                "delta": 0.0
+            },
+            "section_match_rate": {
+                "run1": 96.6,
+                "run2": 96.6,
+                "delta": 0.0
+            },
+            "chain_length_match_rate": {
+                "run1": 99.0,
+                "run2": 99.0,
+                "delta": 0.0
+            },
+            "missing_count": {
+                "run1": 0,
+                "run2": 0,
+                "delta": 0
+            },
+            "phantom_count": {
+                "run1": 0,
+                "run2": 0,
+                "delta": 0
+            }
+        },
+        "flipped_correct": [],
+        "flipped_wrong": []
+    }
+}
