@@ -18,7 +18,7 @@ def create_metadata_json(base_folder):
         "date": "",
         "title": "",
         "TOC": False, 
-        # "issue_number": "",
+        "issue": "",
         # "issn": "",
         # "eissn": "", 
         # "articles": [] 

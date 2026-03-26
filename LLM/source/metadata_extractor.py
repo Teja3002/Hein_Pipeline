@@ -23,7 +23,8 @@ from source.verifier.verify_eissn import verify_eissn
 FIELD_DESCRIPTIONS = {
     "volume": 'The volume number (e.g. "89")',
     "date": 'The publication date (e.g. "January 2026")',
-    "title": 'The full journal title (e.g. "The Modern Law Review")' 
+    "title": 'The full journal title (e.g. "The Modern Law Review")', 
+    "issue": 'The issue number (e.g. "1")' 
 }
 
 # Verifier for each field
@@ -31,7 +32,7 @@ FIELD_VERIFIERS = {
     "volume": verify_volume,
     "date": verify_date,
     "title": verify_title,
-    "issue_number": verify_issue,
+    "issue": verify_issue,
     "issn": verify_issn,
     "eissn": verify_eissn,
 }
