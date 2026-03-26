@@ -21,6 +21,9 @@ env/
 # Jornal Folder 
 Input/
 
+# Evaluation Folder 
+Evaluation/
+
 # Temp files (generated at runtime)
 results/
 results_old/ 
