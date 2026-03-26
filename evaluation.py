@@ -53,6 +53,13 @@ def run_general(candidate: dict, ground_truth: dict) -> tuple[dict, dict]:
 
 def run_sections(candidate: dict, ground_truth: dict) -> tuple[dict, dict]:
     score_result, comparison_json = score_sections(candidate, ground_truth)
+
+    # Expose individual structural scores for the overall summary
+    structural_summary = comparison_json.get("structural", {}).get("summary", {})
+    score_result["volume_score"]   = structural_summary.get("volume_score", 0.0)
+    score_result["issue_score"]    = structural_summary.get("issue_score", 0.0)
+    score_result["contents_score"] = structural_summary.get("contents_score", 0.0)
+
     print_section_report(score_result, comparison_json)
     return score_result, comparison_json
 
@@ -83,10 +90,14 @@ def run_overall(result_general: dict, score_result: dict, score_result_pages: di
     Page Score     — 20%  (page-to-article assignment, native labels)
     General Score  — 10%  (journal title, identifier, max, type, series)
 """)
-    print(f"  Section Score  (70%):   {score_result['section_score']:>6.2f} / 100")
-    print(f"  Page Score     (20%):   {score_result_pages['page_score']:>6.2f} / 100")
-    print(f"  General Score  (10%):   {result_general['general_score']:>6.2f} / 100")
-    print(f"\n  OVERALL SCORE:          {overall_score:>6.2f} / 100")
+    print(f"  Section Score  (70%):    {score_result['section_score']:>6.2f} / 100")
+    print(f"    ├─ Volume Score   (3.33%): {score_result['volume_score']:>6.2f} / 100")
+    print(f"    ├─ Issue Score    (3.33%): {score_result['issue_score']:>6.2f} / 100")
+    print(f"    ├─ TOC Score      (3.34%): {score_result['contents_score']:>6.2f} / 100") 
+    print(f"    └─ Articles Score(90%): {score_result['articles_score']:>6.2f} / 100")
+    print(f"  Page Score     (20%):    {score_result_pages['page_score']:>6.2f} / 100")
+    print(f"  General Score  (10%):    {result_general['general_score']:>6.2f} / 100")
+    print(f"\n  OVERALL SCORE:           {overall_score:>6.2f} / 100")
     print("══════════════════════════════════════════════════════\n")
 
     return overall_score
@@ -148,11 +159,14 @@ def save_report(folder_name: str, datetime_str: str, eval_dir: Path,
     Page Score     — 20%  (page-to-article assignment, native labels)
     General Score  — 10%  (journal title, identifier, max, type, series)
 """)
-    print(f"  Section Score  (70%):   {score_result['section_score']:>6.2f} / 100")
-    print(f"  Page Score     (20%):   {score_result_pages['page_score']:>6.2f} / 100")
-    print(f"  General Score  (10%):   {result_general['general_score']:>6.2f} / 100")
-    print(f"\n  OVERALL SCORE:          {overall_score:>6.2f} / 100")
-    print("══════════════════════════════════════════════════════\n")
+    print(f"  Section Score  (70%):    {score_result['section_score']:>6.2f} / 100")
+    print(f"    ├─ Volume Score   (3.33%): {score_result['volume_score']:>6.2f} / 100")
+    print(f"    ├─ Issue Score    (3.33%): {score_result['issue_score']:>6.2f} / 100")
+    print(f"    ├─ TOC Score      (3.34%): {score_result['contents_score']:>6.2f} / 100")
+    print(f"    └─ Articles Score(90%): {score_result['articles_score']:>6.2f} / 100")
+    print(f"  Page Score     (20%):    {score_result_pages['page_score']:>6.2f} / 100")
+    print(f"  General Score  (10%):    {result_general['general_score']:>6.2f} / 100")
+    print(f"\n  OVERALL SCORE:           {overall_score:>6.2f} / 100")
 
     sys.stdout = old_stdout
     report_text = buffer.getvalue()
