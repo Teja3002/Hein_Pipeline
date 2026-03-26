@@ -197,7 +197,7 @@ def build_toc_section(issue_section_id):
         "country_code": " ",
         "creator": [],
         "date": "",
-        "description": "",
+        "description": "Table of Contents",
         "docket_num": "",
         "doi": "",
         "external_url": "",
@@ -208,7 +208,7 @@ def build_toc_section(issue_section_id):
         "release_date_weekly": "",
         "section_num": "",
         "subject": [],
-        "title": "Table of Content",
+        "title": "",
         "title_num": "",
         "treaty_noc": "",
         "type": "contents",
@@ -525,6 +525,8 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
 
     output["sections"] = dict(sorted(new_sections.items(), key=lambda kv: int(kv[0])))
     output["pages"] = new_pages
+
+    output["series"] = normalize_text(input_json.get("volume", ""))
     output["title"] = normalize_text(input_json.get("title", output.get("title", "")))
     output["type"] = "default"
 
