@@ -1,6 +1,6 @@
 import json
 from difflib import SequenceMatcher
-from evaluation_structural import score_structural, print_structural_report
+from EvaluationScript.evaluation_structural import score_structural, print_structural_report
 
 
 # ── constants ─────────────────────────────────────────────────────────────────

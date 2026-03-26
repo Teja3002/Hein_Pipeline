@@ -6,9 +6,9 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
-from evaluation_general import score_general
-from evaluation_section import score_sections, print_section_report
-from evaluation_page import score_pages, print_page_report
+from EvaluationScript.evaluation_general import score_general
+from EvaluationScript.evaluation_section import score_sections, print_section_report
+from EvaluationScript.evaluation_page import score_pages, print_page_report
 
 
 # ── file loading ──────────────────────────────────────────────────────────────
