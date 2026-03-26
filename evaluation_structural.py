@@ -91,27 +91,27 @@ def score_issue(gt_sec: dict, cand_sec: dict | None) -> tuple[dict, dict]:
     if cand_sec is None:
         return {"score": 0.0, "fields": {}}, {"present": False, "score": 0.0}
 
-    subject_score,   subject_detail   = set_overlap_score(gt_sec.get("subject", []),   cand_sec.get("subject", []))
-    countries_score, countries_detail = set_overlap_score(gt_sec.get("countries", []), cand_sec.get("countries", []))
+    # subject_score,   subject_detail   = set_overlap_score(gt_sec.get("subject", []),   cand_sec.get("subject", []))
+    # countries_score, countries_detail = set_overlap_score(gt_sec.get("countries", []), cand_sec.get("countries", []))
 
     fields = {
-        "type":        exact_score(gt_sec.get("type", ""),           cand_sec.get("type", "")),
-        "date":        fuzzy_score(gt_sec.get("date", ""),           cand_sec.get("date", "")),
-        "citation":    fuzzy_score(gt_sec.get("citation", ""),       cand_sec.get("citation", "")),
-        "description": fuzzy_score(gt_sec.get("description", ""),    cand_sec.get("description", "")),
-        "insection":   exact_score(str(gt_sec.get("insection", "")), str(cand_sec.get("insection", ""))),
-        "subject":     subject_score,
-        "countries":   countries_score,
+        "type":        exact_score(gt_sec.get("type", ""),          cand_sec.get("type", "")),
+        "date":        fuzzy_score(gt_sec.get("date", ""),          cand_sec.get("date", "")),
+        # "citation":    fuzzy_score(gt_sec.get("citation", ""),       cand_sec.get("citation", "")),
+        "description": fuzzy_score(gt_sec.get("description", ""),   cand_sec.get("description", "")),
+        # "insection":   exact_score(str(gt_sec.get("insection", "")), str(cand_sec.get("insection", ""))),
+        # "subject":     subject_score,
+        # "countries":   countries_score,
     }
 
     weights = {
-        "type":        0.20,
-        "date":        0.30,
-        "citation":    0.15,
-        "description": 0.15,
-        "insection":   0.05,
-        "subject":     0.08,
-        "countries":   0.07,
+        "type":        0.30,
+        "date":        0.40,
+        # "citation":    0.15,
+        "description": 0.30,
+        # "insection":   0.05,
+        # "subject":     0.08,
+        # "countries":   0.07,
     }
 
     score = sum(fields[f] * weights[f] for f in weights) * 100
@@ -121,25 +121,25 @@ def score_issue(gt_sec: dict, cand_sec: dict | None) -> tuple[dict, dict]:
         "score":       round(score, 2),
         "type":        {"gt": gt_sec.get("type", ""),        "candidate": cand_sec.get("type", ""),        "score": round(fields["type"] * 100, 1)},
         "date":        {"gt": gt_sec.get("date", ""),        "candidate": cand_sec.get("date", ""),        "score": round(fields["date"] * 100, 1)},
-        "citation":    {"gt": gt_sec.get("citation", ""),    "candidate": cand_sec.get("citation", ""),    "score": round(fields["citation"] * 100, 1)},
+        # "citation":    {"gt": gt_sec.get("citation", ""),    "candidate": cand_sec.get("citation", ""),    "score": round(fields["citation"] * 100, 1)},
         "description": {"gt": gt_sec.get("description", ""), "candidate": cand_sec.get("description", ""), "score": round(fields["description"] * 100, 1)},
-        "insection":   {"gt": gt_sec.get("insection", ""),   "candidate": cand_sec.get("insection", ""),   "score": round(fields["insection"] * 100, 1)},
-        "subject": {
-            "gt":             gt_sec.get("subject", []),
-            "candidate":      cand_sec.get("subject", []),
-            "score":          round(subject_score * 100, 1),
-            "gt_count":       subject_detail["gt_count"],
-            "candidate_count": subject_detail["candidate_count"],
-            "count_match":    subject_detail["count_match"],
-        },
-        "countries": {
-            "gt":             gt_sec.get("countries", []),
-            "candidate":      cand_sec.get("countries", []),
-            "score":          round(countries_score * 100, 1),
-            "gt_count":       countries_detail["gt_count"],
-            "candidate_count": countries_detail["candidate_count"],
-            "count_match":    countries_detail["count_match"],
-        },
+        # "insection":   {"gt": gt_sec.get("insection", ""),   "candidate": cand_sec.get("insection", ""),   "score": round(fields["insection"] * 100, 1)},
+        # "subject": {
+        #     "gt":              gt_sec.get("subject", []),
+        #     "candidate":       cand_sec.get("subject", []),
+        #     "score":           round(subject_score * 100, 1),
+        #     "gt_count":        subject_detail["gt_count"],
+        #     "candidate_count": subject_detail["candidate_count"],
+        #     "count_match":     subject_detail["count_match"],
+        # },
+        # "countries": {
+        #     "gt":              gt_sec.get("countries", []),
+        #     "candidate":       cand_sec.get("countries", []),
+        #     "score":           round(countries_score * 100, 1),
+        #     "gt_count":        countries_detail["gt_count"],
+        #     "candidate_count": countries_detail["candidate_count"],
+        #     "count_match":     countries_detail["count_match"],
+        # },
     }
 
     return {"score": round(score, 2), "fields": fields}, detail
@@ -162,19 +162,19 @@ def score_contents(gt_sec: dict | None, cand_sec: dict | None) -> tuple[dict, di
         }
 
     fields = {
-        "type":        exact_score(gt_sec.get("type", ""),           cand_sec.get("type", "")),
-        "title":       fuzzy_score(gt_sec.get("title", ""),          cand_sec.get("title", "")),
-        "citation":    fuzzy_score(gt_sec.get("citation", ""),       cand_sec.get("citation", "")),
-        "description": fuzzy_score(gt_sec.get("description", ""),    cand_sec.get("description", "")),
-        "insection":   exact_score(str(gt_sec.get("insection", "")), str(cand_sec.get("insection", ""))),
+        "type":        exact_score(gt_sec.get("type", ""),          cand_sec.get("type", "")),
+        # "title":       fuzzy_score(gt_sec.get("title", ""),          cand_sec.get("title", "")),
+        # "citation":    fuzzy_score(gt_sec.get("citation", ""),       cand_sec.get("citation", "")),
+        "description": fuzzy_score(gt_sec.get("description", ""),   cand_sec.get("description", "")),
+        # "insection":   exact_score(str(gt_sec.get("insection", "")), str(cand_sec.get("insection", ""))),
     }
 
     weights = {
-        "type":        0.30,
-        "title":       0.25,
-        "citation":    0.20,
-        "description": 0.15,
-        "insection":   0.10,
+        "type":        0.50,
+        # "title":       0.25,
+        # "citation":    0.20,
+        "description": 0.50,
+        # "insection":   0.10,
     }
 
     score = sum(fields[f] * weights[f] for f in weights) * 100
@@ -183,10 +183,10 @@ def score_contents(gt_sec: dict | None, cand_sec: dict | None) -> tuple[dict, di
         "present": True, "expected": True,
         "score":       round(score, 2),
         "type":        {"gt": gt_sec.get("type", ""),        "candidate": cand_sec.get("type", ""),        "score": round(fields["type"] * 100, 1)},
-        "title":       {"gt": gt_sec.get("title", ""),       "candidate": cand_sec.get("title", ""),       "score": round(fields["title"] * 100, 1)},
-        "citation":    {"gt": gt_sec.get("citation", ""),    "candidate": cand_sec.get("citation", ""),    "score": round(fields["citation"] * 100, 1)},
+        # "title":       {"gt": gt_sec.get("title", ""),       "candidate": cand_sec.get("title", ""),       "score": round(fields["title"] * 100, 1)},
+        # "citation":    {"gt": gt_sec.get("citation", ""),    "candidate": cand_sec.get("citation", ""),    "score": round(fields["citation"] * 100, 1)},
         "description": {"gt": gt_sec.get("description", ""), "candidate": cand_sec.get("description", ""), "score": round(fields["description"] * 100, 1)},
-        "insection":   {"gt": gt_sec.get("insection", ""),   "candidate": cand_sec.get("insection", ""),   "score": round(fields["insection"] * 100, 1)},
+        # "insection":   {"gt": gt_sec.get("insection", ""),   "candidate": cand_sec.get("insection", ""),   "score": round(fields["insection"] * 100, 1)},
     }
 
     return {"score": round(score, 2), "fields": fields}, detail
@@ -242,18 +242,12 @@ def print_structural_report(score_result: dict, comparison_json: dict) -> None:
   metadata rather than article content.
 
   volume   — identifies this as a volume-level container
-  issue    — holds the issue date, citation, description, subject, and countries
+  issue    — holds the issue date and description
   contents — the Table of Contents section (may not always exist)
 """)
 
     def tag(score):
         return "✓" if score == 100.0 else "~" if score > 0 else "✗"
-
-    def count_tag(detail):
-        """Returns a count mismatch warning if counts differ."""
-        if not detail.get("count_match", True):
-            return f"  ⚠ count mismatch: gt={detail['gt_count']}  candidate={detail['candidate_count']}"
-        return f"  count: {detail.get('gt_count', '?')} entries — match"
 
     # Volume
     print("── Volume ────────────────────────────────────────────")
@@ -269,16 +263,11 @@ def print_structural_report(score_result: dict, comparison_json: dict) -> None:
     iss = comparison_json["issue"]
     print(f"  {'✓ present' if iss.get('present') else '✗ missing'}")
     if iss.get("present"):
-        for field in ["type", "date", "citation", "description", "insection"]:
+        for field in ["type", "date", "description"]:
+            # "citation", "insection", "subject", "countries" removed
             if field in iss:
                 f = iss[field]
                 print(f"  {field:<12}  {tag(f['score'])}  gt='{f['gt']}'  candidate='{f['candidate']}'  score={f['score']}")
-        # subject and countries with count info
-        for field in ["subject", "countries"]:
-            if field in iss:
-                f = iss[field]
-                print(f"  {field:<12}  {tag(f['score'])}  score={f['score']}")
-                print(f"  {count_tag(f)}")
     print(f"  Score: {score_result['issue_score']:>6.2f} / 100")
 
     # Contents
@@ -291,7 +280,8 @@ def print_structural_report(score_result: dict, comparison_json: dict) -> None:
     elif con.get("expected") and not con.get("present"):
         print("  ✗ GT expects TOC but candidate is missing it")
     else:
-        for field in ["type", "title", "citation", "description", "insection"]:
+        for field in ["type", "description"]:
+            # "title", "citation", "insection" removed
             if field in con:
                 f = con[field]
                 print(f"  {field:<12}  {tag(f['score'])}  gt='{f['gt']}'  candidate='{f['candidate']}'  score={f['score']}")
@@ -330,7 +320,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Structural Section Evaluator")
-    parser.add_argument("output_yml", help="Path to Output/<name>.yml")
+    parser.add_argument("output_yml", help="Path to Output/<n>.yml")
     args = parser.parse_args()
 
     candidate, ground_truth = _load_pair(args.output_yml)
