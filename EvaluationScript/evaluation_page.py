@@ -18,13 +18,16 @@ def exact_score(a, b) -> float:
 
 def build_section_title_map(yml: dict) -> dict:
     """
-    Returns {section_id_str: title} for all sections that have a title.
+    Returns {section_id_str: title} for all sections.
+    Falls back to description if title is empty.
     """
     mapping = {}
     for sec_id, sec_data in yml.get("sections", {}).items():
         title = (sec_data.get("title") or "").strip()
+        if not title:
+            title = (sec_data.get("description") or "").strip()
         if title:
-            mapping[str(sec_id)] = title
+            mapping[str(sec_id)] = title 
     return mapping
 
 
