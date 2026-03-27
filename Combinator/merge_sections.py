@@ -1,4 +1,5 @@
 from difflib import SequenceMatcher
+from unidecode import unidecode 
 
 SOURCE_PRIORITY = ["crossref", "webscraper", "llm"]
 
@@ -9,6 +10,15 @@ def similarity(a, b):
     if not a or not b:
         return 0.0
     return SequenceMatcher(None, a.lower().strip(), b.lower().strip()).ratio()
+
+# Refine text
+# >>> unidecode('kožušček')
+# 'kozuscek'
+def refine_text(text: str) -> str:
+    """Converts unicode/accented characters to plain ASCII."""
+    if not text:
+        return text
+    return unidecode(text.strip())
 
 # Creates a copy of the section data 
 def collect_all_sections(sources):
@@ -98,26 +108,40 @@ def merge_single_section(group):
         "type": "",
         "citation": "",
         "description": "",
-        "doi": "",
-        "external_url": "",
+        # "doi": "",
+        # "external_url": "",
         "authors": []
     }
 
-    # For each field, take first non-empty by priority
-    for field in ["title", "type", "citation", "description", "doi", "external_url"]:
-        for entry in group:
-            value = entry["data"].get(field, "")
-            if value:
-                section[field] = value
-                break
+    # # For each field, take first non-empty by priority
+    # for field in ["title", "type", "citation", "description", "doi", "external_url"]:
+    #     for entry in group:
+    #         value = entry["data"].get(field, "")
+    #         if value:
+    #             section[field] = value
+    #             break
 
-    # For authors, take the longest non-empty list
-    best_authors = []
+    # doi — no refinement needed
     for entry in group:
+        value = entry["data"].get("doi", "")
+        if value:
+            section["doi"] = value
+            break
+
+    # title — refine to ASCII
+    for entry in group:
+        value = entry["data"].get("title", "")
+        if value:
+            section["title"] = refine_text(value)
+            break
+
+    # Take authors from highest priority source that has them
+    section["authors"] = []
+    for entry in group:  # group is already sorted by priority
         authors = entry["data"].get("authors", []) or []
-        if len(authors) > len(best_authors):
-            best_authors = authors
-    section["authors"] = best_authors
+        if authors:
+            section["authors"] = [refine_text(a) for a in authors if a]
+            break  # stop at first non-empty — highest priority wins 
 
     return section
 
@@ -128,24 +152,32 @@ def fill_empty_fields(base_section, new_section, source_name):
     Also adds new fields that don't exist in base.
     For authors, takes the longest list.
     """
-    KNOWN_FIELDS = ["title", "type", "citation", "description", "doi", "external_url"]
+    # KNOWN_FIELDS = ["title", "type", "citation", "description", "doi", "external_url"]
 
     # Fill known empty fields
-    for field in KNOWN_FIELDS:
-        if not base_section.get(field, "") and new_section.get(field, ""):
-            base_section[field] = new_section[field]
+    # for field in KNOWN_FIELDS:
+    #     if not base_section.get(field, "") and new_section.get(field, ""):
+    #         base_section[field] = new_section[field]
 
     # Add any extra fields from new_section that base doesn't have
-    for field, value in new_section.items():
-        if field not in base_section and value:
-            base_section[field] = value
-            print(f"        + Added new field '{field}' from {source_name}")
+    # for field, value in new_section.items():
+    #     if field not in base_section and value:
+    #         base_section[field] = value
+    #         print(f"        + Added new field '{field}' from {source_name}")
+
+    # title — fill if empty, refine to ASCII
+    if not base_section.get("title", "") and new_section.get("title", ""):
+        base_section["title"] = refine_text(new_section["title"])
+
+    # doi — fill if empty, no refinement needed
+    if not base_section.get("doi", "") and new_section.get("doi", ""):
+        base_section["doi"] = new_section["doi"]
 
     # For authors, take longest list
     base_authors = base_section.get("authors", []) or []
     new_authors = new_section.get("authors", []) or []
-    if len(new_authors) > len(base_authors):
-        base_section["authors"] = new_authors
+    if not base_authors and new_authors:
+        base_section["authors"] = [refine_text(a) for a in new_authors if a]
 
 
 def match_and_merge(base, new_sections, source_name):
@@ -262,7 +294,12 @@ def merge_sections(sources):
     # Step 1: Start with crossref as base
     merged = {}
     for key, section in crossref_sections.items():
-        merged[key] = dict(section)
+        refined = dict(section)
+        if refined.get("title"):
+            refined["title"] = refine_text(refined["title"])
+        if refined.get("authors"):
+            refined["authors"] = [refine_text(a) for a in refined["authors"] if a]
+        merged[key] = refined
 
     # Step 2: Match webscraper by DOI
     print(f"\n    Matching webscraper by DOI...")

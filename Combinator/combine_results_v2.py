@@ -243,7 +243,7 @@ def combine_folder(folder_name):
     # Save combined results
     save_combined(folder_name, combined_data) 
 
-    print(json.dumps(combined_data, indent=2, ensure_ascii=False))  # For demonstration
+    # print(json.dumps(combined_data, indent=2, ensure_ascii=False))  # For demonstration
 
     return combined_data 
 
