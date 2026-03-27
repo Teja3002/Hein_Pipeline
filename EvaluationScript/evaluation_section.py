@@ -130,22 +130,28 @@ def match_sections(gt_sections: dict, cand_sections: dict):
     return matched, phantom_keys
 
 
+# FIELD_WEIGHTS = {
+#     "title":        0.35,
+#     "creator":      0.25,
+#     "doi":          0.25,
+#     "external_url": 0.05,
+#     "type":         0.10,
+# }
+
 FIELD_WEIGHTS = {
-    "title":        0.35,
-    "creator":      0.25,
-    "doi":          0.25,
-    "external_url": 0.05,
-    "type":         0.10,
+    "title":   0.30,
+    "creator": 0.30,
+    "doi":     0.40,
 }
 
 
 def score_section_pair(gt_sec: dict, cand_sec: dict) -> dict:
     fields = {
-        "title":        fuzzy_score(gt_sec.get("title", ""),        cand_sec.get("title", "")),
-        "creator":      set_overlap_score(gt_sec.get("creator", []), cand_sec.get("creator", [])),
-        "doi":          exact_score(gt_sec.get("doi", ""),          cand_sec.get("doi", "")),
-        "external_url": exact_score(gt_sec.get("external_url", ""), cand_sec.get("external_url", "")),
-        "type":         exact_score(gt_sec.get("type", ""),         cand_sec.get("type", "")),
+        "title":   fuzzy_score(gt_sec.get("title", ""),        cand_sec.get("title", "")),
+        "creator": set_overlap_score(gt_sec.get("creator", []), cand_sec.get("creator", [])),
+        "doi":     exact_score(gt_sec.get("doi", ""),          cand_sec.get("doi", "")),
+        # "external_url": exact_score(gt_sec.get("external_url", ""), cand_sec.get("external_url", "")),
+        # "type":         exact_score(gt_sec.get("type", ""),         cand_sec.get("type", "")),
     }
 
     weighted = sum(fields[f] * FIELD_WEIGHTS[f] for f in FIELD_WEIGHTS)
@@ -208,18 +214,18 @@ def score_articles(candidate: dict, ground_truth: dict) -> tuple[dict, dict]:
                 "score":            m["section_score"],
                 "fields":           m["fields"],
                 "gt": {
-                    "title":        m["gt_section"].get("title", ""),
-                    "creator":      m["gt_section"].get("creator", []),
-                    "doi":          m["gt_section"].get("doi", ""),
-                    "external_url": m["gt_section"].get("external_url", ""),
-                    "type":         m["gt_section"].get("type", ""),
+                    "title":   m["gt_section"].get("title", ""),
+                    "creator": m["gt_section"].get("creator", []),
+                    "doi":     m["gt_section"].get("doi", ""),
+                    # "external_url": removed
+                    # "type":         removed
                 },
                 "candidate": {
-                    "title":        m["cand_section"].get("title", ""),
-                    "creator":      m["cand_section"].get("creator", []),
-                    "doi":          m["cand_section"].get("doi", ""),
-                    "external_url": m["cand_section"].get("external_url", ""),
-                    "type":         m["cand_section"].get("type", ""),
+                    "title":   m["cand_section"].get("title", ""),
+                    "creator": m["cand_section"].get("creator", []),
+                    "doi":     m["cand_section"].get("doi", ""),
+                    # "external_url": removed
+                    # "type":         removed
                 },
             }
             for m in scored_pairs

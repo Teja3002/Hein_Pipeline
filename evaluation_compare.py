@@ -184,7 +184,8 @@ def compare_articles(run1: dict, run2: dict) -> dict:
             delta = round(sc2 - sc1, 2)
 
             field_deltas = {}
-            for f in ["title", "creator", "doi", "external_url", "type"]:
+            # for f in ["title", "creator", "doi", "external_url", "type"]:
+            for f in ["title", "creator", "doi"]:
                 fsc1 = m1.get("fields", {}).get(f, 0.0)
                 fsc2 = m2.get("fields", {}).get(f, 0.0)
                 field_deltas[f] = {
