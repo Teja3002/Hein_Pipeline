@@ -36,6 +36,34 @@ def set_overlap_score(list_a: list, list_b: list) -> float:
     union = len(set_a | set_b)
     return intersection / union if union else 0.0
 
+def fuzzy_set_overlap_score(list_a: list, list_b: list) -> float:
+    """
+    Fuzzy overlap between two lists of creator names.
+    Each name in list_a is matched to the best scoring name in list_b.
+    Uses fuzzy similarity so "Brunk, Ingrid" vs "Ingrid Brunk" still scores high.
+    """
+    if not list_a and not list_b:
+        return 1.0
+    if not list_a or not list_b:
+        return 0.0
+
+    clean_a = [s.lower().strip() for s in list_a if s]
+    clean_b = [s.lower().strip() for s in list_b if s]
+
+    if not clean_a and not clean_b:
+        return 1.0
+    if not clean_a or not clean_b:
+        return 0.0
+
+    total_score = 0.0
+    for name_a in clean_a:
+        # Find best fuzzy match in list_b for this name
+        best = max(similarity(name_a, name_b) for name_b in clean_b)
+        total_score += best
+
+    # Normalize by the larger list to penalize missing names
+    return total_score / max(len(clean_a), len(clean_b))
+
 
 # ── section extraction ────────────────────────────────────────────────────────
 
@@ -148,7 +176,8 @@ FIELD_WEIGHTS = {
 def score_section_pair(gt_sec: dict, cand_sec: dict) -> dict:
     fields = {
         "title":   fuzzy_score(gt_sec.get("title", ""),        cand_sec.get("title", "")),
-        "creator": set_overlap_score(gt_sec.get("creator", []), cand_sec.get("creator", [])),
+        # "creator": set_overlap_score(gt_sec.get("creator", []), cand_sec.get("creator", [])),
+        "creator": fuzzy_set_overlap_score(gt_sec.get("creator", []), cand_sec.get("creator", [])), 
         "doi":     exact_score(gt_sec.get("doi", ""),          cand_sec.get("doi", "")),
         # "external_url": exact_score(gt_sec.get("external_url", ""), cand_sec.get("external_url", "")),
         # "type":         exact_score(gt_sec.get("type", ""),         cand_sec.get("type", "")),
