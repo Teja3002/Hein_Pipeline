@@ -15,7 +15,6 @@ OUTPUT_DIR = os.path.join(PROJECT_ROOT, "Output")
 ERROR_FILE = os.path.join(BASE_DIR, "error.txt")
 
 VOLUME_SECTION_ID = 1
-ISSUE_SECTION_ID = 2
 
 
 class IndentNoAliasDumper(yaml.SafeDumper):
@@ -69,7 +68,7 @@ def normalize_text(value):
     value = str(value)
     value = re.sub(r"<[^>]+>", "", value)
     value = re.sub(r"\s+", " ", value).strip()
-    value = value.replace("’", "'").replace("“", '"').replace("”", '"')
+    value = value.replace("\u2019", "'").replace("\u201c", '"').replace("\u201d", '"')
     return value
 
 
@@ -94,16 +93,6 @@ def is_toc_enabled(input_json):
 def is_integer_native(native):
     native = normalize_text(native)
     return bool(re.fullmatch(r"\d+", native))
-
-
-def get_section_ids(input_json):
-    toc_enabled = is_toc_enabled(input_json)
-    return {
-        "volume": VOLUME_SECTION_ID,
-        "issue": ISSUE_SECTION_ID,
-        "toc": 3 if toc_enabled else None,
-        "article_start": 4 if toc_enabled else 3,
-    }
 
 
 def build_empty_section(template=None):
@@ -163,15 +152,24 @@ def build_volume_section():
     }
 
 
-def build_issue_section(input_json, volume_section_id):
-    issue_value = normalize_text(input_json.get("issue", ""))
+def build_issue_section(issue_key, input_json, volume_section_id):
+    """
+    Build one Issue section for a given issue_key (e.g. "1" or "2").
+    
+    Looks up the date from input_json["issue_date"][issue_key] if present,
+    otherwise falls back to input_json["date"].
+    """
+    issue_dates = input_json.get("issue_date", {})
+    date_value = normalize_text(
+        issue_dates.get(issue_key, input_json.get("date", ""))
+    )
     return {
         "citation": "",
         "countries": ["", "", ""],
         "country_code": " ",
         "creator": [],
-        "date": normalize_text(input_json.get("date", "")),
-        "description": f"Issue {issue_value}" if issue_value else "",
+        "date": date_value,
+        "description": f"Issue {issue_key}",
         "docket_num": "",
         "doi": "",
         "external_url": "",
@@ -247,53 +245,145 @@ def build_creator_list(sec):
     return [value for _, value in author_items if value]
 
 
-def build_article_records_from_json(input_json, skip_probable_matter=True):
-    json_pages = input_json.get("pages", [])
-    json_sections = input_json.get("sections", {})
+def detect_new_json_format(input_json):
+    """
+    Returns True if sections carry their own first_page/issue fields
+    (new multi-issue format), False if a parallel pages array is used.
+    """
+    sections = input_json.get("sections", {})
+    for sec in sections.values():
+        if "first_page" in sec or "issue" in sec:
+            return True
+    return False
 
+
+def collect_unique_issues(input_json):
+    """
+    Returns a sorted list of unique issue keys found across all sections.
+    Falls back to ["1"] if no issue field is present anywhere.
+    """
+    sections = input_json.get("sections", {})
+    seen = set()
+    for sec in sections.values():
+        issue_key = normalize_text(sec.get("issue", ""))
+        if issue_key:
+            seen.add(issue_key)
+
+    if not seen:
+        return ["1"]
+
+    # Sort numerically where possible, lexicographically otherwise
+    def sort_key(k):
+        try:
+            return (0, int(k))
+        except ValueError:
+            return (1, k)
+
+    return sorted(seen, key=sort_key)
+
+
+def build_article_records_from_json(input_json, skip_probable_matter=True):
+    """
+    Supports both JSON formats:
+
+    NEW FORMAT: sections carry first_page and issue directly.
+      - start_native comes from section["first_page"]
+      - issue_key comes from section["issue"]
+
+    OLD FORMAT: a parallel pages array maps section order to native values.
+      - start_native comes from pages[idx]["native"]
+      - issue_key defaults to "1"
+    """
+    use_new_format = detect_new_json_format(input_json)
+
+    json_sections = input_json.get("sections", {})
     ordered_section_items = sorted(json_sections.items(), key=lambda kv: int(kv[0]))
+
     records = []
 
-    max_len = min(len(json_pages), len(ordered_section_items))
+    if use_new_format:
+        for old_sid_str, sec in ordered_section_items:
+            title_raw = normalize_text(sec.get("title", ""))
+            if skip_probable_matter and is_probably_noncontent(title_raw):
+                continue
 
-    for idx in range(max_len):
-        page_obj = json_pages[idx]
-        old_sid_str, sec = ordered_section_items[idx]
+            start_native = normalize_text(sec.get("first_page", ""))
+            if not start_native:
+                continue
 
-        title_raw = normalize_text(sec.get("title", ""))
-        if skip_probable_matter and is_probably_noncontent(title_raw):
-            continue
+            issue_key = normalize_text(sec.get("issue", "1"))
+            creators = build_creator_list(sec)
+            doi = normalize_text(sec.get("doi", ""))
+            external_url = normalize_text(sec.get("external_url", sec.get("url", "")))
+            citation = normalize_text(sec.get("citation", ""))
+            description = normalize_text(sec.get("description", ""))
+            sec_type = normalize_text(sec.get("type", ""))
+            sec_date = normalize_text(sec.get("date", ""))
+            release_date = normalize_text(sec.get("release_date", ""))
+            subject = normalize_text_list(sec.get("subject", []))
+            orcid = normalize_text_list(sec.get("orcid", []))
 
-        start_native = normalize_text(page_obj.get("native", ""))
-        if not start_native:
-            continue
+            records.append({
+                "old_sid": int(old_sid_str),
+                "start_native": start_native,
+                "issue_key": issue_key,
+                "title": title_raw,
+                "creator": creators,
+                "doi": doi,
+                "external_url": external_url,
+                "citation": citation,
+                "description": description,
+                "subject": subject,
+                "type": sec_type,
+                "date": sec_date,
+                "release_date": release_date,
+                "orcid": orcid,
+            })
 
-        creators = build_creator_list(sec)
-        doi = normalize_text(sec.get("doi", ""))
-        external_url = normalize_text(sec.get("external_url", sec.get("url", "")))
-        citation = normalize_text(sec.get("citation", ""))
-        description = normalize_text(sec.get("description", ""))
-        sec_type = normalize_text(sec.get("type", ""))
-        sec_date = normalize_text(sec.get("date", ""))
-        release_date = normalize_text(sec.get("release_date", ""))
-        subject = normalize_text_list(sec.get("subject", []))
-        orcid = normalize_text_list(sec.get("orcid", []))
+    else:
+        # Old format: use parallel pages array
+        json_pages = input_json.get("pages", [])
+        max_len = min(len(json_pages), len(ordered_section_items))
 
-        records.append({
-            "old_sid": int(old_sid_str),
-            "start_native": start_native,
-            "title": title_raw,
-            "creator": creators,
-            "doi": doi,
-            "external_url": external_url,
-            "citation": citation,
-            "description": description,
-            "subject": subject,
-            "type": sec_type,
-            "date": sec_date,
-            "release_date": release_date,
-            "orcid": orcid,
-        })
+        for idx in range(max_len):
+            page_obj = json_pages[idx]
+            old_sid_str, sec = ordered_section_items[idx]
+
+            title_raw = normalize_text(sec.get("title", ""))
+            if skip_probable_matter and is_probably_noncontent(title_raw):
+                continue
+
+            start_native = normalize_text(page_obj.get("native", ""))
+            if not start_native:
+                continue
+
+            creators = build_creator_list(sec)
+            doi = normalize_text(sec.get("doi", ""))
+            external_url = normalize_text(sec.get("external_url", sec.get("url", "")))
+            citation = normalize_text(sec.get("citation", ""))
+            description = normalize_text(sec.get("description", ""))
+            sec_type = normalize_text(sec.get("type", ""))
+            sec_date = normalize_text(sec.get("date", ""))
+            release_date = normalize_text(sec.get("release_date", ""))
+            subject = normalize_text_list(sec.get("subject", []))
+            orcid = normalize_text_list(sec.get("orcid", []))
+
+            records.append({
+                "old_sid": int(old_sid_str),
+                "start_native": start_native,
+                "issue_key": "1",  # old format: single issue
+                "title": title_raw,
+                "creator": creators,
+                "doi": doi,
+                "external_url": external_url,
+                "citation": citation,
+                "description": description,
+                "subject": subject,
+                "type": sec_type,
+                "date": sec_date,
+                "release_date": release_date,
+                "orcid": orcid,
+            })
 
     return records
 
@@ -409,23 +499,59 @@ def assign_article_start_pages(article_records, structure_pages):
 
 
 def build_sections(article_records, input_json):
-    section_ids = get_section_ids(input_json)
-    volume_sid = section_ids["volume"]
-    issue_sid = section_ids["issue"]
-    toc_sid = section_ids["toc"]
-    article_start_sid = section_ids["article_start"]
+    """
+    Builds the full sections dict for the output YAML.
 
-    new_sections = {
-        volume_sid: build_volume_section(),
-        issue_sid: build_issue_section(input_json, volume_sid),
-    }
+    Section ID layout:
+      1            → volume
+      2 … 2+N-1   → one issue section per unique issue key (N issues total)
+      2+N          → TOC (if enabled), else first article
+      2+N+1 …     → articles (or 2+N … if no TOC)
+
+    Returns (new_sections dict, issue_key_to_sid mapping, toc_sid or None, article_start_sid).
+    """
+    toc_enabled = is_toc_enabled(input_json)
+    unique_issues = collect_unique_issues(input_json)
+
+    volume_sid = VOLUME_SECTION_ID
+
+    # Assign one section ID per issue, in sorted order
+    issue_key_to_sid = {}
+    next_sid = volume_sid + 1
+    for issue_key in unique_issues:
+        issue_key_to_sid[issue_key] = next_sid
+        next_sid += 1
+
+    toc_sid = None
+    if toc_enabled:
+        # TOC goes after all issue sections; it points to the first issue by convention
+        first_issue_sid = issue_key_to_sid[unique_issues[0]]
+        toc_sid = next_sid
+        next_sid += 1
+
+    article_start_sid = next_sid
+
+    # --- Build sections dict ---
+    new_sections = {volume_sid: build_volume_section()}
+
+    for issue_key in unique_issues:
+        sid = issue_key_to_sid[issue_key]
+        new_sections[sid] = build_issue_section(issue_key, input_json, volume_sid)
 
     if toc_sid is not None:
-        new_sections[toc_sid] = build_toc_section(issue_sid)
+        new_sections[toc_sid] = build_toc_section(first_issue_sid)
 
+    # Build article sections
     next_sid = article_start_sid
     for rec in article_records:
         rec["new_sid"] = next_sid
+
+        # Wire insection to the correct issue section ID
+        article_issue_key = rec.get("issue_key", unique_issues[0])
+        article_issue_sid = issue_key_to_sid.get(
+            article_issue_key,
+            issue_key_to_sid[unique_issues[0]]  # fallback to first issue
+        )
 
         new_sec = build_empty_section()
         new_sec["type"] = rec["type"]
@@ -437,6 +563,7 @@ def build_sections(article_records, input_json):
         new_sec["description"] = rec["description"]
         new_sec["orcid"] = rec["orcid"]
         new_sec["citation"] = rec["citation"]
+        new_sec["insection"] = article_issue_sid
 
         if rec["date"]:
             new_sec["date"] = rec["date"]
@@ -446,7 +573,15 @@ def build_sections(article_records, input_json):
         new_sections[next_sid] = new_sec
         next_sid += 1
 
-    return new_sections, section_ids
+    section_meta = {
+        "volume": volume_sid,
+        "issue_key_to_sid": issue_key_to_sid,
+        "toc": toc_sid,
+        "article_start": article_start_sid,
+        "unique_issues": unique_issues,
+    }
+
+    return new_sections, section_meta
 
 
 def build_page_to_article_sid_map(usable_articles, structure_pages):
@@ -466,21 +601,24 @@ def build_page_to_article_sid_map(usable_articles, structure_pages):
     return page_to_article_sid
 
 
-def build_front_matter_chain(section_ids):
-    toc_sid = section_ids["toc"]
-    issue_sid = section_ids["issue"]
-    volume_sid = section_ids["volume"]
+def build_front_matter_chain(section_meta):
+    """
+    Front-matter chain for non-integer pages (roman numerals etc.).
+    Points through TOC (if any) → first issue → volume.
+    """
+    toc_sid = section_meta["toc"]
+    first_issue_sid = section_meta["issue_key_to_sid"][section_meta["unique_issues"][0]]
+    volume_sid = section_meta["volume"]
 
     if toc_sid is not None:
-        return [toc_sid, issue_sid, volume_sid]
+        return [toc_sid, first_issue_sid, volume_sid]
 
-    return [issue_sid, volume_sid]
+    return [first_issue_sid, volume_sid]
 
 
-def build_article_chain(article_sid, section_ids):
-    issue_sid = section_ids["issue"]
-    volume_sid = section_ids["volume"]
-    return [article_sid, issue_sid, volume_sid]
+def build_article_chain(article_sid, article_issue_sid, section_meta):
+    volume_sid = section_meta["volume"]
+    return [article_sid, article_issue_sid, volume_sid]
 
 
 def build_output(input_json, structure_yml, skip_probable_matter=True):
@@ -495,26 +633,35 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         skip_probable_matter=skip_probable_matter
     )
 
-    # temp: detect if any native is '0'
+    # Detect if any native is '0' (non-mappable placeholder)
     has_zero_native = any(
         normalize_text(rec.get("start_native", "")) == "0"
         for rec in article_records
     ) if article_records else False
 
-
-    # temp: if any native is 0, skip mapping
     if has_zero_native:
         usable_articles = article_records
-        new_sections, section_ids = build_sections(usable_articles, input_json)
+        new_sections, section_meta = build_sections(usable_articles, input_json)
         page_to_article_sid = {}
     else:
         usable_articles = assign_article_start_pages(article_records, structure_pages)
-        new_sections, section_ids = build_sections(usable_articles, input_json)
+        new_sections, section_meta = build_sections(usable_articles, input_json)
         page_to_article_sid = build_page_to_article_sid_map(usable_articles, structure_pages)
-        
 
-    toc_enabled = section_ids["toc"] is not None
-    front_matter_chain = build_front_matter_chain(section_ids)
+    toc_enabled = section_meta["toc"] is not None
+    front_matter_chain = build_front_matter_chain(section_meta)
+
+    # Build a lookup: new_sid → article_issue_sid for page chain construction
+    sid_to_issue_sid = {}
+    for rec in usable_articles:
+        if "new_sid" not in rec:
+            continue
+        issue_key = rec.get("issue_key", section_meta["unique_issues"][0])
+        article_issue_sid = section_meta["issue_key_to_sid"].get(
+            issue_key,
+            section_meta["issue_key_to_sid"][section_meta["unique_issues"][0]]
+        )
+        sid_to_issue_sid[rec["new_sid"]] = article_issue_sid
 
     new_pages = []
     for p in structure_pages:
@@ -527,7 +674,8 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
             section_chain = front_matter_chain
         elif pid in page_to_article_sid:
             article_sid = page_to_article_sid[pid]
-            section_chain = build_article_chain(article_sid, section_ids)
+            article_issue_sid = sid_to_issue_sid.get(article_sid, section_meta["volume"])
+            section_chain = build_article_chain(article_sid, article_issue_sid, section_meta)
         else:
             section_chain = original_chain if original_chain else [VOLUME_SECTION_ID]
 
@@ -568,14 +716,13 @@ def get_json_files(journal_name=None):
     )
 
 
-def process_one_json(json_filename, keep_probable_matter=False):
+def process_one_json(json_filename: str, keep_probable_matter: bool = False):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    journal_name = os.path.splitext(json_filename)[0]
-
-    json_path = os.path.join(RESULTS_DIR, json_filename)
+    journal_name   = os.path.splitext(json_filename)[0]
+    json_path      = os.path.join(RESULTS_DIR, json_filename)
     structure_path = get_matching_structure_path(journal_name)
-    output_path = os.path.join(OUTPUT_DIR, f"{journal_name}.yml")
+    output_path    = os.path.join(OUTPUT_DIR, f"{journal_name}.yml")
 
     if not os.path.exists(structure_path):
         msg = f"[SKIP] structure.yml not found for {journal_name}: {structure_path}"
@@ -585,29 +732,27 @@ def process_one_json(json_filename, keep_probable_matter=False):
         return None
 
     try:
-        input_json = load_json(json_path)
+        input_json    = load_json(json_path)
         structure_yml = load_yaml(structure_path)
 
         output = build_output(
             input_json=input_json,
             structure_yml=structure_yml,
-            skip_probable_matter=not keep_probable_matter
+            skip_probable_matter=not keep_probable_matter,
         )
 
         save_yaml(output, output_path)
-        print(f"[OK] {journal_name} -> {output_path}")
-        logging.info("Converter generated yml for journal=%s output=%s", journal_name, output_path)
         return output_path
 
     except Exception as e:
         msg = f"[ERROR] {journal_name}: {e}"
         print(msg)
         log_error(msg)
-        logging.exception("Converter failed for journal=%s", journal_name)
+        logging.exception("yml_manager failed for journal=%s", journal_name)
         return None
 
 
-def process_journal(journal_name, keep_probable_matter=False):
+def process_journal(journal_name: str, keep_probable_matter: bool = False):
     return process_one_json(
         json_filename=f"{journal_name}.json",
         keep_probable_matter=keep_probable_matter,
@@ -615,17 +760,12 @@ def process_journal(journal_name, keep_probable_matter=False):
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Auto-convert JSON files from Combinator/results using matching HeinOnline structure.yml files"
-    )
-    parser.add_argument(
-        "--journal",
-        help="Process only one journal name, for example: ajil0120no1"
-    )
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--journal", help="Process only one journal, e.g. ajil0120no1")
     parser.add_argument(
         "--keep-probable-matter",
         action="store_true",
-        help="Keep probable front/back matter instead of skipping it"
+        help="Keep probable front/back matter instead of skipping it",
     )
     args = parser.parse_args()
 
@@ -644,10 +784,9 @@ def main():
     for json_filename in json_files:
         process_one_json(
             json_filename=json_filename,
-            keep_probable_matter=args.keep_probable_matter
+            keep_probable_matter=args.keep_probable_matter,
         )
 
 
-
 if __name__ == "__main__":
-    main() 
+    main()

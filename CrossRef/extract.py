@@ -107,17 +107,53 @@ SESSION.headers.update({
 os.makedirs(results_folder, exist_ok=True)
 
 
+def parse_page_range(page_str):
+    page_str = normalize_text(page_str)
+    if not page_str:
+        return None, None
+    parts = page_str.split("-")
+    first = parts[0].strip()
+    last = parts[-1].strip() if len(parts) > 1 else parts[0].strip()
+    if first == last:
+        return None, None
+    return first, last
+
 def normalize_text(value):
     if value is None:
         return ""
 
     value = str(value)
-    value = html.unescape(value)
+
+    # Handle backslash escape sequences
     value = value.replace('\\"', '"')
+    value = value.replace("\\'", "'")
+    value = value.replace("\\`", "`")
     value = value.replace("\\/", "/")
+    value = value.replace("\\\\", "\\")
+    value = value.replace("\\n", " ")
+    value = value.replace("\\t", " ")
+    value = value.replace("\\r", " ")
+
+    # Decode unicode escapes like \u00e9 → é, then let SPECIAL_CHAR_MAP handle them
+    value = value.encode("utf-8").decode("unicode_escape", errors="ignore") if "\\u" in value else value
+
+    # HTML entities like &amp; &lt; &gt; &quot; &#39; etc.
+    value = html.unescape(value)
+
+    # Strip any remaining HTML tags
     value = re.sub(r"<[^>]+>", "", value)
-    value = value.replace("’", "'").replace("“", '"').replace("”", '"')
+
+    # Normalize quote/apostrophe variants
+    value = value.replace("\u2018", "'").replace("\u2019", "'")  # ' '
+    value = value.replace("\u201c", '"').replace("\u201d", '"')  # " "
+    value = value.replace("\u00ab", '"').replace("\u00bb", '"')  # « »
+    value = value.replace("\u2014", "-").replace("\u2013", "-")  # — –
+    value = value.replace("\u2026", "...")                       # …
+
+    # Map accented and special characters
     value = value.translate(SPECIAL_CHAR_MAP)
+
+    # Collapse whitespace
     value = re.sub(r"\s+", " ", value).strip()
 
     return value
@@ -132,6 +168,8 @@ def parse_folder_name(folder_name):
     volume = str(int(volume_part))
 
     issues = None
+    issue_range = None
+
     if issue_start:
         if issue_end:
             start_num = int(issue_start)
@@ -139,13 +177,15 @@ def parse_folder_name(folder_name):
             if end_num < start_num:
                 start_num, end_num = end_num, start_num
             issues = [str(i) for i in range(start_num, end_num + 1)]
+            issue_range = f"{start_num}-{end_num}"
         else:
             issues = [str(int(issue_start))]
 
     return {
         "journal_key": journal_key,
         "volume": volume,
-        "issues": issues
+        "issues": issues,
+        "issue_range": issue_range
     }
 
 
@@ -296,7 +336,6 @@ def is_non_article_title(title):
         r"^.*cover and front matter$",
         r"^.*front matter$",
         r"^.*back matter$",
-
     ]
 
     return any(re.search(p, title) for p in blocked_patterns)
@@ -390,12 +429,14 @@ def is_valid_article_record(item):
     return True
 
 
-def filter_items(items, volume, issues=None):
+def filter_items(items, volume, issues=None, issue_range=None):
     filtered = []
 
     allowed_issues = None
     if issues:
         allowed_issues = {str(int(issue)) for issue in issues}
+        if issue_range:
+            allowed_issues.add(issue_range)
 
     for item in items:
         if not is_valid_article_record(item):
@@ -416,7 +457,7 @@ def filter_items(items, volume, issues=None):
                 if issue_match:
                     normalized_item_issue = str(int(issue_match.group()))
 
-            if normalized_item_issue not in allowed_issues:
+            if normalized_item_issue not in allowed_issues and item_issue not in allowed_issues:
                 continue
 
         filtered.append(item)
@@ -452,22 +493,40 @@ def format_date_parts(year, month):
     return ""
 
 
-def derive_output_date(filtered_items):
+def derive_issue_dates(filtered_items):
     if not filtered_items:
-        return ""
+        return {}
 
-    dated_items = []
+    issue_date_map = {}
+
     for item in filtered_items:
+        item_issue = normalize_text(item.get("issue", ""))
+        if not item_issue:
+            continue
         year, month, _ = extract_date_parts(item)
         if year:
-            dated_items.append((year, month))
+            if item_issue not in issue_date_map:
+                issue_date_map[item_issue] = (year, month or 0)
+            else:
+                if (year, month or 0) > issue_date_map[item_issue]:
+                    issue_date_map[item_issue] = (year, month or 0)
 
-    if not dated_items:
-        return ""
+    # If issue "1" has no date yet (articles had no issue field), derive it
+    # from any date found across all items in the batch.
+    if "1" not in issue_date_map:
+        for item in filtered_items:
+            year, month, _ = extract_date_parts(item)
+            if year:
+                if "1" not in issue_date_map:
+                    issue_date_map["1"] = (year, month or 0)
+                else:
+                    if (year, month or 0) > issue_date_map["1"]:
+                        issue_date_map["1"] = (year, month or 0)
 
-    dated_items.sort(key=lambda x: (x[0], x[1] or 0), reverse=True)
-    year, month = dated_items[0]
-    return format_date_parts(year, month)
+    return {
+        issue: format_date_parts(year, month)
+        for issue, (year, month) in issue_date_map.items()
+    }
 
 
 def derive_journal_title(filtered_items, issn):
@@ -490,43 +549,52 @@ def build_section_data(item):
     title_list = item.get("title", [])
     article_title = normalize_text(title_list[0]) if title_list else ""
 
+    page_str = normalize_text(item.get("page", ""))
+    first_page, last_page = parse_page_range(page_str)
+
+    item_issue = normalize_text(item.get("issue", ""))
+
     return {
         "title": article_title,
-        "type": "",
-        "citation": "",
-        "description": "",
         "doi": doi,
         "external_url": build_external_url(doi),
-        "authors": extract_creators(item)
+        "authors": extract_creators(item),
+        "first_page": first_page,
+        "last_page": last_page,
+        # Default to "1" if Crossref returned no issue for this article
+        "issue": item_issue if item_issue else "1",
     }
 
 
-def build_json_structure(filtered_items, volume, issn, issues=None):
-    pages = []
+def build_json_structure(filtered_items, volume, issn, issues=None, issue_range=None):
     sections = {}
 
     for i, item in enumerate(sorted(filtered_items, key=page_sort_key), 1):
-        start_page = get_start_page(item.get("page", "")) or "0"
-
-        pages.append({
-            "id": i,
-            "native": start_page,
-        })
-
         sections[str(i)] = build_section_data(item)
 
     journal_title = derive_journal_title(filtered_items, issn)
 
+    issue_date_dict = derive_issue_dates(filtered_items)
+
+    if issues:
+        issue_value = issue_range if issue_range else (issues[0] if len(issues) == 1 else issues)
+    else:
+        if issue_date_dict:
+            def natural_sort_key(s):
+                return [int(text) if text.isdigit() else text.lower() for text in re.split(r'(\d+)', str(s))]
+
+            issue_value = sorted(list(issue_date_dict.keys()), key=natural_sort_key)
+        else:
+            # No issue info recoverable at all — default the whole volume to issue 1
+            issue_value = "1"
+
     output = {
         "title": journal_title,
         "volume": str(volume),
-        "date": derive_output_date(filtered_items),
-        "pages": pages,
+        "issue": issue_value,
+        "issue_date": issue_date_dict,
         "sections": sections
     }
-
-    if issues:
-        output["issue"] = issues[0] if len(issues) == 1 else issues
 
     return output
 
@@ -550,6 +618,7 @@ def process_folder(folder_name, folder_path):
     journal_key = parsed["journal_key"]
     volume = parsed["volume"]
     issues = parsed["issues"]
+    issue_range = parsed.get("issue_range")
 
     if journal_key not in journal_issn_dict:
         logger.warning("Skipping folder with unknown journal key: %s", folder_name)
@@ -559,6 +628,8 @@ def process_folder(folder_name, folder_path):
     output_file = os.path.join(results_folder, f"{folder_name}.json")
 
     issue_display = ", ".join(issues) if issues else "N/A"
+    if issue_range:
+        issue_display += f" (also trying '{issue_range}')"
 
     logger.info(
         "Running folder=%s path=%s volume=%s issue=%s output=%s",
@@ -572,7 +643,7 @@ def process_folder(folder_name, folder_path):
 
     try:
         all_items = fetch_all_results_cursor(issn)
-        filtered_items = filter_items(all_items, volume, issues)
+        filtered_items = filter_items(all_items, volume, issues, issue_range=issue_range)
 
         logger.info(
             "Fetched folder=%s total_items=%s filtered_items=%s",
@@ -590,7 +661,7 @@ def process_folder(folder_name, folder_path):
             print(f"No valid articles found for {folder_name}. Skipping output.")
             return False
 
-        output = build_json_structure(filtered_items, volume, issn, issues)
+        output = build_json_structure(filtered_items, volume, issn, issues, issue_range=issue_range)
         write_json_safely(output, output_file)
 
         logger.info("Saved result for folder=%s to %s", folder_name, output_file)
