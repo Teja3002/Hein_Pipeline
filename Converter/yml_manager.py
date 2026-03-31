@@ -495,9 +495,23 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         skip_probable_matter=skip_probable_matter
     )
 
-    usable_articles = assign_article_start_pages(article_records, structure_pages)
-    new_sections, section_ids = build_sections(usable_articles, input_json)
-    page_to_article_sid = build_page_to_article_sid_map(usable_articles, structure_pages)
+    # temp: detect if any native is '0'
+    has_zero_native = any(
+        normalize_text(rec.get("start_native", "")) == "0"
+        for rec in article_records
+    ) if article_records else False
+
+
+    # temp: if any native is 0, skip mapping
+    if has_zero_native:
+        usable_articles = article_records
+        new_sections, section_ids = build_sections(usable_articles, input_json)
+        page_to_article_sid = {}
+    else:
+        usable_articles = assign_article_start_pages(article_records, structure_pages)
+        new_sections, section_ids = build_sections(usable_articles, input_json)
+        page_to_article_sid = build_page_to_article_sid_map(usable_articles, structure_pages)
+        
 
     toc_enabled = section_ids["toc"] is not None
     front_matter_chain = build_front_matter_chain(section_ids)
@@ -632,6 +646,7 @@ def main():
             json_filename=json_filename,
             keep_probable_matter=args.keep_probable_matter
         )
+
 
 
 if __name__ == "__main__":
