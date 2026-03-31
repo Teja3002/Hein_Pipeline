@@ -70,14 +70,9 @@ def run_pages(candidate: dict, ground_truth: dict) -> tuple[dict, dict]:
     return score_result_pages, comparison_json_pages
 
 
-def run_overall(result_general: dict, score_result: dict, score_result_pages: dict) -> float:
-    overall_score = round(
-        (score_result["section_score"]    * 0.70) +
-        (score_result_pages["page_score"] * 0.20) +
-        (result_general["general_score"]  * 0.10),
-        2
-    )
-
+def _print_overall(result_general: dict, score_result: dict,
+                   score_result_pages: dict, overall_score: float) -> None:
+    """Shared print block used by both run_overall and save_report."""
     print("══════════════════════════════════════════════════════")
     print("  OVERALL EVALUATION SUMMARY")
     print("══════════════════════════════════════════════════════")
@@ -86,20 +81,33 @@ def run_overall(result_general: dict, score_result: dict, score_result_pages: di
   compared against the human-edited ground truth (structure.yml).
 
   Weights:
-    Section Score  — 70%  (article metadata, authors, DOI, URL, type)
+    Section Score  — 70%  broken down as:
+      └─ Volume         2%  of overall  (structural container)
+      └─ Issue(s)       4%  of overall  (per-issue metadata, averaged)
+      └─ TOC(s)         4%  of overall  (per-issue TOC, averaged)
+      └─ Articles      90%  of section  (title, creators, DOI)
     Page Score     — 20%  (page-to-article assignment, native labels)
     General Score  — 10%  (journal title, identifier, max, type, series)
 """)
     print(f"  Section Score  (70%):    {score_result['section_score']:>6.2f} / 100")
-    print(f"    ├─ Volume Score   (3.33%): {score_result['volume_score']:>6.2f} / 100")
-    print(f"    ├─ Issue Score    (3.33%): {score_result['issue_score']:>6.2f} / 100")
-    print(f"    ├─ TOC Score      (3.34%): {score_result['contents_score']:>6.2f} / 100") 
-    print(f"    └─ Articles Score(90%): {score_result['articles_score']:>6.2f} / 100")
+    print(f"    ├─ Volume Score   (2%):   {score_result['volume_score']:>6.2f} / 100")
+    print(f"    ├─ Issue Score    (4%):   {score_result['issue_score']:>6.2f} / 100")
+    print(f"    ├─ TOC Score      (4%):   {score_result['contents_score']:>6.2f} / 100")
+    print(f"    └─ Articles Score(90%):   {score_result['articles_score']:>6.2f} / 100")
     print(f"  Page Score     (20%):    {score_result_pages['page_score']:>6.2f} / 100")
     print(f"  General Score  (10%):    {result_general['general_score']:>6.2f} / 100")
     print(f"\n  OVERALL SCORE:           {overall_score:>6.2f} / 100")
     print("══════════════════════════════════════════════════════\n")
 
+
+def run_overall(result_general: dict, score_result: dict, score_result_pages: dict) -> float:
+    overall_score = round(
+        (score_result["section_score"]    * 0.70) +
+        (score_result_pages["page_score"] * 0.20) +
+        (result_general["general_score"]  * 0.10),
+        2
+    )
+    _print_overall(result_general, score_result, score_result_pages, overall_score)
     return overall_score
 
 
@@ -149,24 +157,7 @@ def save_report(folder_name: str, datetime_str: str, eval_dir: Path,
 
     print_section_report(score_result, comparison_json)
     print_page_report(score_result_pages, comparison_json_pages)
-
-    print("══════════════════════════════════════════════════════")
-    print("  OVERALL EVALUATION SUMMARY")
-    print("══════════════════════════════════════════════════════")
-    print("""
-  Weights:
-    Section Score  — 70%  (article metadata, authors, DOI, URL, type)
-    Page Score     — 20%  (page-to-article assignment, native labels)
-    General Score  — 10%  (journal title, identifier, max, type, series)
-""")
-    print(f"  Section Score  (70%):    {score_result['section_score']:>6.2f} / 100")
-    print(f"    ├─ Volume Score   (3.33%): {score_result['volume_score']:>6.2f} / 100")
-    print(f"    ├─ Issue Score    (3.33%): {score_result['issue_score']:>6.2f} / 100")
-    print(f"    ├─ TOC Score      (3.34%): {score_result['contents_score']:>6.2f} / 100")
-    print(f"    └─ Articles Score(90%): {score_result['articles_score']:>6.2f} / 100")
-    print(f"  Page Score     (20%):    {score_result_pages['page_score']:>6.2f} / 100")
-    print(f"  General Score  (10%):    {result_general['general_score']:>6.2f} / 100")
-    print(f"\n  OVERALL SCORE:           {overall_score:>6.2f} / 100")
+    _print_overall(result_general, score_result, score_result_pages, overall_score)
 
     sys.stdout = old_stdout
     report_text = buffer.getvalue()
@@ -215,7 +206,14 @@ def evaluationScore(file: str) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Evaluation Score Script",
+        epilog="""
+Examples:
+  python evaluation.py Output/ajil0120no1.yml
+  python evaluation.py Output/ecomflr0022no5-6.yml
+        """
+    )
     parser.add_argument("output_yml", help="Path to Output/<name>.yml")
     args = parser.parse_args()
 

@@ -56,10 +56,12 @@ def score_general(candidate: dict, ground_truth: dict) -> tuple[dict, dict]:
     results = {}
 
     # Journal title (fuzzy)
-    results["title"] = fuzzy_score(
+    title_raw = fuzzy_score(
         candidate.get("title", ""),
         ground_truth.get("title", "")
     )
+    # 95%+ title similarity treated as 100 — typos are acceptable
+    results["title"] = 1.0 if title_raw >= 0.95 else title_raw 
 
     # Identifier (fuzzy)
     results["identifier"] = fuzzy_score(

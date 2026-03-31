@@ -65,15 +65,19 @@ def get_latest_runs(input_path: str, project_root: Path) -> tuple[str, str]:
 
 def build_article_map(sections_json: dict) -> dict:
     """
-    Builds {doi_or_title: section_data} from the matched sections
-    in a comparison JSON, keyed by DOI if available else title.
+    Builds {doi_or_title: section_data} from the matched sections,
+    keyed by DOI if available else title.
+    Now includes insection (issue ID) for per-issue grouping.
     """
     article_map = {}
     for m in sections_json.get("articles", {}).get("matched", []):
         gt = m.get("gt", {})
         key = gt.get("doi") or gt.get("title") or m.get("gt_key")
         if key:
-            article_map[key] = m
+            article_map[key] = {
+                **m,
+                "insection": gt.get("insection", None)
+            }
     return article_map
 
 
@@ -126,23 +130,39 @@ def compare_structural(run1: dict, run2: dict) -> dict:
         sc2 = s2.get("summary", {}).get(f"{sec_type}_score", 0.0)
         result[f"{sec_type}_score"] = {"run1": sc1, "run2": sc2, "delta": round(sc2 - sc1, 2)}
 
-    # Issue field detail — only active fields
-    issue_fields = ["type", "date", "description"]
-    # removed: "citation", "insection", "subject", "countries"
+    # Issue counts
+    result["issue_counts"] = {
+        "run1": s1.get("summary", {}).get("total_gt_issues", 1),
+        "run2": s2.get("summary", {}).get("total_gt_issues", 1),
+    }
+
+    # Issue field detail — averaged across all issues
+    issue_fields = ["type", "date", "description", "insection"]
     result["issue_fields"] = {}
     for f in issue_fields:
-        v1 = s1.get("issue", {}).get(f, {}).get("score", 0.0) if isinstance(s1.get("issue", {}).get(f), dict) else 0.0
-        v2 = s2.get("issue", {}).get(f, {}).get("score", 0.0) if isinstance(s2.get("issue", {}).get(f), dict) else 0.0
-        result["issue_fields"][f] = {"run1": v1, "run2": v2, "delta": round(v2 - v1, 2)}
+        # Average across all issues in each run
+        issues1 = s1.get("issues", [])
+        issues2 = s2.get("issues", [])
+        v1 = sum(iss.get(f, {}).get("score", 0.0) for iss in issues1 if isinstance(iss.get(f), dict)) / len(issues1) if issues1 else s1.get("issue", {}).get(f, {}).get("score", 0.0) if isinstance(s1.get("issue", {}).get(f), dict) else 0.0
+        v2 = sum(iss.get(f, {}).get("score", 0.0) for iss in issues2 if isinstance(iss.get(f), dict)) / len(issues2) if issues2 else s2.get("issue", {}).get(f, {}).get("score", 0.0) if isinstance(s2.get("issue", {}).get(f), dict) else 0.0
+        result["issue_fields"][f] = {"run1": round(v1, 1), "run2": round(v2, 1), "delta": round(v2 - v1, 2)}
 
-    # Contents field detail — only active fields
-    contents_fields = ["type", "description"]
-    # removed: "title", "citation", "insection"
+    # Contents field detail
+    contents_fields = ["type", "description", "insection"]
     result["contents_fields"] = {}
     for f in contents_fields:
-        v1 = s1.get("contents", {}).get(f, {}).get("score", 0.0) if isinstance(s1.get("contents", {}).get(f), dict) else 0.0
-        v2 = s2.get("contents", {}).get(f, {}).get("score", 0.0) if isinstance(s2.get("contents", {}).get(f), dict) else 0.0
-        result["contents_fields"][f] = {"run1": v1, "run2": v2, "delta": round(v2 - v1, 2)}
+        contents1 = s1.get("contents", [])
+        contents2 = s2.get("contents", [])
+        # Handle both old single dict and new list format
+        if isinstance(contents1, dict):
+            v1 = contents1.get(f, {}).get("score", 0.0) if isinstance(contents1.get(f), dict) else 0.0
+        else:
+            v1 = sum(c.get(f, {}).get("score", 0.0) for c in contents1 if isinstance(c.get(f), dict)) / len(contents1) if contents1 else 0.0
+        if isinstance(contents2, dict):
+            v2 = contents2.get(f, {}).get("score", 0.0) if isinstance(contents2.get(f), dict) else 0.0
+        else:
+            v2 = sum(c.get(f, {}).get("score", 0.0) for c in contents2 if isinstance(c.get(f), dict)) / len(contents2) if contents2 else 0.0
+        result["contents_fields"][f] = {"run1": round(v1, 1), "run2": round(v2, 1), "delta": round(v2 - v1, 2)}
 
     return result
 
@@ -157,17 +177,19 @@ def compare_articles(run1: dict, run2: dict) -> dict:
 
     result = {
         "summary": {
-            "section_score":   {"run1": sum1.get("section_score", 0.0),   "run2": sum2.get("section_score", 0.0),   "delta": round(sum2.get("section_score", 0.0)   - sum1.get("section_score", 0.0), 2)},
-            "matched_score":   {"run1": sum1.get("matched_score", 0.0),   "run2": sum2.get("matched_score", 0.0),   "delta": round(sum2.get("matched_score", 0.0)   - sum1.get("matched_score", 0.0), 2)},
-            "matched_count":   {"run1": sum1.get("matched_count", 0),     "run2": sum2.get("matched_count", 0),     "delta": sum2.get("matched_count", 0)     - sum1.get("matched_count", 0)},
-            "unmatched_count": {"run1": sum1.get("unmatched_count", 0),   "run2": sum2.get("unmatched_count", 0),   "delta": sum2.get("unmatched_count", 0)   - sum1.get("unmatched_count", 0)},
-            "phantom_count":   {"run1": sum1.get("phantom_count", 0),     "run2": sum2.get("phantom_count", 0),     "delta": sum2.get("phantom_count", 0)     - sum1.get("phantom_count", 0)},
+            "section_score":      {"run1": sum1.get("section_score", 0.0),   "run2": sum2.get("section_score", 0.0),   "delta": round(sum2.get("section_score", 0.0)   - sum1.get("section_score", 0.0), 2)},
+            "matched_score":      {"run1": sum1.get("matched_score", 0.0),   "run2": sum2.get("matched_score", 0.0),   "delta": round(sum2.get("matched_score", 0.0)   - sum1.get("matched_score", 0.0), 2)},
+            "matched_count":      {"run1": sum1.get("matched_count", 0),     "run2": sum2.get("matched_count", 0),     "delta": sum2.get("matched_count", 0)     - sum1.get("matched_count", 0)},
+            "unmatched_count":    {"run1": sum1.get("unmatched_count", 0),   "run2": sum2.get("unmatched_count", 0),   "delta": sum2.get("unmatched_count", 0)   - sum1.get("unmatched_count", 0)},
+            "phantom_count":      {"run1": sum1.get("phantom_count", 0),     "run2": sum2.get("phantom_count", 0),     "delta": sum2.get("phantom_count", 0)     - sum1.get("phantom_count", 0)},
+            "total_issues":       {"run1": sum1.get("total_issues", 1),      "run2": sum2.get("total_issues", 1),      "delta": sum2.get("total_issues", 1)      - sum1.get("total_issues", 1)},
+            "per_issue_available":{"run1": sum1.get("per_issue_available", False), "run2": sum2.get("per_issue_available", False)},
         },
-        "per_article": [],
-        "new_matches":    [],   # in run2 matched but not in run1
-        "lost_matches":   [],   # in run1 matched but not in run2
-        "new_phantoms":   [],   # phantom in run2 not in run1
-        "resolved_phantoms": [], # was phantom in run1, gone in run2
+        "per_article":       [],
+        "new_matches":       [],
+        "lost_matches":      [],
+        "new_phantoms":      [],
+        "resolved_phantoms": [],
     }
 
     all_keys = set(map1.keys()) | set(map2.keys())
@@ -197,6 +219,7 @@ def compare_articles(run1: dict, run2: dict) -> dict:
             result["per_article"].append({
                 "key":          key,
                 "title":        m1.get("gt", {}).get("title", key),
+                "insection":    m1.get("insection", None),   # ← add this
                 "match_type":   m2.get("match_type", ""),
                 "run1_score":   sc1,
                 "run2_score":   sc2,
@@ -323,12 +346,16 @@ def print_compare_report(run1: dict, run2: dict,
         d = structural[f"{sec}_score"]
         print(f"  {sec:<10}  {d['run1']:>6.2f} → {d['run2']:>6.2f}   {delta_tag(d['delta'])}")
 
-    print("\n  Issue fields:  (type, date, description)")
+    ic = structural.get("issue_counts", {})
+    if ic.get("run1") != ic.get("run2"):
+        print(f"\n  ⚠ Issue count changed: run1={ic.get('run1')}  run2={ic.get('run2')}")
+
+    print("\n  Issue fields:  (type, date, description, insection)")
     for field, d in structural["issue_fields"].items():
         tag = section_tag(d["delta"])
         print(f"    {field:<14} {d['run1']:>6.1f} → {d['run2']:>6.1f}  {tag}")
 
-    print("\n  Contents fields:  (type, description)")
+    print("\n  Contents fields:  (type, description, insection)")
     for field, d in structural["contents_fields"].items():
         tag = section_tag(d["delta"])
         print(f"    {field:<14} {d['run1']:>6.1f} → {d['run2']:>6.1f}  {tag}")
@@ -336,6 +363,14 @@ def print_compare_report(run1: dict, run2: dict,
     # ── Articles Summary ──
     print("\n── Article Sections Summary ──────────────────────────\n")
     s = articles["summary"]
+
+    pi1 = s.get("per_issue_available", {}).get("run1", False)
+    pi2 = s.get("per_issue_available", {}).get("run2", False)
+    if pi1 or pi2:
+        ti = s.get("total_issues", {})
+        print(f"  Per-issue matching: run1={'✓' if pi1 else '✗'}  run2={'✓' if pi2 else '✗'}")
+        print(f"  Total issues:       run1={ti.get('run1', '?')}  run2={ti.get('run2', '?')}\n")
+
     for key, label in [
         ("section_score",   "Section Score"),
         ("matched_score",   "Matched Score"),
@@ -349,17 +384,21 @@ def print_compare_report(run1: dict, run2: dict,
 
     # ── Per Article ──
     print("\n── Per Article Comparison ────────────────────────────\n")
-    print("  Format: [tag]  score_run1 → score_run2  title\n")
+    print("  Format: [tag]  score_run1 → score_run2  title  [issue]\n")
 
-    improved   = [a for a in articles["per_article"] if a["delta"] >= THRESHOLD_NOISE]
-    regressed  = [a for a in articles["per_article"] if a["delta"] <= -THRESHOLD_NOISE]
-    no_change  = [a for a in articles["per_article"] if abs(a["delta"]) < THRESHOLD_NOISE]
+    improved  = [a for a in articles["per_article"] if a["delta"] >= THRESHOLD_NOISE]
+    regressed = [a for a in articles["per_article"] if a["delta"] <= -THRESHOLD_NOISE]
+    no_change = [a for a in articles["per_article"] if abs(a["delta"]) < THRESHOLD_NOISE]
+
+    def issue_label(a):
+        ins = a.get("insection")
+        return f"  [issue {ins}]" if ins else ""
 
     if improved:
         print(f"  ── Improved ({len(improved)}) ──")
         for a in improved:
             tag = "▲" if a["delta"] >= THRESHOLD_MINOR else "△"
-            print(f"  [{tag}]  {a['run1_score']:>5.1f} → {a['run2_score']:>5.1f}  (+{a['delta']:.2f})  {a['title'][:55]}")
+            print(f"  [{tag}]  {a['run1_score']:>5.1f} → {a['run2_score']:>5.1f}  (+{a['delta']:.2f})  {a['title'][:50]}{issue_label(a)}")
             for f, fd in a["fields"].items():
                 if abs(fd["delta"]) >= THRESHOLD_NOISE:
                     ftag = "▲" if fd["delta"] > 0 else "▼"
@@ -369,7 +408,7 @@ def print_compare_report(run1: dict, run2: dict,
         print(f"\n  ── Regressed ({len(regressed)}) ──")
         for a in regressed:
             tag = "▼" if a["delta"] <= -THRESHOLD_MINOR else "▽"
-            print(f"  [{tag}]  {a['run1_score']:>5.1f} → {a['run2_score']:>5.1f}  ({a['delta']:.2f})  {a['title'][:55]}")
+            print(f"  [{tag}]  {a['run1_score']:>5.1f} → {a['run2_score']:>5.1f}  ({a['delta']:.2f})  {a['title'][:50]}{issue_label(a)}")
             for f, fd in a["fields"].items():
                 if abs(fd["delta"]) >= THRESHOLD_NOISE:
                     ftag = "▲" if fd["delta"] > 0 else "▼"
@@ -378,17 +417,8 @@ def print_compare_report(run1: dict, run2: dict,
     if no_change:
         print(f"\n  ── No Change ({len(no_change)}) ──")
         for a in no_change:
-            print(f"  [→]  {a['run1_score']:>5.1f} → {a['run2_score']:>5.1f}   {a['title'][:55]}")
+            print(f"  [→]  {a['run1_score']:>5.1f} → {a['run2_score']:>5.1f}   {a['title'][:50]}{issue_label(a)}")
 
-    if articles["new_matches"]:
-        print(f"\n  ── Newly Matched ({len(articles['new_matches'])}) ──")
-        for a in articles["new_matches"]:
-            print(f"  [+]  score={a['score']:.1f}  {a['title'][:55]}")
-
-    if articles["lost_matches"]:
-        print(f"\n  ── Lost Matches ({len(articles['lost_matches'])}) ──")
-        for a in articles["lost_matches"]:
-            print(f"  [-]  score={a['score']:.1f}  {a['title'][:55]}")
 
     # ── Pages ──
     print("\n── Page Score Detail ─────────────────────────────────\n")
