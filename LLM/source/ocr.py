@@ -44,7 +44,7 @@ def save_logs(output_dir: str, journal_name: str) -> str:
     """
     os.makedirs(output_dir, exist_ok=True)
 
-    datetime_str = datetime.now().strftime("%b%d_%H%M")
+    datetime_str = datetime.now().strftime("%b%d_%H-%M")
     log_filename = f"logs_{journal_name}_{datetime_str}.txt"
     log_path = os.path.join(output_dir, log_filename)
 
