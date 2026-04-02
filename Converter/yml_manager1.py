@@ -55,9 +55,9 @@ def save_yaml(data, path):
 
 
 def log_error(message):
-    ensure_parent_dir(ERROR_FILE)
-    with open(ERROR_FILE, "a", encoding="utf-8") as f:
-        f.write(message.rstrip() + "\n")
+    print(f"[LOG] {message.rstrip()}")
+    logging.warning(message.rstrip())
+
 
 
 def normalize_text(value):
