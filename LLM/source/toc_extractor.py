@@ -189,11 +189,17 @@ def extract_toc_articles(ocr_filepath, toc_page_numbers, folder_path, useLLM = T
     # Use LLM toggle 
     if(useLLM): 
         print("\nExtracting articles using LLM...") 
-        articles = get_article_page_numbers(combined_ocr) 
+
+        # Use first TOC page image for vision input
+        first_toc_idx = toc_page_numbers[0] - 1
+        first_toc_image = entries[first_toc_idx].get("filePath") if 0 <= first_toc_idx < len(entries) else None
+
+        articles = get_article_page_numbers(combined_ocr, image_path=first_toc_image)  
         try:
             articles = json.loads(articles) 
             if not isinstance(articles, list):
                 print("  LLM response is not a list. Returning empty.")
+                print("LLM raw response:", articles)
                 articles = []
         except (json.JSONDecodeError, TypeError):
             print(f"  Failed to parse LLM response as JSON. Returning empty.")

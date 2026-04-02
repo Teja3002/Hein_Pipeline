@@ -72,7 +72,7 @@ def get_page_offset(ocr_filepath, useLLM = False):
 
     if(useLLM): 
         print("Asking LLM for printed page number of the last page...") 
-        llm_response = get_page_number(ocr_text) 
+        llm_response = get_page_number(ocr_text, image_path=last_entry.get("filePath")) 
 
         try: 
             last_page_number = int(llm_response.strip()) 

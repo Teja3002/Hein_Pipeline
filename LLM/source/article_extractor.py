@@ -128,6 +128,8 @@ def extract_article_info(start_page, end_page, ocr_filepath):
     for i in range(pages_to_scan):
         page_idx = start_page - 1 + i 
 
+        print(f"      Scanning page {page_idx + 1} for article info...")  
+
         if page_idx < 0 or page_idx >= len(entries):
             continue
 
@@ -148,7 +150,7 @@ def extract_article_info(start_page, end_page, ocr_filepath):
 
         # Call LLM to extract title and authors
         print(f"      Extracting from {file_name}...")
-        extracted, raw = extract_article_fields(ocr_text)
+        extracted, raw = extract_article_fields(ocr_text, image_path=entry.get("filePath")) 
         print(f"      LLM raw: {raw}")
 
         # Verify title
@@ -182,7 +184,7 @@ def extract_article_info(start_page, end_page, ocr_filepath):
 
     
 
-def process_articles(articles, page_offset, ocr_filepath, metadata_filepath): 
+def process_articles(articles, page_offset, ocr_filepath, metadata_filepath, issue_key="-1"): 
     """
     Loops through all articles, extracts title and authors for each,
     and saves results to metadata JSON.
@@ -201,6 +203,9 @@ def process_articles(articles, page_offset, ocr_filepath, metadata_filepath):
     metadata["pages"] = []
 
     for i, article in enumerate(articles):
+
+        print("Article_Info") 
+        print(i, article) 
         start_page = int(article["page"]) + page_offset
         native_page = str(article["page"])
 
@@ -213,11 +218,11 @@ def process_articles(articles, page_offset, ocr_filepath, metadata_filepath):
         print(f"    Pages: {start_page} - {end_page}")
 
         result = extract_article_info(start_page, end_page, ocr_filepath)
-        doi_result = extract_article_doi(start_page, end_page, ocr_filepath)
+        # doi_result = extract_article_doi(start_page, end_page, ocr_filepath)
 
-        external_link = None
-        if doi_result:
-            external_link = get_external_link(doi_result["link"])
+        # external_link = None
+        # if doi_result:
+        #     external_link = get_external_link(doi_result["link"])
 
         # metadata["articles"].append({ 
         #     "page": article["page"],
@@ -242,9 +247,10 @@ def process_articles(articles, page_offset, ocr_filepath, metadata_filepath):
             "title": result.get("title", ""), 
             "citation": "",
             "description": "",
-            "doi": doi_result.get("doi", "") if doi_result else "",
-            "external_url": external_link or "",
-            "authors": result.get("authors", []) or [] 
+            # "doi": doi_result.get("doi", "") if doi_result else "",
+            # "external_url": external_link or "",
+            "authors": result.get("authors", []) or [], 
+            "issue": issue_key 
         }
 
         metadata["sections"][str(i + 1)] = section

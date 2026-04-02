@@ -104,7 +104,7 @@ def check_toc(ocr_filepath, folder_path, max_page_scan=15):
         print(f"Checking for ToC on page {i + 1}...") 
 
         start = time.time()
-        llm_result = extract_toc_page(entry["ocrText"])   
+        llm_result = extract_toc_page(entry["ocrText"], image_path=file_path)    
         elapsed = round(time.time() - start, 2)
 
         result = llm_result.strip().upper().split()[0] 

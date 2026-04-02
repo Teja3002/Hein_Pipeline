@@ -1,5 +1,6 @@
 import json
 import re
+import base64
 from ollama import chat  
 
 model_name = "qwen3.5:9b" 
@@ -12,34 +13,68 @@ client = OpenAI(
     api_key= "tgp_v1_ZE17Dd70YCHDqkfpkIbF3jndQ_MoG0jdt4dRRLzrPQE",
     base_url="https://api.together.xyz/v1"
 )
-    
-def _call_llm(system_prompt, user_content):
+
+
+def _call_llm(system_prompt, user_content, image_path=None):
     """
     Internal helper to call the LLM and return the raw response string.
+    Optionally accepts an image_path to include as vision input.
     """
+    user_message = {"role": "user", "content": user_content}
 
-    add_instructions = "If you dont know then dont hallucinate, just say null or None. Returning anything other than valid JSON will crash the pipeline.\n\n" 
+    # Add image if provided
+    if image_path and os.path.exists(image_path):
+        with open(image_path, "rb") as img_file:
+            b64_image = base64.b64encode(img_file.read()).decode("utf-8")
+        user_message["content"] = [
+            {"type": "text",      "text": user_content},
+            {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64_image}"}}
+        ]
 
-    response = client.chat.completions.create( 
-        # model= "google/gemma-3n-E4B-it", 
-        model= "Qwen/Qwen3-Next-80B-A3B-Instruct", 
+    response = client.chat.completions.create(
+        model="Qwen/Qwen3-Next-80B-A3B-Instruct",
         messages=[
-            # {"role": "system", "content": add_instructions + system_prompt},
-            {"role": "system", "content": system_prompt}, 
-            {"role": "user", "content": user_content}
+            {"role": "system", "content": system_prompt},
+            user_message
         ]
     )
 
-    raw =  response.choices[0].message.content.strip()
+    raw = response.choices[0].message.content.strip()
 
-    # Clean up markdown code fences if present 
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
         raw = raw.rsplit("```", 1)[0]
         raw = raw.strip()
 
-    return raw 
+    return raw
 
+    
+# def _call_llm(system_prompt, user_content, image_path=None): 
+#     """
+#     Internal helper to call the LLM and return the raw response string.
+#     """
+
+#     add_instructions = "If you dont know then dont hallucinate, just say null or None. Returning anything other than valid JSON will crash the pipeline.\n\n" 
+
+#     response = client.chat.completions.create( 
+#         # model= "google/gemma-3n-E4B-it", 
+#         model= "Qwen/Qwen3-Next-80B-A3B-Instruct", 
+#         messages=[
+#             # {"role": "system", "content": add_instructions + system_prompt},
+#             {"role": "system", "content": system_prompt}, 
+#             {"role": "user", "content": user_content}
+#         ]
+#     )
+
+#     raw =  response.choices[0].message.content.strip()
+
+#     # Clean up markdown code fences if present 
+#     if raw.startswith("```"):
+#         raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
+#         raw = raw.rsplit("```", 1)[0]
+#         raw = raw.strip()
+
+#     return raw 
 
 
 # def _call_llm(system_prompt, user_content):
@@ -64,7 +99,7 @@ def _call_llm(system_prompt, user_content):
 
 #     return raw  
 
-def is_new_article(ocr_text):
+def is_new_article(ocr_text, image_path=None):
     """
     Asks LLM if this page is the start of a new article.
 
@@ -96,12 +131,13 @@ def is_new_article(ocr_text):
 
     raw = _call_llm(
         system_prompt,
-        f"PAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\n"
+        f"PAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\n",
+        image_path=image_path
     )
 
     return raw.strip().upper().startswith("YES") 
 
-def extract_article_fields(ocr_text):
+def extract_article_fields(ocr_text, image_path=None):
     """
     Extract article title and authors from article OCR text in a single LLM call.
 
@@ -130,7 +166,8 @@ def extract_article_fields(ocr_text):
 
     raw = _call_llm(
         system_prompt,
-        f"ARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n"
+        f"ARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        image_path=image_path
     )
 
     try:
@@ -140,7 +177,7 @@ def extract_article_fields(ocr_text):
 
     return result, raw
 
-def extract_metadata_fields(ocr_text, pending_fields):
+def extract_metadata_fields(ocr_text, pending_fields, image_path=None):
     """
     Extract multiple metadata fields in a single LLM call.
 
@@ -184,7 +221,8 @@ def extract_metadata_fields(ocr_text, pending_fields):
 
     raw = _call_llm(
         system_prompt,
-        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n"
+        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        image_path=image_path
     )
 
     # print("fields_list: " + fields_list)
@@ -198,7 +236,7 @@ def extract_metadata_fields(ocr_text, pending_fields):
 
     return result, raw 
 
-def extract_toc_page(ocr_text):  
+def extract_toc_page(ocr_text, image_path=None):  
 
     # system_prompt = (
     #     f"You are part of a development pipeline." 
@@ -235,6 +273,7 @@ def extract_toc_page(ocr_text):
         "IMPORTANT: A continuation of a TOC is still a TOC, even without a heading or title saying 'Table of Contents'.\n\n"
         "NOT a Table of Contents: single articles, title pages, bibliographies, indexes, or header-only pages.\n\n"
         "RULES:\n"
+        "  - Page Numbers must always be present\n"
         "  - Respond with ONLY the word YES or NO\n"
         "  - Do NOT explain, justify, or add any other text\n"
         "  - One word only: YES or NO\n"
@@ -242,12 +281,13 @@ def extract_toc_page(ocr_text):
 
     raw = _call_llm(
         system_prompt,
-        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n"
+        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        image_path=image_path
     )
 
     return raw
 
-def get_article_page_numbers(ocr_text):  
+def get_article_page_numbers(ocr_text, image_path=None):  
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than valid JSON will crash the pipeline.\n\n"
@@ -266,12 +306,13 @@ def get_article_page_numbers(ocr_text):
 
     raw = _call_llm(
         system_prompt,
-        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n"
+        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        image_path=image_path
     )
 
     return raw
 
-def get_page_number(ocr_text):  
+def get_page_number(ocr_text, image_path=None):  
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than a number will crash the pipeline.\n\n"
@@ -286,7 +327,8 @@ def get_page_number(ocr_text):
 
     raw = _call_llm(
         system_prompt,
-        f"PAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\nPage number:\n"
+        f"PAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\nPage number:\n",
+        image_path=image_path
     )
 
     return raw

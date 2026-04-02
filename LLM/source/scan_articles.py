@@ -16,7 +16,7 @@ from source.verifier.verify_article_title import verify_article_title
 #         json.dump(data, f, indent=4, ensure_ascii=False)
 
 
-def scan_articles(page_offset, ocr_filepath, metadata_filepath):
+def scan_articles(page_offset, ocr_filepath, metadata_filepath, issue_key="-1"):
     """
     Sequentially scans pages to detect article boundaries
     when no TOC is available.
@@ -62,7 +62,7 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
             entry["ocrText"] = ocr_text
 
         # Ask LLM if this is the start of a new article
-        result = is_new_article(ocr_text) 
+        result = is_new_article(ocr_text, image_path=entry.get("filePath"))  
 
         if result: 
             article_boundaries.append(i)
@@ -83,7 +83,7 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
 
     for boundary in article_boundaries:
         ocr_text = entries[boundary].get("ocrText", "")
-        extracted, raw = extract_article_fields(ocr_text) 
+        extracted, raw = extract_article_fields(ocr_text, image_path=entries[boundary].get("filePath"))  
 
         title_valid, _ = verify_article_title(extracted.get("title")) 
 
@@ -114,7 +114,7 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
 
         # Extract title and authors from first page of article 
         ocr_text = entries[start_idx].get("ocrText", "")
-        extracted, raw = extract_article_fields(ocr_text)
+        extracted, raw = extract_article_fields(ocr_text, image_path=entries[start_idx].get("filePath"))
         print(f"    Title: {extracted.get('title', 'N/A')}")
 
         # Extract DOI
@@ -138,7 +138,8 @@ def scan_articles(page_offset, ocr_filepath, metadata_filepath):
             "description": "",
             "doi": doi_result.get("doi", "") if doi_result else "",
             "external_url": external_link or "",
-            "authors": extracted.get("authors", []) or [] 
+            "authors": extracted.get("authors", []) or [], 
+            "issue": issue_key
         }
 
         metadata["sections"][str(i + 1)] = section

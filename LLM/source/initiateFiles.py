@@ -15,17 +15,13 @@ def create_metadata_json(base_folder):
     metadata = {
         "journalName": journal_name,
         "volume": "",
-        "date": "",
         "title": "",
-        "TOC": False, 
-        "issue": "",
-        # "issn": "",
-        # "eissn": "", 
-        # "articles": [] 
-        "pages": [], 
-        "sections": {}
+        "issue": [],           # list e.g. ["1", "2"]
+        "issue_date": {},      # per-issue date e.g. {"1": "June 2025"}  — filled later by LLM
+        "TOC": {},             # per-issue TOC e.g. {"1": true, "2": false} — filled later
+        "pages": [],
+        "sections": {}         # each section will have "issue": "1" or "2"
     }
-    
 
     json_filename = f"metadata_{safe_model_name}_{journal_name}.json" 
     results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp") 

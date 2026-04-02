@@ -64,11 +64,21 @@ def run_ocr_pipeline(base_folder):
     toc_pages = get_toc_pages(toc_results) 
 
     # Return in metadata if we have table of content
-    metadata["TOC"] = has_toc(toc_pages) 
+    # Store TOC as per-issue dict
+    # For now we only know one issue from metadata extraction
+    # Use first issue in the list, fallback to "-1" if not found
+    issue_list = metadata.get("issue", [])
+    issue_key = str(issue_list[0]) if issue_list else "-1"
+    metadata["TOC"] = {issue_key: has_toc(toc_pages)} 
+
     with open(metadata_filepath, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=4, ensure_ascii=False)
 
     isCalculated = False
+
+    # Get issue key for stamping sections
+    issue_list = metadata.get("issue", [])
+    issue_key  = str(issue_list[0]) if issue_list else "-1"
 
     # Extracting Articles List from TOC pages: If toc_pages is None or empty, it will skip this step and return None
     if toc_pages: 
@@ -80,12 +90,12 @@ def run_ocr_pipeline(base_folder):
 
         # Use Page offset to extract article data from the correct pages. 
         if articles:
-            process_articles(articles, page_offset, ocr_filepath, metadata_filepath)   
+            process_articles(articles, page_offset, ocr_filepath, metadata_filepath, issue_key)   
             isCalculated = True
     
     if not isCalculated:
         print(f"\n⚠ No articles extracted from TOC. Falling back to sequential scan...")
-        scan_articles(page_offset, ocr_filepath, metadata_filepath) 
+        scan_articles(page_offset, ocr_filepath, metadata_filepath, issue_key)  
 
     
     elapsed = round(time.time() - start, 2)

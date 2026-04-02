@@ -20,11 +20,18 @@ from source.verifier.verify_eissn import verify_eissn
 #     "eissn": 'The electronic E-ISSN (e.g. "2161-7953")',
 # }
 
+# FIELD_DESCRIPTIONS = {
+#     "volume": 'The volume number (e.g. "89")',
+#     "date": 'The publication date (e.g. "January 2026")',
+#     "title": 'The full journal title (e.g. "The Modern Law Review")', 
+#     "issue": 'The issue number (e.g. "1")' 
+# }
+
 FIELD_DESCRIPTIONS = {
-    "volume": 'The volume number (e.g. "89")',
-    "date": 'The publication date (e.g. "January 2026")',
-    "title": 'The full journal title (e.g. "The Modern Law Review")', 
-    "issue": 'The issue number (e.g. "1")' 
+    "volume": 'The volume number (e.g. "89"). May appear as "VOLUME 143"',
+    "date":   'The publication date (e.g. "January 2026")',
+    "title":  'The full journal title (e.g. "The Modern Law Review")',
+    "issue":  'The issue number (e.g. "1"). May appear as "NUMBER 1" or "No. 1" or "Issue 1"',
 }
 
 # Verifier for each field
@@ -119,7 +126,7 @@ def extract_metadata(ocr_filepath, metadata_filepath, MAX_PAGES=10):
 
         # Single LLM call for all pending fields
         print(f"    Calling LLM for: {', '.join(pending_fields)}...")
-        result, raw_response = extract_metadata_fields(ocr_text, pending_descriptions)
+        result, raw_response = extract_metadata_fields(ocr_text, pending_descriptions, image_path=file_path)
         print(f"    LLM raw: {raw_response}") 
 
         # Verify each returned field
@@ -143,7 +150,18 @@ def extract_metadata(ocr_filepath, metadata_filepath, MAX_PAGES=10):
 
     # Update metadata JSON with verified fields
     for field_name, value in verified_fields.items():
-        metadata[field_name] = value 
+        if field_name == "date":
+            issue_key = str(verified_fields.get("issue", "-1"))
+            metadata["issue_date"][issue_key] = value
+        elif field_name == "issue":
+            # Store as list — append if not already present
+            if not isinstance(metadata["issue"], list):
+                metadata["issue"] = []
+            issue_str = str(value)
+            if issue_str not in metadata["issue"]:
+                metadata["issue"].append(issue_str)
+        else:
+            metadata[field_name] = value
 
     save_json(metadata_filepath, metadata)
 
