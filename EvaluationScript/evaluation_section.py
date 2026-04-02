@@ -197,9 +197,9 @@ def match_sections(gt_sections: dict, cand_sections: dict):
 
 
 FIELD_WEIGHTS = {
-    "title":   0.30,
-    "creator": 0.30,
-    "doi":     0.40,
+    "title":   0.40,
+    "creator": 0.40,
+    "doi":     0.20,
 }
 
 

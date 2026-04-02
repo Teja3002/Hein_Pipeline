@@ -1,14 +1,14 @@
 import os
 import json
 
-from source.ocr import extract_text 
-from source.llm import extract_metadata_fields
-from source.verifier.verify_volume import verify_volume
-from source.verifier.verify_date import verify_date
-from source.verifier.verify_title import verify_title
-from source.verifier.verify_issue import verify_issue
-from source.verifier.verify_issn import verify_issn
-from source.verifier.verify_eissn import verify_eissn
+from .ocr import extract_text 
+from .llm import extract_metadata_fields
+from .verifier.verify_volume import verify_volume
+from .verifier.verify_date import verify_date
+from .verifier.verify_title import verify_title
+from .verifier.verify_issue import verify_issue
+from .verifier.verify_issn import verify_issn
+from .verifier.verify_eissn import verify_eissn
 
 # Field descriptions passed to the LLM (only pending ones are sent)
 # FIELD_DESCRIPTIONS = {

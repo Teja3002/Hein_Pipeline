@@ -4,9 +4,9 @@ import time
 import os
 import time
 
-from source.metadata_extractor import load_json, save_json 
-from source.ocr import extract_text
-from source.llm import extract_toc_page, safe_model_name 
+from .metadata_extractor import load_json, save_json 
+from .ocr import extract_text
+from .llm import extract_toc_page, safe_model_name 
 
 # model_name = 'gemma3' 
 # model_name = 'qwen3-vl:8b'        

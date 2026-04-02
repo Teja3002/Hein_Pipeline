@@ -1,19 +1,24 @@
 import os
 import shutil 
+import sys
 import time 
 import json
 from datetime import datetime
 import argparse
 
+# # Allow running this file directly during testing
+# if __name__ == "__main__":
+#     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # Importing necessary functions from other modules: 
-from source.article_extractor import process_articles
-from source.find_page_offset import get_page_offset
-from source.initiateFiles import create_ocr_json, create_metadata_json, save_metadata_to_output
-from source.metadata_extractor import extract_metadata
-from source.scan_articles import scan_articles
-from source.toc_checker import check_toc 
-from source.llm import model_name
-from source.toc_extractor import get_toc_pages, extract_toc_articles
+from .source.article_extractor import process_articles
+from .source.find_page_offset import get_page_offset
+from .source.initiateFiles import create_ocr_json, create_metadata_json, save_metadata_to_output
+from .source.metadata_extractor import extract_metadata
+from .source.scan_articles import scan_articles
+from .source.toc_checker import check_toc 
+from .source.llm import model_name 
+from .source.toc_extractor import get_toc_pages, extract_toc_articles 
 
 def initiate_temp_files(base_folder): 
 

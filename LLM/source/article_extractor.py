@@ -3,11 +3,11 @@ import json
 import re 
 import requests
 
-from source.metadata_extractor import load_json, save_json
-from source.ocr import extract_text
-from source.llm import extract_article_fields
-from source.verifier.verify_article_title import verify_article_title
-from source.verifier.verify_article_authors import verify_article_authors
+from .metadata_extractor import load_json, save_json
+from .ocr import extract_text
+from .llm import extract_article_fields
+from .verifier.verify_article_title import verify_article_title
+from .verifier.verify_article_authors import verify_article_authors
 
 def extract_doi(ocr_text):
     """

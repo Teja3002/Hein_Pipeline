@@ -29,6 +29,10 @@ results/
 results_old/ 
 LLM/temp/ 
 Input_Eval
+
+# Converter
+Converter/error.txt 
+
 # Processed output
 output/
 

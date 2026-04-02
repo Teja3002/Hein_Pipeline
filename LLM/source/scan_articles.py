@@ -1,9 +1,9 @@
 import json
-from source.metadata_extractor import load_json, save_json 
-from source.ocr import extract_text
-from source.llm import is_new_article, extract_article_fields
-from source.article_extractor import extract_article_doi, get_external_link
-from source.verifier.verify_article_title import verify_article_title
+from .metadata_extractor import load_json, save_json 
+from .ocr import extract_text
+from .llm import is_new_article, extract_article_fields
+from .article_extractor import extract_article_doi, get_external_link
+from .verifier.verify_article_title import verify_article_title
 
 
 # def load_json(filepath):

@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 import shutil
 
-from source.llm import safe_model_name
+from .llm import safe_model_name
 
 def create_metadata_json(base_folder):
     """

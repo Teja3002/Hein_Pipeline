@@ -1,8 +1,8 @@
 import yaml
 
-from source.llm import get_page_number
-from source.ocr import extract_text
-from source.toc_extractor import load_json, save_json 
+from .llm import get_page_number
+from .ocr import extract_text
+from .toc_extractor import load_json, save_json 
 
 
 

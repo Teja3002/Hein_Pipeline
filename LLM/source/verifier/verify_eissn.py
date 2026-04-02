@@ -1,4 +1,4 @@
-from source.verifier.verify_issn import verify_issn
+from .verify_issn import verify_issn
 
 
 def verify_eissn(value):

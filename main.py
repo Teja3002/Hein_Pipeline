@@ -12,26 +12,27 @@ from Utilities.app_logging import setup_logging
 from Webscraper.databaseScrape import process as process_database_fallback
 from Webscraper.recursiveScrape import scrape_from_database_url
 from Webscraper.scraper import scrape_from_crossref_result, scrape_without_crossref
+from LLM.ocr_pipeline import run_ocr_pipeline
 
 
-def start_ocr_pipeline(folder_name, folder_path, llm_dir):
-    ocr_script = llm_dir / "ocr_pipeline.py"
-    command = [sys.executable, str(ocr_script), str(folder_path)]
-    process = subprocess.Popen(
-        command,
-        cwd=str(llm_dir),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-    )
-    logging.info(
-        "Started OCR pipeline asynchronously for folder=%s pid=%s command=%s cwd=%s",
-        folder_name,
-        process.pid,
-        command,
-        llm_dir,
-    )
-    return process
+# def start_ocr_pipeline(folder_name, folder_path, llm_dir):
+#     ocr_script = llm_dir / "ocr_pipeline.py"
+#     command = [sys.executable, str(ocr_script), str(folder_path)]
+#     process = subprocess.Popen(
+#         command,
+#         cwd=str(llm_dir),
+#         stdout=subprocess.PIPE,
+#         stderr=subprocess.PIPE,
+#         text=True,
+#     )
+#     logging.info(
+#         "Started OCR pipeline asynchronously for folder=%s pid=%s command=%s cwd=%s",
+#         folder_name,
+#         process.pid,
+#         command,
+#         llm_dir,
+#     )
+#     return process
 
 
 def wait_for_ocr_pipeline(folder_name, ocr_process):
@@ -105,14 +106,14 @@ def main() -> None:
             folder.name,
             process_id,
         )
-        ocr_process = start_ocr_pipeline(folder.name, folder, llm_dir)
-        logging.info(
-            "Current process state for folder=%s main_pid=%s ocr_pid=%s ocr_input_path=%s",
-            folder.name,
-            process_id,
-            ocr_process.pid,
-            folder,
-        )
+        # ocr_process = start_ocr_pipeline(folder.name, folder, llm_dir)
+        # logging.info(
+        #     "Current process state for folder=%s main_pid=%s ocr_pid=%s ocr_input_path=%s",
+        #     folder.name,
+        #     process_id,
+        #     ocr_process.pid,
+        #     folder,
+        # )
         process_folder(folder.name, str(folder))
         crossref_result_file = crossref_results_dir / f"{folder.name}.json"
 
@@ -157,7 +158,12 @@ def main() -> None:
             else:
                 scrape_without_crossref(folder.name)
 
-        wait_for_ocr_pipeline(folder.name, ocr_process)
+        # wait_for_ocr_pipeline(folder.name, ocr_process)
+        print(f"Input Directory: {input_dir}, Folder: {folder.name}") 
+        ocr_input_dir = os.path.join(input_dir, folder.name) 
+        print(f"Running OCR pipeline for folder: {ocr_input_dir}")
+        run_ocr_pipeline(ocr_input_dir) 
+        
         logging.info("Starting combinator for folder=%s after OCR wait", folder.name)
         combine_folder_results(folder.name)
         logging.info("Finished combinator for folder=%s", folder.name)

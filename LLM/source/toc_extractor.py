@@ -2,8 +2,8 @@ import os
 import re
 import json
 
-from source.llm import safe_model_name, get_article_page_numbers 
-from source.metadata_extractor import load_json, save_json  
+from .llm import safe_model_name, get_article_page_numbers 
+from .metadata_extractor import load_json, save_json  
 
 # def load_json(filepath):
 #     """Load and return a JSON file."""
