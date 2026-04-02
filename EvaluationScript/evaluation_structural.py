@@ -7,8 +7,8 @@ from difflib import SequenceMatcher
 def similarity(a, b) -> float:
     if not a or not b:
         return 0.0
-    return SequenceMatcher(None, a.lower().strip(), b.lower().strip()).ratio()
-
+    # return SequenceMatcher(None, a.lower().strip(), b.lower().strip()).ratio()
+    return SequenceMatcher(None, str(a).lower().strip(), str(b).lower().strip()).ratio()
 
 def fuzzy_score(a: str, b: str) -> float:
     return similarity(a, b)

@@ -6,7 +6,6 @@ import argparse
 import logging
 from copy import deepcopy
 
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "Combinator", "results")
@@ -153,12 +152,6 @@ def build_volume_section():
 
 
 def build_issue_section(issue_key, input_json, volume_section_id):
-    """
-    Build one Issue section for a given issue_key (e.g. "1" or "2").
-    
-    Looks up the date from input_json["issue_date"][issue_key] if present,
-    otherwise falls back to input_json["date"].
-    """
     issue_dates = input_json.get("issue_date", {})
     date_value = normalize_text(
         issue_dates.get(issue_key, input_json.get("date", ""))
@@ -258,10 +251,6 @@ def detect_new_json_format(input_json):
 
 
 def collect_unique_issues(input_json):
-    """
-    Returns a sorted list of unique issue keys found across all sections.
-    Falls back to ["1"] if no issue field is present anywhere.
-    """
     sections = input_json.get("sections", {})
     seen = set()
     for sec in sections.values():
@@ -272,7 +261,6 @@ def collect_unique_issues(input_json):
     if not seen:
         return ["1"]
 
-    # Sort numerically where possible, lexicographically otherwise
     def sort_key(k):
         try:
             return (0, int(k))
@@ -286,13 +274,19 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
     """
     Supports both JSON formats:
 
-    NEW FORMAT: sections carry first_page and issue directly.
+    NEW FORMAT: sections carry first_page, last_page, and issue directly.
       - start_native comes from section["first_page"]
-      - issue_key comes from section["issue"]
+      - end_native   comes from section["last_page"]  (may be null)
+      - issue_key    comes from section["issue"]
+      - If first_page is null/empty, the record is still included but
+        marked as page-unmappable (page_mappable=False). It will still
+        appear as a fully-populated section in the output YAML; it just
+        won't be assigned to any page range.
 
     OLD FORMAT: a parallel pages array maps section order to native values.
       - start_native comes from pages[idx]["native"]
-      - issue_key defaults to "1"
+      - end_native   is always "" (old format has no last_page field)
+      - issue_key    defaults to "1"
     """
     use_new_format = detect_new_json_format(input_json)
 
@@ -307,9 +301,14 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             if skip_probable_matter and is_probably_noncontent(title_raw):
                 continue
 
-            start_native = normalize_text(sec.get("first_page", ""))
-            if not start_native:
-                continue
+            # Allow null/missing first_page — record is still included,
+            # just flagged as having no page mapping.
+            raw_first_page = sec.get("first_page")
+            start_native = normalize_text(raw_first_page) if raw_first_page is not None else ""
+
+            # last_page drives overlap detection; null means no overlap check for this article.
+            raw_last_page = sec.get("last_page")
+            end_native = normalize_text(raw_last_page) if raw_last_page is not None else ""
 
             issue_key = normalize_text(sec.get("issue", "1"))
             creators = build_creator_list(sec)
@@ -326,6 +325,8 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             records.append({
                 "old_sid": int(old_sid_str),
                 "start_native": start_native,
+                "end_native": end_native,
+                "page_mappable": bool(start_native),  # False when first_page is null
                 "issue_key": issue_key,
                 "title": title_raw,
                 "creator": creators,
@@ -371,6 +372,8 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             records.append({
                 "old_sid": int(old_sid_str),
                 "start_native": start_native,
+                "end_native": "",  # old format has no last_page field
+                "page_mappable": True,
                 "issue_key": "1",  # old format: single issue
                 "title": title_raw,
                 "creator": creators,
@@ -424,7 +427,8 @@ def should_use_repeating_one_logic(article_records):
     if not article_records:
         return False
 
-    start_natives = [rec["start_native"] for rec in article_records]
+    # Only consider mappable records for this heuristic
+    start_natives = [rec["start_native"] for rec in article_records if rec.get("page_mappable")]
     one_count = sum(1 for x in start_natives if x == "1")
     return one_count >= 2
 
@@ -432,8 +436,15 @@ def should_use_repeating_one_logic(article_records):
 def assign_article_start_pages_normal(article_records, structure_pages):
     native_to_page_id = build_native_to_first_page_id_map(structure_pages)
 
-    usable_articles = []
+    result = []
     for rec in article_records:
+        new_rec = deepcopy(rec)
+
+        if not rec.get("page_mappable"):
+            # No first_page — include in sections but skip page assignment
+            result.append(new_rec)
+            continue
+
         start_native = rec["start_native"]
         start_page_id = native_to_page_id.get(start_native)
 
@@ -442,24 +453,31 @@ def assign_article_start_pages_normal(article_records, structure_pages):
                 f"[WARN] Could not map article start native '{start_native}' "
                 f"for title '{rec['title']}'"
             )
+            new_rec["page_mappable"] = False
+            result.append(new_rec)
             continue
 
-        new_rec = deepcopy(rec)
         new_rec["start_structure_id"] = start_page_id
-        usable_articles.append(new_rec)
+        result.append(new_rec)
 
-    usable_articles.sort(key=lambda x: x["start_structure_id"])
-    return usable_articles
+    result.sort(key=lambda x: x.get("start_structure_id", float("inf")))
+    return result
 
 
 def assign_article_start_pages_repeating_one(article_records, structure_pages):
     native_to_page_ids = build_native_to_all_page_ids_map(structure_pages)
     one_occurrences = native_to_page_ids.get("1", [])
 
-    usable_articles = []
+    result = []
     one_index = 0
 
     for rec in article_records:
+        new_rec = deepcopy(rec)
+
+        if not rec.get("page_mappable"):
+            result.append(new_rec)
+            continue
+
         start_native = rec["start_native"]
 
         if start_native == "1":
@@ -468,6 +486,8 @@ def assign_article_start_pages_repeating_one(article_records, structure_pages):
                     f"[WARN] Not enough occurrences of native '1' in structure.yml "
                     f"for title '{rec['title']}'"
                 )
+                new_rec["page_mappable"] = False
+                result.append(new_rec)
                 continue
 
             start_page_id = one_occurrences[one_index]
@@ -479,15 +499,16 @@ def assign_article_start_pages_repeating_one(article_records, structure_pages):
                     f"[WARN] Could not map article start native '{start_native}' "
                     f"for title '{rec['title']}'"
                 )
+                new_rec["page_mappable"] = False
+                result.append(new_rec)
                 continue
             start_page_id = all_occurrences[0]
 
-        new_rec = deepcopy(rec)
         new_rec["start_structure_id"] = start_page_id
-        usable_articles.append(new_rec)
+        result.append(new_rec)
 
-    usable_articles.sort(key=lambda x: x["start_structure_id"])
-    return usable_articles
+    result.sort(key=lambda x: x.get("start_structure_id", float("inf")))
+    return result
 
 
 def assign_article_start_pages(article_records, structure_pages):
@@ -502,20 +523,16 @@ def build_sections(article_records, input_json):
     """
     Builds the full sections dict for the output YAML.
 
-    Section ID layout:
-      1            → volume
-      2 … 2+N-1   → one issue section per unique issue key (N issues total)
-      2+N          → TOC (if enabled), else first article
-      2+N+1 …     → articles (or 2+N … if no TOC)
-
-    Returns (new_sections dict, issue_key_to_sid mapping, toc_sid or None, article_start_sid).
+    All article records — including those with null first_page — receive a
+    new_sid and appear in the sections dict with their full metadata.
+    Records with no page mapping are wired to their issue section normally;
+    the pages array simply won't reference them.
     """
     toc_enabled = is_toc_enabled(input_json)
     unique_issues = collect_unique_issues(input_json)
 
     volume_sid = VOLUME_SECTION_ID
 
-    # Assign one section ID per issue, in sorted order
     issue_key_to_sid = {}
     next_sid = volume_sid + 1
     for issue_key in unique_issues:
@@ -524,14 +541,12 @@ def build_sections(article_records, input_json):
 
     toc_sid = None
     if toc_enabled:
-        # TOC goes after all issue sections; it points to the first issue by convention
         first_issue_sid = issue_key_to_sid[unique_issues[0]]
         toc_sid = next_sid
         next_sid += 1
 
     article_start_sid = next_sid
 
-    # --- Build sections dict ---
     new_sections = {volume_sid: build_volume_section()}
 
     for issue_key in unique_issues:
@@ -541,16 +556,14 @@ def build_sections(article_records, input_json):
     if toc_sid is not None:
         new_sections[toc_sid] = build_toc_section(first_issue_sid)
 
-    # Build article sections
     next_sid = article_start_sid
     for rec in article_records:
         rec["new_sid"] = next_sid
 
-        # Wire insection to the correct issue section ID
         article_issue_key = rec.get("issue_key", unique_issues[0])
         article_issue_sid = issue_key_to_sid.get(
             article_issue_key,
-            issue_key_to_sid[unique_issues[0]]  # fallback to first issue
+            issue_key_to_sid[unique_issues[0]]
         )
 
         new_sec = build_empty_section()
@@ -585,27 +598,52 @@ def build_sections(article_records, input_json):
 
 
 def build_page_to_article_sid_map(usable_articles, structure_pages):
-    page_to_article_sid = {}
+    """
+    Builds a mapping of page ID -> list of article section IDs.
 
-    for idx, rec in enumerate(usable_articles):
+    Normal pages:  pid -> [article_sid]
+    Overlap pages: pid -> [incoming_sid, outgoing_sid]
+
+    Overlap rule: if article A's end_native (last_page) equals article B's
+    start_native (first_page), the physical page where they meet gets both
+    section IDs in the chain: [B_sid, A_sid] — incoming article first,
+    outgoing second. All other pages in A's range receive [A_sid] only.
+
+    Articles with no start_structure_id (null first_page) are excluded from
+    page mapping but still appear fully in the sections dict.
+    """
+    mappable = [rec for rec in usable_articles if rec.get("start_structure_id") is not None]
+
+    # pid -> [sid, ...]; shared/overlap pages have two entries
+    page_to_article_sids = {}
+
+    for idx, rec in enumerate(mappable):
         start_id = rec["start_structure_id"]
 
-        if idx < len(usable_articles) - 1:
-            end_id = usable_articles[idx + 1]["start_structure_id"] - 1
+        if idx < len(mappable) - 1:
+            next_rec = mappable[idx + 1]
+            end_id = next_rec["start_structure_id"] - 1
+
+            # Overlap check: does this article's last_page native match
+            # the next article's first_page native?
+            a_end_native = rec.get("end_native", "")
+            b_start_native = next_rec.get("start_native", "")
+            if a_end_native and b_start_native and a_end_native == b_start_native:
+                # Shared page — incoming article (B) first, outgoing (A) second
+                shared_pid = next_rec["start_structure_id"]
+                page_to_article_sids[shared_pid] = [next_rec["new_sid"], rec["new_sid"]]
         else:
             end_id = structure_pages[-1]["id"]
 
+        # Assign this article's page range, skipping already-marked shared pages
         for pid in range(start_id, end_id + 1):
-            page_to_article_sid[pid] = rec["new_sid"]
+            if pid not in page_to_article_sids:
+                page_to_article_sids[pid] = [rec["new_sid"]]
 
-    return page_to_article_sid
+    return page_to_article_sids
 
 
 def build_front_matter_chain(section_meta):
-    """
-    Front-matter chain for non-integer pages (roman numerals etc.).
-    Points through TOC (if any) → first issue → volume.
-    """
     toc_sid = section_meta["toc"]
     first_issue_sid = section_meta["issue_key_to_sid"][section_meta["unique_issues"][0]]
     volume_sid = section_meta["volume"]
@@ -616,9 +654,13 @@ def build_front_matter_chain(section_meta):
     return [first_issue_sid, volume_sid]
 
 
-def build_article_chain(article_sid, article_issue_sid, section_meta):
+def build_article_chain(article_sids, article_issue_sid, section_meta):
+    """
+    article_sids is a list — normally [single_sid], but [B_sid, A_sid] on
+    shared (overlap) pages. Issue and volume are appended after all article sids.
+    """
     volume_sid = section_meta["volume"]
-    return [article_sid, article_issue_sid, volume_sid]
+    return list(article_sids) + [article_issue_sid, volume_sid]
 
 
 def build_output(input_json, structure_yml, skip_probable_matter=True):
@@ -633,25 +675,25 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
         skip_probable_matter=skip_probable_matter
     )
 
-    # Detect if any native is '0' (non-mappable placeholder)
     has_zero_native = any(
         normalize_text(rec.get("start_native", "")) == "0"
         for rec in article_records
+        if rec.get("page_mappable")
     ) if article_records else False
 
     if has_zero_native:
         usable_articles = article_records
         new_sections, section_meta = build_sections(usable_articles, input_json)
-        page_to_article_sid = {}
+        page_to_article_sids = {}
     else:
         usable_articles = assign_article_start_pages(article_records, structure_pages)
         new_sections, section_meta = build_sections(usable_articles, input_json)
-        page_to_article_sid = build_page_to_article_sid_map(usable_articles, structure_pages)
+        page_to_article_sids = build_page_to_article_sid_map(usable_articles, structure_pages)
 
     toc_enabled = section_meta["toc"] is not None
     front_matter_chain = build_front_matter_chain(section_meta)
 
-    # Build a lookup: new_sid → article_issue_sid for page chain construction
+    # Build lookup: new_sid -> article_issue_sid for page chain construction
     sid_to_issue_sid = {}
     for rec in usable_articles:
         if "new_sid" not in rec:
@@ -672,10 +714,11 @@ def build_output(input_json, structure_yml, skip_probable_matter=True):
 
         if toc_enabled and not is_integer_native(native_text):
             section_chain = front_matter_chain
-        elif pid in page_to_article_sid:
-            article_sid = page_to_article_sid[pid]
-            article_issue_sid = sid_to_issue_sid.get(article_sid, section_meta["volume"])
-            section_chain = build_article_chain(article_sid, article_issue_sid, section_meta)
+        elif pid in page_to_article_sids:
+            article_sids = page_to_article_sids[pid]
+            # Use the primary (first/incoming) article's issue for the chain
+            primary_issue_sid = sid_to_issue_sid.get(article_sids[0], section_meta["volume"])
+            section_chain = build_article_chain(article_sids, primary_issue_sid, section_meta)
         else:
             section_chain = original_chain if original_chain else [VOLUME_SECTION_ID]
 
