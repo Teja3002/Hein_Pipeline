@@ -6,8 +6,58 @@ import numpy as np
 import pytesseract
 from PIL import Image
 from ollama import chat
-import base64
+from datetime import datetime
 
+# ── In-memory log store ───────────────────────────────────────────────────────
+
+_logs = []
+
+_current_journal = ""
+
+def set_journal(journal_name: str) -> None:
+    global _current_journal
+    _current_journal = journal_name
+
+
+def log_error(source: str, message: str, image: str = "", journal: str = "", details: str = "") -> None:
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    entry = f"{timestamp}  |  ERROR  |  [{source}]  |  journal={journal}  |  image={os.path.basename(image)}  |  {message}"
+    if details:
+        entry += f"  |  {details}"
+    _logs.append(entry)
+    print(f"    LOG: {entry}")
+
+
+def log_warning(source: str, message: str, image: str = "", journal: str = "", details: str = "") -> None:
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    entry = f"{timestamp}  |  WARNING  |  [{source}]  |  journal={journal}  |  image={os.path.basename(image)}  |  {message}"
+    if details:
+        entry += f"  |  {details}"
+    _logs.append(entry)
+    print(f"    LOG: {entry}")
+
+
+def save_logs(output_dir: str, journal_name: str) -> str:
+    """
+    Saves in-memory logs to a journal-specific log file.
+    Each run creates a new file named logs_{journal}_{datetime}.txt
+    """
+    os.makedirs(output_dir, exist_ok=True)
+
+    datetime_str = datetime.now().strftime("%b%d_%H%M")
+    log_filename = f"logs_{journal_name}_{datetime_str}.txt"
+    log_path = os.path.join(output_dir, log_filename)
+
+    with open(log_path, "w", encoding="utf-8") as f:
+        f.write(f"── Run: {journal_name}  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ──\n\n")
+        if _logs:
+            f.write("\n".join(_logs))
+            f.write("\n")
+        else:
+            f.write("  No errors or warnings.\n")
+
+    print(f"\n  Logs saved to: {log_path}")
+    return log_path
 
 
 def configure_tesseract():
@@ -49,39 +99,43 @@ def configure_tesseract():
     print(f"Using Tesseract executable from PATH: {current_cmd}")
     return current_cmd 
 
-
 configure_tesseract() 
 
 def extract_text_tesseract(image_input, preprocess=False):
     image_obj = None
-
     preprocess = False 
 
-    if isinstance(image_input, str):
-        if not os.path.exists(image_input):
-            return ""
-        if preprocess:
-            img = cv2.imread(image_input)
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            _, img_processed = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
-            image_obj = Image.fromarray(img_processed)
-        else:
-            image_obj = Image.open(image_input)
-    elif isinstance(image_input, Image.Image):
-        if preprocess:
-            rgb_image = image_input.convert('RGB')
-            open_cv_image = cv2.cvtColor(np.array(rgb_image), cv2.COLOR_RGB2BGR)
-            gray = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
-            _, img_processed = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
-            image_obj = Image.fromarray(img_processed)
-        else:
-            image_obj = image_input
+    try: 
+        if isinstance(image_input, str):
+            if not os.path.exists(image_input):
+                return ""
+            if preprocess:
+                img = cv2.imread(image_input)
+                gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                _, img_processed = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
+                image_obj = Image.fromarray(img_processed)
+            else:
+                image_obj = Image.open(image_input)
+        elif isinstance(image_input, Image.Image):
+            if preprocess:
+                rgb_image = image_input.convert('RGB')
+                open_cv_image = cv2.cvtColor(np.array(rgb_image), cv2.COLOR_RGB2BGR)
+                gray = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
+                _, img_processed = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
+                image_obj = Image.fromarray(img_processed)
+            else:
+                image_obj = image_input
 
-    if image_obj:
-        # custom_config = r'--oem 3 --psm 6'
-        custom_config = r'--oem 3 --psm 4'
-        return pytesseract.image_to_string(image_obj, config=custom_config)
-    return ""
+        if image_obj:
+            # custom_config = r'--oem 3 --psm 6'
+            custom_config = r'--oem 3 --psm 4'
+            return pytesseract.image_to_string(image_obj, config=custom_config)
+        return ""
+    except Exception as e:
+        log_error("Tesseract OCR", "OCR failed", image=str(image_input), journal=_current_journal, details=str(e))
+        print(f"    Tesseract OCR error: {e}") 
+        return ""
+    
 
 
 OCR_MODEL = "deepseek-ocr"
@@ -101,6 +155,7 @@ def extract_text(image_input, preprocess=False) -> str:
     preprocess parameter kept for backward compatibility but unused.
     """
 
+    # Tesseract check for empty page 
     ocr_output = extract_text_tesseract(image_input, preprocess=preprocess)
     # print(ocr_output) 
     if not ocr_output.strip():
@@ -121,31 +176,31 @@ def extract_text(image_input, preprocess=False) -> str:
     else:
         return ""
 
-    # ── Encode image as base64 ──
-    with open(image_path, "rb") as img_file:
-        b64_image = base64.b64encode(img_file.read()).decode("utf-8")
+    # # ── Encode image as base64 ──
+    # with open(image_path, "rb") as img_file:
+    #     b64_image = base64.b64encode(img_file.read()).decode("utf-8")
 
     print(f"      Running OCR on {image_input} using model {OCR_MODEL}...") 
 
-    # ── Call API ──
-    # response = client.chat.completions.create(
-    response = chat(
-        model=OCR_MODEL,
-        messages=[
-            {
-                "role": "user",
-                # "content": [
-                #     {"type": "text",      "text": "Extract the text in the image."},
-                #     {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64_image}"}}
-                # ]
-                "content": "Extract the text in the image.",
-                "images": [image_input] 
-            }
-        ]
-    )
+    try: 
+        # ── Call API ──
+        # response = client.chat.completions.create(
+        response = chat(
+            model=OCR_MODEL,
+            messages=[
+                {
+                    "role": "user",
+                    "content": "Extract the text in the image.",
+                    "images": [image_input] 
+                }
+            ]
+        )
+        return response.message.content.strip() 
+    except Exception as e:
+        log_error("DeepSeek OCR", "OCR failed", image=str(image_input), journal=_current_journal, details=str(e))
+        print(f"    DeepSeek OCR error: {e}") 
+        return ocr_output 
 
-    return response.message.content.strip() 
-    # return response.choices[0].message.content.strip()
 
 if __name__ == "__main__":
 

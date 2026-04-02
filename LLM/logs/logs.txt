@@ -1,0 +1,9 @@
+
+── Run: annrbfl0044  2026-04-02 14:26:52 ──
+2026-04-02 12:50:07  |  ERROR  |  [DeepSeek OCR]  |  journal=annrbfl0044  |  image=0003.png  |  OCR failed  |  an error was encountered while running the model: error:command buffer 0 failed with status 3
+ggml-metal-context.m:235: fatal error (status code: 500)
+2026-04-02 13:28:23  |  ERROR  |  [DeepSeek OCR]  |  journal=annrbfl0044  |  image=0131.png  |  OCR failed  |  an error was encountered while running the model: error:command buffer 1 failed with status 2
+ggml-metal-context.m:235: fatal error
+WARNING: Using native backtrace. Set GGML_BACKTRACE_LLDB for more info.
+WARNING: GGML_BACKTRACE_LLDB may cause native MacOS Terminal.app to crash.
+See: https://github.com/ggml-org/llama.cpp/pull/17869 (status code: 500)

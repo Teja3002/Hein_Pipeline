@@ -31,7 +31,8 @@ FIELD_DESCRIPTIONS = {
     "volume": 'The volume number (e.g. "89"). May appear as "VOLUME 143"',
     "date":   'The publication date (e.g. "January 2026")',
     "title":  'The full journal title (e.g. "The Modern Law Review")',
-    "issue":  'The issue number (e.g. "1"). May appear as "NUMBER 1" or "No. 1" or "Issue 1"',
+    # "issue":  'The issue number (e.g. "1"). May appear as "NUMBER 1" or "No. 1" or "Issue 1"',
+    "issue":  'The issue number (e.g. "1"). May appear as "NUMBER 1", "No. 1", "Issue 1", or as a Roman numeral like "ISSUE I" or "ISSUE II". Extract only the number or roman numeral, not the word "ISSUE"',
 }
 
 # Verifier for each field
@@ -138,6 +139,15 @@ def extract_metadata(ocr_filepath, metadata_filepath, MAX_PAGES=10):
             is_valid, reason = verifier(value) 
 
             if is_valid:
+                # Convert roman numerals to digits for issue field
+                if field_name == "issue":
+                    ROMAN_TO_INT = {
+                        "I": "1", "II": "2", "III": "3", "IV": "4", "V": "5",
+                        "VI": "6", "VII": "7", "VIII": "8", "IX": "9", "X": "10",
+                        "XI": "11", "XII": "12"
+                    }
+                    value = ROMAN_TO_INT.get(str(value).strip().upper(), value)
+
                 verified_fields[field_name] = value
                 fields_to_remove.append(field_name) 
                 print(f"    OK {field_name} = \"{value}\" ({reason})")

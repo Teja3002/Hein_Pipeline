@@ -78,8 +78,9 @@ def create_output_template(folder_name):
         "journalName": "", 
         "title": "",
         "volume": "",
-        "date": "",
-        "TOC": False,
+        "issue": [],
+        "issue_date": {},
+        "TOC": {}, 
         "pages": [],
         "sections": {}
     }
@@ -105,15 +106,16 @@ def merge_metadata(sources):
     Takes the first non-empty value by priority order.
     """
     result = {
-        "journalName": "", 
-        "title": "",
-        "volume": "",
-        "issue": "",
-        "date": "",
-        "TOC": False
+        "journalName": "",
+        "title":       "",
+        "volume":      "",
+        "issue":       [],
+        "issue_date":  {},
+        "TOC":         {}
     }
 
-    for field in result:
+    # Simple fields — take first non-empty by priority
+    for field in ["journalName", "title", "volume"]:
         for source in SOURCE_PRIORITY:
             if source not in sources:
                 continue
@@ -123,6 +125,46 @@ def merge_metadata(sources):
                 print(f"    {field}: \"{value}\" (from {source})")
                 break
 
+    # issue — merge all lists from all sources
+    seen_issues = set()
+    for source in SOURCE_PRIORITY:
+        if source not in sources:
+            continue
+        value = sources[source].get("issue", [])
+        if isinstance(value, list):
+            for v in value:
+                if v and str(v) not in seen_issues:
+                    result["issue"].append(str(v))
+                    seen_issues.add(str(v))
+        elif value and str(value) not in seen_issues:
+            result["issue"].append(str(value))
+            seen_issues.add(str(value))
+
+    # issue_date — merge dicts from all sources
+    for source in SOURCE_PRIORITY:
+        if source not in sources:
+            continue
+        value = sources[source].get("issue_date", {})
+        if isinstance(value, dict):
+            for k, v in value.items():
+                if k not in result["issue_date"] and v:
+                    result["issue_date"][k] = v
+                    print(f"    issue_date[{k}]: \"{v}\" (from {source})")
+
+    # TOC — merge dicts from all sources
+    for source in SOURCE_PRIORITY:
+        if source not in sources:
+            continue
+        value = sources[source].get("TOC", {})
+        if isinstance(value, dict):
+            for k, v in value.items():
+                if k not in result["TOC"]:
+                    result["TOC"][k] = v
+                    print(f"    TOC[{k}]: {v} (from {source})")
+        elif isinstance(value, bool) and value:
+            result["TOC"]["-1"] = value
+
+    print(f"    issue: {result['issue']}")
     return result
 
 # Merge pages 
@@ -220,9 +262,9 @@ def combine_folder(folder_name):
     combined_data["journalName"] = metadata["journalName"]
     combined_data["title"] = metadata["title"]
     combined_data["volume"] = metadata["volume"]
-    combined_data["issue"] = metadata["issue"] 
-    combined_data["date"] = metadata["date"]
-    combined_data["TOC"] = metadata["TOC"] 
+    combined_data["issue"] = metadata["issue"]
+    combined_data["issue_date"] = metadata["issue_date"]
+    combined_data["TOC"] = metadata["TOC"]
 
     # # Merge sections
     # print("\n  Merging sections...")
@@ -249,7 +291,7 @@ def combine_folder(folder_name):
 
 
 if __name__ == "__main__":
-    combine_folder("ajil0120no1") 
+    combine_folder("annrbfl0044")  
 
     # journals = [
     #     "ajil0120no1",

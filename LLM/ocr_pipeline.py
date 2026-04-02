@@ -19,6 +19,8 @@ from .source.scan_articles import scan_articles
 from .source.toc_checker import check_toc 
 from .source.llm import model_name 
 from .source.toc_extractor import get_toc_pages, extract_toc_articles 
+from .source.ocr import save_logs, set_journal
+
 
 def initiate_temp_files(base_folder): 
 
@@ -49,6 +51,10 @@ def run_ocr_pipeline(base_folder):
     print("\nOCR extraction process... \n") 
 
     start = time.time()
+
+    # Set current journal for logging context
+    journal_name = os.path.basename(base_folder)
+    set_journal(journal_name) 
 
     # Initialize temp files and get their paths: 
     ocr_filepath, metadata_filepath = initiate_temp_files(base_folder)  
@@ -108,6 +114,12 @@ def run_ocr_pipeline(base_folder):
 
     # Save to persistent output folder:
     output_filepath = save_metadata_to_output(metadata_filepath, base_folder) 
+
+    # ── Save logs ──
+    log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+    journal_name = os.path.basename(base_folder)
+    save_logs(log_dir, journal_name)
+
     
     return metadata, output_filepath 
 

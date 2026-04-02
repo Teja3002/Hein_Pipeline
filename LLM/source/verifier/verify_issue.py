@@ -38,7 +38,19 @@ def verify_issue(value):
         if num1 >= num2:
             return False, f"Combined issue range is invalid ({num1} >= {num2}): '{value_str}'"
         return True, "Valid (combined issue)"
+    
 
+    # Handle Roman numerals — convert to integer
+    ROMAN_TO_INT = {
+        "I": 1, "II": 2, "III": 3, "IV": 4, "V": 5,
+        "VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10,
+        "XI": 11, "XII": 12
+    }
+
+    if value_str.upper() in ROMAN_TO_INT:
+        return True, f"Valid (roman numeral → {ROMAN_TO_INT[value_str.upper()]})"
+    
+    
     # Standard single issue number
     if not value_str.isdigit():
         return False, f"Issue number contains non-digit characters: '{value_str}'"

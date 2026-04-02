@@ -1,13 +1,14 @@
 import json
 import re
 import base64
+import os 
 from ollama import chat  
+from openai import OpenAI
+
+from .ocr import log_error, _current_journal 
 
 model_name = "qwen3.5:9b" 
 safe_model_name = re.sub(r"[^A-Za-z0-9._-]+", "_", model_name)
-
-from openai import OpenAI 
-import os 
 
 client = OpenAI(
     api_key= "tgp_v1_ZE17Dd70YCHDqkfpkIbF3jndQ_MoG0jdt4dRRLzrPQE",
@@ -31,22 +32,33 @@ def _call_llm(system_prompt, user_content, image_path=None):
             {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64_image}"}}
         ]
 
-    response = client.chat.completions.create(
-        model="Qwen/Qwen3-Next-80B-A3B-Instruct",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            user_message
-        ]
-    )
+    try: 
+        response = client.chat.completions.create(
+            model="Qwen/Qwen3-Next-80B-A3B-Instruct",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                user_message
+            ]
+        )
 
-    raw = response.choices[0].message.content.strip()
+        raw = response.choices[0].message.content.strip()
 
-    if raw.startswith("```"):
-        raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
-        raw = raw.rsplit("```", 1)[0]
-        raw = raw.strip()
+        if raw.startswith("```"):
+            raw = raw.split("\n", 1)[1] if "\n" in raw else raw[3:]
+            raw = raw.rsplit("```", 1)[0]
+            raw = raw.strip()
 
-    return raw
+        return raw
+    except Exception as e:
+        log_error(
+            "LLM",
+            "API call failed",
+            image=str(image_path) if image_path else "",
+            journal=_current_journal,
+            details=str(e)
+        )
+        print(f"    LLM error: {e}")
+        return ""
 
     
 # def _call_llm(system_prompt, user_content, image_path=None): 

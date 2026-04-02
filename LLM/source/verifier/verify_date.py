@@ -19,7 +19,6 @@ DATE_FORMATS = [
     "%b, %Y",       # Jan, 2026
     "%m/%Y",        # 01/2026
     "%m-%Y",        # 01-2026
-    "%Y-%m",        # 2026-01
     "%Y",           # 2026
 ]
 
@@ -70,6 +69,16 @@ def verify_date(value):
         if 1800 <= year <= 2100:
             return True, "Valid (month range format)"
         return False, f"Year out of range: {year}"
+    
+    # Check for Year-range pattern (e.g. "2024-2025", "2025/2026")
+    year_range_pattern = re.compile(r"^(\d{4})\s*[-/]\s*(\d{4})$")
+    year_range_match = year_range_pattern.match(value_str)
+    if year_range_match:
+        year1 = int(year_range_match.group(1))
+        year2 = int(year_range_match.group(2))
+        if 1800 <= year1 <= 2100 and 1800 <= year2 <= 2100:
+            return True, "Valid (year range format)"
+        return False, f"Year out of range: {year1}-{year2}"
 
     # Try standard date formats
     for fmt in DATE_FORMATS:
