@@ -13,6 +13,7 @@ from Webscraper.databaseScrape import process as process_database_fallback
 from Webscraper.recursiveScrape import scrape_from_database_url
 from Webscraper.scraper import scrape_from_crossref_result, scrape_without_crossref
 from LLM.ocr_pipeline import run_ocr_pipeline
+from evaluation import evaluationScore
 
 
 # def start_ocr_pipeline(folder_name, folder_path, llm_dir):
@@ -69,6 +70,11 @@ def main() -> None:
     parser.add_argument(
         "--folder",
         help="Run only one folder from Input, for example: ajil0120no1",
+    )
+    parser.add_argument(
+        "--no-eval",
+        action="store_true",
+        help="Skip evaluation (Output/*.yml vs Input_Eval/*/structure.yml) after converter",
     )
     args = parser.parse_args()
 
@@ -171,6 +177,19 @@ def main() -> None:
         convert_output_path = convert_journal_result(folder.name)
         if convert_output_path:
             logging.info("Finished converter for folder=%s output=%s", folder.name, convert_output_path)
+            if not args.no_eval:
+                eval_gt = project_root / "Input_Eval" / folder.name / "structure.yml"
+                if eval_gt.exists():
+                    try:
+                        logging.info("Starting evaluation for folder=%s", folder.name)
+                        evaluationScore(str(Path(convert_output_path).resolve()))
+                    except Exception:
+                        logging.exception("Evaluation failed for folder=%s", folder.name)
+                else:
+                    logging.warning(
+                        "Skipping evaluation: ground truth not found at %s",
+                        eval_gt,
+                    )
         else:
             logging.warning("Converter did not generate output for folder=%s", folder.name)
 
