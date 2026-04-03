@@ -86,9 +86,9 @@ def create_output_template(folder_name):
     }
 
 # Save combined results 
-def save_combined(folder_name, combined_data):
+def save_combined(folder_name, combined_data, location="results"):
     """Saves the combined JSON to Combinator/results/."""
-    output_dir = PROJECT_ROOT / "Combinator" / "results"
+    output_dir = PROJECT_ROOT / "Combinator" / location
     output_dir.mkdir(exist_ok=True)
 
     output_filepath = output_dir / f"{folder_name}.json"
@@ -273,17 +273,43 @@ def combine_folder(folder_name):
     # Merge sections
     print("\n  Merging sections...")
     merged_sections, unmatched_map = merge_sections(sources)
+    # combined_data["sections"] = merged_sections
+
+    # CrossRef has the most reliable page numbers, so we use its section keys as the base. 
+    if "crossref" in sources and sources["crossref"].get("sections"):
+        crossref_sections = sources.get("crossref", {}).get("sections", {})  
+
+        combined_data["sections"] = merged_sections
+
+        # Merge pages
+        print("\n  Merging pages...")
+        combined_data["pages"] = merge_pages(sources, merged_sections, unmatched_map) 
+
+        # Save combined results LLM sections only (for debugging) 
+        save_combined(folder_name, combined_data, "results_LLM") 
+
+        combined_data["sections"] = crossref_sections 
+
+        # Merge pages
+        print("\n  Merging pages...")
+        combined_data["pages"] = merge_pages(sources, crossref_sections, unmatched_map) 
+
+        # Save combined results
+        save_combined(folder_name, combined_data, "results")  
+
+        return combined_data 
+
+
     combined_data["sections"] = merged_sections
 
     # Merge pages
     print("\n  Merging pages...")
     combined_data["pages"] = merge_pages(sources, merged_sections, unmatched_map)
 
-
     # Combine logic ENDS
 
     # Save combined results
-    save_combined(folder_name, combined_data) 
+    save_combined(folder_name, combined_data, "results") 
 
     # print(json.dumps(combined_data, indent=2, ensure_ascii=False))  # For demonstration
 
@@ -291,7 +317,7 @@ def combine_folder(folder_name):
 
 
 if __name__ == "__main__":
-    combine_folder("annrbfl0044")  
+    combine_folder("polic0049no1")  
 
     # journals = [
     #     "ajil0120no1",

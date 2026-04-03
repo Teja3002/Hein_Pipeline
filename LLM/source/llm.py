@@ -34,7 +34,8 @@ def _call_llm(system_prompt, user_content, image_path=None):
 
     try: 
         response = client.chat.completions.create(
-            model="Qwen/Qwen3-Next-80B-A3B-Instruct",
+            # model="Qwen/Qwen3-Next-80B-A3B-Instruct",
+            model="Qwen/Qwen3.5-9B", 
             messages=[
                 {"role": "system", "content": system_prompt},
                 user_message
@@ -123,6 +124,7 @@ def is_new_article(ocr_text, image_path=None):
         "You are part of a development pipeline. "
         "Returning anything other than YES or NO will crash the pipeline.\n\n"
         "TASK: Is this the FIRST page of a new article in a journal?\n\n"
+        "You will receive BOTH the OCR text AND an image of the page. Use both.\n\n"
         "A first page of a new article MUST have:\n"
         "  - An article title prominently displayed\n"
         "  - Author name(s) below the title\n"
@@ -143,7 +145,7 @@ def is_new_article(ocr_text, image_path=None):
 
     raw = _call_llm(
         system_prompt,
-        f"PAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\n",
+        f"Below is the OCR text of the page. An image of the same page is also attached — use BOTH to make your decision. Visual cues like large bold titles and author names below them are strong signals.\n\nPAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\n",
         image_path=image_path
     )
 
