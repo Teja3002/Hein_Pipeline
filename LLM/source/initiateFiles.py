@@ -62,6 +62,27 @@ def create_ocr_json(base_folder):
     time_str = now.strftime("%H:%M:%S")
     # datetime_str = now.strftime("%Y%m%d_%H%M%S")
 
+    # ── Check for existing temp file ──
+    json_filename = f"ocrData_{safe_model_name}_{journal_name}.json"
+    results_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp")
+    json_filepath = os.path.join(results_path, json_filename)
+
+    existing_ocr_map = {}
+    if os.path.exists(json_filepath):
+        print(f"  Found existing ocrData for '{journal_name}' — reusing ocrText, updating filePaths...")
+        try:
+            with open(json_filepath, "r", encoding="utf-8") as f:
+                existing_data = json.load(f)
+            # Build map: fileName → ocrText
+            for entry in existing_data.get("entries", []):
+                file_name = entry.get("fileName", "")
+                ocr_text  = entry.get("ocrText", "")
+                if file_name and ocr_text:
+                    existing_ocr_map[file_name] = ocr_text
+            print(f"  Loaded {len(existing_ocr_map)} existing OCR entries")
+        except Exception as e:
+            print(f"  Failed to load existing ocrData: {e} — starting fresh")
+
     # Build entries list
     entries = []
     for file_name in files:
@@ -69,7 +90,7 @@ def create_ocr_json(base_folder):
         entries.append({
             "fileName": file_name,
             "filePath": os.path.abspath(file_path),
-            "ocrText": ""
+            "ocrText": existing_ocr_map.get(file_name, "")
         })
 
     structure_path = os.path.join(base_folder, "structure.yml") 

@@ -165,6 +165,7 @@ def extract_article_fields(ocr_text, image_path=None):
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than valid JSON will crash the pipeline.\n\n"
+        "You will receive BOTH the OCR text AND an image of the page. Use both.\n\n"
         "TASK: Extract the article title and authors from the text below.\n\n"
         "RULES:\n"
         "  - Return ONLY a JSON object with keys: title, authors\n"
@@ -180,7 +181,7 @@ def extract_article_fields(ocr_text, image_path=None):
 
     raw = _call_llm(
         system_prompt,
-        f"ARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        f"Below is the OCR text of the page. An image of the same page is also attached — use BOTH to make your decision.\n\nARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
         image_path=image_path
     )
 
@@ -221,6 +222,7 @@ def extract_metadata_fields(ocr_text, pending_fields, image_path=None):
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than valid JSON will crash the pipeline.\n\n"
+        "You will receive BOTH the OCR text AND an image of the page. Use both.\n\n"
         "TASK: Extract the following metadata from the journal text below:\n"
         f"{fields_list}\n\n"
         "RULES:\n"
@@ -235,7 +237,7 @@ def extract_metadata_fields(ocr_text, pending_fields, image_path=None):
 
     raw = _call_llm(
         system_prompt,
-        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        f"Below is the OCR text of the page. An image of the same page is also attached — use BOTH to make your decision.\n\nJOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
         image_path=image_path
     )
 
@@ -275,6 +277,7 @@ def extract_toc_page(ocr_text, image_path=None):
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than YES or NO will crash the pipeline.\n\n"
+        "You will receive BOTH the OCR text AND an image of the page. Use both.\n\n"
         "TASK: Is this text a Table of Contents (TOC) page from a journal?\n\n"
         "A Table of Contents page MUST have:\n"
         "  - Multiple article or section titles listed one after another\n"
@@ -295,7 +298,7 @@ def extract_toc_page(ocr_text, image_path=None):
 
     raw = _call_llm(
         system_prompt,
-        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        f"Below is the OCR text of the page. An image of the same page is also attached — use BOTH to make your decision.\n\nARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
         image_path=image_path
     )
 
@@ -305,6 +308,7 @@ def get_article_page_numbers(ocr_text, image_path=None):
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than valid JSON will crash the pipeline.\n\n"
+        "You will receive BOTH the OCR text AND an image of the page. Use both.\n\n"
         "TASK: Extract all articles/entries from this Table of Contents text.\n\n"
         "For each entry extract:\n"
         "  - id: The full article title including author name if present\n"
@@ -320,7 +324,7 @@ def get_article_page_numbers(ocr_text, image_path=None):
 
     raw = _call_llm(
         system_prompt,
-        f"JOURNAL TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
+        f"Below is the OCR text of the page. An image of the same page is also attached — use BOTH to make your decision.\n\nARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
         image_path=image_path
     )
 
@@ -330,6 +334,7 @@ def get_page_number(ocr_text, image_path=None):
     system_prompt = (
         "You are part of a development pipeline. "
         "Returning anything other than a number will crash the pipeline.\n\n"
+        "You will receive BOTH the OCR text AND an image of the page. Use both.\n\n"
         "TASK: What is the printed page number on this page?\n\n"
         "RULES:\n"
         "  - Return ONLY the page number as a single integer\n"
@@ -341,7 +346,7 @@ def get_page_number(ocr_text, image_path=None):
 
     raw = _call_llm(
         system_prompt,
-        f"PAGE TEXT:\n-----------------\n{ocr_text}\n-----------------\nPage number:\n",
+        f"Below is the OCR text of the page. An image of the same page is also attached — use BOTH to make your decision.\n\nARTICLE TEXT:\n-----------------\n{ocr_text}\n-----------------\nJSON Output:\n",
         image_path=image_path
     )
 
