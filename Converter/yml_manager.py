@@ -40,11 +40,48 @@ def load_yaml(path):
         return yaml.safe_load(f)
 
 
-def save_yaml(data, path):
+
+def extract_issue_years(input_json):
+
+    issue_dates = input_json.get("issue_date", {})
+    years = set()
+
+    for value in issue_dates.values():
+        text = normalize_text(value)
+        match = re.search(r"\b(\d{4})\b", text)
+        if match:
+            years.add(int(match.group(1)))
+
+    if not years:
+        fallback = normalize_text(input_json.get("date", ""))
+        match = re.search(r"\b(\d{4})\b", fallback)
+        if match:
+            years.add(int(match.group(1)))
+
+    return sorted(years)
+
+
+def save_yaml(data, path, date_years=None):
     ensure_parent_dir(path)
+
+    # Build an ordered copy with 'date' first
+    ordered = {}
+
+    if date_years and len(date_years) == 1:
+        ordered["date"] = date_years[0]
+    elif date_years and len(date_years) > 1:
+        ordered["date"] = date_years
+    else:
+        ordered["date"] = ""
+
+    for key, value in data.items():
+        if key != "date":
+            ordered[key] = value
+
     with open(path, "w", encoding="utf-8") as f:
+        f.write("---\n")
         yaml.dump(
-            data,
+            ordered,
             f,
             Dumper=IndentNoAliasDumper,
             sort_keys=False,
@@ -776,13 +813,15 @@ def process_one_json(json_filename: str, keep_probable_matter: bool = False):
         input_json    = load_json(json_path)
         structure_yml = load_yaml(structure_path)
 
+        date_years = extract_issue_years(input_json)
+
         output = build_output(
             input_json=input_json,
             structure_yml=structure_yml,
             skip_probable_matter=not keep_probable_matter,
         )
 
-        save_yaml(output, output_path)
+        save_yaml(output, output_path, date_years=date_years)
         return output_path
 
     except Exception as e:

@@ -39,11 +39,45 @@ def load_yaml(path):
         return yaml.safe_load(f)
 
 
-def save_yaml(data, path):
+def extract_issue_years(input_json):
+    issue_dates = input_json.get("issue_date", {})
+    years = set()
+
+    for value in issue_dates.values():
+        text = normalize_text(value)
+        match = re.search(r"\b(\d{4})\b", text)
+        if match:
+            years.add(int(match.group(1)))
+
+    if not years:
+        fallback = normalize_text(input_json.get("date", ""))
+        match = re.search(r"\b(\d{4})\b", fallback)
+        if match:
+            years.add(int(match.group(1)))
+
+    return sorted(years)
+
+
+def save_yaml(data, path, date_years=None):
     ensure_parent_dir(path)
+
+    ordered = {}
+
+    if date_years and len(date_years) == 1:
+        ordered["date"] = date_years[0]
+    elif date_years and len(date_years) > 1:
+        ordered["date"] = date_years
+    else:
+        ordered["date"] = ""
+
+    for key, value in data.items():
+        if key != "date":
+            ordered[key] = value
+
     with open(path, "w", encoding="utf-8") as f:
+        f.write("---\n")
         yaml.dump(
-            data,
+            ordered,
             f,
             Dumper=IndentNoAliasDumper,
             sort_keys=False,
@@ -57,7 +91,6 @@ def save_yaml(data, path):
 def log_error(message):
     print(f"[LOG] {message.rstrip()}")
     logging.warning(message.rstrip())
-
 
 
 def normalize_text(value):
@@ -195,36 +228,31 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             raw_first_page = sec.get("first_page")
             start_native = normalize_text(raw_first_page) if raw_first_page is not None else ""
 
-            # Capture last_page for record completeness; overlap page logic
-            # is handled in yml_manager (which updates pages), not here.
             raw_last_page = sec.get("last_page")
             end_native = normalize_text(raw_last_page) if raw_last_page is not None else ""
 
             issue_key = normalize_text(sec.get("issue", "1"))
 
             records.append({
-                "old_sid":      int(old_sid_str),
-                "start_native": start_native,
-                "end_native":   end_native,
+                "old_sid":       int(old_sid_str),
+                "start_native":  start_native,
+                "end_native":    end_native,
                 "page_mappable": bool(start_native),
-                "issue_key":    issue_key,
-                "title":        title_raw,
-                "creator":      build_creator_list(sec),
-                "doi":          normalize_text(sec.get("doi", "")),
-                "external_url": normalize_text(sec.get("external_url", sec.get("url", ""))),
-                "citation":     normalize_text(sec.get("citation", "")),
-                "description":  normalize_text(sec.get("description", "")),
-                "subject":      normalize_text_list(sec.get("subject", [])),
-                "type":         normalize_text(sec.get("type", "")),
-                "date":         normalize_text(sec.get("date", "")),
-                "release_date": normalize_text(sec.get("release_date", "")),
-                "orcid":        normalize_text_list(sec.get("orcid", [])),
+                "issue_key":     issue_key,
+                "title":         title_raw,
+                "creator":       build_creator_list(sec),
+                "doi":           normalize_text(sec.get("doi", "")),
+                "external_url":  normalize_text(sec.get("external_url", sec.get("url", ""))),
+                "citation":      normalize_text(sec.get("citation", "")),
+                "description":   normalize_text(sec.get("description", "")),
+                "subject":       normalize_text_list(sec.get("subject", [])),
+                "type":          normalize_text(sec.get("type", "")),
+                "date":          normalize_text(sec.get("date", "")),
+                "release_date":  normalize_text(sec.get("release_date", "")),
+                "orcid":         normalize_text_list(sec.get("orcid", [])),
             })
 
     else:
-        # Old format: use parallel pages array.
-        # Records with an empty native are included (page_mappable=False)
-        # rather than skipped, so they still appear as section entries.
         json_pages = input_json.get("pages", [])
         max_len = min(len(json_pages), len(ordered_section_items))
 
@@ -239,22 +267,22 @@ def build_article_records_from_json(input_json, skip_probable_matter=True):
             start_native = normalize_text(page_obj.get("native", ""))
 
             records.append({
-                "old_sid":      int(old_sid_str),
-                "start_native": start_native,
-                "end_native":   "",   # old format has no last_page field
+                "old_sid":       int(old_sid_str),
+                "start_native":  start_native,
+                "end_native":    "",
                 "page_mappable": bool(start_native),
-                "issue_key":    "1",  # old format: single issue
-                "title":        title_raw,
-                "creator":      build_creator_list(sec),
-                "doi":          normalize_text(sec.get("doi", "")),
-                "external_url": normalize_text(sec.get("external_url", sec.get("url", ""))),
-                "citation":     normalize_text(sec.get("citation", "")),
-                "description":  normalize_text(sec.get("description", "")),
-                "subject":      normalize_text_list(sec.get("subject", [])),
-                "type":         normalize_text(sec.get("type", "")),
-                "date":         normalize_text(sec.get("date", "")),
-                "release_date": normalize_text(sec.get("release_date", "")),
-                "orcid":        normalize_text_list(sec.get("orcid", [])),
+                "issue_key":     "1",
+                "title":         title_raw,
+                "creator":       build_creator_list(sec),
+                "doi":           normalize_text(sec.get("doi", "")),
+                "external_url":  normalize_text(sec.get("external_url", sec.get("url", ""))),
+                "citation":      normalize_text(sec.get("citation", "")),
+                "description":   normalize_text(sec.get("description", "")),
+                "subject":       normalize_text_list(sec.get("subject", [])),
+                "type":          normalize_text(sec.get("type", "")),
+                "date":          normalize_text(sec.get("date", "")),
+                "release_date":  normalize_text(sec.get("release_date", "")),
+                "orcid":         normalize_text_list(sec.get("orcid", [])),
             })
 
     return records
@@ -397,9 +425,6 @@ def append_issue_sections(
         skip_probable_matter=skip_probable_matter,
     )
 
-    # All records — including those with null first_page (page_mappable=False)
-    # — are written as section entries. This file does not update pages, so
-    # page_mappable only matters to yml_manager (which does page assignment).
     next_sid = article_start_sid
     for rec in article_records:
         new_sections[next_sid] = build_new_article_section(rec, new_issue_sid)
@@ -430,13 +455,15 @@ def process_one_json(json_filename: str, keep_probable_matter: bool = False):
         input_json    = load_json(json_path)
         structure_yml = load_yaml(structure_path)
 
+        date_years = extract_issue_years(input_json)
+
         result = append_issue_sections(
             input_json=input_json,
             structure_yml=structure_yml,
             skip_probable_matter=not keep_probable_matter,
         )
 
-        save_yaml(result, output_path)
+        save_yaml(result, output_path, date_years=date_years)
         logging.info("yml_manager1 appended sections for journal=%s output=%s", journal_name, output_path)
         return output_path
 
