@@ -1,13 +1,4 @@
 
-# Journal files
-*.pdf
-*.png
-*.tiff
-*.tif
-*.jpg
-*.jpeg
-*.log
-*.yml
 
 # Python
 __pycache__/
@@ -18,11 +9,9 @@ __pycache__/
 # Virtual environment
 env/
 
-# Jornal Folder 
-Input/
 
-# Evaluation Folder 
-Evaluation/
+
+
 
 # Temp files (generated at runtime)
 results/

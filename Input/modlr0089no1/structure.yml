@@ -1,0 +1,928 @@
+---
+identifier: Mod. L. Rev.
+log:
+  - Edited by jk at Mon Jan 19 2026 11:02:15 GMT-0500 (Eastern Standard Time)
+  - Edited by se at Wed Jan 28 2026 15:07:03 GMT-0500 (Eastern Standard Time)
+  - Edited by cc at Fri Jan 30 2026 14:24:58 GMT-0500 (Eastern Standard Time)
+max: 224
+pages:
+  - id: 1
+    native: '[i]'
+    section:
+      - 1
+  - id: 2
+    native: 1
+    section:
+      - 1
+  - id: 3
+    native: 2
+    section:
+      - 1
+  - id: 4
+    native: 3
+    section:
+      - 1
+  - id: 5
+    native: 4
+    section:
+      - 1
+  - id: 6
+    native: 5
+    section:
+      - 1
+  - id: 7
+    native: 6
+    section:
+      - 1
+  - id: 8
+    native: 7
+    section:
+      - 1
+  - id: 9
+    native: 8
+    section:
+      - 1
+  - id: 10
+    native: 9
+    section:
+      - 1
+  - id: 11
+    native: 10
+    section:
+      - 1
+  - id: 12
+    native: 11
+    section:
+      - 1
+  - id: 13
+    native: 12
+    section:
+      - 1
+  - id: 14
+    native: 13
+    section:
+      - 1
+  - id: 15
+    native: 14
+    section:
+      - 1
+  - id: 16
+    native: 15
+    section:
+      - 1
+  - id: 17
+    native: 16
+    section:
+      - 1
+  - id: 18
+    native: 17
+    section:
+      - 1
+  - id: 19
+    native: 18
+    section:
+      - 1
+  - id: 20
+    native: 19
+    section:
+      - 1
+  - id: 21
+    native: 20
+    section:
+      - 1
+  - id: 22
+    native: 21
+    section:
+      - 1
+  - id: 23
+    native: 22
+    section:
+      - 1
+  - id: 24
+    native: 23
+    section:
+      - 1
+  - id: 25
+    native: 24
+    section:
+      - 1
+  - id: 26
+    native: 25
+    section:
+      - 1
+  - id: 27
+    native: 26
+    section:
+      - 1
+  - id: 28
+    native: 27
+    section:
+      - 1
+  - id: 29
+    native: 28
+    section:
+      - 1
+  - id: 30
+    native: 29
+    section:
+      - 1
+  - id: 31
+    native: 30
+    section:
+      - 1
+  - id: 32
+    native: 31
+    section:
+      - 1
+  - id: 33
+    native: 32
+    section:
+      - 1
+  - id: 34
+    native: 33
+    section:
+      - 1
+  - id: 35
+    native: 34
+    section:
+      - 1
+  - id: 36
+    native: 35
+    section:
+      - 1
+  - id: 37
+    native: 36
+    section:
+      - 1
+  - id: 38
+    native: 37
+    section:
+      - 1
+  - id: 39
+    native: 38
+    section:
+      - 1
+  - id: 40
+    native: 39
+    section:
+      - 1
+  - id: 41
+    native: 40
+    section:
+      - 1
+  - id: 42
+    native: 41
+    section:
+      - 1
+  - id: 43
+    native: 42
+    section:
+      - 1
+  - id: 44
+    native: 43
+    section:
+      - 1
+  - id: 45
+    native: 44
+    section:
+      - 1
+  - id: 46
+    native: 45
+    section:
+      - 1
+  - id: 47
+    native: 46
+    section:
+      - 1
+  - id: 48
+    native: 47
+    section:
+      - 1
+  - id: 49
+    native: 48
+    section:
+      - 1
+  - id: 50
+    native: 49
+    section:
+      - 1
+  - id: 51
+    native: 50
+    section:
+      - 1
+  - id: 52
+    native: 51
+    section:
+      - 1
+  - id: 53
+    native: 52
+    section:
+      - 1
+  - id: 54
+    native: 53
+    section:
+      - 1
+  - id: 55
+    native: 54
+    section:
+      - 1
+  - id: 56
+    native: 55
+    section:
+      - 1
+  - id: 57
+    native: 56
+    section:
+      - 1
+  - id: 58
+    native: 57
+    section:
+      - 1
+  - id: 59
+    native: 58
+    section:
+      - 1
+  - id: 60
+    native: 59
+    section:
+      - 1
+  - id: 61
+    native: 60
+    section:
+      - 1
+  - id: 62
+    native: 61
+    section:
+      - 1
+  - id: 63
+    native: 62
+    section:
+      - 1
+  - id: 64
+    native: 63
+    section:
+      - 1
+  - id: 65
+    native: 64
+    section:
+      - 1
+  - id: 66
+    native: 65
+    section:
+      - 1
+  - id: 67
+    native: 66
+    section:
+      - 1
+  - id: 68
+    native: 67
+    section:
+      - 1
+  - id: 69
+    native: 68
+    section:
+      - 1
+  - id: 70
+    native: 69
+    section:
+      - 1
+  - id: 71
+    native: 70
+    section:
+      - 1
+  - id: 72
+    native: 71
+    section:
+      - 1
+  - id: 73
+    native: 72
+    section:
+      - 1
+  - id: 74
+    native: 73
+    section:
+      - 1
+  - id: 75
+    native: 74
+    section:
+      - 1
+  - id: 76
+    native: 75
+    section:
+      - 1
+  - id: 77
+    native: 76
+    section:
+      - 1
+  - id: 78
+    native: 77
+    section:
+      - 1
+  - id: 79
+    native: 78
+    section:
+      - 1
+  - id: 80
+    native: 79
+    section:
+      - 1
+  - id: 81
+    native: 80
+    section:
+      - 1
+  - id: 82
+    native: 81
+    section:
+      - 1
+  - id: 83
+    native: 82
+    section:
+      - 1
+  - id: 84
+    native: 83
+    section:
+      - 1
+  - id: 85
+    native: 84
+    section:
+      - 1
+  - id: 86
+    native: 85
+    section:
+      - 1
+  - id: 87
+    native: 86
+    section:
+      - 1
+  - id: 88
+    native: 87
+    section:
+      - 1
+  - id: 89
+    native: 88
+    section:
+      - 1
+  - id: 90
+    native: 89
+    section:
+      - 1
+  - id: 91
+    native: 90
+    section:
+      - 1
+  - id: 92
+    native: 91
+    section:
+      - 1
+  - id: 93
+    native: 92
+    section:
+      - 1
+  - id: 94
+    native: 93
+    section:
+      - 1
+  - id: 95
+    native: 94
+    section:
+      - 1
+  - id: 96
+    native: 95
+    section:
+      - 1
+  - id: 97
+    native: 96
+    section:
+      - 1
+  - id: 98
+    native: 97
+    section:
+      - 1
+  - id: 99
+    native: 98
+    section:
+      - 1
+  - id: 100
+    native: 99
+    section:
+      - 1
+  - id: 101
+    native: 100
+    section:
+      - 1
+  - id: 102
+    native: 101
+    section:
+      - 1
+  - id: 103
+    native: 102
+    section:
+      - 1
+  - id: 104
+    native: 103
+    section:
+      - 1
+  - id: 105
+    native: 104
+    section:
+      - 1
+  - id: 106
+    native: 105
+    section:
+      - 1
+  - id: 107
+    native: 106
+    section:
+      - 1
+  - id: 108
+    native: 107
+    section:
+      - 1
+  - id: 109
+    native: 108
+    section:
+      - 1
+  - id: 110
+    native: 109
+    section:
+      - 1
+  - id: 111
+    native: 110
+    section:
+      - 1
+  - id: 112
+    native: 111
+    section:
+      - 1
+  - id: 113
+    native: 112
+    section:
+      - 1
+  - id: 114
+    native: 113
+    section:
+      - 1
+  - id: 115
+    native: 114
+    section:
+      - 1
+  - id: 116
+    native: 115
+    section:
+      - 1
+  - id: 117
+    native: 116
+    section:
+      - 1
+  - id: 118
+    native: 117
+    section:
+      - 1
+  - id: 119
+    native: 118
+    section:
+      - 1
+  - id: 120
+    native: 119
+    section:
+      - 1
+  - id: 121
+    native: 120
+    section:
+      - 1
+  - id: 122
+    native: 121
+    section:
+      - 1
+  - id: 123
+    native: 122
+    section:
+      - 1
+  - id: 124
+    native: 123
+    section:
+      - 1
+  - id: 125
+    native: 124
+    section:
+      - 1
+  - id: 126
+    native: 125
+    section:
+      - 1
+  - id: 127
+    native: 126
+    section:
+      - 1
+  - id: 128
+    native: 127
+    section:
+      - 1
+  - id: 129
+    native: 128
+    section:
+      - 1
+  - id: 130
+    native: 129
+    section:
+      - 1
+  - id: 131
+    native: 130
+    section:
+      - 1
+  - id: 132
+    native: 131
+    section:
+      - 1
+  - id: 133
+    native: 132
+    section:
+      - 1
+  - id: 134
+    native: 133
+    section:
+      - 1
+  - id: 135
+    native: 134
+    section:
+      - 1
+  - id: 136
+    native: 135
+    section:
+      - 1
+  - id: 137
+    native: 136
+    section:
+      - 1
+  - id: 138
+    native: 137
+    section:
+      - 1
+  - id: 139
+    native: 138
+    section:
+      - 1
+  - id: 140
+    native: 139
+    section:
+      - 1
+  - id: 141
+    native: 140
+    section:
+      - 1
+  - id: 142
+    native: 141
+    section:
+      - 1
+  - id: 143
+    native: 142
+    section:
+      - 1
+  - id: 144
+    native: 143
+    section:
+      - 1
+  - id: 145
+    native: 144
+    section:
+      - 1
+  - id: 146
+    native: 145
+    section:
+      - 1
+  - id: 147
+    native: 146
+    section:
+      - 1
+  - id: 148
+    native: 147
+    section:
+      - 1
+  - id: 149
+    native: 148
+    section:
+      - 1
+  - id: 150
+    native: 149
+    section:
+      - 1
+  - id: 151
+    native: 150
+    section:
+      - 1
+  - id: 152
+    native: 151
+    section:
+      - 1
+  - id: 153
+    native: 152
+    section:
+      - 1
+  - id: 154
+    native: 153
+    section:
+      - 1
+  - id: 155
+    native: 154
+    section:
+      - 1
+  - id: 156
+    native: 155
+    section:
+      - 1
+  - id: 157
+    native: 156
+    section:
+      - 1
+  - id: 158
+    native: 157
+    section:
+      - 1
+  - id: 159
+    native: 158
+    section:
+      - 1
+  - id: 160
+    native: 159
+    section:
+      - 1
+  - id: 161
+    native: 160
+    section:
+      - 1
+  - id: 162
+    native: 161
+    section:
+      - 1
+  - id: 163
+    native: 162
+    section:
+      - 1
+  - id: 164
+    native: 163
+    section:
+      - 1
+  - id: 165
+    native: 164
+    section:
+      - 1
+  - id: 166
+    native: 165
+    section:
+      - 1
+  - id: 167
+    native: 166
+    section:
+      - 1
+  - id: 168
+    native: 167
+    section:
+      - 1
+  - id: 169
+    native: 168
+    section:
+      - 1
+  - id: 170
+    native: 169
+    section:
+      - 1
+  - id: 171
+    native: 170
+    section:
+      - 1
+  - id: 172
+    native: 171
+    section:
+      - 1
+  - id: 173
+    native: 172
+    section:
+      - 1
+  - id: 174
+    native: 173
+    section:
+      - 1
+  - id: 175
+    native: 174
+    section:
+      - 1
+  - id: 176
+    native: 175
+    section:
+      - 1
+  - id: 177
+    native: 176
+    section:
+      - 1
+  - id: 178
+    native: 177
+    section:
+      - 1
+  - id: 179
+    native: 178
+    section:
+      - 1
+  - id: 180
+    native: 179
+    section:
+      - 1
+  - id: 181
+    native: 180
+    section:
+      - 1
+  - id: 182
+    native: 181
+    section:
+      - 1
+  - id: 183
+    native: 182
+    section:
+      - 1
+  - id: 184
+    native: 183
+    section:
+      - 1
+  - id: 185
+    native: 184
+    section:
+      - 1
+  - id: 186
+    native: 185
+    section:
+      - 1
+  - id: 187
+    native: 186
+    section:
+      - 1
+  - id: 188
+    native: 187
+    section:
+      - 1
+  - id: 189
+    native: 188
+    section:
+      - 1
+  - id: 190
+    native: 189
+    section:
+      - 1
+  - id: 191
+    native: 190
+    section:
+      - 1
+  - id: 192
+    native: 191
+    section:
+      - 1
+  - id: 193
+    native: 192
+    section:
+      - 1
+  - id: 194
+    native: 193
+    section:
+      - 1
+  - id: 195
+    native: 194
+    section:
+      - 1
+  - id: 196
+    native: 195
+    section:
+      - 1
+  - id: 197
+    native: 196
+    section:
+      - 1
+  - id: 198
+    native: 197
+    section:
+      - 1
+  - id: 199
+    native: 198
+    section:
+      - 1
+  - id: 200
+    native: 199
+    section:
+      - 1
+  - id: 201
+    native: 200
+    section:
+      - 1
+  - id: 202
+    native: 201
+    section:
+      - 1
+  - id: 203
+    native: 202
+    section:
+      - 1
+  - id: 204
+    native: 203
+    section:
+      - 1
+  - id: 205
+    native: 204
+    section:
+      - 1
+  - id: 206
+    native: 205
+    section:
+      - 1
+  - id: 207
+    native: 206
+    section:
+      - 1
+  - id: 208
+    native: 207
+    section:
+      - 1
+  - id: 209
+    native: 208
+    section:
+      - 1
+  - id: 210
+    native: 209
+    section:
+      - 1
+  - id: 211
+    native: 210
+    section:
+      - 1
+  - id: 212
+    native: 211
+    section:
+      - 1
+  - id: 213
+    native: 212
+    section:
+      - 1
+  - id: 214
+    native: 213
+    section:
+      - 1
+  - id: 215
+    native: 214
+    section:
+      - 1
+  - id: 216
+    native: 215
+    section:
+      - 1
+  - id: 217
+    native: 216
+    section:
+      - 1
+  - id: 218
+    native: 217
+    section:
+      - 1
+  - id: 219
+    native: 218
+    section:
+      - 1
+  - id: 220
+    native: 219
+    section:
+      - 1
+  - id: 221
+    native: 220
+    section:
+      - 1
+  - id: 222
+    native: 221
+    section:
+      - 1
+  - id: 223
+    native: 222
+    section:
+      - 1
+  - id: 224
+    native: 223
+    section:
+      - 1
+sections:
+  1:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: volume
+    type_num: ''
+title: Modern Law Review
+type: default
