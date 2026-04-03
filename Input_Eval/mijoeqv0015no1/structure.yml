@@ -1,0 +1,546 @@
+---
+date: 2025
+identifier: Mich. Bus. & Entrepreneurial L. Rev.
+log:
+  - Edited by jk at Mon Jan 19 2026 09:24:59 GMT-0500 (Eastern Standard Time)
+  - Edited by JB at Thu Jan 29 2026 09:53:11 GMT-0500 (Eastern Standard Time)
+  - Edited by JB at Thu Jan 29 2026 09:53:54 GMT-0500 (Eastern Standard Time)
+max: 70
+pages:
+  - id: 1
+    native: '[i]'
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 2
+    native: '[ii]'
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 3
+    native: '[iii]'
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 4
+    native: '[iv]'
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 5
+    native: '[v]'
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 6
+    native: '[vi]'
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 7
+    native: 1
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 8
+    native: 2
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 9
+    native: 3
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 10
+    native: 4
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 11
+    native: 5
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 12
+    native: 6
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 13
+    native: 7
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 14
+    native: 8
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 15
+    native: 9
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 16
+    native: 10
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 17
+    native: 11
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 18
+    native: 12
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 19
+    native: 13
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 20
+    native: 14
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 21
+    native: 15
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 22
+    native: 16
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 23
+    native: 17
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 24
+    native: 18
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 25
+    native: 19
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 26
+    native: 20
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 27
+    native: 21
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 28
+    native: 22
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 29
+    native: 23
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 30
+    native: 24
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 31
+    native: 25
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 32
+    native: 26
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 33
+    native: 27
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 34
+    native: 28
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 35
+    native: 29
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 36
+    native: 30
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 37
+    native: 31
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 38
+    native: 32
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 39
+    native: 33
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 40
+    native: 34
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 41
+    native: 35
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 42
+    native: 36
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 43
+    native: 37
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 44
+    native: 38
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 45
+    native: 39
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 46
+    native: 40
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 47
+    native: 41
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 48
+    native: 42
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 49
+    native: 43
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 50
+    native: 44
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 51
+    native: 45
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 52
+    native: 46
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 53
+    native: 47
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 54
+    native: 48
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 55
+    native: 49
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 56
+    native: 50
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 57
+    native: 51
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 58
+    native: 52
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 59
+    native: 53
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 60
+    native: 54
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 61
+    native: 55
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 62
+    native: 56
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 63
+    native: 57
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 64
+    native: 58
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 65
+    native: 59
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 66
+    native: 60
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 67
+    native: 61
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 68
+    native: 62
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 69
+    native: 63
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 70
+    native: 64
+    section:
+      - 5
+      - 2
+      - 1
+sections:
+  1:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: volume
+    type_num: ''
+  2:
+    citation: '15 Mich. Bus. & Entrepreneurial L. Rev. [i] (2025)'
+    countries: []
+    country_code: ' '
+    creator: []
+    date: Fall 2025
+    description: Issue 1
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 1
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: issue
+    type_num: ''
+  3:
+    citation: '15 Mich. Bus. & Entrepreneurial L. Rev. [i] (2025)'
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: Table of Contents
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: contents
+    type_num: ''
+  4:
+    citation: 15 Mich. Bus. & Entrepreneurial L. Rev. 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Pinder, Kyle A.'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'The Non-Binding Bind: Reframing Precatory Stockholder Proposals Under Delaware Law'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  5:
+    citation: 15 Mich. Bus. & Entrepreneurial L. Rev. 34 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Ciacchi, Silvia'
+      - 'Faure, Michael'
+      - 'Oded, Sharon'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: "Navigating the EU's Corporate Sustainability Due Diligence Directive: Strategic Implications for US Companies"
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+series: 15
+title: Michigan Business & Entrepreneurial Law Review
+type: default

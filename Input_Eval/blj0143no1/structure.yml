@@ -1,0 +1,907 @@
+---
+date: 2026
+identifier: Banking L.J.
+log:
+  - Edited by jk at Mon Jan 19 2026 12:20:29 GMT-0500 (Eastern Standard Time)
+  - Edited by se at Wed Jan 28 2026 13:37:17 GMT-0500 (Eastern Standard Time)
+max: 66
+pages:
+  - id: 1
+    native: i
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 2
+    native: ii
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 3
+    native: iii
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 4
+    native: iv
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 5
+    native: v
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 6
+    native: 1
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 7
+    native: 2
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 8
+    native: 3
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 9
+    native: 4
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 10
+    native: 5
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 11
+    native: 6
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 12
+    native: 7
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 13
+    native: 8
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 14
+    native: 9
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 15
+    native: 10
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 16
+    native: 11
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 17
+    native: 12
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 18
+    native: 13
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 19
+    native: 14
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 20
+    native: 15
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 21
+    native: 16
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 22
+    native: 17
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 23
+    native: 18
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 24
+    native: 19
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 25
+    native: 20
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 26
+    native: 21
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 27
+    native: 22
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 28
+    native: 23
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 29
+    native: 24
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 30
+    native: 25
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 31
+    native: 26
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 32
+    native: 27
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 33
+    native: 28
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 34
+    native: 29
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 35
+    native: 30
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 36
+    native: 31
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 37
+    native: 32
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 38
+    native: 33
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 39
+    native: 34
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 40
+    native: 35
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 41
+    native: 36
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 42
+    native: 37
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 43
+    native: 38
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 44
+    native: 39
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 45
+    native: 40
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 46
+    native: 41
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 47
+    native: 42
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 48
+    native: 43
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 49
+    native: 44
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 50
+    native: 45
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 51
+    native: 46
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 52
+    native: 47
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 53
+    native: 48
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 54
+    native: 49
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 55
+    native: 50
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 56
+    native: 51
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 57
+    native: 52
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 58
+    native: 53
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 59
+    native: 54
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 60
+    native: 55
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 61
+    native: 56
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 62
+    native: 57
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 63
+    native: 58
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 64
+    native: 59
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 65
+    native: 60
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 66
+    native: 61
+    section:
+      - 8
+      - 2
+      - 1
+sections:
+  1:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: volume
+    type_num: ''
+  2:
+    citation: 143 Banking L.J. i (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: January 2026
+    description: Issue 1
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 1
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: issue
+    type_num: ''
+  3:
+    citation: 143 Banking L.J. i (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: ''
+    description: Table of Contents
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: contents
+    type_num: ''
+  4:
+    citation: 143 Banking L.J. 1 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Spears, Victoria Prussen'
+    date: ''
+    description: Editor's Note
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: Things That Matter
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+  5:
+    citation: 143 Banking L.J. 4 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Linley, David A. K.'
+      - 'Jorissen, Paul A.'
+      - 'Goodstein, Barbara M.'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Digital Mortgage Assets: A Closer Look'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  6:
+    citation: 143 Banking L.J. 23 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Sanchez, David'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Life Insurance Premium Finance: Why Insurable Interest Matters'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  7:
+    citation: 143 Banking L.J. 37 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Lahny, Peter J. IV'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Navigating Intercreditor Arrangements in Commodities and Trade Finance: A Practical Guide - Part III'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  8:
+    citation: 143 Banking L.J. 54 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Norris-Jones, James'
+      - 'Collar, Kathryn'
+      - 'Kelsoe, Julia'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: United Kingdom Supreme Court Overturns Bribery Findings in Motor Finance Appeal
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+series: 143
+title: Banking Law Journal
+type: default

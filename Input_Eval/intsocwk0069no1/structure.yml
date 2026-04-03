@@ -1,0 +1,1547 @@
+---
+date: 2026
+identifier: Int'l Soc. Work
+log:
+  - Edited by jk at Mon Jan 19 2026 09:51:47 GMT-0500 (Eastern Standard Time)
+  - Edited by se at Wed Jan 28 2026 14:36:26 GMT-0500 (Eastern Standard Time)
+  - Edited by se at Wed Jan 28 2026 14:38:14 GMT-0500 (Eastern Standard Time)
+  - Edited by se at Wed Jan 28 2026 14:39:42 GMT-0500 (Eastern Standard Time)
+max: 164
+pages:
+  - id: 1
+    native: 3
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 2
+    native: 4
+    section:
+      - 3
+      - 2
+      - 1
+  - id: 3
+    native: 5
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 4
+    native: 6
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 5
+    native: 7
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 6
+    native: 8
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 7
+    native: 9
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 8
+    native: 10
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 9
+    native: 11
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 10
+    native: 12
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 11
+    native: 13
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 12
+    native: 14
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 13
+    native: 15
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 14
+    native: 16
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 15
+    native: 17
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 16
+    native: 18
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 17
+    native: 19
+    section:
+      - 4
+      - 2
+      - 1
+  - id: 18
+    native: 20
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 19
+    native: 21
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 20
+    native: 22
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 21
+    native: 23
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 22
+    native: 24
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 23
+    native: 25
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 24
+    native: 26
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 25
+    native: 27
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 26
+    native: 28
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 27
+    native: 29
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 28
+    native: 30
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 29
+    native: 31
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 30
+    native: 32
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 31
+    native: 33
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 32
+    native: 34
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 33
+    native: 35
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 34
+    native: 36
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 35
+    native: 37
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 36
+    native: 38
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 37
+    native: 39
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 38
+    native: 40
+    section:
+      - 5
+      - 2
+      - 1
+  - id: 39
+    native: 41
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 40
+    native: 42
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 41
+    native: 43
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 42
+    native: 44
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 43
+    native: 45
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 44
+    native: 46
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 45
+    native: 47
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 46
+    native: 48
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 47
+    native: 49
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 48
+    native: 50
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 49
+    native: 51
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 50
+    native: 52
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 51
+    native: 53
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 52
+    native: 54
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 53
+    native: 55
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 54
+    native: 56
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 55
+    native: 57
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 56
+    native: 58
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 57
+    native: 59
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 58
+    native: 60
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 59
+    native: 61
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 60
+    native: 62
+    section:
+      - 6
+      - 2
+      - 1
+  - id: 61
+    native: 63
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 62
+    native: 64
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 63
+    native: 65
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 64
+    native: 66
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 65
+    native: 67
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 66
+    native: 68
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 67
+    native: 69
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 68
+    native: 70
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 69
+    native: 71
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 70
+    native: 72
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 71
+    native: 73
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 72
+    native: 74
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 73
+    native: 75
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 74
+    native: 76
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 75
+    native: 77
+    section:
+      - 7
+      - 2
+      - 1
+  - id: 76
+    native: 78
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 77
+    native: 79
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 78
+    native: 80
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 79
+    native: 81
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 80
+    native: 82
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 81
+    native: 83
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 82
+    native: 84
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 83
+    native: 85
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 84
+    native: 86
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 85
+    native: 87
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 86
+    native: 88
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 87
+    native: 89
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 88
+    native: 90
+    section:
+      - 8
+      - 2
+      - 1
+  - id: 89
+    native: 91
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 90
+    native: 92
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 91
+    native: 93
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 92
+    native: 94
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 93
+    native: 95
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 94
+    native: 96
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 95
+    native: 97
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 96
+    native: 98
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 97
+    native: 99
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 98
+    native: 100
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 99
+    native: 101
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 100
+    native: 102
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 101
+    native: 103
+    section:
+      - 9
+      - 2
+      - 1
+  - id: 102
+    native: 104
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 103
+    native: 105
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 104
+    native: 106
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 105
+    native: 107
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 106
+    native: 108
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 107
+    native: 109
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 108
+    native: 110
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 109
+    native: 111
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 110
+    native: 112
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 111
+    native: 113
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 112
+    native: 114
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 113
+    native: 115
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 114
+    native: 116
+    section:
+      - 10
+      - 2
+      - 1
+  - id: 115
+    native: 117
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 116
+    native: 118
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 117
+    native: 119
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 118
+    native: 120
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 119
+    native: 121
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 120
+    native: 122
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 121
+    native: 123
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 122
+    native: 124
+    section:
+      - 11
+      - 2
+      - 1
+  - id: 123
+    native: 125
+    section:
+      - 12
+      - 2
+      - 1
+  - id: 124
+    native: 126
+    section:
+      - 12
+      - 2
+      - 1
+  - id: 125
+    native: 127
+    section:
+      - 12
+      - 2
+      - 1
+  - id: 126
+    native: 128
+    section:
+      - 12
+      - 2
+      - 1
+  - id: 127
+    native: 129
+    section:
+      - 12
+      - 2
+      - 1
+  - id: 128
+    native: 130
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 129
+    native: 131
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 130
+    native: 132
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 131
+    native: 133
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 132
+    native: 134
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 133
+    native: 135
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 134
+    native: 136
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 135
+    native: 137
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 136
+    native: 138
+    section:
+      - 13
+      - 2
+      - 1
+  - id: 137
+    native: 139
+    section:
+      - 14
+      - 2
+      - 1
+  - id: 138
+    native: 140
+    section:
+      - 14
+      - 2
+      - 1
+  - id: 139
+    native: 141
+    section:
+      - 14
+      - 2
+      - 1
+  - id: 140
+    native: 142
+    section:
+      - 14
+      - 2
+      - 1
+  - id: 141
+    native: 143
+    section:
+      - 14
+      - 2
+      - 1
+  - id: 142
+    native: 144
+    section:
+      - 14
+      - 2
+      - 1
+  - id: 143
+    native: 145
+    section:
+      - 15
+      - 2
+      - 1
+  - id: 144
+    native: 146
+    section:
+      - 15
+      - 2
+      - 1
+  - id: 145
+    native: 147
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 146
+    native: 148
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 147
+    native: 149
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 148
+    native: 150
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 149
+    native: 151
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 150
+    native: 152
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 151
+    native: 153
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 152
+    native: 154
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 153
+    native: 155
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 154
+    native: 156
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 155
+    native: 157
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 156
+    native: 158
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 157
+    native: 159
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 158
+    native: 160
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 159
+    native: 161
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 160
+    native: 162
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 161
+    native: 163
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 162
+    native: '[i]'
+    section:
+      - 16
+      - 2
+      - 1
+  - id: 163
+    native: 164
+    section:
+      - 17
+      - 2
+      - 1
+  - id: 164
+    native: 165
+    section:
+      - 17
+      - 2
+      - 1
+sections:
+  1:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: volume
+    type_num: ''
+  10:
+    citation: 69 Int'l Soc. Work 104 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Shailoobek kyzy, Aisuluu'
+      - 'Pape, Ulla'
+      - 'Musaeva, Nurgul'
+      - 'Asekova, Zhyldyz'
+      - 'Michels, Ingo Ilja'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728251341205
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251341205
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: A Study into the HIV/AIDS Knowledge of Social Workers and Social Work Students in Kyrgyzstan and Their Attitudes towards People Living with HIV
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  11:
+    citation: 69 Int'l Soc. Work 117 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Al Gharaibeh, Fakir'
+      - 'Zhao, Xiang'
+      - 'Abdurahman, Farida S.'
+    date: ''
+    description: Voices from the Practice
+    docket_num: ''
+    doi: 10.1177/00208728251355359
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251355359
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Voices of Postgraduate Social Work Students: Reflections on Fertility and Reproductive Decision-Making in the UAE'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  12:
+    citation: 69 Int'l Soc. Work 125 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Tapan, Metin Gani'
+    date: ''
+    description: Voices from the Practice
+    docket_num: ''
+    doi: 10.1177/00208728251355379
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251355379
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Digitalization in Social Work Practices for Displaced Populations: A Field Practice Example from Al-Bab, Syria'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  13:
+    citation: 69 Int'l Soc. Work 130 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Li, Yukun'
+      - 'Li, Shu'
+      - 'Qin, Haibo'
+    date: ''
+    description: Brief Note
+    docket_num: ''
+    doi: 10.1177/00208728251353695
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251353695
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Factors Influencing the Turnover Intention of Social Workers: A Meta-Analysis'
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+  14:
+    citation: 69 Int'l Soc. Work 139 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Pascoe, Katheryn Margaret'
+      - 'Stanley-Clarke, Nicky'
+    date: ''
+    description: Brief Note
+    docket_num: ''
+    doi: 10.1177/00208728251382828
+    external_url: https://journals.sagepub.com/doi/reader/10.1177/00208728251382828
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'The Challenges of Contextualization: Critical Reflections on Communicating Local Value within a Global Study'
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+  15:
+    citation: 69 Int'l Soc. Work 145 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Mumba, Joachim'
+    date: ''
+    description: News
+    docket_num: ''
+    doi: 10.1177/00208728251412175
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251412175
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'News from Our Societies: IFSW'
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+  16:
+    citation: 69 Int'l Soc. Work 147 (2026)
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: Abstracts
+    docket_num: ''
+    doi: 10.1177/00208728251414901
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251414901
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Abstracts (French, Spanish, Chinese, Arabic)'
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+  17:
+    citation: 69 Int'l Soc. Work 164 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ISW Journal Prize 2025
+    docket_num: ''
+    doi: 10.1177/00208728251414900
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251414900
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 2025 Frank Turner Best Paper Award
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+  2:
+    citation: 69 Int'l Soc. Work 3 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: January 2026
+    description: Issue 1
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 1
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: issue
+    type_num: ''
+  3:
+    citation: 69 Int'l Soc. Work 3 (2026)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - "O'Leary, Patrick"
+      - 'Ming-Sum, Tsui'
+    date: ''
+    description: Editorial
+    docket_num: ''
+    doi: 10.1177/00208728251411652
+    external_url: https://journals.sagepub.com/doi/reader/10.1177/00208728251411652
+    insection: 2
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: Learning from the Life of Dr Jane Goodall for Social Work Practice and Humanistic Practice
+    title_num: ''
+    treaty_noc: ''
+    type: editorial
+    type_num: ''
+  4:
+    citation: 69 Int'l Soc. Work 5 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Donoso, Gabriela Rubilar'
+      - 'Munoz-Arce, Gianinna'
+      - 'Teater, Barbra'
+      - 'LaBrenz, Catherine A.'
+      - 'Alford, Sabretta'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728251324428
+    external_url: https://journals.sagepub.com/doi/reader/10.1177/00208728251324428
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'What Makes Social Work Research Distinct? A Comparison of Three Latin American and Three Anglophone Countries'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  5:
+    citation: 69 Int'l Soc. Work 20 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Nkosi, Nozipho E.'
+      - 'Ncube, Mpumelelo E.'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728251324411
+    external_url: https://journals.sagepub.com/doi/reader/10.1177/00208728251324411
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Understanding Social Work Supervision in the Context of Social Development Practice: A Comprehensive Analysis'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  6:
+    citation: 69 Int'l Soc. Work 41 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Melgarejo, Oliva Diaz'
+      - 'Cardenas Sanchez, Maria Elvira'
+      - 'Grau Rengifo, Maria Olaya'
+      - 'Berrios-Riquelme, Jose'
+      - 'Silva, Margarita Bernales'
+      - 'Fernandez, Daniela Bolivar'
+      - 'Aguero, Marcela Gonzalez'
+      - 'Grau, Maria Florencia'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728251335190
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251335190
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Psychosocial and Vulnerability Factors Affecting Well-Being of Migrant Mothers from Latin America: A Scoping Review'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  7:
+    citation: 69 Int'l Soc. Work 63 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'McGinn, Polly Evans'
+      - 'Nordanger, Dag Oystein'
+      - 'Maehle, Magne Olav'
+      - 'Christiansen, Oivin'
+      - 'Braarud, Hanne Cecilie'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728241305444
+    external_url: https://journals.sagepub.com/doi/reader/10.1177/00208728241305444
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Utilisation of a Cultural Perspective in Child Welfare Expert Assessments in Norway
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  8:
+    citation: 69 Int'l Soc. Work 78 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Mahajne, Ibrahim'
+      - 'Alhuzail, Nuzha Allassad'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728251323070
+    external_url: https://journals.sagepub.com/doi/abs/10.1177/00208728251323070
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: The Potential Value of Home Visits as Experienced by Social Workers Belonging to the Minoritized Arab Population in Israel
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  9:
+    citation: 69 Int'l Soc. Work 91 (2026)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Zhao, Kedi'
+      - 'Wong, Tracy K.'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.1177/00208728251327626
+    external_url: https://journals.sagepub.com/doi/reader/10.1177/00208728251327626
+    insection: 2
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Conceptualizing Anti-Asian Bullying Faced by East Asian Adolescents in Canadian Schools Arising from the COVID-19 Pandemic: The Roles of Social Workers'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+series: 69
+title: International Social Work
+type: default

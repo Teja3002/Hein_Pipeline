@@ -1,0 +1,4609 @@
+---
+date: 2025
+identifier: Rev. Centro Academico Afonso Pena
+log:
+  - Edited by jk at Mon Jan 19 2026 09:12:43 GMT-0500 (Eastern Standard Time)
+  - Edited by jd at Thu Jan 29 2026 11:51:47 GMT-0500 (Eastern Standard Time)
+  - Edited by jd at Thu Jan 29 2026 12:00:44 GMT-0500 (Eastern Standard Time)
+  - Edited by jd at Thu Jan 29 2026 12:11:02 GMT-0500 (Eastern Standard Time)
+max: 560
+pages:
+  - id: 1
+    native: '[i]'
+    section:
+      - 2
+      - 1
+  - id: 2
+    native: '[ii]'
+    section:
+      - 2
+      - 1
+  - id: 3
+    native: '[iii]'
+    section:
+      - 2
+      - 1
+  - id: 4
+    native: '[iv]'
+    section:
+      - 2
+      - 1
+  - id: 5
+    native: '[v]'
+    section:
+      - 2
+      - 1
+  - id: 6
+    native: '[vi]'
+    section:
+      - 2
+      - 1
+  - id: 7
+    native: '[vii]'
+    section:
+      - 2
+      - 1
+  - id: 8
+    native: '[viii]'
+    section:
+      - 2
+      - 1
+  - id: 9
+    native: '[ix]'
+    section:
+      - 2
+      - 1
+  - id: 10
+    native: '[x]'
+    section:
+      - 2
+      - 1
+  - id: 11
+    native: '[xi]'
+    section:
+      - 2
+      - 1
+  - id: 12
+    native: '[xii]'
+    section:
+      - 4
+      - 3
+      - 1
+  - id: 13
+    native: '[xiii]'
+    section:
+      - 5
+      - 3
+      - 1
+  - id: 14
+    native: '[xiv]'
+    section:
+      - 5
+      - 3
+      - 1
+  - id: 15
+    native: 1
+    section:
+      - 6
+      - 3
+      - 1
+  - id: 16
+    native: 2
+    section:
+      - 6
+      - 3
+      - 1
+  - id: 17
+    native: 3
+    section:
+      - 6
+      - 3
+      - 1
+  - id: 18
+    native: 4
+    section:
+      - 6
+      - 3
+      - 1
+  - id: 19
+    native: 5
+    section:
+      - 6
+      - 3
+      - 1
+  - id: 20
+    native: 6
+    section:
+      - 6
+      - 3
+      - 1
+  - id: 21
+    native: 1
+    section:
+      - 7
+      - 3
+      - 1
+  - id: 22
+    native: 2
+    section:
+      - 7
+      - 3
+      - 1
+  - id: 23
+    native: 3
+    section:
+      - 7
+      - 3
+      - 1
+  - id: 24
+    native: 4
+    section:
+      - 7
+      - 3
+      - 1
+  - id: 25
+    native: 5
+    section:
+      - 7
+      - 3
+      - 1
+  - id: 26
+    native: 1
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 27
+    native: 2
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 28
+    native: 3
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 29
+    native: 4
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 30
+    native: 5
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 31
+    native: 6
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 32
+    native: 7
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 33
+    native: 8
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 34
+    native: 9
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 35
+    native: 10
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 36
+    native: 11
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 37
+    native: 12
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 38
+    native: 13
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 39
+    native: 14
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 40
+    native: 15
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 41
+    native: 16
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 42
+    native: 17
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 43
+    native: 18
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 44
+    native: 19
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 45
+    native: 20
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 46
+    native: 21
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 47
+    native: 22
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 48
+    native: 23
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 49
+    native: 24
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 50
+    native: 25
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 51
+    native: 26
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 52
+    native: 27
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 53
+    native: 28
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 54
+    native: 29
+    section:
+      - 8
+      - 3
+      - 1
+  - id: 55
+    native: 1
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 56
+    native: 2
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 57
+    native: 3
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 58
+    native: 4
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 59
+    native: 5
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 60
+    native: 6
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 61
+    native: 7
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 62
+    native: 8
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 63
+    native: 9
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 64
+    native: 10
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 65
+    native: 11
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 66
+    native: 12
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 67
+    native: 13
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 68
+    native: 14
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 69
+    native: 15
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 70
+    native: 16
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 71
+    native: 17
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 72
+    native: 18
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 73
+    native: 19
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 74
+    native: 20
+    section:
+      - 9
+      - 3
+      - 1
+  - id: 75
+    native: 1
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 76
+    native: 2
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 77
+    native: 3
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 78
+    native: 4
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 79
+    native: 5
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 80
+    native: 6
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 81
+    native: 7
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 82
+    native: 8
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 83
+    native: 9
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 84
+    native: 10
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 85
+    native: 11
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 86
+    native: 12
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 87
+    native: 13
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 88
+    native: 14
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 89
+    native: 15
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 90
+    native: 16
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 91
+    native: 17
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 92
+    native: 18
+    section:
+      - 10
+      - 3
+      - 1
+  - id: 93
+    native: 1
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 94
+    native: 2
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 95
+    native: 3
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 96
+    native: 4
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 97
+    native: 5
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 98
+    native: 6
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 99
+    native: 7
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 100
+    native: 8
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 101
+    native: 9
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 102
+    native: 10
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 103
+    native: 11
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 104
+    native: 12
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 105
+    native: 13
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 106
+    native: 14
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 107
+    native: 15
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 108
+    native: 16
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 109
+    native: 17
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 110
+    native: 18
+    section:
+      - 11
+      - 3
+      - 1
+  - id: 111
+    native: 1
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 112
+    native: 2
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 113
+    native: 3
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 114
+    native: 4
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 115
+    native: 5
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 116
+    native: 6
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 117
+    native: 7
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 118
+    native: 8
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 119
+    native: 9
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 120
+    native: 10
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 121
+    native: 11
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 122
+    native: 12
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 123
+    native: 13
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 124
+    native: 14
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 125
+    native: 15
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 126
+    native: 16
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 127
+    native: 17
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 128
+    native: 18
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 129
+    native: 19
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 130
+    native: 20
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 131
+    native: 21
+    section:
+      - 12
+      - 3
+      - 1
+  - id: 132
+    native: 1
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 133
+    native: 2
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 134
+    native: 3
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 135
+    native: 4
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 136
+    native: 5
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 137
+    native: 6
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 138
+    native: 7
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 139
+    native: 8
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 140
+    native: 9
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 141
+    native: 10
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 142
+    native: 11
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 143
+    native: 12
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 144
+    native: 13
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 145
+    native: 14
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 146
+    native: 15
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 147
+    native: 16
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 148
+    native: 17
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 149
+    native: 18
+    section:
+      - 13
+      - 3
+      - 1
+  - id: 150
+    native: 1
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 151
+    native: 2
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 152
+    native: 3
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 153
+    native: 4
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 154
+    native: 5
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 155
+    native: 6
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 156
+    native: 7
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 157
+    native: 8
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 158
+    native: 9
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 159
+    native: 10
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 160
+    native: 11
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 161
+    native: 12
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 162
+    native: 13
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 163
+    native: 14
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 164
+    native: 15
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 165
+    native: 16
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 166
+    native: 17
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 167
+    native: 18
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 168
+    native: 19
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 169
+    native: 20
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 170
+    native: 21
+    section:
+      - 14
+      - 3
+      - 1
+  - id: 171
+    native: 1
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 172
+    native: 2
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 173
+    native: 3
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 174
+    native: 4
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 175
+    native: 5
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 176
+    native: 6
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 177
+    native: 7
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 178
+    native: 8
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 179
+    native: 9
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 180
+    native: 10
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 181
+    native: 11
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 182
+    native: 12
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 183
+    native: 13
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 184
+    native: 14
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 185
+    native: 15
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 186
+    native: 16
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 187
+    native: 17
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 188
+    native: 18
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 189
+    native: 19
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 190
+    native: 20
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 191
+    native: 21
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 192
+    native: 22
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 193
+    native: 23
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 194
+    native: 24
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 195
+    native: 25
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 196
+    native: 26
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 197
+    native: 27
+    section:
+      - 15
+      - 3
+      - 1
+  - id: 198
+    native: 1
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 199
+    native: 2
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 200
+    native: 3
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 201
+    native: 4
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 202
+    native: 5
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 203
+    native: 6
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 204
+    native: 7
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 205
+    native: 8
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 206
+    native: 9
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 207
+    native: 10
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 208
+    native: 11
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 209
+    native: 12
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 210
+    native: 13
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 211
+    native: 14
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 212
+    native: 15
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 213
+    native: 16
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 214
+    native: 17
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 215
+    native: 18
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 216
+    native: 19
+    section:
+      - 16
+      - 3
+      - 1
+  - id: 217
+    native: 1
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 218
+    native: 2
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 219
+    native: 3
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 220
+    native: 4
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 221
+    native: 5
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 222
+    native: 6
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 223
+    native: 7
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 224
+    native: 8
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 225
+    native: 9
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 226
+    native: 10
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 227
+    native: 11
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 228
+    native: 12
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 229
+    native: 13
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 230
+    native: 14
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 231
+    native: 15
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 232
+    native: 16
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 233
+    native: 17
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 234
+    native: 18
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 235
+    native: '[xv]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 236
+    native: '[xvi]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 237
+    native: '[xvii]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 238
+    native: '[xviii]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 239
+    native: '[xix]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 240
+    native: '[xx]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 241
+    native: '[xxi]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 242
+    native: '[xxii]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 243
+    native: '[xxiii]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 244
+    native: '[xxiv]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 245
+    native: '[xxv]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 246
+    native: '[xxvi]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 247
+    native: '[xxvii]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 248
+    native: '[xxviii]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 249
+    native: '[xxix]'
+    section:
+      - 17
+      - 3
+      - 1
+  - id: 250
+    native: '[xxx]'
+    section:
+      - 19
+      - 18
+      - 1
+  - id: 251
+    native: '[xxxi]'
+    section:
+      - 20
+      - 18
+      - 1
+  - id: 252
+    native: '[xxxii]'
+    section:
+      - 20
+      - 18
+      - 1
+  - id: 253
+    native: '[xxxiii]'
+    section:
+      - 20
+      - 18
+      - 1
+  - id: 254
+    native: '[xxxiv]'
+    section:
+      - 20
+      - 18
+      - 1
+  - id: 255
+    native: '[xxxv]'
+    section:
+      - 20
+      - 18
+      - 1
+  - id: 256
+    native: '[xxxvi]'
+    section:
+      - 20
+      - 18
+      - 1
+  - id: 257
+    native: 1
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 258
+    native: 2
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 259
+    native: 3
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 260
+    native: 4
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 261
+    native: 5
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 262
+    native: 6
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 263
+    native: 7
+    section:
+      - 21
+      - 18
+      - 1
+  - id: 264
+    native: 1
+    section:
+      - 22
+      - 18
+      - 1
+  - id: 265
+    native: 2
+    section:
+      - 22
+      - 18
+      - 1
+  - id: 266
+    native: 3
+    section:
+      - 22
+      - 18
+      - 1
+  - id: 267
+    native: 4
+    section:
+      - 22
+      - 18
+      - 1
+  - id: 268
+    native: 5
+    section:
+      - 22
+      - 18
+      - 1
+  - id: 269
+    native: 6
+    section:
+      - 22
+      - 18
+      - 1
+  - id: 270
+    native: 1
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 271
+    native: 2
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 272
+    native: 3
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 273
+    native: 4
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 274
+    native: 5
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 275
+    native: 6
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 276
+    native: 7
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 277
+    native: 8
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 278
+    native: 9
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 279
+    native: 10
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 280
+    native: 11
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 281
+    native: 12
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 282
+    native: 13
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 283
+    native: 14
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 284
+    native: 15
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 285
+    native: 16
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 286
+    native: 17
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 287
+    native: 18
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 288
+    native: 19
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 289
+    native: 20
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 290
+    native: 21
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 291
+    native: 22
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 292
+    native: 23
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 293
+    native: 24
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 294
+    native: 25
+    section:
+      - 23
+      - 18
+      - 1
+  - id: 295
+    native: 1
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 296
+    native: 2
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 297
+    native: 3
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 298
+    native: 4
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 299
+    native: 5
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 300
+    native: 6
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 301
+    native: 7
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 302
+    native: 8
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 303
+    native: 9
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 304
+    native: 10
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 305
+    native: 11
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 306
+    native: 12
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 307
+    native: 13
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 308
+    native: 14
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 309
+    native: 15
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 310
+    native: 16
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 311
+    native: 17
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 312
+    native: 18
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 313
+    native: 19
+    section:
+      - 24
+      - 18
+      - 1
+  - id: 314
+    native: 1
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 315
+    native: 2
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 316
+    native: 3
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 317
+    native: 4
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 318
+    native: 5
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 319
+    native: 6
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 320
+    native: 7
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 321
+    native: 8
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 322
+    native: 9
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 323
+    native: 10
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 324
+    native: 11
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 325
+    native: 12
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 326
+    native: 13
+    section:
+      - 25
+      - 18
+      - 1
+  - id: 327
+    native: 1
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 328
+    native: 2
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 329
+    native: 3
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 330
+    native: 4
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 331
+    native: 5
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 332
+    native: 6
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 333
+    native: 7
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 334
+    native: 8
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 335
+    native: 9
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 336
+    native: 10
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 337
+    native: 11
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 338
+    native: 12
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 339
+    native: 13
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 340
+    native: 14
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 341
+    native: 15
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 342
+    native: 16
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 343
+    native: 17
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 344
+    native: 18
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 345
+    native: 19
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 346
+    native: 20
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 347
+    native: 21
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 348
+    native: 22
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 349
+    native: 23
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 350
+    native: 24
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 351
+    native: 25
+    section:
+      - 26
+      - 18
+      - 1
+  - id: 352
+    native: 1
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 353
+    native: 2
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 354
+    native: 3
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 355
+    native: 4
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 356
+    native: 5
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 357
+    native: 6
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 358
+    native: 7
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 359
+    native: 8
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 360
+    native: 9
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 361
+    native: 10
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 362
+    native: 11
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 363
+    native: 12
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 364
+    native: 13
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 365
+    native: 14
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 366
+    native: 15
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 367
+    native: 16
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 368
+    native: 17
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 369
+    native: 18
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 370
+    native: 19
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 371
+    native: 20
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 372
+    native: 21
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 373
+    native: 22
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 374
+    native: 23
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 375
+    native: 24
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 376
+    native: 25
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 377
+    native: 26
+    section:
+      - 27
+      - 18
+      - 1
+  - id: 378
+    native: 1
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 379
+    native: 2
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 380
+    native: 3
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 381
+    native: 4
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 382
+    native: 5
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 383
+    native: 6
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 384
+    native: 7
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 385
+    native: 8
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 386
+    native: 9
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 387
+    native: 10
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 388
+    native: 11
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 389
+    native: 12
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 390
+    native: 13
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 391
+    native: 14
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 392
+    native: 15
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 393
+    native: 16
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 394
+    native: 17
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 395
+    native: 18
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 396
+    native: 19
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 397
+    native: 20
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 398
+    native: 21
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 399
+    native: 22
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 400
+    native: 23
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 401
+    native: 24
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 402
+    native: 25
+    section:
+      - 28
+      - 18
+      - 1
+  - id: 403
+    native: 1
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 404
+    native: 2
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 405
+    native: 3
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 406
+    native: 4
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 407
+    native: 5
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 408
+    native: 6
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 409
+    native: 7
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 410
+    native: 8
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 411
+    native: 9
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 412
+    native: 10
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 413
+    native: 11
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 414
+    native: 12
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 415
+    native: 13
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 416
+    native: 14
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 417
+    native: 15
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 418
+    native: 16
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 419
+    native: 17
+    section:
+      - 29
+      - 18
+      - 1
+  - id: 420
+    native: 1
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 421
+    native: 2
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 422
+    native: 3
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 423
+    native: 4
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 424
+    native: 5
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 425
+    native: 6
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 426
+    native: 7
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 427
+    native: 8
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 428
+    native: 9
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 429
+    native: 10
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 430
+    native: 11
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 431
+    native: 12
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 432
+    native: 13
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 433
+    native: 14
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 434
+    native: 15
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 435
+    native: 16
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 436
+    native: 17
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 437
+    native: 18
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 438
+    native: 19
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 439
+    native: 20
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 440
+    native: 21
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 441
+    native: 22
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 442
+    native: 23
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 443
+    native: 24
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 444
+    native: 25
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 445
+    native: 26
+    section:
+      - 30
+      - 18
+      - 1
+  - id: 446
+    native: 1
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 447
+    native: 2
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 448
+    native: 3
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 449
+    native: 4
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 450
+    native: 5
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 451
+    native: 6
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 452
+    native: 7
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 453
+    native: 8
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 454
+    native: 9
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 455
+    native: 10
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 456
+    native: 11
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 457
+    native: 12
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 458
+    native: 13
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 459
+    native: 14
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 460
+    native: 15
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 461
+    native: 16
+    section:
+      - 31
+      - 18
+      - 1
+  - id: 462
+    native: 1
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 463
+    native: 2
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 464
+    native: 3
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 465
+    native: 4
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 466
+    native: 5
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 467
+    native: 6
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 468
+    native: 7
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 469
+    native: 8
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 470
+    native: 9
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 471
+    native: 10
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 472
+    native: 11
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 473
+    native: 12
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 474
+    native: 13
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 475
+    native: 14
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 476
+    native: 15
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 477
+    native: 16
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 478
+    native: 17
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 479
+    native: 18
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 480
+    native: 19
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 481
+    native: 20
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 482
+    native: 21
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 483
+    native: 22
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 484
+    native: 23
+    section:
+      - 32
+      - 18
+      - 1
+  - id: 485
+    native: 1
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 486
+    native: 2
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 487
+    native: 3
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 488
+    native: 4
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 489
+    native: 5
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 490
+    native: 6
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 491
+    native: 7
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 492
+    native: 8
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 493
+    native: 9
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 494
+    native: 10
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 495
+    native: 11
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 496
+    native: 12
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 497
+    native: 13
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 498
+    native: 14
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 499
+    native: 15
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 500
+    native: 16
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 501
+    native: 17
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 502
+    native: 18
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 503
+    native: 19
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 504
+    native: 20
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 505
+    native: 21
+    section:
+      - 33
+      - 18
+      - 1
+  - id: 506
+    native: 22
+    section:
+      - 33
+      - 18
+      - 1
+sections:
+  1:
+    citation: ''
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: volume
+    type_num: ''
+  10:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Carneiro, Bruna Salles'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/z0f6kr69
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Free from Themselves: The Neoliberal Management of Working Hours and Mental Health of the Working Class'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  11:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'dos Santos, Jose Vinicius'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/g2g3e356
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: The Right to Literature as a Human Right Taxing Books Is a Step Backward for Society
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  12:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Pennisi, Anna Julia Camargos'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/csznvn90
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Contested Constitution: The Dynamics of Power and the Inversion of Legislative Prestige by the Judiciary in the Brazilian Legal Field'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  13:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Pereira, Bruna Bessi'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/6vfvyv10
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Violation of the Right to Adequate Housing and Damage to Urban Order: Analysis of Public Civil Action 6046028-87.2015.8.13.0024/MG'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  14:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Andrade, Ezequiel Goncalves'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/h4wk4603
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'The "Plea Bargain" Regime in Brazilian, North American and Portuguese Law'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  15:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Pires, Gabriel de Oliveira'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/wyxjfr65
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: The Imputability of the Psychopath in front of the Art. 26 of the Penal Code
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  16:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'de Oliveira, Rafael Souza'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/psaptt02
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: "Narcissus' \"Hospitality\": The Foreigner in the Face of the State, the Law and Justice"
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  17:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Cunha, Pedro Henrique Azalim'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/t9qr8m13
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: 'Eco-Spiritual Urban Planning: Designing Sacred Cities in Defense of the Rights of Nature'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  18:
+    citation: '30 Rev. Centro Academico Afonso Pena [xxx] (2025)'
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: July-December 2025
+    description: Issue 2
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 1
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: issue
+    type_num: ''
+  19:
+    citation: '30 Rev. Centro Academico Afonso Pena [xxx] (2025)'
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: ''
+    description: Table of Contents
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: contents
+    type_num: ''
+  2:
+    citation: '30 Rev. Centro Academico Afonso Pena [i] (2025)'
+    countries: []
+    country_code: ' '
+    creator: []
+    date: ''
+    description: Title Page
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 1
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: titlepage
+    type_num: ''
+  20:
+    citation: '30 Rev. Centro Academico Afonso Pena [xxxi] (2025)'
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Morato, Otavio'
+    date: ''
+    description: Editorial
+    docket_num: ''
+    doi: 10.69881/7xfktn29
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: editorial
+    type_num: ''
+  21:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Novaes, Roberto'
+    date: ''
+    description: Tribute to Professor Ricardo Salgado
+    docket_num: ''
+    doi: 10.69881/deqvtr44
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: comments
+    type_num: ''
+  22:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Morato, Otavio'
+      - 'Montanar, Isadora'
+      - 'Capanema, Ivonise'
+    date: ''
+    description: Interview
+    docket_num: ''
+    doi: 10.69881/e796q854
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: Interview with Macae Evaristo
+    title_num: ''
+    treaty_noc: ''
+    type: comments
+    type_num: ''
+  23:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'de Rezende, Maira Ribeiro'
+      - 'da Silva Filho, Edson Vieira'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/bg8phf14
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: Colonial Brazil and the Formation of the Preferential Clientele of the Brazilian Penal System
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  24:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'de Albuquerque Costa, Rafael Ferreira'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/aam5wz86
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: '(In)Compatibilities between Feminism and Punitive Power: The Problems of Betting on a Confrontation Based on Incarceration'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  25:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'dos Reis Madeira, Sergio Augusto Pires'
+      - 'Lacerda, Gustavo Marcel Filgueiras'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/fmxg2a35
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Labor Reform in Brazil and Union Dismantling: The Challenges of Class Consciousness'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  26:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Mitidieri, Beatriz Meloni'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/6vwm0j97
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: The Influence of Patriarchy on Domestic Violence
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  27:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'de Oliveira, Ryan Victor Rosado'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/bh0c1049
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: "Intellectual and Revolutionary: Gyorgy Lukacs's Path toward History and Class Consciousness"
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  28:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Ramos, Arthur Melillo'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/c9ajcp03
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Justice and Virtue in Confucius: Law as a Symptom of Moral Disorder from the Perspective of Chinese Philosophy'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  29:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Figueiro, Marya Eduarda'
+      - 'Pellenz, Mayara'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/kt2g9664
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Financing of Campaigns for Federal Deputy in Santa Catarina in the 2022 Elections: An Analysis under the Principle of Equality'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  3:
+    citation: '30 Rev. Centro Academico Afonso Pena [xii] (2025)'
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: January-June 2025
+    description: Issue 1
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 1
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: issue
+    type_num: ''
+  30:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Brant, Pericles Alvares Caldeira'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/yp2ffj43
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Law and Coercion: Is There Law Where the Use of Force as Sanction Is Not Possible?'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  31:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Pereira, Patricia Miranda'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/kytm0k10
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Political Philosophy and Deliberative Democracy: Transparency in Political and Social Discussions'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  32:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'Sampaio, Raiane Xavier Moura'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/8bmk6478
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Artificial Intelligence and the (In)Admissibility of Digital Evidence Secured by the Chain of Custody: An Analysis in Light of the Guarantee of Evidentiary Reliability'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  33:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator:
+      - 'de Sousa, Lucas Melo Rodrigues'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/9qb2wz40
+    external_url: ''
+    insection: 18
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: 'Right of Superficies: Civil Law Tradition and Future Perspectives'
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  4:
+    citation: '30 Rev. Centro Academico Afonso Pena [xii] (2025)'
+    countries:
+      - ''
+      - ''
+      - ''
+    country_code: ' '
+    creator: []
+    date: ''
+    description: Table of Contents
+    docket_num: ''
+    doi: ''
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid:
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+      - ''
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject:
+      - ''
+      - ''
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: contents
+    type_num: ''
+  5:
+    citation: '30 Rev. Centro Academico Afonso Pena [xiii] (2025)'
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Morato de Andrade, Otavio'
+    date: ''
+    description: Editorial
+    docket_num: ''
+    doi: 10.69881/n2qnw869
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: editorial
+    type_num: ''
+  6:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Marinho, Leonardo'
+    date: ''
+    description: Tribute to Professor Sheila Selim
+    docket_num: ''
+    doi: 10.69881/2wp6dz33
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: ''
+    title_num: ''
+    treaty_noc: ''
+    type: comments
+    type_num: ''
+  7:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Morato de Andrade, Otavio'
+      - 'Murici, Gabriella Sepulveda'
+      - 'Nunes, Dierle'
+    date: ''
+    description: Interview
+    docket_num: ''
+    doi: 10.69881/mxvrd480
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Interview with Humberto Theodoro Junior
+    title_num: ''
+    treaty_noc: ''
+    type: comments
+    type_num: ''
+  8:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Nogueira, Julia Silva'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/807xs798
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: Regulatory Solutions regarding Disinformation in Electoral Contexts in Latin America
+    title_num: ''
+    treaty_noc: ''
+    type: article
+    type_num: ''
+  9:
+    citation: 30 Rev. Centro Academico Afonso Pena 1 (2025)
+    countries: []
+    country_code: ' '
+    creator:
+      - 'Costa, Rafael'
+      - 'Stefani, Marcos'
+    date: ''
+    description: ''
+    docket_num: ''
+    doi: 10.69881/hagdsp95
+    external_url: ''
+    insection: 3
+    judge: 0
+    orcid: []
+    release_date: ''
+    release_date_weekly: ''
+    section_num: ''
+    subject: []
+    title: New Horizons in the Control of Public Policies by the Judiciary through Structural Injunctions
+    title_num: ''
+    treaty_noc: ''
+    type: notes
+    type_num: ''
+series: 30
+title: Revista do Centro Academico Afonso Pena
+type: default

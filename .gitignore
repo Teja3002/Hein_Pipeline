@@ -16,8 +16,7 @@ env/
 # Temp files (generated at runtime)
 results/
 results_old/ 
-LLM/temp/ 
-Input_Eval
+LLM/temp/
 LLM/logs
 results_LLM/
 
